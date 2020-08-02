@@ -5,9 +5,9 @@
  */
 package tests;
 
-import com.kdg.fs24.application.core.service.funcs.TestFuncs;
-import com.kdg.fs24.persistence.core.PersistanceEntityManager;
-import com.kdg.fs24.references.application.currency.Currency;
+import org.dbs24.application.core.service.funcs.TestFuncs;
+import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.references.application.currency.Currency;
 import lombok.Data;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 import config.TestReferencesConfig;
-import com.kdg.fs24.service.ApplicationReferencesService;
+import org.dbs24.service.ApplicationReferencesService;
 import org.junit.Test;
 
 /**

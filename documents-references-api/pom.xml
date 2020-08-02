@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.kdg.fs24</groupId>
-        <artifactId>fs24</artifactId>
+        <groupId>org.dbs24</groupId>
+        <artifactId>dbs24</artifactId>
         <version>1.0</version>
     </parent>
     <artifactId>documents-references-api</artifactId>
@@ -12,7 +12,7 @@
     
     <dependencies>
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>references-api</artifactId>
             <version>${app.version}</version>          
         </dependency>      
@@ -22,17 +22,17 @@
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>liases-references-api</artifactId>
             <version>${app.version}</version>            
         </dependency> 
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>entity-contract-api</artifactId>
                         <version>${app.version}</version>            
         </dependency>  
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>lias-opers-api</artifactId>
                         <version>${app.version}</version>            
         </dependency>          -->

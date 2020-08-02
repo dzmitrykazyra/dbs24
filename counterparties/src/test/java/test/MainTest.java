@@ -12,12 +12,12 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 import config.CounterpartiesTestConfig;
 import java.util.UUID;
-import com.kdg.fs24.entity.counterparties.api.Counterparty;
-import com.kdg.fs24.entity.counterparties.api.CounterpartyConst;
-import com.kdg.fs24.service.CounterpartyActionsService;
+import org.dbs24.entity.counterparties.api.Counterparty;
+import org.dbs24.entity.counterparties.api.CounterpartyConst;
+import org.dbs24.service.CounterpartyActionsService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-//import com.kdg.fs24.entity.status.EntityStatus;
+//import org.dbs24.entity.status.EntityStatus;
 
 /**
  *

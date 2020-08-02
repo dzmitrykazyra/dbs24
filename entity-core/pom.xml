@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.kdg.fs24</groupId>
-        <artifactId>fs24</artifactId>
+        <groupId>org.dbs24</groupId>
+        <artifactId>dbs24</artifactId>
         <version>1.0</version>
     </parent>
     
@@ -17,63 +17,63 @@
             <version>${spring.web.flux}</version>
         </dependency>
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>entity-core-api</artifactId>
             <version>${app.version}</version>            
         </dependency>
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>log-mgmt</artifactId>
             <version>${app.version}</version>            
         </dependency>               
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>exception-api</artifactId>
             <version>${app.version}</version>            
         </dependency>        -->
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>references-api</artifactId>
             <version>${app.version}</version>            
         </dependency>        
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>thread-api</artifactId>
             <version>${app.version}</version>            
         </dependency>        -->
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>security-manager-api</artifactId>
             <version>${app.version}</version>            
         </dependency>        -->
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>entity-references-api</artifactId>
             <version>${app.version}</version>            
         </dependency>
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>references-application-api</artifactId>
             <version>${app.version}</version>            
         </dependency>-->
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>references-application</artifactId>
             <version>${app.version}</version>            
         </dependency>
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>entity-references</artifactId>
             <version>${app.version}</version>            
         </dependency>
      
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>abs-controller</artifactId>
             <version>${app.version}</version>            
         </dependency>-->
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>reflection-api</artifactId>
             <version>${app.version}</version>            
         </dependency> -->
@@ -89,32 +89,32 @@
             <scope>provided</scope>            
         </dependency>                         
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>rest-api</artifactId>
             <version>${app.version}</version>            
         </dependency>        
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>entity-marks</artifactId>
             <version>${app.version}</version>            
         </dependency>     
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>tce-api</artifactId>
             <version>${app.version}</version>            
         </dependency>    -->
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>test-api</artifactId>
             <version>${app.version}</version>            
         </dependency>                  
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>object-api</artifactId>
             <version>${app.version}</version>            
         </dependency>   -->
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>listeners-api</artifactId>
             <version>${app.version}</version>            
         </dependency>             -->
@@ -129,38 +129,38 @@
             <version>0.9.11</version>
         </dependency>-->
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>registry-api</artifactId>
             <version>${app.version}</version>            
         </dependency>        -->
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>log-gate</artifactId>
             <version>${app.version}</version>            
         </dependency>                        
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>log-sender</artifactId>
             <version>${app.version}</version>            
         </dependency>         
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>services-api</artifactId>
             <version>${app.version}</version>            
         </dependency>  -->
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>annotation-api</artifactId>
             <version>${app.version}</version>            
         </dependency>   
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>locale-api</artifactId>
             <version>${app.version}</version>            
         </dependency>    -->
         
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>persistence-api</artifactId>
             <version>${app.version}</version>            
         </dependency>                                              

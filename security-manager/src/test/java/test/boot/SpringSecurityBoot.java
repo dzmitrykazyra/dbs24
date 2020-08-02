@@ -5,10 +5,10 @@
  */
 package test.boot;
 
-import com.kdg.fs24.application.core.log.LogService;
-import com.kdg.fs24.repository.ApplicationUserRepository;
-import com.kdg.fs24.repository.ApplicationRoleRepository;
-import com.kdg.fs24.spring.unit.SpringBoot4Test;
+import org.dbs24.application.core.log.LogService;
+import org.dbs24.repository.ApplicationUserRepository;
+import org.dbs24.repository.ApplicationRoleRepository;
+import org.dbs24.spring.unit.SpringBoot4Test;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import com.kdg.fs24.application.core.sysconst.SysConst;
+import org.dbs24.application.core.sysconst.SysConst;
 
 /**
  *

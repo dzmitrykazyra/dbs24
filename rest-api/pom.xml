@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.kdg.fs24</groupId>
-        <artifactId>fs24</artifactId>
+        <groupId>org.dbs24</groupId>
+        <artifactId>dbs24</artifactId>
         <version>1.0</version>
     </parent>
     <artifactId>rest-api</artifactId>
@@ -14,7 +14,7 @@
     
     <dependencies>
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>exception-api</artifactId>
             <version>${app.version}</version>            
         </dependency>         -->
@@ -79,32 +79,32 @@
             <version>20070405</version>
         </dependency>-->
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>application-core-api</artifactId>
             <version>${app.version}</version>            
         </dependency>
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>log-mgmt</artifactId>
             <version>${app.version}</version>            
         </dependency>        
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>generics-api</artifactId>
             <version>${app.version}</version>            
         </dependency>          
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>tce-api</artifactId>
             <version>${app.version}</version>            
         </dependency>              
         <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>object-api</artifactId>
             <version>${app.version}</version>            
         </dependency>                 -->
         <!--        <dependency>
-            <groupId>com.kdg.fs24</groupId>
+            <groupId>org.dbs24</groupId>
             <artifactId>common-api</artifactId>
             <version>${app.version}</version>            
         </dependency>          -->

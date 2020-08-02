@@ -5,10 +5,10 @@
  */
 package test.boot;
 
-import com.kdg.fs24.application.core.log.LogService;
-import com.kdg.fs24.config.SecurityConst;
-import com.kdg.fs24.entity.security.ApplicationUser;
-import com.kdg.fs24.entity.security.ApplicationRole;
+import org.dbs24.application.core.log.LogService;
+import org.dbs24.config.SecurityConst;
+import org.dbs24.entity.security.ApplicationUser;
+import org.dbs24.entity.security.ApplicationRole;
 import test.config.SecurityTestConfig;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +17,9 @@ import org.springframework.context.annotation.Import;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.kdg.fs24.repository.*;
+import org.dbs24.repository.*;
 import lombok.Data;
-import com.kdg.fs24.service.*;
+import org.dbs24.service.*;
 
 /**
  *

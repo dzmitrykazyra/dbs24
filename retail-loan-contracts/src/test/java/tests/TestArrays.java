@@ -5,7 +5,7 @@
  */
 package tests;
 
-import com.kdg.fs24.application.core.log.LogService;
+import org.dbs24.application.core.log.LogService;
 import org.junit.jupiter.api.Test;
 import java.util.stream.Stream;
 import java.util.Arrays;

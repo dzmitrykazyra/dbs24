@@ -1,12 +1,12 @@
 package repo;
 
-import com.kdg.fs24.application.core.log.LogService;
-import com.kdg.fs24.application.core.nullsafe.NullSafe;
-import com.kdg.fs24.entity.type.EntityType;
-import com.kdg.fs24.entity.kind.EntityKind;
-import com.kdg.fs24.entity.status.EntityStatus;
-import com.kdg.fs24.entity.action.ActionCode;
-import com.kdg.fs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.application.core.log.LogService;
+import org.dbs24.application.core.nullsafe.NullSafe;
+import org.dbs24.entity.type.EntityType;
+import org.dbs24.entity.kind.EntityKind;
+import org.dbs24.entity.status.EntityStatus;
+import org.dbs24.entity.action.ActionCode;
+import org.dbs24.persistence.core.PersistanceEntityManager;
 import java.time.LocalDateTime;
 import org.hibernate.Session;
 import org.junit.Test;
@@ -16,14 +16,14 @@ import org.springframework.context.annotation.Import;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.kdg.fs24.application.core.service.funcs.TestFuncs;
-import com.kdg.fs24.repository.*;
-import com.kdg.fs24.service.EntityReferencesService;
-import com.kdg.fs24.repository.EntityStatusesRepository;
+import org.dbs24.application.core.service.funcs.TestFuncs;
+import org.dbs24.repository.*;
+import org.dbs24.service.EntityReferencesService;
+import org.dbs24.repository.EntityStatusesRepository;
 import lombok.Data;
-import com.kdg.fs24.application.core.sysconst.SysConst;
+import org.dbs24.application.core.sysconst.SysConst;
 import config.TestRepoConfig;
-import com.kdg.fs24.entity.status.EntityStatusPK;
+import org.dbs24.entity.status.EntityStatusPK;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

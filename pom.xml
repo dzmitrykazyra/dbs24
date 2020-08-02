@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.kdg.fs24</groupId>
+    <groupId>org.dbs24</groupId>
     <artifactId>dbs24</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
 
 
     <properties>
-        <app.root.group>com.kdg.fs24</app.root.group>
+        <app.root.group>org.dbs24</app.root.group>
         <app.version>1.0</app.version>
         <main.basedir>${project.basedir}/../</main.basedir>
         <source.directory.libs>libs</source.directory.libs>        
@@ -207,7 +207,7 @@
                     <configuration>
                         <filesets>
                             <fileset>
-                                <directory>${basedir}/db</directory>
+                                <directory>${basedir}/libs</directory>
                             </fileset>
                         </filesets>
                     </configuration>

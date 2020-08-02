@@ -5,15 +5,15 @@
  */
 package config;
 
-import com.kdg.fs24.config.CounterpartyConfig;
-import com.kdg.fs24.config.EntityReferencesConfig;
+import org.dbs24.config.CounterpartyConfig;
+import org.dbs24.config.EntityReferencesConfig;
 import org.springframework.context.annotation.ComponentScan;
-import com.kdg.fs24.spring.config.MainApplicationConfig;
+import org.dbs24.spring.config.MainApplicationConfig;
 import lombok.Data;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
-import com.kdg.fs24.application.core.sysconst.SysConst;
+import org.dbs24.application.core.sysconst.SysConst;
 
 
 /**

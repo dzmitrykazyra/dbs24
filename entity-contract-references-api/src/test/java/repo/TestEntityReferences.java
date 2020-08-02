@@ -5,8 +5,8 @@
  */
 package repo;
 
-import com.kdg.fs24.application.core.service.funcs.TestFuncs;
-import com.kdg.fs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.application.core.service.funcs.TestFuncs;
+import org.dbs24.persistence.core.PersistanceEntityManager;
 import lombok.Data;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 import config.TestReferencesConfig;
-import com.kdg.fs24.service.EntityContractReferencesService;
+import org.dbs24.service.EntityContractReferencesService;
 import org.junit.Test;
-import com.kdg.fs24.entity.contract.subjects.ContractSubject;
+import org.dbs24.entity.contract.subjects.ContractSubject;
 
 /**
  *

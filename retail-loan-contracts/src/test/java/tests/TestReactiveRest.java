@@ -5,10 +5,10 @@
  */
 package tests;
 
-import com.kdg.fs24.application.core.locale.NLS;
-import com.kdg.fs24.application.core.nullsafe.NullSafe;
-import com.kdg.fs24.application.core.log.LogService;
-import com.kdg.fs24.config.RetailLoanContractWebSecurityConfig;
+import org.dbs24.application.core.locale.NLS;
+import org.dbs24.application.core.nullsafe.NullSafe;
+import org.dbs24.application.core.log.LogService;
+import org.dbs24.config.RetailLoanContractWebSecurityConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,11 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.http.MediaType;
-import com.kdg.fs24.entity.core.api.EntityContractConst;
-import com.kdg.fs24.entity.retail.loan.contracts.RetailLoanContract;
-import com.kdg.fs24.consts.RetailLoanContractConst;
-import com.kdg.fs24.lias.opers.attrs.LIAS_DATE;
-import com.kdg.fs24.lias.opers.attrs.LIAS_SUMM;
+import org.dbs24.entity.core.api.EntityContractConst;
+import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
+import org.dbs24.consts.RetailLoanContractConst;
+import org.dbs24.lias.opers.attrs.LIAS_DATE;
+import org.dbs24.lias.opers.attrs.LIAS_SUMM;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;

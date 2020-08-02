@@ -5,10 +5,10 @@
  */
 package tests;
 
-import com.kdg.fs24.application.core.log.LogService;
-import com.kdg.fs24.application.core.nullsafe.NullSafe;
-import com.kdg.fs24.application.core.nullsafe.StopWatcher;
-import com.kdg.fs24.entity.core.api.EntityContractConst;
+import org.dbs24.application.core.log.LogService;
+import org.dbs24.application.core.nullsafe.NullSafe;
+import org.dbs24.application.core.nullsafe.StopWatcher;
+import org.dbs24.entity.core.api.EntityContractConst;
 import lombok.Data;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,9 +17,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import config.TestRLCConfig;
 import org.junit.Test;
-import com.kdg.fs24.entity.retail.loan.contracts.RetailLoanContract;
-import com.kdg.fs24.consts.RetailLoanContractConst;
-import com.kdg.fs24.entity.retail.loan.actions.*;
+import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
+import org.dbs24.consts.RetailLoanContractConst;
+import org.dbs24.entity.retail.loan.actions.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import org.springframework.web.reactive.function.client.WebClient;

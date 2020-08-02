@@ -5,7 +5,7 @@
  */
 package test.boot;
 
-import com.kdg.fs24.application.core.log.LogService;
+import org.dbs24.application.core.log.LogService;
 import org.junit.Test;
 
 /**

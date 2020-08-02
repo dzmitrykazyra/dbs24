@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 
-import com.kdg.fs24.spring.config.MainApplicationConfig;
-import com.kdg.fs24.service.RetailLoanContractActionsService;
+import org.dbs24.spring.config.MainApplicationConfig;
+import org.dbs24.service.RetailLoanContractActionsService;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
-import com.kdg.fs24.application.core.sysconst.SysConst;
-import com.kdg.fs24.config.RetailLoanContractCommonConfig;
+import org.dbs24.application.core.sysconst.SysConst;
+import org.dbs24.config.RetailLoanContractCommonConfig;
 import org.springframework.context.annotation.Bean;
 //import org.springframework.security.oauth2.jwt.ReactiveJwtDecoder;
 
