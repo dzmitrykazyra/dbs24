@@ -1,0 +1,10 @@
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <module name="org.primefaces" meta-inf="export"/>
+        </dependencies>
+        <resources>
+            <resource-root path="."/>
+        </resources>
+    </deployment>
+</jboss-deployment-structure>

@@ -1,0 +1,1 @@
+ALTER database "pg12_fs24" SET search_path TO fs24_dev;

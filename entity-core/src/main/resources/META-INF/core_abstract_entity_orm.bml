@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm
+      http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd"
+                 version="2.2">
+    
+<!--    <mapped-superclass class="com.kdg.fs24.entity.core.api.Entity" metadata-complete="true"/>-->
+    <!--    <mapped-superclass class="com.kdg.fs24.entity.core.AbstractEntityImpl" metadata-complete="true"/>-->
+          
+    <entity class="com.kdg.fs24.entity.core.AbstractPersistenceEntity" access="PROPERTY" metadata-complete="true">
+        <table name="core_entities">
+            
+        </table>
+
+        <attributes>
+            <id name="entity_id">     
+                <generated-value strategy="SEQUENCE" generator="sequence"/>
+                <sequence-generator name="sequence" sequence-name="seq_action_id" allocation-size="1"/>                
+            </id>
+            <transient name="entity"/>
+         
+        </attributes>
+    </entity>    
+</entity-mappings>

@@ -1,0 +1,2 @@
+ALTER TABLE Doc2Attrs
+  RENAME TO DocAttrs;

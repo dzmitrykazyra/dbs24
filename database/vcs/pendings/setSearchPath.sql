@@ -1,0 +1,1 @@
+ALTER database "pg12_vcs" SET search_path TO vcs_dev;

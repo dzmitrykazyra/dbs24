@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <persistence-unit name="retail-loan-contracts" transaction-type="RESOURCE_LOCAL">
+        <!--      <mapping-file>META-INF/entity_references_orm.xml</mapping-file>-->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jar-file>${source.directory.libs}/entity-core.jar</jar-file>
+        <jar-file>${source.directory.libs}/entity-references-api.jar</jar-file>
+        <jar-file>${source.directory.libs}/entity-contract-references-api.jar</jar-file>        
+        <jar-file>${source.directory.libs}/counterparties.jar</jar-file>
+        <jar-file>${source.directory.libs}/references-application-api.jar</jar-file>
+        <jar-file>${source.directory.libs}/tariff-core.jar</jar-file>
+        <jar-file>${source.directory.libs}/entity-contracts.jar</jar-file>            
+        <jar-file>${source.directory.libs}/retail-loan-contracts-references-api.jar</jar-file>  
+        <jar-file>${source.directory.libs}/bond-schedule-references-api.jar</jar-file>  
+        <jar-file>${source.directory.libs}/liases-api.jar</jar-file>   
+        <jar-file>${source.directory.libs}/liases-references-api.jar</jar-file>        
+        <jar-file>${source.directory.libs}/documents-api.jar</jar-file>  
+        <jar-file>${source.directory.libs}/documents-references-api.jar</jar-file>  
+        <jar-file>${source.directory.libs}/tariff-references-api.jar</jar-file>          
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/fs24"/>
+            <property name="javax.persistence.jdbc.user" value="admin"/>
+            <property name="javax.persistence.jdbc.password" value="admin"/>-->
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc_url"/>
+            <property name="javax.persistence.jdbc.user" value="jdbc_user"/>
+            <property name="javax.persistence.jdbc.password" value="jdbc_password"/>
+            <property name="show_sql" value="true"/>
+            <property name="format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.jdbc.batch_size" value="20"/>
+            <property name="hibernate.generate_statistics" value="true"/>
+            <property name="hibernate.order_inserts" value="true"/>
+            <property name="hibernate.order_updates" value="true"/>       
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.region.factory_class"
+                      value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>-->
+        </properties>
+    </persistence-unit>
+</persistence>

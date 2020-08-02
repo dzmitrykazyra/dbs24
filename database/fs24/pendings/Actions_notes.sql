@@ -1,0 +1,2 @@
+ALTER TABLE Actions
+ADD COLUMN notes TText;
