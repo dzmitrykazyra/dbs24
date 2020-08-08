@@ -8,6 +8,8 @@
 /spring-junit/target/
 /target/
 *.log
+*.tmp
+~*.*
 *.jar
 /entity-contract-references-api/target/
 /entity-contract-references/target/
@@ -66,3 +68,5 @@
 /world-chess-api/target/
 /msn-world-api/target/
 /msn-world/target/
+/world-chess-core/target/
+/world-chess-single-games/target/

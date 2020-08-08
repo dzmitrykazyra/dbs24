@@ -6,18 +6,22 @@
         <artifactId>dbs24</artifactId>
         <version>1.0</version>
     </parent>
-    <artifactId>world-chess-core</artifactId>
+    <artifactId>world-chess-single-games</artifactId>
     <packaging>jar</packaging>
-    
     <build>
-        <finalName>world-chess-core</finalName> 
+        <finalName>world-chess-single-games</finalName> 
     </build>
     <dependencies>
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>persistence-core</artifactId>
             <version>${app.version}</version>            
-        </dependency>   
+        </dependency> 
+        <dependency>
+            <groupId>org.dbs24</groupId>
+            <artifactId>world-chess-core</artifactId>
+            <version>${app.version}</version>            
+        </dependency>  
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>spring-core-api</artifactId>
@@ -38,5 +42,5 @@
             <artifactId>entity-core-api</artifactId>
             <version>${app.version}</version>
         </dependency> 
-    </dependencies>
+    </dependencies>    
 </project>

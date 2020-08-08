@@ -88,6 +88,8 @@
         <module>liases</module>
         <module>documents-api</module>
         <module>spring-rest-api</module>
+        <module>world-chess-core</module>
+        <module>world-chess-single-games</module>
     </modules>
 
     <dependencies>
