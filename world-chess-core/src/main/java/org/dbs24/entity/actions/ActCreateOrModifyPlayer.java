@@ -7,7 +7,7 @@ package org.dbs24.entity.actions;
 
 import org.dbs24.consts.WorldChessConst;
 import org.dbs24.entity.core.api.ActionCodeId;
-import org.dbs24.entity.AbstractChessPlayer;
+import org.dbs24.entity.AbstractPlayer;
 import org.dbs24.entity.core.api.RefreshEntity;
 import org.dbs24.entity.core.AbstractAction;
 import lombok.Data;
@@ -20,7 +20,7 @@ import lombok.Data;
 @ActionCodeId(action_code = WorldChessConst.ACT_CREATE_OR_MODIFY_PLAYER,
         action_name = "Создать\\изменить учетную запись игрока в шахматы")
 @RefreshEntity
-public class ActCreateOrModifyPlayer extends AbstractAction<AbstractChessPlayer> {
+public class ActCreateOrModifyPlayer extends AbstractAction<AbstractPlayer> {
 
     @Override
     protected void doUpdate() {

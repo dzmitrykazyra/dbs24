@@ -5,7 +5,7 @@
  */
 package org.dbs24.entity.security;
 
-import org.dbs24.config.SecurityConst;
+import org.dbs24.consts.SecurityConst;
 import org.dbs24.entity.core.AbstractActionEntity;
 import org.dbs24.entity.core.api.EntityKindId;
 import org.springframework.security.core.userdetails.User;

@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
-import org.dbs24.entity.AbstractChessPlayer;
+import org.dbs24.entity.AbstractPlayer;
 import org.dbs24.entity.Game;
 import org.dbs24.entity.GameAction;
 
@@ -37,7 +37,7 @@ import org.dbs24.entity.GameAction;
         entity_type_name = "Шахматная партия")
 @EntityKindId(entity_kind_id = WorldChessConst.WCP_RAPID_GAME,
         entity_type_id = WorldChessConst.WCP_GAME,
-        entity_kind_name = "Партия быстрых шахмат")
+        entity_kind_name = "Партия классических шахмат")
 @EntityStatusesRef(
         entiy_status = {
             @EntityStatusId(

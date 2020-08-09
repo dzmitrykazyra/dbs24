@@ -19,9 +19,10 @@ public final class WorldChessConst {
     public static final int WCP_SHWEDISH_GAME = 10012; // Шведская шахматная партия
 
     public static final int WCP_PLAYER_ODINARY = 100020010; // Рядовой пользователь
-    public static final int WCP_PLAYER_ADVANCED = 100020011; // Продвинутый пользователь
+    public static final int WCP_PLAYER_JUNIOR = 100020015; // гроссмейстер
+    public static final int WCP_PLAYER_GROSS = 100020020; // гроссмейстер
 
-    public static final int WCP_CLASSIC_GAME = 100100010; // Классическая шахматная партия
+    public static final int WCP_CLASSIC_GAME = 100100010; // Классическая шахматная партия (classic)
     public static final int WCP_RAPID_GAME = 100100020; // Быстрая шахматная партия (rapid)
     public static final int WCP_BLITZ_GAME = 100100030; // Блиц партия (bullet)
     //==========================================================================
@@ -38,6 +39,6 @@ public final class WorldChessConst {
     public static final String URI_CREATE_CHESS_GAME = URI_API.concat("/createGame");
     public static final String URI_FIND_CHESS_GAME = URI_API.concat("/findGame");
 
-    public static final Class<AbstractChessPlayer> CHESS_PLAYER_CLASS = AbstractChessPlayer.class;
+    public static final Class<AbstractPlayer> CHESS_PLAYER_CLASS = AbstractPlayer.class;
     public static final Class<ClassicGame> CHESS_GAME_CLASS = ClassicGame.class;
 }

@@ -5,7 +5,7 @@
  */
 package org.dbs24.actions;
 
-import org.dbs24.config.SecurityConst;
+import org.dbs24.consts.SecurityConst;
 import org.dbs24.entity.core.AbstractAction;
 import org.dbs24.entity.core.api.ActionCodeId;
 import org.dbs24.entity.security.ApplicationRole;

@@ -8,7 +8,7 @@ package org.dbs24.actions;
 import org.dbs24.entity.core.AbstractAction;
 import org.dbs24.entity.security.ApplicationUser;
 import org.dbs24.entity.core.api.ActionCodeId;
-import org.dbs24.config.SecurityConst;
+import org.dbs24.consts.SecurityConst;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import lombok.Data;

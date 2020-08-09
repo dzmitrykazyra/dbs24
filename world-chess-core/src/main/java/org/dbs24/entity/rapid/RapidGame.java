@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
-import org.dbs24.entity.AbstractChessPlayer;
+import org.dbs24.entity.AbstractPlayer;
 import org.dbs24.entity.Game;
 import org.dbs24.entity.GameAction;
 

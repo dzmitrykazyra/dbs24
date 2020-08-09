@@ -28,7 +28,7 @@ import java.math.BigDecimal;
  */
 @Data
 @Entity
-@Table(name = "chess_Players")
+@Table(name = "wc_Players")
 @PrimaryKeyJoinColumn(name = "player_id", referencedColumnName = "entity_id")
 @EntityTypeId(entity_type_id = WorldChessConst.WCP_PLAYER,
         entity_type_name = "Игрок в шахматы")
@@ -54,7 +54,7 @@ import java.math.BigDecimal;
         })
 @DefaultEntityStatus(entity_status = SysConst.ES_VALID)
 @ActionClassesPackages(pkgList = {SysConst.ACTIONS_PACKAGE})
-public class AbstractChessPlayer extends AbstractActionEntity implements Player {
+public class AbstractPlayer extends AbstractActionEntity implements Player {
 
     @Column(name = "last_name")
     @NotNull
@@ -76,10 +76,22 @@ public class AbstractChessPlayer extends AbstractActionEntity implements Player 
     @NotNull
     private Integer totalGames;
 
-    @Column(name = "wins")
+    @Column(name = "white_wins")
     @NotNull
-    private Integer wins;
+    private Integer whiteWins;
 
+    @Column(name = "black_wins")
+    @NotNull
+    private Integer blackWins;
+    
+    @Column(name = "white_losts")
+    @NotNull
+    private Integer whiteLosts;
+
+    @Column(name = "black_losts")
+    @NotNull
+    private Integer blackLosts;
+        
     @Column(name = "losts")
     @NotNull
     private Integer losts;

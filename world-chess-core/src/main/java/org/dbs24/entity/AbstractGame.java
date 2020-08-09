@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import lombok.Data;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.entity.core.AbstractActionEntity;
 
@@ -20,15 +21,16 @@ import org.dbs24.entity.core.AbstractActionEntity;
 @Entity
 @Table(name = "wc_Games")
 @PrimaryKeyJoinColumn(name = "chess_game_id", referencedColumnName = "entity_id")
+@Data
 public abstract class AbstractGame extends AbstractActionEntity implements Game {
 
     @ManyToOne
     @JoinColumn(name = "white_player_id", referencedColumnName = "player_id")
-    private AbstractChessPlayer whitePlayer;
+    private AbstractPlayer whitePlayer;
 
     @ManyToOne
     @JoinColumn(name = "black_player_id", referencedColumnName = "player_id")
-    private AbstractChessPlayer blackPlayer;
+    private AbstractPlayer blackPlayer;
 
     @Column(name = "white_rating")
     @NotNull

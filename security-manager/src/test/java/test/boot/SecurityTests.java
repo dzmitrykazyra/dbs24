@@ -6,7 +6,7 @@
 package test.boot;
 
 import org.dbs24.application.core.log.LogService;
-import org.dbs24.config.SecurityConst;
+import org.dbs24.consts.SecurityConst;
 import org.dbs24.entity.security.ApplicationUser;
 import org.dbs24.entity.security.ApplicationRole;
 import test.config.SecurityTestConfig;

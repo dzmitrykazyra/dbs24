@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.dbs24.security.config;
+package org.dbs24.config;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

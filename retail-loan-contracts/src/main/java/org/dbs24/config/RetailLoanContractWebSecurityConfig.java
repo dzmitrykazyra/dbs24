@@ -8,7 +8,6 @@ package org.dbs24.config;
 import org.dbs24.application.core.sysconst.SysConst;
 import org.dbs24.entity.core.api.EntityContractConst;
 import org.dbs24.rest.RetailLoanContractRest;
-import org.dbs24.security.config.AbstractWebSecurityConfig;
 import org.dbs24.security.basic.*;
 import org.dbs24.security.bearer.*;
 //import org.dbs24.security.jwt.*;

@@ -10,7 +10,7 @@ import lombok.Data;
 import javax.persistence.*;
 import org.dbs24.entity.core.AbstractActionEntity;
 import org.dbs24.entity.core.api.EntityKindId;
-import org.dbs24.config.SecurityConst;
+import org.dbs24.consts.SecurityConst;
 import org.dbs24.entity.core.api.EntityTypeId;
 import org.dbs24.entity.core.api.ActionClassesPackages;
 import org.dbs24.entity.core.api.EntityConst;

@@ -20,6 +20,11 @@
         </dependency>   
         <dependency>
             <groupId>org.dbs24</groupId>
+            <artifactId>security-manager</artifactId>
+            <version>${app.version}</version>            
+        </dependency>         
+        <dependency>
+            <groupId>org.dbs24</groupId>
             <artifactId>spring-core-api</artifactId>
             <version>${app.version}</version>            
         </dependency>   

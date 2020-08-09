@@ -11,7 +11,7 @@ import org.dbs24.consts.WorldChessConst;
 import org.dbs24.entity.core.AbstractAction;
 import org.dbs24.entity.core.api.PreViewDialog;
 import org.dbs24.entity.core.api.ViewAction;
-import org.dbs24.entity.AbstractChessPlayer;
+import org.dbs24.entity.AbstractPlayer;
 import org.dbs24.entity.core.api.EntityConst;
 import org.dbs24.entity.marks.EntityMark;
 import org.dbs24.entity.marks.MarkValue;
@@ -27,7 +27,7 @@ import lombok.Data;
         action_name = "Авторизация игрока")
 @ViewAction
 @PreViewDialog
-public class ActAuthorizePlayer extends AbstractAction<AbstractChessPlayer> {
+public class ActAuthorizePlayer extends AbstractAction<AbstractPlayer> {
 
     @Override
     public void doUpdate() {
