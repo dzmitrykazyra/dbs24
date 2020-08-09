@@ -29,7 +29,7 @@ public class GameAction extends ObjectRoot implements PersistenceEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_wc_GameActions")
     @SequenceGenerator(name = "seq_wc_GameActions", sequenceName = "seq_wc_GameActions", allocationSize = 1)
     @Column(name = "game_action_id", updatable = false)
-    private Long moveId;
+    private Long gameActionId;
 
     @OneToOne(fetch = FetchType.LAZY)
     @NotNull
@@ -38,12 +38,13 @@ public class GameAction extends ObjectRoot implements PersistenceEntity {
     private ClassicGame classicChessGame;
 
     @OneToOne
-    @JoinColumn(name = "parent_move_id", referencedColumnName = "move_id")
+    @JsonIgnore  
+    @JoinColumn(name = "parent_game_action_id", referencedColumnName = "game_action_id")
     private GameAction parentMove;
 
     @ManyToOne
     @NotNull
-    @JoinColumn(name = "notice_id", referencedColumnName = "notice_id")
+    @JoinColumn(name = "notice_code", referencedColumnName = "notice_code")
     private MoveNotice moveNotice;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameMove")

@@ -11,9 +11,8 @@ import org.dbs24.entity.core.api.EntityClassesPackages;
 import lombok.Data;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Service;
-//import org.dbs24.config.WorldChessConfig;
+import org.dbs24.config.WorldChessConfig;
 import org.dbs24.references.*;
-//import org.dbs24.chess.api.*;
 import org.dbs24.entity.*;
 import org.dbs24.entity.classic.*;
 import org.dbs24.entity.status.EntityStatus;
@@ -29,13 +28,12 @@ import org.dbs24.consts.WorldChessConst;
 @Service
 @EntityClassesPackages(pkgList = {SysConst.ENTITY_PACKAGE})
 @CachedReferencesClasses(classes = {Piece.class, MoveNotice.class, CheckerBoard.class, ChessEngine.class})
-//@Import({WorldChessConfig.class})
+@Import({WorldChessConfig.class})
 public class WorldChessActionExecutionService<P extends Player, G extends Game> extends ActionExecutionService {
 
     public P createPlayer(
             final String lastName,
             final String firstName,
-            final BigDecimal currentRating,
             final Boolean isBlocked,
             final Integer totalGames,
             final Integer whiteWins,
@@ -50,10 +48,10 @@ public class WorldChessActionExecutionService<P extends Player, G extends Game> 
                     abstractChessPlayer.setEntityStatus(EntityStatus.findEntityStatus(WorldChessConst.WCP_PLAYER, SysConst.ES_VALID));
                     abstractChessPlayer.setFirstName(firstName);
                     abstractChessPlayer.setLastName(lastName);
-                    abstractChessPlayer.setCurrentRating(currentRating);
                     abstractChessPlayer.setTotalGames(totalGames);
                     abstractChessPlayer.setWhiteWins(whiteWins);
                     abstractChessPlayer.setWhiteLosts(whiteLosts);
+                    abstractChessPlayer.setBlackWins(blackWins);
                     abstractChessPlayer.setBlackLosts(blackLosts);
                     abstractChessPlayer.setIsBlocked(isBlocked);
                     //EntityStatus.getExistEntityStatus(TariffConst.ENTITY_TARIFF_PLAN, 0));

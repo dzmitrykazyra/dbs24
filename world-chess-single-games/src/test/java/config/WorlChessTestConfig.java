@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.dbs24.application.core.sysconst.SysConst;
 import org.springframework.context.annotation.Bean;
+
 /**
  *
  * @author Козыро Дмитрий
@@ -25,6 +26,6 @@ import org.springframework.context.annotation.Bean;
 @PropertySource(SysConst.APP_PROPERTIES)
 //@EnableJpaRepositories(basePackages = SysConst.REPOSITORY_PACKAGE)
 @Import({WorldChessActionExecutionService.class})
-public class WorlChessTestConfig extends WorldChessConfig{
-    
+public class WorlChessTestConfig extends WorldChessConfig {
+
 }

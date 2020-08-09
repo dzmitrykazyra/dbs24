@@ -64,10 +64,6 @@ public class AbstractPlayer extends AbstractActionEntity implements Player {
     @NotNull
     private String firstName;
 
-    @Column(name = "current_rating")
-    @NotNull
-    private BigDecimal currentRating;
-
     @Column(name = "is_blocked")
     @NotNull
     private Boolean isBlocked;
@@ -91,8 +87,5 @@ public class AbstractPlayer extends AbstractActionEntity implements Player {
     @Column(name = "black_losts")
     @NotNull
     private Integer blackLosts;
-        
-    @Column(name = "losts")
-    @NotNull
-    private Integer losts;
+
 }

@@ -10,6 +10,7 @@ import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.nullsafe.StopWatcher;
 import org.dbs24.application.core.sysconst.SysConst;
 import org.dbs24.spring.core.api.ApplicationService;
+import org.springframework.beans.factory.annotation.Value;
 import lombok.Data;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -22,8 +23,8 @@ import reactor.core.publisher.Mono;
 @Data
 public abstract class ReactiveRestProcessor extends RestProcessor implements ApplicationService {
 
-//    @Value("${reactive.rest.debug:false}")
-//    private Boolean restDebug = SysConst.BOOLEAN_FALSE;
+    @Value("${reactive.rest.debug:false}")
+    private Boolean restDebug = SysConst.BOOLEAN_FALSE;
     private StopWatcher stopWatcher;
 
     @Override

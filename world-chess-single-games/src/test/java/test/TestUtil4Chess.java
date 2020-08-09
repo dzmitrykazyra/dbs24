@@ -29,7 +29,7 @@ public class TestUtil4Chess<P extends Player, G extends Game> extends Utils4test
 
         final String testString = TestFuncs.generateTestString20();
 
-        return (P) worldChessActionExecutionService.createPlayer(testString, testString, BigDecimal.ZERO, Boolean.FALSE, Integer.BYTES, Integer.BYTES, Integer.BYTES, Integer.BYTES, Integer.BYTES);
+        return (P) worldChessActionExecutionService.createPlayer(testString, testString, Boolean.FALSE, Integer.BYTES, Integer.BYTES, Integer.BYTES, Integer.BYTES, Integer.BYTES);
 
     }
 

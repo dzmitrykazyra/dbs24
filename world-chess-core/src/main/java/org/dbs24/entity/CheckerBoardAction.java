@@ -19,18 +19,18 @@ import org.dbs24.references.CheckerBoard;
  */
 @Data
 @Entity
-@Table(name = "wc_Checkerboard_Actions")
+@Table(name = "wc_CheckerboardActions")
 public class CheckerBoardAction extends ObjectRoot implements PersistenceEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sec_chess_Checkerboard_Actions")
-    @SequenceGenerator(name = "sec_chess_Checkerboard_Actions", sequenceName = "sec_chess_Checkerboard_Actions", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_wc_CheckerboardActions")
+    @SequenceGenerator(name = "seq_wc_CheckerboardActions", sequenceName = "seq_wc_CheckerboardActions", allocationSize = 1)
     @Column(name = "move_action_id", updatable = false)
     private Long moveActionId;
     
     @ManyToOne
     @NotNull
-    @JoinColumn(name = "move_id", referencedColumnName = "move_id")    
+    @JoinColumn(name = "game_action_id", referencedColumnName = "game_action_id")    
     private GameAction gameMove;
     
     @ManyToOne
