@@ -1,8 +1,8 @@
 @echo off
 
-set logfile=build_dev_fs24.log
-set devdir=d:\fs24\BANK24
-set devdircmd=d:\fs24\BANK24\cmd
+set logfile=build_dev_dbs24.log
+set devdir=d:\dbs24
+set devdircmd=d:\dbs24\cmd
 
 del %devdircmd%\%logfile% >nul 
 cd %devdir%
