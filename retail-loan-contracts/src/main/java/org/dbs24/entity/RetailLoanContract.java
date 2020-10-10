@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.dbs24.entity.retail.loan.contracts;
+package org.dbs24.entity;
 
 import org.dbs24.consts.RetailLoanContractConst;
 import org.dbs24.application.core.sysconst.SysConst;

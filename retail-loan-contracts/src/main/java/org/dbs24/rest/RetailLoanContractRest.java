@@ -12,7 +12,7 @@ package org.dbs24.rest;
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.sysconst.SysConst;
-import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
+import org.dbs24.entity.RetailLoanContract;
 import org.dbs24.consts.RetailLoanContractConst;
 import org.dbs24.rest.api.ReactiveRestProcessor;
 import org.dbs24.service.RetailLoanContractActionsService;

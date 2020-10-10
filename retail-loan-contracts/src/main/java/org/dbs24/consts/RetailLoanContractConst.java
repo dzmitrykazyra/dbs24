@@ -5,7 +5,7 @@
  */
 package org.dbs24.consts;
 
-import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
+import org.dbs24.entity.RetailLoanContract;
 
 /**
  *

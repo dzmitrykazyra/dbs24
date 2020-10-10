@@ -11,7 +11,7 @@ import org.dbs24.references.tariffs.api.TariffConst;
 import org.dbs24.entity.tariff.TariffKindService;
 import org.dbs24.references.tariffs.kind.TariffKindId;
 import org.dbs24.entity.tariff.TariffRate_1;
-import org.dbs24.entity.retail.loan.contracts.AbstractRetailLoanContract;
+import org.dbs24.entity.AbstractRetailLoanContract;
 import org.dbs24.test.api.TestConst;
 import org.dbs24.references.serv.TariffServMainPerc;
 import java.util.Collection;

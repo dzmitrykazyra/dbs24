@@ -24,7 +24,7 @@ public final class SysConst {
 //    public static Boolean TEST_MODE_RUNNING = Boolean.FALSE;  
 //    public static String TEST_MODE_LAST_ERR_MSG = SysConst.STRING_NULL;
     public static final AtomicBoolean RUSSIAN_REF_LANG = NullSafe.createObject(AtomicBoolean.class);
-    public static final String APPNAME = "fs24";
+    public static final String APPNAME = "dbs24";
     public static final String CRLF = "\n";
     public static final String NOT_DEFINED = "?";
     public static final String UNKNOWN = "UNKNOWN";

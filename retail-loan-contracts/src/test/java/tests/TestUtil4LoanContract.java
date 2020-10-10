@@ -8,7 +8,7 @@ import org.dbs24.entity.contract.subjects.ContractSubject;
 import org.dbs24.entity.counterparties.api.Counterparty;
 import org.dbs24.entity.kind.EntityKind;
 import org.dbs24.consts.RetailLoanContractConst;
-import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
+import org.dbs24.entity.RetailLoanContract;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import org.dbs24.entity.tariff.TariffRate_1;
 import org.dbs24.entity.tariff.AbstractTariffPlan;

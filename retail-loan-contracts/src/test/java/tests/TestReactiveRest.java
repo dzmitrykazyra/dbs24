@@ -18,7 +18,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.http.MediaType;
 import org.dbs24.entity.core.api.EntityContractConst;
-import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
+import org.dbs24.entity.RetailLoanContract;
 import org.dbs24.consts.RetailLoanContractConst;
 import org.dbs24.lias.opers.attrs.LIAS_DATE;
 import org.dbs24.lias.opers.attrs.LIAS_SUMM;

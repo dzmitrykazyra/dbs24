@@ -7,7 +7,7 @@ package org.dbs24.repository;
 
 import org.dbs24.spring.core.api.ApplicationReactiveRepository;
 import org.dbs24.spring.core.api.ApplicationJpaRepository;
-import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
+import org.dbs24.entity.RetailLoanContract;
 
 /**
  *

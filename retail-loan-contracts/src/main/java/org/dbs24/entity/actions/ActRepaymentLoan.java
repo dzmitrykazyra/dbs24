@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.dbs24.entity.retail.loan.actions;
+package org.dbs24.entity.actions;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.bond.schedule.api.BondScheduleConst;
 import org.dbs24.entity.contracts.actions.AbstractLiasContractOper;
 import java.math.BigDecimal;
 import org.dbs24.entity.core.api.ActionCodeId;
-import org.dbs24.entity.retail.loan.contracts.AbstractRetailLoanContract;
+import org.dbs24.entity.AbstractRetailLoanContract;
 import org.dbs24.lias.opers.attrs.*;
 import org.dbs24.consts.RetailLoanContractConst;
 import org.dbs24.lias.opers.napi.LiasFinanceOper;

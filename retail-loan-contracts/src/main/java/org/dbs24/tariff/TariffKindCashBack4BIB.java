@@ -14,7 +14,7 @@ import org.dbs24.entity.tariff.TariffKindService;
 import org.dbs24.references.tariffs.kind.TariffKindId;
 import org.dbs24.entity.tariff.TariffRate_1;
 import org.dbs24.entity.calculations.TariffRestBox;
-import org.dbs24.entity.retail.loan.contracts.AbstractRetailLoanContract;
+import org.dbs24.entity.AbstractRetailLoanContract;
 import org.dbs24.entity.tariff.TariffCalcSum;
 import org.dbs24.entity.tariff.TariffRate;
 import org.dbs24.references.serv.TariffServCashBack;

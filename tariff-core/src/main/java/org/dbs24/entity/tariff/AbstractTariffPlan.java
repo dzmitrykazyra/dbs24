@@ -81,7 +81,7 @@ public class AbstractTariffPlan extends AbstractActionEntity
 
     // коллекция тарифицируемых услуг в тарифном плане
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tariffPlan")
-    private Collection<TariffPlan2Serv> tariffServs = ServiceFuncs.<TariffPlan2Serv>createCollection();
+    private final Collection<TariffPlan2Serv> tariffServs = ServiceFuncs.<TariffPlan2Serv>createCollection();
 
     //==========================================================================
     public Long getTariffPlanId() {

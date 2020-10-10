@@ -13,7 +13,7 @@ import org.dbs24.entity.kind.EntityKind;
 import org.dbs24.entity.status.EntityStatus;
 import lombok.Data;
 import org.springframework.stereotype.Service;
-import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
+import org.dbs24.entity.RetailLoanContract;
 import java.time.LocalDate;
 import org.dbs24.references.liases.debtstate.LiasDebtState;
 import org.dbs24.references.liases.kind.LiasKind;
@@ -55,28 +55,32 @@ import org.dbs24.config.*;
 @Import({RetailLoanContractCommonConfig.class, RetailLoanContractWebSecurityConfig.class})
 public class RetailLoanContractActionsService extends ActionExecutionService {
 
-    @Autowired
-    private ContractSchedulesBuilders contractSchedulesBuilders;
+    private final ContractSchedulesBuilders contractSchedulesBuilders;
+    private final LiasDocumentBuilders documentBuilders;
 
     @Autowired
-    private LiasDocumentBuilders documentBuilders;
+    public RetailLoanContractActionsService(ContractSchedulesBuilders contractSchedulesBuilders,
+            LiasDocumentBuilders documentBuilders) {
+        this.contractSchedulesBuilders = contractSchedulesBuilders;
+        this.documentBuilders = documentBuilders;
+    }
 
     //==========================================================================
-    public RetailLoanContract createRetailLoanContract(final ContractSubject contractSubject,
-            final Counterparty counterparty,
-            final EntityKind entityKind,
-            final Currency currency,
-            final AbstractTariffPlan tariffPlan,
-            final String contractNum,
-            final LocalDate contractDate,
-            final LocalDate beginDate,
-            final LocalDate endDate,
-            final BigDecimal contractSumm,
-            final LoanSource loanSource,
-            final PmtScheduleAlg pmtScheduleAlg,
-            final PmtScheduleTerm pmtScheduleTerm) {
+    public RetailLoanContract createRetailLoanContract(ContractSubject contractSubject,
+            Counterparty counterparty,
+            EntityKind entityKind,
+            Currency currency,
+            AbstractTariffPlan tariffPlan,
+            String contractNum,
+            LocalDate contractDate,
+            LocalDate beginDate,
+            LocalDate endDate,
+            BigDecimal contractSumm,
+            LoanSource loanSource,
+            PmtScheduleAlg pmtScheduleAlg,
+            PmtScheduleTerm pmtScheduleTerm) {
 
-        final RetailLoanContract rlc = this.<RetailLoanContract>createActionEntity(RetailLoanContract.class,
+        return this.<RetailLoanContract>createActionEntity(RetailLoanContract.class,
                 (retailLoanContract) -> {
                     retailLoanContract.setContractSubject(contractSubject);
                     retailLoanContract.setCounterparty(counterparty);
@@ -97,7 +101,5 @@ public class RetailLoanContractActionsService extends ActionExecutionService {
                     // построить графики погашения
                     //retailLoanContract.createBondschedules();
                 });
-
-        return rlc;
     }
 }

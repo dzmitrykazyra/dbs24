@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.dbs24.retail.tariff;
+package org.dbs24.tariff;
 
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import org.dbs24.entity.core.api.EntityKindId;
