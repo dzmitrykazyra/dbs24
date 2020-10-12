@@ -14,7 +14,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webflux</artifactId>
-            <version>${spring.web.flux}</version>
+            <version>${spring-webflux.version}</version>
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>

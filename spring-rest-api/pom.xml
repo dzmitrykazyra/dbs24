@@ -39,13 +39,13 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webflux</artifactId>
 <!--            <optional>true</optional>-->
-            <version>${spring.web.flux}</version>
+            <version>${spring-webflux.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
-            <version>${spring.boot.version}</version>
+            <version>${spring-boot.version}</version>
         </dependency>
 
         <!--        <dependency>

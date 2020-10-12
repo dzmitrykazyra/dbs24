@@ -19,25 +19,48 @@
         <resteasy.version>3.6.2.Final</resteasy.version> 
         <hibernate.version>5.4.17.Final</hibernate.version> 
         <jpa.version>2.2</jpa.version>     
-        <spring.boot.version>2.3.1.RELEASE</spring.boot.version>  
-        <spring.data.jpa>2.3.1.RELEASE</spring.data.jpa>  
-        <spring.core.version>5.2.7.RELEASE</spring.core.version>  
-        <spring.web.flux>5.2.5.RELEASE</spring.web.flux>  
-        <spring.security.version>5.3.1.RELEASE</spring.security.version>
-        <spring.reactor>1.0.1.RELEASE</spring.reactor>
-        <reactor.core>3.3.6.RELEASE</reactor.core>  
         <undertow.version>2.1.3.Final</undertow.version>      
         <version.swagger>2.0.8</version.swagger>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target> 
-        <version.compiler.plugin>3.8.1</version.compiler.plugin>
+        <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <maven.resource.plugin>3.1.0</maven.resource.plugin>
-        <maven.jar.plugin>3.2.0</maven.jar.plugin>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
         <postgres.version>42.2.8</postgres.version>
         <querydsl.version>4.3.1</querydsl.version>
-        <lombok.version>1.18.12</lombok.version>
         <kafka.version>2.5.2.RELEASE</kafka.version>      
         <!--        <skipTests>true</skipTests>               -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <spring.security-version>5.3.1.RELEASE</spring.security-version>
+        <spring-reactor.version>1.0.1.RELEASE</spring-reactor.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+
+        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+        <spring-data-jpa.version>2.3.1.RELEASE</spring-data-jpa.version>
+        <spring-core.version>5.2.8.RELEASE</spring-core.version>
+        <spring-webflux.version>5.2.5.RELEASE</spring-webflux.version>
+        <spring-security-core.version>5.3.1.RELEASE</spring-security-core.version>
+        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
+        <reactor-core.version>3.3.6.RELEASE</reactor-core.version>
+        <junit-jupiter.version>5.5.1</junit-jupiter.version>
+        <lombok.version>1.18.12</lombok.version>
+        <hibernate.version>5.4.20.Final</hibernate.version>
+        <jpa.version>2.2</jpa.version>
+        <mongo-java-driver.version>3.12.4</mongo-java-driver.version>
+        <mongo-jackson-mapper.version>1.4.2</mongo-jackson-mapper.version>
+        <reflections.version>0.9.12</reflections.version>
+        <log4j.version>1.2.17</log4j.version>
+        <log4j-extras.version>1.1</log4j-extras.version>
+        <slf4j.version>1.7.5</slf4j.version>
+        <resteasy.version>3.6.2.Final</resteasy.version>
+        <javax-mail.version>1.5.0</javax-mail.version>
+        <jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
+        <jackson.version>2.11.2</jackson.version>
+        <opencsv.version>4.0</opencsv.version>
+        <javaee-api.version>8.0</javaee-api.version>
+        <jsonwebtoken.version>0.11.2</jsonwebtoken.version>       
     </properties>
 
     <modules>
@@ -64,7 +87,6 @@
         <module>test-junit-api</module>
         <module>test-core</module>
         <module>spring-jdbc-api</module>
-        <module>spring-orm-api</module>
         <module>querydsl-api</module>
         <module>security-manager-api</module>
         <module>security-manager</module>
@@ -142,7 +164,7 @@
             <testResource>
                 <directory>src/test/resources</directory>
             </testResource>
-<!--            <testResource>
+            <!--            <testResource>
                 <directory>src/test/resources-glassfish-embedded</directory>
             </testResource>-->
         </testResources>
@@ -150,7 +172,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${version.compiler.plugin}</version>
+                <version>${compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -161,7 +183,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven.jar.plugin}</version>
+                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>**/*.properties</exclude>

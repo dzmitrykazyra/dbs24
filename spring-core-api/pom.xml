@@ -12,23 +12,23 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring.core.version}</version>
+            <version>${spring-core.version}</version>
         </dependency> 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>${spring.core.version}</version>
+            <version>${spring-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.core.version}</version>
+            <version>${spring-core.version}</version>
         </dependency>   
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>${spring.data.jpa}</version>
+            <version>${spring-data-jpa.version}</version>
         </dependency>  
         <dependency>
             <groupId>org.dbs24</groupId>
@@ -39,12 +39,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webflux</artifactId>
             <!--            <optional>true</optional>-->
-            <version>${spring.web.flux}</version>
+            <version>${spring-webflux.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectreactor</groupId>
             <artifactId>reactor-spring</artifactId>
-            <version>${spring.reactor}</version>
+            <version>${spring-reactor.version}</version>
         </dependency>
     </dependencies>
     <build>

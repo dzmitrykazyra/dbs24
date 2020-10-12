@@ -28,12 +28,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webflux</artifactId>
             <!--            <optional>true</optional>-->
-            <version>${spring.web.flux}</version>
+            <version>${spring-webflux.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectreactor</groupId>
             <artifactId>reactor-spring</artifactId>
-            <version>${spring.reactor}</version>
+            <version>${spring-reactor.version}</version>
         </dependency>                     
     </dependencies>
     <build>

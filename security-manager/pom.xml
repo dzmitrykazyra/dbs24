@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>${spring.security.version}</version>
+            <version>${spring.security-version}</version>
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>${spring.boot.version}</version>            
+            <version>${spring-boot.version}</version>            
         </dependency>
 
         <dependency>
@@ -43,22 +43,22 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webflux</artifactId>
-            <version>${spring.web.flux}</version>
+            <version>${spring-webflux.version}</version>
         </dependency> 
         <dependency>
             <groupId>org.projectreactor</groupId>
             <artifactId>reactor-spring</artifactId>
-            <version>${spring.reactor}</version>
+            <version>${spring-reactor.version}</version>
         </dependency> 
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>${reactor.core}</version>
+            <version>${reactor-core.version}</version>
         </dependency>        
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
-            <version>${reactor.core}</version>
+            <version>${reactor-core.version}</version>
             <scope>test</scope>
         </dependency> 
         <dependency>
@@ -70,13 +70,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring.core.version}</version>
+            <version>${spring-core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.version}</version>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -106,7 +106,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
+                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build>    
