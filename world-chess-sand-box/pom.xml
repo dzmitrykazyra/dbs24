@@ -6,7 +6,7 @@
         <artifactId>dbs24</artifactId>
         <version>1.0</version>
     </parent>
-    <artifactId>world-chess-single-games</artifactId>
+    <artifactId>world-chess-sand-box</artifactId>
     <packaging>jar</packaging>
     <build>
         <finalName>world-chess-single-games</finalName> 
@@ -171,11 +171,11 @@
             <version>${reactor-core.version}</version>
             <scope>test</scope>
         </dependency> 
-        <dependency>
+<!--        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
             <version>${spring-boot.version}</version>
-        </dependency>     
+        </dependency>     -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -188,5 +188,6 @@
                 </exclusion>
             </exclusions>
         </dependency>  
-    </dependencies>    
+    </dependencies>
+    <name>world-chess-sand-box</name>
 </project>

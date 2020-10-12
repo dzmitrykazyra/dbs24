@@ -111,7 +111,8 @@
         <module>documents-api</module>
         <module>spring-rest-api</module>
         <module>world-chess-core</module>
-        <module>world-chess-single-games</module>
+        <module>world-chess-sand-box</module>
+        <module>jwt-api</module>
     </modules>
 
     <dependencies>
