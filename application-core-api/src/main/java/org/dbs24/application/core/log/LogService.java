@@ -18,6 +18,7 @@ import java.util.Map;
  *
  * @author Козыро Дмитрий
  */
+@Deprecated
 public abstract class LogService {
 
     public final static String PATH_REST = "/restApi";

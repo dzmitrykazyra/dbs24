@@ -30,11 +30,14 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.dbs24.config.*;
 import org.dbs24.rest.*;
+import lombok.extern.slf4j.Slf4j; 
 
 /**
  *
  * @author N76VB
  */
+
+@Slf4j 
 @Configuration
 @ComponentScan(basePackages = {SysConst.SERVICE_PACKAGE, SysConst.RESTFUL_PACKAGE})
 //@EntityScan(basePackages = {SysConst.ENTITY_PACKAGE, SysConst.REFERENCE_PACKAGE})
@@ -58,7 +61,9 @@ public class WorldChessSecurityConfig extends AbstractWebSecurityConfig {
     @Bean
     @Profile("production")
     public SecurityWebFilterChain springSecurityFilterChain(final ServerHttpSecurity http) {
-
+        
+        
+        log.debug("create bean");
 //        final AuthenticationWebFilter authenticationJWT = new AuthenticationWebFilter(new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsService()));
 //        authenticationJWT.setAuthenticationSuccessHandler(new JWTAuthSuccessHandler());
         return http
