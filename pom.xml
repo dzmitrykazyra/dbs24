@@ -11,6 +11,7 @@
         <main.basedir>${project.basedir}/../</main.basedir>
         <source.directory.libs>libs</source.directory.libs>        
         <java.version>1.8</java.version>
+        <javaee-api.version>8.0</javaee-api.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <primefaces.version>6.2</primefaces.version>
         <jackson.version>2.9.7</jackson.version>
@@ -34,7 +35,7 @@
         <spring-reactor.version>1.0.1.RELEASE</spring-reactor.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-
+        <javax-websocket.version>1.1</javax-websocket.version>
         <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
         <spring-data-jpa.version>2.3.1.RELEASE</spring-data-jpa.version>
         <spring-core.version>5.2.8.RELEASE</spring-core.version>
@@ -43,6 +44,7 @@
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
         <reactor-core.version>3.3.6.RELEASE</reactor-core.version>
         <junit-jupiter.version>5.5.1</junit-jupiter.version>
+        <mockito-all.version>1.10.19</mockito-all.version>
         <lombok.version>1.18.12</lombok.version>
         <hibernate.version>5.4.20.Final</hibernate.version>
         <jpa.version>2.2</jpa.version>
@@ -109,27 +111,22 @@
         <module>documents-api</module>
         <module>spring-rest-api</module>
         <module>world-chess-core</module>
-        <module>world-chess-sand-box</module>
         <module>jwt-api</module>
+        <module>spring-websockets</module>
+        <module>world-chess-sandbox</module>
     </modules>
 
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>8.0</version>
+            <version>${javaee-api.version}</version>
             <scope>provided</scope>
         </dependency>        
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
+            <version>${mockito-all.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- Generate Swagger API specs -->

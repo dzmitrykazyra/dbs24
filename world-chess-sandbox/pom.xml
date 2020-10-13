@@ -6,7 +6,7 @@
         <artifactId>dbs24</artifactId>
         <version>1.0</version>
     </parent>
-    <artifactId>world-chess-sand-box</artifactId>
+    <artifactId>world-chess-sandbox</artifactId>
     <packaging>jar</packaging>
     <build>
         <finalName>world-chess-single-games</finalName> 
@@ -116,6 +116,11 @@
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
+            <artifactId>spring-websockets</artifactId>
+            <version>${app.version}</version>            
+        </dependency>        
+        <dependency>
+            <groupId>org.dbs24</groupId>
             <artifactId>security-manager</artifactId>
             <version>${app.version}</version>            
         </dependency>                       
@@ -189,5 +194,5 @@
             </exclusions>
         </dependency>  
     </dependencies>
-    <name>world-chess-sand-box</name>
+    <name>world-chess-sandbox</name>
 </project>
