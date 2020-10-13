@@ -9,24 +9,37 @@ package org.dbs24.spring.boot.api;
  *
  * @author Козыро Дмитрий
  */
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.dbs24.spring.core.api.ApplicationConfiguration;
 import org.dbs24.application.core.nullsafe.NullSafe;
+import org.dbs24.application.core.nullsafe.StopWatcher;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-//@SpringBootApplication
-//@ComponentScan
+@Slf4j
 public abstract class AbstractSpringBootApplication {
 
-    private static volatile ApplicationContext applicationContext;
+    public static ApplicationContext applicationContext;
 
-    public static void runSpringBootApplication(final String[] args,
-            final Class springBootClass) {
-        //SpringApplication.run(SpringBootApplication.class, args);
+    public static final SpringBootInititializer DEF_INIT = () -> {
+    };
+
+    public static void runSpringBootApplication(
+            String[] args,
+            Class springBootClass,
+            SpringBootInititializer sbi) {
+
+        final StopWatcher stopWatcher = StopWatcher.create(String.format("%s", springBootClass.getCanonicalName()));
+
         SpringApplication.run(springBootClass, args);
+
+        sbi.initialize();
+
+        log.info(stopWatcher.getStringExecutionTime());
+
     }
 //    public static void main(final String[] args) {
 //        //SpringApplication.run(SpringBootApplication.class, args);

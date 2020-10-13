@@ -58,6 +58,7 @@
         <javax-mail.version>1.5.0</javax-mail.version>
         <jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
         <jackson.version>2.11.2</jackson.version>
+        <org-reflections.version>0.9.11</org-reflections.version>
         <opencsv.version>4.0</opencsv.version>
         <javaee-api.version>8.0</javaee-api.version>
         <jsonwebtoken.version>0.11.2</jsonwebtoken.version>       

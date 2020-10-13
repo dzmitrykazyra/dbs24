@@ -21,6 +21,8 @@ import org.dbs24.spring.boot.api.AbstractSpringBootApplication;
 public final class RetailLoanContractBoot extends AbstractSpringBootApplication {
 
     public static void main(String[] args) {
-        AbstractSpringBootApplication.runSpringBootApplication(args, RetailLoanContractBoot.class);
+        AbstractSpringBootApplication.runSpringBootApplication(args,
+                RetailLoanContractBoot.class,
+                DEF_INIT);
     }
 }

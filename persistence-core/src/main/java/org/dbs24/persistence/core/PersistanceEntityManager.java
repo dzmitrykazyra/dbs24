@@ -6,7 +6,6 @@
 package org.dbs24.persistence.core;
 
 import org.dbs24.application.core.service.funcs.CustomCollectionImpl;
-import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 //import org.dbs24.services.api.Service;
 import org.dbs24.application.core.nullsafe.NullSafe;
@@ -25,13 +24,10 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import javax.transaction.UserTransaction;
 import javax.naming.InitialContext;
-import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
+@Slf4j
 public class PersistanceEntityManager extends AbstractApplicationBean {
 
     private final AtomicBoolean safeMode = NullSafe.createObject(AtomicBoolean.class);
@@ -76,14 +72,14 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
                     SysConst.RUSSIAN_REF_LANG.set(!this.russianRefLan.toLowerCase().equals(SysConst.STRING_FALSE));
 
                     if (persistenceDebug) {
-                        LogService.LogInfo(this.getClass(), () -> String.format("Try 2 create persistence '%s'",
+                        log.debug(String.format("Try 2 create persistence '{}'",
                                 persistenceUnitName));
                     }
 
                     this.factory = Persistence.createEntityManagerFactory(persistenceUnitName, this.getProperties());
 
                     if (persistenceDebug) {
-                        LogService.LogInfo(this.getClass(), () -> String.format("Persistence '%s' is created",
+                        log.debug(String.format("Persistence '{}' is created",
                                 persistenceUnitName));
                     }
 
@@ -127,9 +123,8 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
                     .execute(() -> {
 
                         if (persistenceDebug) {
-                            LogService.LogInfo(this.getClass(), ()
-                                    -> String.format("%s: try to create/recreate entity manager ",
-                                            this.persistenceUnitName));
+                            log.debug(String.format("{}: try to create/recreate entity manager ",
+                                    this.persistenceUnitName));
                         }
 
                         if (NullSafe.notNull(this.getEntityManager())) {
@@ -148,11 +143,11 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
                         }
 
                         if (persistenceDebug) {
-                            LogService.LogInfo(this.getClass(), () -> String.format("%s: Successfully create entity manager (%s) ",
+                            log.debug(String.format("{}: Successfully create entity manager ({}) ",
                                     this.persistenceUnitName,
                                     this.getEntityManager().getClass().getCanonicalName()));
 
-                            LogService.LogInfo(this.getClass(), () -> String.format("EMF Properties \n %s ",
+                            log.debug(String.format("EMF Properties \n {} ",
                                     this.getEmfProperties()));
                         }
 
@@ -194,15 +189,6 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
                 });
     }
 
-//    @Override
-//
-//    public void stopService() {
-//        NullSafe.create(getEntityManager())
-//                .safeExecute((ns_factory) -> {
-//                    this.closeAll();
-//                });
-//        Service.super.stopService();
-//    }
     //==========================================================================
     public String getPersistenceUnitName() {
         return persistenceUnitName;
@@ -241,7 +227,7 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
 
                                 utx.begin();
                                 if (persistenceDebug) {
-                                    LogService.LogInfo(this.getClass(), () -> String.format("Start user jpa transaction (%d)",
+                                    log.debug(String.format("Start user jpa transaction ({})",
                                             this.getEntityManager().getTransaction().hashCode()).toUpperCase());
                                 }
 
@@ -253,7 +239,7 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
 
                                 //this.getEntityManager().clear();
                                 if (persistenceDebug) {
-                                    LogService.LogInfo(this.getClass(), () -> String.format("commit user jpa transaction (%d)",
+                                    log.debug(String.format("commit user jpa transaction ({})",
                                             this.getEntityManager().getTransaction().hashCode()).toUpperCase());
                                 }
 
@@ -262,7 +248,7 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
                             }).catchException((e) -> {
 
                         //if (this.getEntityManager().getTransaction().isActive()) {
-                        LogService.LogErr(this.getClass(), () -> String.format("FAIL executeUserTransaction ('%s')",
+                        log.debug(String.format("FAIL executeUserTransaction ('{}')",
                                 NullSafe.getErrorMessage(e)).toUpperCase());
                         NullSafe.create(SysConst.STRING_NULL, NullSafe.DONT_THROW_EXCEPTION)
                                 .execute(() -> utx.rollback());
@@ -289,13 +275,13 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
                                 if (!isActiveTransaction) {
                                     entityTransaction.begin();
                                     if (persistenceDebug) {
-                                        LogService.LogInfo(this.getClass(), () -> String.format("Start jpa transaction (%d)",
+                                        log.debug(String.format("Start jpa transaction ({})",
                                                 this.getEntityManager().getTransaction().hashCode()).toUpperCase());
                                     }
                                 }
                                 if (!this.getEntityManager().isJoinedToTransaction()) {
                                     if (persistenceDebug) {
-                                        LogService.LogInfo(this.getClass(), () -> String.format("Join transaction (%d)",
+                                        log.debug(String.format("Join transaction ({})",
                                                 this.getEntityManager().getTransaction().hashCode()).toUpperCase());
                                     }
                                     this.getEntityManager().joinTransaction();
@@ -311,7 +297,7 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
 
                                     //this.getEntityManager().clear();
                                     if (persistenceDebug) {
-                                        LogService.LogInfo(this.getClass(), () -> String.format("commit jpa transaction (%d)",
+                                        log.debug(String.format("commit jpa transaction ({})",
                                                 this.getEntityManager().getTransaction().hashCode()).toUpperCase());
                                     }
                                 }
@@ -321,7 +307,7 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
                             }).catchException((e) -> {
 
                         //if (this.getEntityManager().getTransaction().isActive()) {
-                        LogService.LogErr(this.getClass(), () -> String.format("FAIL executeTransaction ('%s')",
+                        log.error(String.format("FAIL executeTransaction ({})",
                                 NullSafe.getErrorMessage(e)).toUpperCase());
                         NullSafe.create(SysConst.STRING_NULL, NullSafe.DONT_THROW_EXCEPTION)
                                 .execute(() -> entityTransaction.rollback());
@@ -372,7 +358,7 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
                             .createNativeQuery(sql, clazz.getSimpleName());
 
                     if (persistenceDebug) {
-                        LogService.LogInfo(this.getClass(), () -> String.format("executeNativeQuery: (%s)", sql));
+                        log.debug(String.format("executeNativeQuery: ({})", sql));
                     }
 
                     if (NullSafe.notNull(queryExecutor)) {
