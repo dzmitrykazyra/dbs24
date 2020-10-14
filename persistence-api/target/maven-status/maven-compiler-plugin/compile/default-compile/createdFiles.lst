@@ -1,0 +1,7 @@
+org/dbs24/persistence/api/PersistenceRepository.class
+org/dbs24/persistence/api/PersistenceQuery.class
+org/dbs24/persistence/api/PersistenceCollection.class
+org/dbs24/persistence/api/QueryExecutor.class
+org/dbs24/persistence/api/PersistenceSetup.class
+org/dbs24/persistence/api/PersistenceEntity.class
+org/dbs24/persistence/api/PersistenceAction.class

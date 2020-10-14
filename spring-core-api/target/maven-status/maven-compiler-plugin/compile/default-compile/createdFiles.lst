@@ -1,0 +1,8 @@
+org/dbs24/spring/core/api/ApplicationConfiguration.class
+org/dbs24/spring/core/api/ServiceLocator.class
+org/dbs24/spring/core/api/ApplicationReactiveRepository.class
+org/dbs24/spring/core/api/ApplicationRepository.class
+org/dbs24/spring/core/api/ApplicationJpaRepository.class
+org/dbs24/spring/core/api/ApplicationComponent.class
+org/dbs24/spring/core/api/ApplicationService.class
+org/dbs24/spring/core/api/ApplicationBean.class

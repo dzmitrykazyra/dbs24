@@ -1,0 +1,11 @@
+/home/kdg/dbs24/spring-core/src/main/java/org/dbs24/spring/core/service/AbstractEntityClassesService.java
+/home/kdg/dbs24/spring-core/src/main/java/org/dbs24/spring/core/bean/AbstractApplicationComponent.java
+/home/kdg/dbs24/spring-core/src/main/java/org/dbs24/spring/core/bean/RegisteredAsBean.java
+/home/kdg/dbs24/spring-core/src/main/java/org/dbs24/spring/core/mail/MailManager.java
+/home/kdg/dbs24/spring-core/src/main/java/org/dbs24/spring/core/bean/AbstractDatabaseApplicationConfiguration.java
+/home/kdg/dbs24/spring-core/src/main/java/org/dbs24/spring/core/application/setup/ExceptionsCollectorBean.java
+/home/kdg/dbs24/spring-core/src/main/java/org/dbs24/spring/core/repository/JpaRepositoriesCoolection.java
+/home/kdg/dbs24/spring-core/src/main/java/org/dbs24/spring/core/bean/AbstractApplicationBean.java
+/home/kdg/dbs24/spring-core/src/main/java/org/dbs24/spring/core/bean/AbstractDatabaseBean.java
+/home/kdg/dbs24/spring-core/src/main/java/org/dbs24/spring/core/mail/MailRecord.java
+/home/kdg/dbs24/spring-core/src/main/java/org/dbs24/spring/core/service/AbstractReferencesService.java

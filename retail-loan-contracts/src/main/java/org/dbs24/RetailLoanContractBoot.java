@@ -23,6 +23,6 @@ public final class RetailLoanContractBoot extends AbstractSpringBootApplication 
     public static void main(String[] args) {
         AbstractSpringBootApplication.runSpringBootApplication(args,
                 RetailLoanContractBoot.class,
-                DEF_INIT);
+                NO_INITIALIZATION);
     }
 }

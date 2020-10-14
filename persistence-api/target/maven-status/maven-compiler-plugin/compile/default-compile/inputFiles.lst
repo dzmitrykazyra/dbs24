@@ -1,0 +1,7 @@
+/home/kdg/dbs24/persistence-api/src/main/java/org/dbs24/persistence/api/PersistenceSetup.java
+/home/kdg/dbs24/persistence-api/src/main/java/org/dbs24/persistence/api/PersistenceCollection.java
+/home/kdg/dbs24/persistence-api/src/main/java/org/dbs24/persistence/api/PersistenceQuery.java
+/home/kdg/dbs24/persistence-api/src/main/java/org/dbs24/persistence/api/PersistenceRepository.java
+/home/kdg/dbs24/persistence-api/src/main/java/org/dbs24/persistence/api/QueryExecutor.java
+/home/kdg/dbs24/persistence-api/src/main/java/org/dbs24/persistence/api/PersistenceAction.java
+/home/kdg/dbs24/persistence-api/src/main/java/org/dbs24/persistence/api/PersistenceEntity.java

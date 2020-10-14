@@ -8,7 +8,7 @@ package org.dbs24.spring.unit;
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.spring.boot.api.AbstractSpringBootApplication;
-import static org.dbs24.spring.boot.api.AbstractSpringBootApplication.DEF_INIT;
+import static org.dbs24.spring.boot.api.AbstractSpringBootApplication.NO_INITIALIZATION;
 import org.dbs24.spring.core.api.ApplicationConfiguration;
 import org.dbs24.application.core.service.funcs.GenericFuncs;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
@@ -40,7 +40,7 @@ public abstract class Unit4Test<BOOT extends AbstractSpringBootApplication, CONF
             NullSafe.create()
                     .execute(() -> {
 
-                        AbstractSpringBootApplication.runSpringBootApplication(EMPTY_ARGS, sbClass, DEF_INIT);
+                        AbstractSpringBootApplication.runSpringBootApplication(EMPTY_ARGS, sbClass, NO_INITIALIZATION);
                         // инициализация контейнера
                         AbstractSpringBootApplication.initializeContext(appConfigClass);
 

@@ -1,0 +1,12 @@
+org/dbs24/spring/core/bean/AbstractDatabaseBean.class
+org/dbs24/spring/core/mail/MailManager$1.class
+org/dbs24/spring/core/mail/MailRecord.class
+org/dbs24/spring/core/mail/MailManager.class
+org/dbs24/spring/core/service/AbstractEntityClassesService.class
+org/dbs24/spring/core/bean/AbstractApplicationComponent.class
+org/dbs24/spring/core/service/AbstractReferencesService.class
+org/dbs24/spring/core/bean/AbstractApplicationBean.class
+org/dbs24/spring/core/bean/RegisteredAsBean.class
+org/dbs24/spring/core/repository/JpaRepositoriesCoolection.class
+org/dbs24/spring/core/application/setup/ExceptionsCollectorBean.class
+org/dbs24/spring/core/bean/AbstractDatabaseApplicationConfiguration.class
