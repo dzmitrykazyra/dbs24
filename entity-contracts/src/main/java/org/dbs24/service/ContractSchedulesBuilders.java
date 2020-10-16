@@ -46,9 +46,7 @@ public class ContractSchedulesBuilders extends AbstractApplicationBean {
 
         // значения для справочника берутся из аннотаций классов
         ReflectionFuncs.processPkgClassesCollection(SysConst.ENTITY_PACKAGE, clazz, annClazz,
-                (entClazz) -> {
-                    scheduleBuilders.add(entClazz);
-                });
+                entClazz -> scheduleBuilders.add(entClazz));
 
         if (scheduleBuilders.isEmpty()) {
             class NoPmtScheduleBuilderAvailAble extends InternalAppException {
@@ -67,8 +65,8 @@ public class ContractSchedulesBuilders extends AbstractApplicationBean {
             final PmtScheduleAlg pmtScheduleAlg,
             final PmtScheduleTerm pmtScheduleTerm,
             final Integer scheduleKind,
-            final LocalDate D1,
-            final LocalDate D2
+            final LocalDate d1,
+            final LocalDate d2
     ) {
 
         final Class<PmtScheduleBuilder> builder = ServiceFuncs.<Class<PmtScheduleBuilder>>findCollectionElement(
@@ -83,17 +81,15 @@ public class ContractSchedulesBuilders extends AbstractApplicationBean {
         pmtScheduleBuilder.setPmtScheduleAlg(pmtScheduleAlg);
         pmtScheduleBuilder.setPmtScheduleTerm(pmtScheduleTerm);
         pmtScheduleBuilder.setEntityKind(scheduleKind);
-        pmtScheduleBuilder.setFrom_date(D1);
-        pmtScheduleBuilder.setLast_date(D2);
+        pmtScheduleBuilder.setFrom_date(d1);
+        pmtScheduleBuilder.setLast_date(d2);
 
         final PmtSchedule pmtSchedule = pmtScheduleBuilder.createSchedule();
 
         pmtSchedule
                 .getPmtScheduleLines()
                 .stream()
-                .forEach((line) -> {
-                    line.setPmtSchedule(pmtSchedule);
-                });
+                .forEach(line -> line.setPmtSchedule(pmtSchedule));
         return pmtSchedule;
     }
 }

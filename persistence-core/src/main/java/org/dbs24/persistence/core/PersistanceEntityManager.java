@@ -5,13 +5,11 @@
  */
 package org.dbs24.persistence.core;
 
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.application.core.service.funcs.CustomCollectionImpl;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-//import org.dbs24.services.api.Service;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import javax.persistence.*;
-//import org.dbs24.application.core.log.LogService;
-import org.dbs24.application.core.sysconst.SysConst;
 import org.dbs24.persistence.api.PersistenceAction;
 import org.dbs24.persistence.api.PersistenceEntity;
 import java.util.Map;
@@ -32,24 +30,23 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
 
     private final AtomicBoolean safeMode = NullSafe.createObject(AtomicBoolean.class);
     //@PersistenceUnit
-    private volatile EntityManager entityManager;
+    private EntityManager entityManager;
     //@PersistenceContext
-    private volatile EntityManagerFactory factory;
+    private EntityManagerFactory factory;
     @Value("${persistenceUnitName}")
-    private volatile String persistenceUnitName;
+    private String persistenceUnitName;
     @Value("${spring.datasource.url}")
-    private volatile String persistenceJdbcUrl;
+    private String persistenceJdbcUrl;
     @Value("${spring.datasource.driver-class-name}")
-    private volatile String persistenceJdbcDriver;
+    private String persistenceJdbcDriver;
     @Value("${spring.datasource.username}")
-    private volatile String persistenceJdbcUser;
+    private String persistenceJdbcUser;
     @Value("${spring.datasource.password}")
-    private volatile String persistenceJdbcPassword;
+    private String persistenceJdbcPassword;
     @Value("${spring.jpa.database-platform}")
-    private volatile String hibernateDialect;
+    private String hibernateDialect;
     //private static SessionFactory sessionFactory;
-    private volatile Map<String, Object> properties;
-    //private static final QueryExecutor QUERY_EXECUTOR_NULL = null;
+    private Map<String, Object> properties;
     @Value("${debug}")
     private String debugMode;
     @Value("${persistence.debug:false}")
@@ -65,13 +62,13 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
         NullSafe.create(persistenceUnitName)
                 .execute(() -> {
 
-                    SysConst.RUSSIAN_REF_LANG.set(!this.russianRefLan.toLowerCase().equals(SysConst.STRING_FALSE));
+                    RUSSIAN_REF_LANG.set(!this.russianRefLan.toLowerCase().equals(STRING_FALSE));
 
-                    log.info(String.format("Try 2 create persistence '{}'", persistenceUnitName));
+                    log.info("Try 2 create persistence '{}'", persistenceUnitName);
 
                     this.factory = Persistence.createEntityManagerFactory(persistenceUnitName, this.getProperties());
 
-                    log.info(String.format("Persistence '{}' is created", persistenceUnitName));
+                    log.info("Persistence '{}' is created", persistenceUnitName);
 
                     createOrUpdateEntityManager();
                 })
@@ -103,13 +100,12 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
 
     private void createOrUpdateEntityManager() {
 
-        if (this.safeMode.compareAndSet(SysConst.BOOLEAN_FALSE, SysConst.BOOLEAN_TRUE)) {
+        if (this.safeMode.compareAndSet(BOOLEAN_FALSE, BOOLEAN_TRUE)) {
 
             NullSafe.create()
                     .execute(() -> {
 
-                        log.info(String.format("{}: try to create/recreate entity manager ",
-                                this.persistenceUnitName));
+                        log.info("{}: try to create/recreate entity manager ", this.persistenceUnitName);
 
                         if (NullSafe.notNull(this.getEntityManager())) {
 
@@ -126,14 +122,12 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
                             this.entityManager = factory.createEntityManager();
                         }
 
-                        log.info(String.format("{}: Successfully create entity manager ({}) ",
-                                this.persistenceUnitName,
-                                this.getEntityManager().getClass().getCanonicalName()));
-                        log.info(String.format("EMF Properties \n {} ",
-                                this.getEmfProperties()));
+                        log.info("{}: Successfully create entity manager ({}) ",
+                                this.persistenceUnitName, this.getEntityManager().getClass().getCanonicalName());
+                        log.info("EMF Properties \n {} ", this.getEmfProperties());
                     });
 
-            this.safeMode.set(SysConst.BOOLEAN_FALSE);
+            this.safeMode.set(BOOLEAN_FALSE);
         }
         //}
     }
@@ -230,8 +224,7 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
                         //if (this.getEntityManager().getTransaction().isActive()) {
                         log.debug(String.format("FAIL executeUserTransaction ('{}')",
                                 NullSafe.getErrorMessage(e)).toUpperCase());
-                        NullSafe.create(SysConst.STRING_NULL, NullSafe.DONT_THROW_EXCEPTION)
-                                .execute(() -> utx.rollback());
+                        NullSafe.create(STRING_NULL, NullSafe.DONT_THROW_EXCEPTION).execute(() -> utx.rollback());
 
                         //reCreateEntityManager();
                         //}
@@ -284,12 +277,12 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
 
 //                        LogService.LogInfo(this.getClass(), () -> String.format("Finish jpa transaction (%d)",
 //                                this.getEntityManager().getTransaction().hashCode()));
-                            }).catchException((e) -> {
+                            }).catchException(e -> {
 
                         //if (this.getEntityManager().getTransaction().isActive()) {
-                        log.error(String.format("FAIL executeTransaction ({})",
-                                NullSafe.getErrorMessage(e)).toUpperCase());
-                        NullSafe.create(SysConst.STRING_NULL, NullSafe.DONT_THROW_EXCEPTION)
+                        log.error("FAIL executeTransaction ({})",
+                                NullSafe.getErrorMessage(e).toUpperCase());
+                        NullSafe.create(STRING_NULL, NullSafe.DONT_THROW_EXCEPTION)
                                 .execute(() -> entityTransaction.rollback());
 
                         //reCreateEntityManager();
@@ -300,20 +293,13 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
 
     //==========================================================================
     public final String getEmfProperties() {
-        final CustomCollectionImpl customCollection = NullSafe.createObject(CustomCollectionImpl.class, "Emf properties \n");
-
-        this.factory.getProperties()
+        return this.factory.getProperties()
                 .keySet()
                 .stream()
-                .unordered()
-                .forEach(obj -> {
+                .reduce("EMF properties \n ",
+                        (x, y) -> x.concat(" ").concat(String.format("%50s = '%s'\n",
+                                y, NullSafe.getStringObjValue(System.getProperty(y)))));
 
-                    customCollection.addCustomRecord(() -> String.format("%40s = '%s'\n",
-                            obj,
-                            //ServiceFuncs.getStringObjValue(paramsMap.get(obj)), NullSafe.create(paramsMap.get(obj))
-                            ServiceFuncs.getStringObjValue(this.factory.getProperties().get(obj))));
-                });
-        return customCollection.getRecord();
     }
     //==========================================================================
 //    public final <T> Collection<T> executeNativeQuery(final String sql) {

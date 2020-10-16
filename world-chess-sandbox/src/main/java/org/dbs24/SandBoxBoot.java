@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class})
 @PropertySource(SysConst.APP_PROPERTIES)
 @EnableJpaRepositories(basePackages = SysConst.REPOSITORY_PACKAGE)
-public final class SandBoxBoot extends AbstractSpringBootApplication {
+public class SandBoxBoot extends AbstractSpringBootApplication {
 
     public static void main(String[] args) {
         AbstractSpringBootApplication.runSpringBootApplication(args, SandBoxBoot.class, EMPTY_INITIALIZATION);

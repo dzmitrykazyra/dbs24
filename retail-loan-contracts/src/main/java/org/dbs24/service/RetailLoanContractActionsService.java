@@ -99,12 +99,8 @@ public class RetailLoanContractActionsService extends ActionExecutionService {
                     retailLoanContract.setEntityKind(entityKind);
                     retailLoanContract.setContractSumm(contractSumm);
                     retailLoanContract.setLoanSource(loanSource);
-                    //retailLoanContract.setCreation_date(LocalDateTime.now());
                     retailLoanContract.setEntityStatus(EntityStatus.findEntityStatus(RetailLoanContractConst.LOAN2INDIVIDUAL, 0));
-                    //EntityStatus.getExistEntityStatus(TariffConst.ENTITY_TARIFF_PLAN, 0));
                     // построить графики погашения
-                    //retailLoanContract.createBondschedules();
-
                     retailLoanContract.setPmtSchedules(bondScheduleBuilder.createBondschedules(retailLoanContract));
                 });
     }

@@ -7,8 +7,6 @@ import org.dbs24.application.core.sysconst.SysConst;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.dbs24.spring.boot.api.AbstractSpringBootApplication;
 
-//import org.springframework.boot.actuate.autoconfigure.security.ManagementWebSecurityAutoConfiguration;
-
 /**
  *
  * @author Козыро Дмитрий
@@ -17,7 +15,7 @@ import org.dbs24.spring.boot.api.AbstractSpringBootApplication;
 //@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class})
 @PropertySource(SysConst.APP_PROPERTIES)
 @EnableJpaRepositories(basePackages = SysConst.REPOSITORY_PACKAGE)
-public final class RetailLoanContractBoot extends AbstractSpringBootApplication {
+public class RetailLoanContractBoot extends AbstractSpringBootApplication {
 
     public static void main(String[] args) {
         AbstractSpringBootApplication.runSpringBootApplication(args,
