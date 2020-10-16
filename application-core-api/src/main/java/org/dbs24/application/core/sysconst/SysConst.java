@@ -65,31 +65,31 @@ public final class SysConst {
     public static final Boolean IS_SILENT_EXECUTE = Boolean.TRUE;
     public static final Boolean IS_SIMPLE_EXECUTE = Boolean.FALSE;
 
-    public final static Boolean IS_CHECK_PARENT_CLASS = Boolean.TRUE;
-    public final static Boolean FINAL_CLASS_ONLY = Boolean.FALSE;
+    public static final Boolean IS_CHECK_PARENT_CLASS = Boolean.TRUE;
+    public static final Boolean FINAL_CLASS_ONLY = Boolean.FALSE;
 
-    public final static Boolean USE_AUTO_COMMIT = Boolean.TRUE;
-    public final static Boolean NO_AUTO_COMMIT = Boolean.FALSE;
+    public static final Boolean USE_AUTO_COMMIT = Boolean.TRUE;
+    public static final Boolean NO_AUTO_COMMIT = Boolean.FALSE;
 
-    public final static String NO_CONNECT_STRING = "no connect string defined";
+    public static final String NO_CONNECT_STRING = "no connect string defined";
 
-    public final static Boolean IS_DEV_MODE = Boolean.TRUE;
-    public final static Boolean IS_ALLOWED_ACTION = Boolean.TRUE;
-    public final static Boolean IS_NOT_ALLOWED_ACTION = Boolean.TRUE;
-    public final static Boolean CHECK_PARENT_CLASS = Boolean.TRUE;
-    public final static Boolean FORCE_RELOAD = Boolean.TRUE;
+    public static final Boolean IS_DEV_MODE = Boolean.TRUE;
+    public static final Boolean IS_ALLOWED_ACTION = Boolean.TRUE;
+    public static final Boolean IS_NOT_ALLOWED_ACTION = Boolean.TRUE;
+    public static final Boolean CHECK_PARENT_CLASS = Boolean.TRUE;
+    public static final Boolean FORCE_RELOAD = Boolean.TRUE;
 
-    public final static Long SERVICE_USER_ID = Long.valueOf(1);
-    public final static Long LONG_ZERO = Long.valueOf(0);
-    public final static Long LONG_NULL = null;
-    public final static Integer INTEGER_ZERO = Integer.valueOf(0);
-    public final static Integer INTEGER_ONE = Integer.valueOf(1);
-    public final static Integer INTEGER_NULL = null;
+    public static final Long SERVICE_USER_ID = Long.valueOf(1);
+    public static final Long LONG_ZERO = Long.valueOf(0);
+    public static final Long LONG_NULL = null;
+    public static final Integer INTEGER_ZERO = Integer.valueOf(0);
+    public static final Integer INTEGER_ONE = Integer.valueOf(1);
+    public static final Integer INTEGER_NULL = null;
 
-    public final static LocalDate LOCALDATE_NULL = null;
-    public final static LocalDateTime LOCALDATETIME_NULL = null;
-    //public final static Boolean GET_ALL_ACTIONS = Boolean.FALSE;
-    //public final static Boolean VIEW_ACTIONS_ONLY = Boolean.FALSE;
+    public static final LocalDate LOCALDATE_NULL = null;
+    public static final LocalDateTime LOCALDATETIME_NULL = null;
+    //public static final Boolean GET_ALL_ACTIONS = Boolean.FALSE;
+    //public static final Boolean VIEW_ACTIONS_ONLY = Boolean.FALSE;
 
     public static final int ES_VALID = 0; // сделка создана
     public static final int ES_CLOSED = 1; // сделка закрыта
@@ -97,13 +97,13 @@ public final class SysConst {
 
     public static final long MAX_SUMM_FOR_TEST = (long) (Long.MAX_VALUE / 1000000);
 
-    public final static BigDecimal BIGDECIMAL_NULL = null;
-    public final static BigDecimal BIGDECIMAL_ZERO = BigDecimal.valueOf(0);
-    public final static BigDecimal MAX_BIGDECIMAL = BigDecimal.valueOf(19760000);
+    public static final BigDecimal BIGDECIMAL_NULL = null;
+    public static final BigDecimal BIGDECIMAL_ZERO = BigDecimal.valueOf(0);
+    public static final BigDecimal MAX_BIGDECIMAL = BigDecimal.valueOf(19760000);
 
-    public final static Boolean BOOLEAN_NULL = null;
-    public final static Boolean BOOLEAN_TRUE = Boolean.TRUE;
-    public final static Boolean BOOLEAN_FALSE = Boolean.FALSE;
+    public static final Boolean BOOLEAN_NULL = null;
+    public static final Boolean BOOLEAN_TRUE = Boolean.TRUE;
+    public static final Boolean BOOLEAN_FALSE = Boolean.FALSE;
 
     public static final Integer MR_TRADE_IS_ATHORIZED = 1; // сделка авторизована
     public static final String NOT_ALLOWED_ACTION = "action is not allowed for execution";
@@ -115,28 +115,29 @@ public final class SysConst {
 
     public static final Object OBJECT_NULL = null;
 
-    public final static String STRING_NULL = null;
-    public final static String STRING_TRUE = "true";
-    public final static String STRING_FALSE = "false";
-    public final static String STRING_YES = "yes";
-    public final static String STRING_NO = "no";
+    public static final String STRING_NULL = null;
+    public static final String STRING_TRUE = "true";
+    public static final String STRING_FALSE = "false";
+    public static final String STRING_YES = "yes";
+    public static final String STRING_NO = "no";
     //==========================================================================
-    public final static Class<BigDecimal> BIGDECIMAL_CLASS = BigDecimal.class;
-    public final static Class<LocalDate> LOCALDATE_CLASS = LocalDate.class;
-    public final static Class<LocalDateTime> LOCALDATETIME_CLASS = LocalDateTime.class;
-    public final static Class<String> STRING_CLASS = String.class;
-    public final static Class<Boolean> BOOLEAN_CLASS = Boolean.class;
-    public final static Class<Integer> INTEGER_CLASS = Integer.class;
+    public static final Class<BigDecimal> BIGDECIMAL_CLASS = BigDecimal.class;
+    public static final Class<LocalDate> LOCALDATE_CLASS = LocalDate.class;
+    public static final Class<LocalDateTime> LOCALDATETIME_CLASS = LocalDateTime.class;
+    public static final Class<String> STRING_CLASS = String.class;
+    public static final Class<Boolean> BOOLEAN_CLASS = Boolean.class;
+    public static final Class<Integer> INTEGER_CLASS = Integer.class;
     //==========================================================================
     public static final String ALL_PACKAGES = "org.dbs24";
-    public static final String ENTITY_PACKAGE = "org.dbs24.entity";
-    public static final String ACTIONS_PACKAGE = "org.dbs24.entity.actions";
-    public static final String TARIFF_PACKAGE = "org.dbs24.tariff";
-    public static final String REPOSITORY_PACKAGE = "org.dbs24.repository";
-    public static final String SERVICE_PACKAGE = "org.dbs24.service";
-    public static final String RESTFUL_PACKAGE = "org.dbs24.rest";
-    public static final String SECURITY_PACKAGE = "org.dbs24.entity.security";
-    public static final String REFERENCE_PACKAGE = "org.dbs24.references";
+    public static final String ENTITY_PACKAGE = ALL_PACKAGES + ".entity";
+    public static final String ACTIONS_PACKAGE = ".entity.actions";
+    public static final String TARIFF_PACKAGE = ".tariff";
+    public static final String REPOSITORY_PACKAGE = ".repository";
+    public static final String COMPONENT_PACKAGE = ".component";
+    public static final String SERVICE_PACKAGE = ".service";
+    public static final String RESTFUL_PACKAGE = ".rest";
+    public static final String SECURITY_PACKAGE = ".entity.security";
+    public static final String REFERENCE_PACKAGE = ".references";
     public static final String APP_PROPERTIES = "classpath:application.properties";
 
     //==========================================================================

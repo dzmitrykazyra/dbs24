@@ -83,7 +83,7 @@ public class TariffKind extends AbstractRefRecord implements ReferenceRec {
     private final static Map<Integer, TariffKind> TARIFF_KIND_RECORDS = ServiceFuncs.<Integer, TariffKind>getOrCreateMap(ServiceFuncs.MAP_NULL);
 
     //==========================================================================
-//    public final static <T extends TariffKind, A extends TariffKindId> TariffKind findTariffKind(final Integer v_tariffKindId) {
+//    public static final <T extends TariffKind, A extends TariffKindId> TariffKind findTariffKind(final Integer v_tariffKindId) {
 //
 //        if (TARIFF_KIND_RECORDS.isEmpty()) {
 //
@@ -112,7 +112,7 @@ public class TariffKind extends AbstractRefRecord implements ReferenceRec {
 //                .orElseThrow(() -> new RuntimeException(String.format("TariffKind is not found (%d)", v_tariffKindId)));
 //    }
     //==========================================================================
-    public final static <T extends TariffKind, A extends TariffKindId> TariffKind findTariffKind(final Integer v_tariffKindId) {
+    public static final <T extends TariffKind, A extends TariffKindId> TariffKind findTariffKind(final Integer v_tariffKindId) {
 
         if (TARIFF_KIND_RECORDS.isEmpty()) {
 

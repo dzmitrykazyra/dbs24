@@ -36,7 +36,7 @@ public class LoanSource extends AbstractRefRecord implements ReferenceRec {
     }
 
     //==========================================================================
-    public final static LoanSource findLoanSource(final Integer LoanSourceId) {
+    public static final LoanSource findLoanSource(final Integer LoanSourceId) {
         return AbstractRefRecord.<LoanSource>getRefeenceRecord(LoanSource.class,
                 record -> record.getLoanSourceId().equals(LoanSourceId));
     }

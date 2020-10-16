@@ -42,7 +42,7 @@ public class MoveNotice extends AbstractRefRecord implements ReferenceRec {
         //map.put(String.format("%d - %s", this.getLiasTypeId(), this.getLiasTypeName()), this.getLiasTypeId());
     }
 
-    public final static MoveNotice findMoveNotice(final String moveResult) {
+    public static final MoveNotice findMoveNotice(final String moveResult) {
         return AbstractRefRecord.<MoveNotice>getRefeenceRecord(MoveNotice.class,
                 record -> record.getNoticeCode().equals(moveResult));
     }

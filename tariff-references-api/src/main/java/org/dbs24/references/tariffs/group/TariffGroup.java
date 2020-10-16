@@ -43,7 +43,7 @@ public class TariffGroup extends AbstractRefRecord implements ReferenceRec {
     }
 
     //==========================================================================
-    public final static TariffGroup findTariffGroup(final Integer tariffGroupId) {
+    public static final TariffGroup findTariffGroup(final Integer tariffGroupId) {
         return AbstractRefRecord.<TariffGroup>getRefeenceRecord(TariffGroup.class,
                 record -> record.getTariffGroupId().equals(tariffGroupId));
     }

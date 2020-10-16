@@ -39,7 +39,7 @@ public class ActionCode extends AbstractRefRecord implements ReferenceRec {
     }
 
     //==========================================================================
-    public final static ActionCode findActionCode(final Integer ActionCodeId) {
+    public static final ActionCode findActionCode(final Integer ActionCodeId) {
         return AbstractRefRecord.<ActionCode>getRefeenceRecord(ActionCode.class,
                 record -> record.getActionCode().equals(ActionCodeId));
     }

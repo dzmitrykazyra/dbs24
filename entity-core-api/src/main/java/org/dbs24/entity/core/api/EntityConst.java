@@ -25,9 +25,9 @@ public final class EntityConst {
     public static final int MR_AUTHORIZE_ENTITY_NOT_AUTH = 100000102;
 
     public static final Boolean VIEW_ACTIONS_ONLY = Boolean.TRUE;
-    public final static Boolean GET_ALL_ACTIONS = Boolean.FALSE;
+    public static final Boolean GET_ALL_ACTIONS = Boolean.FALSE;
 
-    public final static Class<ViewField> VIEW_FIELD_CLASS = ViewField.class;
-    public final static Class<ActionClassesCollectionLink> ACTION_CLASSES_COLLECTION_LINK_CLASS = ActionClassesCollectionLink.class;
+    public static final Class<ViewField> VIEW_FIELD_CLASS = ViewField.class;
+    public static final Class<ActionClassesCollectionLink> ACTION_CLASSES_COLLECTION_LINK_CLASS = ActionClassesCollectionLink.class;
 
 }

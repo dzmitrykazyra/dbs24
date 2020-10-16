@@ -34,7 +34,7 @@ public class LiasBaseAssetType extends AbstractRefRecord implements ReferenceRec
         map.put(String.format("%d - %s", this.getBaseAssetTypeId(), this.getBaseAssetTypeName()), this.getBaseAssetTypeId());
     }
 
-    public final static LiasBaseAssetType findLiasBaseAssetType(final Integer liasBaseAssetTypeId) {
+    public static final LiasBaseAssetType findLiasBaseAssetType(final Integer liasBaseAssetTypeId) {
         return AbstractRefRecord.<LiasBaseAssetType>getRefeenceRecord(LiasBaseAssetType.class,
                 record -> record.getBaseAssetTypeId().equals(liasBaseAssetTypeId));
     }

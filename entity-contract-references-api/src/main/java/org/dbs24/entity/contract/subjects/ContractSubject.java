@@ -43,7 +43,7 @@ public class ContractSubject extends AbstractRefRecord implements ReferenceRec {
     }
 
     //==========================================================================
-    public final static ContractSubject findContractSubject(final Integer liasContractSubjectId) {
+    public static final ContractSubject findContractSubject(final Integer liasContractSubjectId) {
         return AbstractRefRecord.<ContractSubject>getRefeenceRecord(ContractSubject.class,
                 record -> record.getContractSubjectId().equals(liasContractSubjectId));
     }

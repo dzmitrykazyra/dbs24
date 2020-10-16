@@ -40,7 +40,7 @@ public class Piece extends AbstractRefRecord implements ReferenceRec {
         //map.put(String.format("%d - %s", this.getLiasTypeId(), this.getLiasTypeName()), this.getLiasTypeId());
     }
 
-    public final static Piece findPiece(final String pieceCode) {
+    public static final Piece findPiece(final String pieceCode) {
         return AbstractRefRecord.<Piece>getRefeenceRecord(Piece.class,
                 record -> record.getPieceCode().equals(pieceCode));
     }

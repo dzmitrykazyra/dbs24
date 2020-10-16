@@ -49,7 +49,7 @@ public class DocTemplate extends AbstractRefRecord implements ReferenceRec {
     }
 
     //==========================================================================
-    public final static DocTemplate findDocTemplate(final Integer docTemplate) {
+    public static final DocTemplate findDocTemplate(final Integer docTemplate) {
         return AbstractRefRecord.<DocTemplate>getRefeenceRecord(DocTemplate.class,
                 record -> record.getDocTemplateId().equals(docTemplate));
     }

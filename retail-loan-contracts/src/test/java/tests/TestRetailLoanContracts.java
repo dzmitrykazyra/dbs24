@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
-import config.TestRLCConfig;
+import config.TestRetailLoanContractCommonConfig;
 import org.junit.Test;
 import org.dbs24.entity.RetailLoanContract;
 import org.dbs24.consts.RetailLoanContractConst;
@@ -40,7 +40,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 //@AutoConfigureMockMvc
-@Import({TestRLCConfig.class})
+@Import({TestRetailLoanContractCommonConfig.class})
 //@WebAppConfiguration("classpath:META-INF/web-resources")
 //@DataJpaTest
 //@Data

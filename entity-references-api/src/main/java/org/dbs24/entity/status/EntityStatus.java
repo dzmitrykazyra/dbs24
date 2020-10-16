@@ -39,7 +39,7 @@ public class EntityStatus extends AbstractRefRecord implements ReferenceRec {
     }
 
     //==========================================================================
-    public final static EntityStatus findEntityStatus(final Integer EntityTypeId, final Integer EntityStatusId) {
+    public static final EntityStatus findEntityStatus(final Integer EntityTypeId, final Integer EntityStatusId) {
         return AbstractRefRecord.<EntityStatus>getRefeenceRecord(EntityStatus.class,
                 record -> record.getEntityStatusId().equals(EntityStatusId)
                 && record.getEntityTypeId().equals(EntityTypeId));

@@ -39,7 +39,7 @@ public class PmtScheduleTerm extends AbstractRefRecord implements ReferenceRec {
     }
 
     //==========================================================================
-    public final static PmtScheduleTerm findPmtScheduleTerm(final Integer PmtScheduleTermId) {
+    public static final PmtScheduleTerm findPmtScheduleTerm(final Integer PmtScheduleTermId) {
         return AbstractRefRecord.<PmtScheduleTerm>getRefeenceRecord(PmtScheduleTerm.class,
                 record -> record.getPmtTermId().equals(PmtScheduleTermId));
     }

@@ -21,14 +21,14 @@ import java.util.Map;
 @Deprecated
 public abstract class LogService {
 
-    public final static String PATH_REST = "/restApi";
-    public final static String PATH_LOG = "/logMessage";
-    public final static String PATH_AUDIT = "/logAudit";
-    public final static String PATH_THROWABLE = "/logThrowable";
-    public final static String PATH_LOG_ERR = "/logERR";
-    public final static String PATH_4PING = "/4ping";
-    public final static String REGISTER_REQ = "/regRequest";
-    public final static String SERV_MAIL = "/4serviceMail";
+    public static final String PATH_REST = "/restApi";
+    public static final String PATH_LOG = "/logMessage";
+    public static final String PATH_AUDIT = "/logAudit";
+    public static final String PATH_THROWABLE = "/logThrowable";
+    public static final String PATH_LOG_ERR = "/logERR";
+    public static final String PATH_4PING = "/4ping";
+    public static final String REGISTER_REQ = "/regRequest";
+    public static final String SERV_MAIL = "/4serviceMail";
     //==========================================================================
     //==========================================================================
     private final static String msgMask = SysConst.EMPTY_STRING
@@ -41,7 +41,7 @@ public abstract class LogService {
             .concat(" %s: %s");
 //            .concat("//=========================================================\n");
 
-    public final static void LogInfo(final Class clazz, final InfoMessage infoMessage) {
+    public static final void LogInfo(final Class clazz, final InfoMessage infoMessage) {
 //        if (TestConst.TEST_MODE_RUNNING) {
         new Thread(() -> {
             synchronized (LogService.class) {
@@ -54,7 +54,7 @@ public abstract class LogService {
     }
 
     //--------------------------------------------------------------------------
-    public final static void LogInfo(final Class clazz, final String procedureName, final InfoMessage infoMessage) {
+    public static final void LogInfo(final Class clazz, final String procedureName, final InfoMessage infoMessage) {
 //        if (TestConst.TEST_MODE_RUNNING) {
         new Thread(() -> {
             synchronized (LogService.class) {
@@ -65,7 +65,7 @@ public abstract class LogService {
     }
 
     //--------------------------------------------------------------------------
-    public final static void LogWarn(final Class clazz, final InfoMessage infoMessage) {
+    public static final void LogWarn(final Class clazz, final InfoMessage infoMessage) {
         new Thread(() -> {
             synchronized (LogService.class) {
                 LogManager.getLogger(clazz).warn(infoMessage.getMessage());
@@ -74,7 +74,7 @@ public abstract class LogService {
     }
 
     //--------------------------------------------------------------------------
-    public final static void LogDebug(final Class clazz, final InfoMessage infoMessage) {
+    public static final void LogDebug(final Class clazz, final InfoMessage infoMessage) {
         new Thread(() -> {
             synchronized (LogService.class) {
                 LogManager.getLogger(clazz).debug(infoMessage.getMessage());
@@ -83,7 +83,7 @@ public abstract class LogService {
     }
 
     //--------------------------------------------------------------------------
-    public final static void LogWarn(final Class clazz, final String procedureName, final InfoMessage infoMessage) {
+    public static final void LogWarn(final Class clazz, final String procedureName, final InfoMessage infoMessage) {
         new Thread(() -> {
             synchronized (LogService.class) {
                 LogManager.getLogger(clazz).warn(infoMessage.getMessage());
@@ -92,7 +92,7 @@ public abstract class LogService {
     }
     //--------------------------------------------------------------------------
 
-    public final static void LogErr(final Class clazz, final InfoMessage infoMessage) {
+    public static final void LogErr(final Class clazz, final InfoMessage infoMessage) {
         new Thread(() -> {
             synchronized (LogService.class) {
                 LogManager.getLogger(clazz).error(infoMessage.getMessage());
@@ -101,7 +101,7 @@ public abstract class LogService {
     }
 
     //--------------------------------------------------------------------------
-    public final static void LogErr(final Class clazz, final String procedureName, final InfoMessage infoMessage) {
+    public static final void LogErr(final Class clazz, final String procedureName, final InfoMessage infoMessage) {
         new Thread(() -> {
             synchronized (LogService.class) {
                 LogManager.getLogger(clazz).error(infoMessage.getMessage());
@@ -110,7 +110,7 @@ public abstract class LogService {
     }
 
     //--------------------------------------------------------------------------
-    public final static void LogErr(final Class clazz, final String procedureName, Throwable th) {
+    public static final void LogErr(final Class clazz, final String procedureName, Throwable th) {
         new Thread(() -> {
             synchronized (LogService.class) {
                 LogManager.getLogger(clazz).error(procedureName, th);
@@ -119,7 +119,7 @@ public abstract class LogService {
     }
 
     //--------------------------------------------------------------------------
-    public final static void LogErr(final Class clazz, Throwable th) {
+    public static final void LogErr(final Class clazz, Throwable th) {
         new Thread(() -> {
             synchronized (LogService.class) {
                 LogManager.getLogger(clazz).error("???", th);
@@ -129,19 +129,19 @@ public abstract class LogService {
     }
     //--------------------------------------------------------------------------
 
-    public final static String getCurrentProcName() {
+    public static final String getCurrentProcName() {
         return Thread.currentThread()
                 .getStackTrace()[2]
                 .getMethodName();
     }
 
     //--------------------------------------------------------------------------
-    public final static String getCurrentObjProcName(final Object o) {
+    public static final String getCurrentObjProcName(final Object o) {
         return LogService.getCurrentObjProcName(o, -1);
     }
 
     //--------------------------------------------------------------------------
-    public final static String getCurrentObjProcName(final Object o, final int shift) {
+    public static final String getCurrentObjProcName(final Object o, final int shift) {
         return String.format("%s.%s",
                 o.getClass().getName(),
                 Thread.currentThread()
@@ -150,7 +150,7 @@ public abstract class LogService {
     }
     //--------------------------------------------------------------------------
 
-    public final static String getCurrentObjProcName(final Class clazz) {
+    public static final String getCurrentObjProcName(final Class clazz) {
         return String.format("%s.%s", clazz.getName(), Thread.currentThread()
                 .getStackTrace()[2]
                 .getMethodName());

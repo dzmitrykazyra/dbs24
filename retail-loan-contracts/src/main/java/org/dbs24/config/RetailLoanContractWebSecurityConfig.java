@@ -5,58 +5,30 @@
  */
 package org.dbs24.config;
 
-import org.dbs24.application.core.sysconst.SysConst;
-import org.dbs24.entity.core.api.EntityContractConst;
 import org.dbs24.rest.RetailLoanContractRest;
-import org.dbs24.security.basic.*;
-import org.dbs24.security.bearer.*;
 //import org.dbs24.security.jwt.*;
 import org.springframework.context.annotation.*;
 import org.springframework.http.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.core.env.Environment;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 import static org.dbs24.entity.core.api.EntityContractConst.*;
-import org.dbs24.service.RetailLoanContractActionsService;
-import reactor.core.publisher.Mono;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.authentication.ReactiveAuthenticationManager;
-import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.server.SecurityWebFilterChain;
-import org.springframework.security.web.server.authentication.AuthenticationWebFilter;
-import org.springframework.security.web.server.authentication.ServerAuthenticationSuccessHandler;
-import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers;
-import org.springframework.web.server.ServerWebExchange;
-import java.util.function.Function;
-import org.springframework.core.annotation.Order;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 
 /**
  *
  * @author Козыро Дмитрий
  */
 @Configuration
-@ComponentScan(basePackages = {SysConst.SERVICE_PACKAGE, SysConst.RESTFUL_PACKAGE})
+@ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE})
 //@EntityScan(basePackages = {SysConst.ENTITY_PACKAGE, SysConst.REFERENCE_PACKAGE})
-@PropertySource(SysConst.APP_PROPERTIES)
+@PropertySource(APP_PROPERTIES)
 //@EnableWebFlux
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
@@ -66,7 +38,7 @@ public class RetailLoanContractWebSecurityConfig extends AbstractWebSecurityConf
 //    private ReactiveAuthenticationManager authenticationManager;    
     //==========================================================================
     @Bean
-    public RouterFunction<ServerResponse> mgmtRetailLoanContract(final RetailLoanContractRest retailLoanContractHandler) {
+    public RouterFunction<ServerResponse> mgmtRetailLoanContract(RetailLoanContractRest retailLoanContractHandler) {
 
         return route(POST(URI_CREATE_LOAN_CONTRACT).and(accept(MediaType.APPLICATION_JSON)), retailLoanContractHandler::createRetailLoanContract)
                 .andRoute(POST(URI_EXECUTE_ACTION).and(accept(MediaType.APPLICATION_JSON)), retailLoanContractHandler::executeAction)

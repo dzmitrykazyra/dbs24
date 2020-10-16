@@ -13,7 +13,7 @@ import java.util.UUID;
  */
 public final class TestFuncs {
     
-    public final static String generateTestString20() {
+    public static final String generateTestString20() {
         return UUID.randomUUID().toString().substring(1, 20);
     }
     

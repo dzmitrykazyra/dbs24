@@ -38,7 +38,7 @@ public class TariffAccretionScheme extends AbstractRefRecord implements Referenc
     }
 
     //==========================================================================
-    public final static TariffAccretionScheme findTariffAccretionScheme(final Integer tariffAccretionSchemeId) {
+    public static final TariffAccretionScheme findTariffAccretionScheme(final Integer tariffAccretionSchemeId) {
         return AbstractRefRecord.<TariffAccretionScheme>getRefeenceRecord(TariffAccretionScheme.class,
                 record -> record.getTariffSchemeId().equals(tariffAccretionSchemeId));
     }

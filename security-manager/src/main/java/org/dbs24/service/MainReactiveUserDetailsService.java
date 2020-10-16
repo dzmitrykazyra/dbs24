@@ -6,24 +6,15 @@
 package org.dbs24.service;
 
 import org.dbs24.application.core.log.LogService;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.security.ApplicationUser;
-import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.stereotype.*;
 import reactor.core.publisher.Mono;
 import org.dbs24.repository.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.dbs24.entity.security.ApplicationUserDetails;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
@@ -34,7 +25,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class MainReactiveUserDetailsService implements ReactiveUserDetailsService {
 
     @Value("${reactive.rest.debug:false}")
-    private Boolean restDebug = SysConst.BOOLEAN_FALSE;
+    private Boolean restDebug = BOOLEAN_FALSE;
 
     @Autowired
     private ApplicationUserRepository applicationUserRepository;
@@ -45,12 +36,10 @@ public class MainReactiveUserDetailsService implements ReactiveUserDetailsServic
     @Override
     public Mono<UserDetails> findByUsername(final String userName) {
 
-        final PasswordEncoder encoder = passwordEncoder;
-
         if (restDebug) {
             LogService.LogInfo(this.getClass(), () -> String.format("Try 2 loggin '%s' [%s]",
                     userName,
-                    encoder.encode(userName)));
+                    passwordEncoder.encode(userName)));
         }
 
         final ApplicationUser applicationUser = applicationUserRepository.findByLogin(userName)
@@ -84,9 +73,5 @@ public class MainReactiveUserDetailsService implements ReactiveUserDetailsServic
         }
 
         return Mono.just(userDetails);
-
-//        return Mono.just(au)
-//                .map(ApplicationUser::getApplicationUserDetails);
     }
-
 }

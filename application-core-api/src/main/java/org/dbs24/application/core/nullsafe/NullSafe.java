@@ -35,7 +35,7 @@ public class NullSafe { // implements NullSafe {
     protected volatile Object inputParam;
     private volatile CodeBlockResult cb4watcher;
 
-    //public final static Collection<ExceptionEvent> EXCEPTION_EVENTS = new ArrayList();
+    //public static final Collection<ExceptionEvent> EXCEPTION_EVENTS = new ArrayList();
     //--------------------------------------------------------------------------
     public static final NullSafe create() {
         return new NullSafe();
@@ -502,7 +502,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public final static String getStackTraceRaw(final Throwable th) {
+    public static final String getStackTraceRaw(final Throwable th) {
         return new StackTraceInfo(th).getStringStackTraceInfo();
     }
 
@@ -795,19 +795,19 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public final static Boolean isNull(final Object object) {
+    public static final Boolean isNull(final Object object) {
         return !NullSafe.notNull(object);
     }
 
-    public final static Boolean notNull(final Object object) {
+    public static final Boolean notNull(final Object object) {
         return (null != object);
     }
 
-    public final static <V> V nvl(final V value, final V defValue) {
+    public static final <V> V nvl(final V value, final V defValue) {
         return (V) ((NullSafe.notNull(value)) ? value : defValue);
     }
 
-    public final static String getErrorMessage(Throwable th) {
+    public static final String getErrorMessage(Throwable th) {
         return InternalAppException.getExtendedErrMessage(th);
     }
 }

@@ -38,7 +38,7 @@ public class PmtScheduleAlg extends AbstractRefRecord implements ReferenceRec {
     }
 
     //==========================================================================
-    public final static PmtScheduleAlg findLoanSource(final Integer PmtScheduleAlgId) {
+    public static final PmtScheduleAlg findLoanSource(final Integer PmtScheduleAlgId) {
         return AbstractRefRecord.<PmtScheduleAlg>getRefeenceRecord(PmtScheduleAlg.class,
                 record -> record.getScheduleAlgId().equals(PmtScheduleAlgId));
     }

@@ -38,7 +38,7 @@ public final class NLS extends ObjectRoot {
 //    static {
 //        LogService.LogInfo(NLS.class, () -> String.format("NEW_DATE_FORMAT = %s", NLS.NEW_DATE_FORMAT));
 //    }
-    public final static String getNlsParam(final String prmName, final String defVal) {
+    public static final String getNlsParam(final String prmName, final String defVal) {
 
 //        return ServiceLocator
 //                .find(ApplicationSetup.class)
@@ -49,40 +49,40 @@ public final class NLS extends ObjectRoot {
     }
 
     //==========================================================================
-    public final static String getStringDate(final LocalDate ld) {
+    public static final String getStringDate(final LocalDate ld) {
 
         return (NullSafe.isNull(ld)) ? SysConst.EMPTY_STRING : ld.format(NLS.FORMAT_dd_MM_yyyy);
 
     }
 
-    public final static String getStringTime(LocalTime lt) {
+    public static final String getStringTime(LocalTime lt) {
 
         return (NullSafe.isNull(lt)) ? SysConst.EMPTY_STRING : lt.format(NLS.FORMAT_HH_mm_ss);
 
     }
 
-    public final static String getStringTimeMS(LocalTime lt) {
+    public static final String getStringTimeMS(LocalTime lt) {
 
         return (NullSafe.isNull(lt)) ? SysConst.EMPTY_STRING : lt.format(NLS.FORMAT_HH_mm_ss_SSS);
 
     }
 
     //==========================================================================
-    public final static String getStringDateTime(final LocalDateTime ldt) {
+    public static final String getStringDateTime(final LocalDateTime ldt) {
 
         return (NullSafe.isNull(ldt)) ? SysConst.EMPTY_STRING : ldt.format(NLS.FORMAT_dd_MM_yyyy__HH_mm_ss);
 
     }
 
     //==========================================================================
-    public final static String getStringDateTimeMS(final LocalDateTime ldt) {
+    public static final String getStringDateTimeMS(final LocalDateTime ldt) {
 
         return (NullSafe.isNull(ldt)) ? SysConst.EMPTY_STRING : ldt.format(NLS.FORMAT_dd_MM_yyyy__HH_mm_ss_SSS);
 
     }
 
     //==========================================================================
-    public final static LocalDate long2LocalDate(final Long milliSeconds) {
+    public static final LocalDate long2LocalDate(final Long milliSeconds) {
 
         LocalDate result = null;
 
@@ -97,7 +97,7 @@ public final class NLS extends ObjectRoot {
     }
 
     //==========================================================================
-    public final static String getObject2String(final Object value) {
+    public static final String getObject2String(final Object value) {
 
         return NullSafe.create(value)
                 //                .setResult((Object) SysConst.LONG_ZERO)
@@ -124,7 +124,7 @@ public final class NLS extends ObjectRoot {
     }
     //==========================================================================
 
-    public final static LocalDate string2LocalDate(final String stringDate) {
+    public static final LocalDate string2LocalDate(final String stringDate) {
 
         return LocalDate.parse(stringDate, NLS.DEFAULT_DATE_FORMATTER);
 

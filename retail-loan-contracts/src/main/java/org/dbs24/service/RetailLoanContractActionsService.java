@@ -56,9 +56,9 @@ import org.dbs24.config.*;
 @Import({RetailLoanContractCommonConfig.class, RetailLoanContractWebSecurityConfig.class})
 public class RetailLoanContractActionsService extends ActionExecutionService {
 
-    private final ContractSchedulesBuilders contractSchedulesBuilders;
-    private final LiasDocumentBuilders documentBuilders;
-    private final RetailLoanBondScheduleBuilder bondScheduleBuilder;
+    final ContractSchedulesBuilders contractSchedulesBuilders;
+    final LiasDocumentBuilders documentBuilders;
+    final RetailLoanBondScheduleBuilder bondScheduleBuilder;
 
     @Autowired
     public RetailLoanContractActionsService(ContractSchedulesBuilders contractSchedulesBuilders,
@@ -85,7 +85,7 @@ public class RetailLoanContractActionsService extends ActionExecutionService {
             PmtScheduleTerm pmtScheduleTerm) {
 
         return this.<RetailLoanContract>createActionEntity(RetailLoanContract.class,
-                (retailLoanContract) -> {
+                retailLoanContract -> {
                     retailLoanContract.setContractSubject(contractSubject);
                     retailLoanContract.setCounterparty(counterparty);
                     retailLoanContract.setCurrency(currency);

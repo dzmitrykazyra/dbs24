@@ -29,5 +29,5 @@ public class JWTSecrets {
   /**
    * A default secret for development purposes.
    */
-  public final static  String DEFAULT_SECRET = "qwertyuiopasdfghjklzxcvbnmqwerty";
+  public static final  String DEFAULT_SECRET = "qwertyuiopasdfghjklzxcvbnmqwerty";
 }

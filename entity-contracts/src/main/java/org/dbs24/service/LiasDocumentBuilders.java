@@ -5,13 +5,11 @@
  */
 package org.dbs24.service;
 
-import org.dbs24.application.core.exception.api.InternalAppException;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.spring.core.bean.AbstractApplicationBean;
 import org.springframework.stereotype.Service;
 import org.dbs24.references.api.DocTemplateId;
 import java.util.Collection;
-import java.util.Optional;
 import java.util.Arrays;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.application.core.service.funcs.ReflectionFuncs;
@@ -49,7 +47,7 @@ public class LiasDocumentBuilders extends AbstractApplicationBean {
                 .stream()
                 .unordered()
                 .filter(p -> AnnotationFuncs.isAnnotated(p, DocumentsConst.DOC_TEMPLATE_ID_ANN))
-                .forEach((c_clazz) -> {
+                .forEach(c_clazz -> {
 
                     templatesList.add(AnnotationFuncs.getAnnotation(c_clazz, DocumentsConst.DOC_TEMPLATE_ID_ANN));
 

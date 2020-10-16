@@ -35,7 +35,7 @@ public class Currency extends AbstractRefRecord implements ReferenceRec {
         map.put(String.format("%d - %s", this.getCurrencyId(), this.getCurrencyName()), this.getCurrencyId());
     }
     
-    public final static Currency findCurrency(final Integer currencyId) {
+    public static final Currency findCurrency(final Integer currencyId) {
         return AbstractRefRecord.<Currency>getRefeenceRecord(Currency.class,
                 record -> record.getCurrencyId().equals(currencyId));
     }

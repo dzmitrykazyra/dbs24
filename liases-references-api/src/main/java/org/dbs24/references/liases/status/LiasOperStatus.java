@@ -35,7 +35,7 @@ public class LiasOperStatus extends AbstractRefRecord implements ReferenceRec {
 //        map.put(String.format("%d - %s", this.getDebtStateId(), this.getDebtStateName()), this.getDebtStateId());
     }
 
-    public final static LiasOperStatus findLiasOperStatus(final Integer liasOperStatusId) {
+    public static final LiasOperStatus findLiasOperStatus(final Integer liasOperStatusId) {
         return AbstractRefRecord.<LiasOperStatus>getRefeenceRecord(LiasOperStatus.class,
                 record -> record.getFinOperStatusId().equals(liasOperStatusId));
     }

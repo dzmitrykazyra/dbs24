@@ -41,7 +41,7 @@ public class ChessEngine extends AbstractRefRecord implements ReferenceRec {
         //map.put(String.format("%d - %s", this.getLiasTypeId(), this.getLiasTypeName()), this.getLiasTypeId());
     }
 
-    public final static ChessEngine findEngine(final Integer engine) {
+    public static final ChessEngine findEngine(final Integer engine) {
         return AbstractRefRecord.<ChessEngine>getRefeenceRecord(ChessEngine.class,
                 record -> record.getEngineId().equals(engine));
     }

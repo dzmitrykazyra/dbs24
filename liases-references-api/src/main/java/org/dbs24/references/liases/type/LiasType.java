@@ -36,7 +36,7 @@ public class LiasType extends AbstractRefRecord implements ReferenceRec {
         map.put(String.format("%d - %s", this.getLiasTypeId(), this.getLiasTypeName()), this.getLiasTypeId());
     }
 
-    public final static LiasType findLiasType(final Integer liasLiasTypeId) {
+    public static final LiasType findLiasType(final Integer liasLiasTypeId) {
         return AbstractRefRecord.<LiasType>getRefeenceRecord(LiasType.class,
                 record -> record.getLiasTypeId().equals(liasLiasTypeId));
     }
