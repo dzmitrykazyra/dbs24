@@ -21,7 +21,7 @@ public abstract class AbstractSpringBootApplication {
 
     public static ApplicationContext applicationContext;
 
-    public static final SpringBootInititializer NO_INITIALIZATION = () -> {
+    public static final SpringBootInititializer EMPTY_INITIALIZATION = () -> {
     };
 
     public static void runSpringBootApplication(

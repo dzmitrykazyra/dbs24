@@ -19,6 +19,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public final class SandBoxBoot extends AbstractSpringBootApplication {
 
     public static void main(String[] args) {
-        AbstractSpringBootApplication.runSpringBootApplication(args, SandBoxBoot.class, NO_INITIALIZATION);
+        AbstractSpringBootApplication.runSpringBootApplication(args, SandBoxBoot.class, EMPTY_INITIALIZATION);
     }
 }

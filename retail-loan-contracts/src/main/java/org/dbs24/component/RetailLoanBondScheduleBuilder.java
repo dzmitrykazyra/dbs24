@@ -5,7 +5,7 @@
  */
 package org.dbs24.component;
 
-import org.dbs24.spring.core.bean.AbstractApplicationBean;
+import org.dbs24.entity.bondschedule.builders.BondScheduleBuilder;
 import org.springframework.stereotype.Component;
 import org.dbs24.entity.RetailLoanContract;
 import org.dbs24.entity.bondschedule.PmtSchedule;
@@ -20,16 +20,17 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author N76VB
  */
 @Component
-public class BondScheduleBuilder extends AbstractApplicationBean {
+public class RetailLoanBondScheduleBuilder extends BondScheduleBuilder<RetailLoanContract> {
 
     private final ContractSchedulesBuilders contractSchedulesBuilders;
 
     @Autowired
-    public BondScheduleBuilder(ContractSchedulesBuilders contractSchedulesBuilders) {
+    public RetailLoanBondScheduleBuilder(ContractSchedulesBuilders contractSchedulesBuilders) {
         this.contractSchedulesBuilders = contractSchedulesBuilders;
     }
 
     //==========================================================================
+    @Override
     public Collection<PmtSchedule> createBondschedules(RetailLoanContract retailLoanContract) {
 
         final Collection<PmtSchedule> pmtSchedules = ServiceFuncs.<PmtSchedule>getOrCreateCollection(ServiceFuncs.COLLECTION_NULL);

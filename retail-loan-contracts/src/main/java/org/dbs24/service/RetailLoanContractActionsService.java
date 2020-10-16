@@ -38,9 +38,9 @@ import org.dbs24.references.documents.doctemplate.DocTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dbs24.references.documents.docattr.DocAttr;
 import org.dbs24.application.core.sysconst.SysConst;
+import org.dbs24.component.RetailLoanBondScheduleBuilder;
 import org.springframework.context.annotation.Import;
 import org.dbs24.config.*;
-import org.dbs24.component.*;
 
 /**
  *
@@ -58,12 +58,12 @@ public class RetailLoanContractActionsService extends ActionExecutionService {
 
     private final ContractSchedulesBuilders contractSchedulesBuilders;
     private final LiasDocumentBuilders documentBuilders;
-    private final BondScheduleBuilder bondScheduleBuilder;
+    private final RetailLoanBondScheduleBuilder bondScheduleBuilder;
 
     @Autowired
     public RetailLoanContractActionsService(ContractSchedulesBuilders contractSchedulesBuilders,
             LiasDocumentBuilders documentBuilders,
-            BondScheduleBuilder bondScheduleBuilder) {
+            RetailLoanBondScheduleBuilder bondScheduleBuilder) {
         this.contractSchedulesBuilders = contractSchedulesBuilders;
         this.documentBuilders = documentBuilders;
         this.bondScheduleBuilder = bondScheduleBuilder;
@@ -104,6 +104,8 @@ public class RetailLoanContractActionsService extends ActionExecutionService {
                     //EntityStatus.getExistEntityStatus(TariffConst.ENTITY_TARIFF_PLAN, 0));
                     // построить графики погашения
                     //retailLoanContract.createBondschedules();
+
+                    retailLoanContract.setPmtSchedules(bondScheduleBuilder.createBondschedules(retailLoanContract));
                 });
     }
 }

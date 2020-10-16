@@ -6,7 +6,6 @@
 package org.dbs24.entity.contracts;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.entity.core.AbstractActionEntity;
 import javax.persistence.*;
@@ -19,7 +18,6 @@ import org.dbs24.entity.kind.EntityKind;
 import org.dbs24.references.application.currency.Currency;
 import java.time.LocalDate;
 import java.math.BigDecimal;
-import org.dbs24.entity.tariff.api.TariffPlan;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import java.util.Collection;
 import org.dbs24.entity.marks.EntityMark;
@@ -101,25 +99,20 @@ public abstract class AbstractEntityContract extends AbstractActionEntity {
     //--------------------------------------------------------------------------
     @org.hibernate.annotations.BatchSize(size = 100)
     @OneToMany(targetEntity = AbstractPersistenceAction.class, mappedBy = "entity")
-//    @JoinColumn(name = "entity_id", referencedColumnName = "entity_id")
     @JsonIgnore
     private Collection<Action> entityActions;
     //==========================================================================
     // задолженности по договору
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "debtContract")
-    //@JoinColumn(name = "contract_id", referencedColumnName = "contract_id")
-//    @OneToMany(mappedBy = "debtContract", cascade = CascadeType.ALL)
     private Collection<LiasDebt> contractDebts;
     //==========================================================================
     //графики по договору
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "entityContract")
-    //@JoinColumn(name = "contract_id", referencedColumnName = "contract_id")
     private Collection<PmtSchedule> pmtSchedules;
     //==========================================================================
     // рассчеты сумм калькуляций
     @org.hibernate.annotations.BatchSize(size = 500)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "entity")
-    //@JoinColumn(name = "entity_id", referencedColumnName = "entity_id")
     private Collection<TariffCalcRecord> tariffCalcRecords = ServiceFuncs.<TariffCalcRecord>createCollection();
 
 }

@@ -14,6 +14,7 @@ import lombok.Data;
 import java.util.Collection;
 
 @Data
+@Deprecated
 public final class ServiceLocator {
 
     private static final Collection<ApplicationBean> BEANS_LIST

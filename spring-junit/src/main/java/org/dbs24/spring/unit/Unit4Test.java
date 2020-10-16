@@ -8,11 +8,10 @@ package org.dbs24.spring.unit;
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.spring.boot.api.AbstractSpringBootApplication;
-import static org.dbs24.spring.boot.api.AbstractSpringBootApplication.NO_INITIALIZATION;
+import static org.dbs24.spring.boot.api.AbstractSpringBootApplication.EMPTY_INITIALIZATION;
 import org.dbs24.spring.core.api.ApplicationConfiguration;
 import org.dbs24.application.core.service.funcs.GenericFuncs;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-
 
 /**
  *
@@ -40,20 +39,16 @@ public abstract class Unit4Test<BOOT extends AbstractSpringBootApplication, CONF
             NullSafe.create()
                     .execute(() -> {
 
-                        AbstractSpringBootApplication.runSpringBootApplication(EMPTY_ARGS, sbClass, NO_INITIALIZATION);
+                        AbstractSpringBootApplication.runSpringBootApplication(EMPTY_ARGS, sbClass, EMPTY_INITIALIZATION);
                         // инициализация контейнера
                         AbstractSpringBootApplication.initializeContext(appConfigClass);
 
                         //BOOT_APPS.put(sbClass, this);
-                    }).finallyBlock(() -> {
-                BOOT_CLASSES.add(sbClass);
-            })
+                    })
+                    .finallyBlock(() -> {
+                        BOOT_CLASSES.add(sbClass);
+                    })
                     .throwException();
         }
     }
 }
-
-//interface SpringBootEntry extends Map.Entry<Class<? extends SpringBoot4Test>, SpringBoot4Test> {
-//}
-//class SpringBootMap extends ConcurrentHashMap<Class<? extends SpringBoot4Test>, SpringBoot4Test> {
-//}

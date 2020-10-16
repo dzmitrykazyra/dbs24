@@ -5,10 +5,10 @@
  */
 package org.dbs24.service;
 
-import org.dbs24.application.core.log.LogService;
+import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_SINGLETON;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.ReflectionFuncs;
-import org.dbs24.application.core.sysconst.SysConst;
 import org.dbs24.entity.core.api.EntityClassesPackages;
 import org.dbs24.entity.kind.EntityKind;
 import lombok.Data;
@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import lombok.extern.slf4j.Slf4j;
 import org.dbs24.references.tariffs.api.TariffConst;
 import org.dbs24.entity.status.EntityStatus;
 import org.dbs24.references.api.AbstractRefRecord;
@@ -23,7 +24,6 @@ import org.dbs24.entity.tariff.TariffPlanProcessor;
 import org.dbs24.references.tariffs.kind.TariffKind;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Profile;
 
 /**
@@ -32,13 +32,12 @@ import org.springframework.context.annotation.Profile;
  */
 @Data
 @Service
-@ComponentScan(basePackages = SysConst.SERVICE_PACKAGE)
+@Slf4j
+@ComponentScan(basePackages = SERVICE_PACKAGE)
 //@EntityClassesPackages(pkgList = {"org.dbs24.entity.tariff"})
-@EntityClassesPackages(pkgList = {SysConst.ENTITY_PACKAGE + ".tariff"})
+@EntityClassesPackages(pkgList = {ENTITY_PACKAGE + ".tariff"})
 public class TariffCoreService extends ActionExecutionService {
 
-//    @Value("${tariff.debug:false}")
-//    private Boolean tariffDebug = SysConst.BOOLEAN_FALSE;
     @Bean
     @Profile("dev")
     public TariffStdRates tariffStrRatesDev() {
@@ -55,32 +54,27 @@ public class TariffCoreService extends ActionExecutionService {
     public void postActionExecutionService() {
         //    TariffConst.tariffDebug = this.tariffDebug;
         // делаем бинами объекты-тарифы по расчету тарифицируемых услуг
-        ReflectionFuncs.processPkgClassesCollection(SysConst.TARIFF_PACKAGE, TariffKind.class, null,
+        ReflectionFuncs.processPkgClassesCollection(TARIFF_PACKAGE, TariffKind.class, null,
                 (tariffClazz) -> {
 
                     final String tariffClazzName = tariffClazz.getCanonicalName();
 
                     if (!this.getGenericApplicationContext().containsBean(tariffClazzName)) {
 
-                        if (this.getEntityCoreDebug()) {
-                            LogService.LogInfo(this.getClass(), () -> String.format("Registry tariff bean: '%s'",
-                            tariffClazzName));
-                        }
+                        log.debug("Registry tariff bean: '{}'", tariffClazzName);
 
                         this.getGenericApplicationContext().registerBean(tariffClazz, bd -> {
                             bd.setBeanClassName(tariffClazzName);
-                            bd.setScope(ConfigurableBeanFactory.SCOPE_SINGLETON);
+                            bd.setScope(SCOPE_SINGLETON);
                             bd.setAutowireCandidate(true);
                         });
                     }
-
                 });
 
         // родительский метод
         super.postActionExecutionService();
-
     }
-
+    //==========================================================================
     public AbstractTariffPlan createTariffPlan(final String tariffPlanName,
             final String tariffPlanCode,
             final EntityKind entityKind,
@@ -107,5 +101,4 @@ public class TariffCoreService extends ActionExecutionService {
         return abstractTariffPlan;
     }
     //==========================================================================
-
 }
