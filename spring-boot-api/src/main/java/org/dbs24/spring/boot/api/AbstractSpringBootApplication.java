@@ -12,10 +12,7 @@ package org.dbs24.spring.boot.api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.dbs24.spring.core.api.ApplicationConfiguration;
-import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.nullsafe.StopWatcher;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -41,10 +38,6 @@ public abstract class AbstractSpringBootApplication {
         log.info(stopWatcher.getStringExecutionTime());
 
     }
-//    public static void main(final String[] args) {
-//        //SpringApplication.run(SpringBootApplication.class, args);
-//        SpringApplication.run(AbstractSpringBootApplication.class, args);
-//    }
 
     public static void initializeContext(final Class<? extends ApplicationConfiguration> clazz) {
         // AbstractSpringBootApplication.ctx = NullSafe.createObject(AnnotationConfigApplicationContext.class, clazz);

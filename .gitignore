@@ -74,3 +74,5 @@
 /jwt-api/target/
 /world-chess-sandbox/target/
 /spring-websockets/target/
+/persistence-core/target/
+/spring-core/target/

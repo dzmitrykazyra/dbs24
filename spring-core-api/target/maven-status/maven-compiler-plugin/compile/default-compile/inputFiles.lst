@@ -1,8 +1,0 @@
-/home/kdg/dbs24/spring-core-api/src/main/java/org/dbs24/spring/core/api/ApplicationRepository.java
-/home/kdg/dbs24/spring-core-api/src/main/java/org/dbs24/spring/core/api/ApplicationReactiveRepository.java
-/home/kdg/dbs24/spring-core-api/src/main/java/org/dbs24/spring/core/api/ApplicationJpaRepository.java
-/home/kdg/dbs24/spring-core-api/src/main/java/org/dbs24/spring/core/api/ApplicationComponent.java
-/home/kdg/dbs24/spring-core-api/src/main/java/org/dbs24/spring/core/api/ApplicationConfiguration.java
-/home/kdg/dbs24/spring-core-api/src/main/java/org/dbs24/spring/core/api/ApplicationBean.java
-/home/kdg/dbs24/spring-core-api/src/main/java/org/dbs24/spring/core/api/ServiceLocator.java
-/home/kdg/dbs24/spring-core-api/src/main/java/org/dbs24/spring/core/api/ApplicationService.java
