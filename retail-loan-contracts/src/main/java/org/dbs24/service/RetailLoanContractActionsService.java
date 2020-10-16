@@ -40,6 +40,7 @@ import org.dbs24.references.documents.docattr.DocAttr;
 import org.dbs24.application.core.sysconst.SysConst;
 import org.springframework.context.annotation.Import;
 import org.dbs24.config.*;
+import org.dbs24.component.*;
 
 /**
  *
@@ -57,12 +58,15 @@ public class RetailLoanContractActionsService extends ActionExecutionService {
 
     private final ContractSchedulesBuilders contractSchedulesBuilders;
     private final LiasDocumentBuilders documentBuilders;
+    private final BondScheduleBuilder bondScheduleBuilder;
 
     @Autowired
     public RetailLoanContractActionsService(ContractSchedulesBuilders contractSchedulesBuilders,
-            LiasDocumentBuilders documentBuilders) {
+            LiasDocumentBuilders documentBuilders,
+            BondScheduleBuilder bondScheduleBuilder) {
         this.contractSchedulesBuilders = contractSchedulesBuilders;
         this.documentBuilders = documentBuilders;
+        this.bondScheduleBuilder = bondScheduleBuilder;
     }
 
     //==========================================================================

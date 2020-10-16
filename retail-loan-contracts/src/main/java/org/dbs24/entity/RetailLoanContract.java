@@ -53,8 +53,7 @@ import lombok.Data;
                     entity_status_name = "Аннулированная сделка")
         })
 @DefaultEntityStatus(entity_status = SysConst.ES_VALID)
-@ActionClassesPackages(pkgList = {"org.dbs24.entity.retail.loan.actions",
-    "org.dbs24.entity.contracts.actions"})
+@ActionClassesPackages(pkgList = {SysConst.ACTIONS_PACKAGE, "org.dbs24.entity.contract.actions"})
 public class RetailLoanContract extends AbstractRetailLoanContract {
 
     @ManyToOne
@@ -67,27 +66,27 @@ public class RetailLoanContract extends AbstractRetailLoanContract {
     @JoinColumn(name = "pmt_term_id", referencedColumnName = "pmt_term_id")
     private PmtScheduleTerm pmtScheduleTerm;
 
-    @Override
-    public void createBondschedules() {
-        super.createBondschedules();
-
-        final ContractSchedulesBuilders csb = ServiceLocator.<ContractSchedulesBuilders>findService(ContractSchedulesBuilders.class);
-
-        this.getPmtSchedules().add(csb.buildSchedule(
-                BondScheduleConst.BS_ALG_BYREST,
-                this.getPmtScheduleAlg(),
-                this.getPmtScheduleTerm(),
-                 BondScheduleConst.EK_BONDSCHEDULE_MAIN_DEBT,
-                 this.getBeginDate(),
-                 this.getEndDate()));
-        
-        this.getPmtSchedules().add(csb.buildSchedule(
-                BondScheduleConst.BS_ALG_BYREST,
-                this.getPmtScheduleAlg(),
-                this.getPmtScheduleTerm(),
-                BondScheduleConst.EK_BONDSCHEDULE_PERC,
-                this.getBeginDate(),
-                this.getEndDate()));      
+//    @Override
+//    public void createBondschedules() {
+//        super.createBondschedules();
+//
+//        final ContractSchedulesBuilders csb = ServiceLocator.<ContractSchedulesBuilders>findService(ContractSchedulesBuilders.class);
+//
+//        this.getPmtSchedules().add(csb.buildSchedule(
+//                BondScheduleConst.BS_ALG_BYREST,
+//                this.getPmtScheduleAlg(),
+//                this.getPmtScheduleTerm(),
+//                 BondScheduleConst.EK_BONDSCHEDULE_MAIN_DEBT,
+//                 this.getBeginDate(),
+//                 this.getEndDate()));
+//        
+//        this.getPmtSchedules().add(csb.buildSchedule(
+//                BondScheduleConst.BS_ALG_BYREST,
+//                this.getPmtScheduleAlg(),
+//                this.getPmtScheduleTerm(),
+//                BondScheduleConst.EK_BONDSCHEDULE_PERC,
+//                this.getBeginDate(),
+//                this.getEndDate()));      
 
         // график выплат основного долга
 //        loanContract.getPmtScheduleBuilders()
@@ -106,5 +105,5 @@ public class RetailLoanContract extends AbstractRetailLoanContract {
 //                                loanContract.getContract_date(),
 //                                loanContract.getEnd_date()));
 
-    }
+//    }
 }

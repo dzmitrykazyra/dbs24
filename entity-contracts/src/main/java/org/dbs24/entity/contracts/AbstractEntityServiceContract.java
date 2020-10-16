@@ -297,12 +297,12 @@ public abstract class AbstractEntityServiceContract extends AbstractEntityContra
 //                .execCallStmt();
 //    }
     //==========================================================================
-    public void createBondschedules() {
-        if (NullSafe.notNull(this.getPmtSchedules())) {
-            this.getPmtSchedules().clear();
-        } else {
-            this.setPmtSchedules(ServiceFuncs.<PmtSchedule>getOrCreateCollection(ServiceFuncs.COLLECTION_NULL));
-        }
-
-    }
+//    public void createBondschedules() {
+//        if (NullSafe.notNull(this.getPmtSchedules())) {
+//            this.getPmtSchedules().clear();
+//        } else {
+//            this.setPmtSchedules(ServiceFuncs.<PmtSchedule>getOrCreateCollection(ServiceFuncs.COLLECTION_NULL));
+//        }
+//
+//    }
 }

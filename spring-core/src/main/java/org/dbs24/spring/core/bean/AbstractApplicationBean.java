@@ -15,12 +15,9 @@ public abstract class AbstractApplicationBean implements ApplicationBean {
 
     @Override
     public void initialize() {
-
     }
 
     @Override
     public void destroy() {
-
-    }    
-    
+    }
 }

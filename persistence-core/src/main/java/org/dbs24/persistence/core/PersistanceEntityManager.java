@@ -59,37 +59,23 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
     @Value("${defaultJdbcBatchSize}")
     private Integer defaultJdbcBatchSize; // = SysConst.STRING_FALSE;
 
-//    @Resource
-//    UserTransaction utx;
-    //public PersistanceEntityManager(final String persistenceUnitName) {
     @Override
     public void initialize() {
 
         NullSafe.create(persistenceUnitName)
                 .execute(() -> {
-//sessionFactory = new Configuration().configure().buildSessionFactory();
 
                     SysConst.RUSSIAN_REF_LANG.set(!this.russianRefLan.toLowerCase().equals(SysConst.STRING_FALSE));
 
-                    if (persistenceDebug) {
-                        log.debug(String.format("Try 2 create persistence '{}'",
-                                persistenceUnitName));
-                    }
+                    log.info(String.format("Try 2 create persistence '{}'", persistenceUnitName));
 
                     this.factory = Persistence.createEntityManagerFactory(persistenceUnitName, this.getProperties());
 
-                    if (persistenceDebug) {
-                        log.debug(String.format("Persistence '{}' is created",
-                                persistenceUnitName));
-                    }
+                    log.info(String.format("Persistence '{}' is created", persistenceUnitName));
 
                     createOrUpdateEntityManager();
-
                 })
                 .throwException();
-
-//LogService.LogInfo(this.getClass(), () -> String.format("Service '%s' is initialized", this.getClass()));
-//persistenceUnitName, properties)
     }
 
     //==========================================================================
@@ -102,6 +88,8 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
         result.put("javax.persistence.jdbc.driver", persistenceJdbcDriver);
         result.put("javax.persistence.jdbc.user", persistenceJdbcUser);
         result.put("javax.persistence.jdbc.password", persistenceJdbcPassword);
+        result.put("hibernate.order_inserts", "true");
+        result.put("hibernate.order_updates", "true");
         result.put("hibernate.hbm2ddl.auto", "none");
         result.put("hibernate.cache.provider_class", "org.hibernate.cache.NoCacheProvider");
         result.put("hibernate.cache.use_second_level_cache", "true");
@@ -115,17 +103,13 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
 
     private void createOrUpdateEntityManager() {
 
-        //synchronized (this) {
-        //if (!this.safeMode.get()) {
         if (this.safeMode.compareAndSet(SysConst.BOOLEAN_FALSE, SysConst.BOOLEAN_TRUE)) {
 
             NullSafe.create()
                     .execute(() -> {
 
-                        if (persistenceDebug) {
-                            log.debug(String.format("{}: try to create/recreate entity manager ",
-                                    this.persistenceUnitName));
-                        }
+                        log.info(String.format("{}: try to create/recreate entity manager ",
+                                this.persistenceUnitName));
 
                         if (NullSafe.notNull(this.getEntityManager())) {
 
@@ -142,15 +126,11 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
                             this.entityManager = factory.createEntityManager();
                         }
 
-                        if (persistenceDebug) {
-                            log.debug(String.format("{}: Successfully create entity manager ({}) ",
-                                    this.persistenceUnitName,
-                                    this.getEntityManager().getClass().getCanonicalName()));
-
-                            log.debug(String.format("EMF Properties \n {} ",
-                                    this.getEmfProperties()));
-                        }
-
+                        log.info(String.format("{}: Successfully create entity manager ({}) ",
+                                this.persistenceUnitName,
+                                this.getEntityManager().getClass().getCanonicalName()));
+                        log.info(String.format("EMF Properties \n {} ",
+                                this.getEmfProperties()));
                     });
 
             this.safeMode.set(SysConst.BOOLEAN_FALSE);

@@ -11,7 +11,6 @@ import org.dbs24.spring.core.mail.MailManager;
 import org.dbs24.persistence.core.PersistanceEntityManager;
 import org.springframework.context.annotation.Bean;
 import org.dbs24.spring.core.repository.JpaRepositoriesCoolection;
-//import org.springframework.http.converter.xml.Marshalling
 import org.dbs24.service.WebClientMgmt;
 import org.springframework.beans.factory.annotation.Value;
 import lombok.Data;
@@ -28,10 +27,7 @@ public abstract class MainApplicationConfig extends AbstractApplicationConfigura
 
     @Bean
     public PersistanceEntityManager entityManager() {
-        //return NullSafe.createObject(PersistanceEntityManager.class, "wmonitor");
-
         return NullSafe.createObject(PersistanceEntityManager.class);
-
     }
 
     @Bean
@@ -41,7 +37,6 @@ public abstract class MainApplicationConfig extends AbstractApplicationConfigura
 
     @Bean
     public WebClientMgmt webClientMgmt() {
-        //return new RestTemplate(httpRequestFactory());
         return NullSafe.<WebClientMgmt>createObject(WebClientMgmt.class);
     }
 
