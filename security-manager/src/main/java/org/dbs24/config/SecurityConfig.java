@@ -25,7 +25,6 @@ import static org.dbs24.application.core.sysconst.SysConst.*;
 //@EntityScan(basePackages = {SECURITY_PACKAGE, ENTITY_PACKAGE})
 @PropertySource(APP_PROPERTIES)
 //@EnableJpaRepositories(basePackages = REPOSITORY_PACKAGE)
-@Data
 public class SecurityConfig extends AbstractApplicationConfiguration {
 
 //    @Bean
