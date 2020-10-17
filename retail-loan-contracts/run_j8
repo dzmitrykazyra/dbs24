@@ -1,6 +1,0 @@
-#!/bin/sh
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
-mvn clean install -DskipTests=true
-export MAVEN_OPTS="-Xms2048m -Xmx4096m "
-mvn exec:java -Dexec.mainClass="org.dbs24.RetailLoanContractBoot" -Dexec.classpathScope=runtime
-
