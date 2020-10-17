@@ -6,7 +6,6 @@
 package org.dbs24.config;
 
 import static org.dbs24.application.core.sysconst.SysConst.*;
-import lombok.Data;
 import org.springframework.context.annotation.PropertySource;
 import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.spring.config.MainApplicationConfig;
@@ -22,7 +21,6 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE, COMPONENT_PACKAGE})
 @EntityScan(basePackages = {ENTITY_PACKAGE, REFERENCE_PACKAGE})
 @PropertySource(APP_PROPERTIES)
-@Data
 public class RetailLoanContractCommonConfig extends MainApplicationConfig {
 
 }
