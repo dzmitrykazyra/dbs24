@@ -13,13 +13,13 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE) //on class level
 
 public @interface JsfCommand {
 
-    String command() default SysConst.EMPTY_STRING; // комманда jsf по умолчанию
+    String command() default EMPTY_STRING; // комманда jsf по умолчанию
 
 }

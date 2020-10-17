@@ -6,7 +6,7 @@
 package org.dbs24.entity;
 
 import org.dbs24.consts.RetailLoanContractConst;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.bond.schedule.api.BondScheduleConst;
 import org.dbs24.entity.core.api.ActionClassesPackages;
 import org.dbs24.entity.core.api.DefaultEntityStatus;
@@ -39,21 +39,21 @@ import lombok.Data;
         entiy_status = {
             @EntityStatusId(
                     entity_type_id = RetailLoanContractConst.LOAN2INDIVIDUAL,
-                    entity_status_id = SysConst.ES_VALID,
+                    entity_status_id = ES_VALID,
                     entity_status_name = "Действующая сделка")
             ,
             @EntityStatusId(
                     entity_type_id = RetailLoanContractConst.LOAN2INDIVIDUAL,
-                    entity_status_id = SysConst.ES_CLOSED,
+                    entity_status_id = ES_CLOSED,
                     entity_status_name = "Закрытая сделка")
             ,
             @EntityStatusId(
                     entity_type_id = RetailLoanContractConst.LOAN2INDIVIDUAL,
-                    entity_status_id = SysConst.ES_CANCELLED,
+                    entity_status_id = ES_CANCELLED,
                     entity_status_name = "Аннулированная сделка")
         })
-@DefaultEntityStatus(entity_status = SysConst.ES_VALID)
-@ActionClassesPackages(pkgList = {SysConst.ACTIONS_PACKAGE, "org.dbs24.entity.contract.actions"})
+@DefaultEntityStatus(entity_status = ES_VALID)
+@ActionClassesPackages(pkgList = {ACTIONS_PACKAGE, "org.dbs24.entity.contract.actions"})
 public class RetailLoanContract extends AbstractRetailLoanContract {
 
     @ManyToOne

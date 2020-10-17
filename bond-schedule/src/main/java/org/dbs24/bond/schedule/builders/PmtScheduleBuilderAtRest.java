@@ -12,7 +12,7 @@ import org.dbs24.bond.schedule.api.BondScheduleConst;
 import org.dbs24.bond.schedule.api.PmtScheduleLine;
 import org.dbs24.bond.schedule.PmtScheduleLineImpl;
 import org.dbs24.log.mgmt.LogService;
-import org.dbs24.sysconst.api.SysConst;
+import org.dbs24.api.SysConst;
 import org.dbs24.tce.core.NullSafe;
 import java.util.List;
 import java.util.ArrayList;
@@ -61,7 +61,7 @@ public class PmtScheduleBuilderAtRest extends PmtScheduleBuilderImpl {
             pmtScheduleLine.setFrom_date(fromLd);
             pmtScheduleLine.setTo_date(cntLd.minusDays(1));
             pmtScheduleLine.setAppear_date(cntLd);
-            pmtScheduleLine.setPay_sum(SysConst.BIGDECIMAL_ZERO);
+            pmtScheduleLine.setPay_sum(BIGDECIMAL_ZERO);
             pmtScheduleLine.setCalc_date(LocalDate.now());
 
             // добавили строку графика

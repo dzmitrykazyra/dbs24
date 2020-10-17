@@ -1,0 +1,60 @@
+cd /home/ilya/citech/projects/game-server; JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64 /snap/netbeans/30/netbeans/java/maven/bin/mvn clean install -DskipTests=true
+Scanning for projects...
+
+Some problems were encountered while building the effective model for pss:server:jar:2.1.0-SNAPSHOT
+'dependencies.dependency.systemPath' for pss:core-server:jar should not point at files within the project directory, ${project.basedir}/jars/core-server-1.0.1.jar will be unresolvable by dependent projects @ line 193, column 25
+
+It is highly recommended to fix these problems because they threaten the stability of your build.
+
+For this reason, future Maven versions might no longer support building such malformed projects.
+
+
+-----------------------------< pss:server >-----------------------------
+Building ChessServer 2.1.0-SNAPSHOT
+--------------------------------[ jar ]---------------------------------
+
+--- maven-clean-plugin:2.5:clean (default-clean) @ server ---
+Deleting /home/ilya/citech/projects/game-server/target
+
+--- maven-resources-plugin:2.6:resources (default-resources) @ server ---
+Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+Copying 179 resources
+
+--- maven-compiler-plugin:3.8.1:compile (default-compile) @ server ---
+Changes detected - recompiling the module!
+Compiling 1459 source files to /home/ilya/citech/projects/game-server/target/classes
+pss/chess/server/util/Misc.java:[42,16] sun.misc.BASE64Decoder is internal proprietary API and may be removed in a future release
+pss/chess/server/util/Misc.java:[175,32] sun.misc.BASE64Encoder is internal proprietary API and may be removed in a future release
+pss/chess/server/util/Misc.java:[193,48] sun.misc.BASE64Decoder is internal proprietary API and may be removed in a future release
+pss/chess/server/util/Misc.java:[248,32] sun.misc.BASE64Encoder is internal proprietary API and may be removed in a future release
+pss/chess/server/util/Misc.java:[269,50] sun.misc.BASE64Decoder is internal proprietary API and may be removed in a future release
+/home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/dao/SharedGameDaoImpl.java: /home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/dao/SharedGameDaoImpl.java uses or overrides a deprecated API.
+/home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/dao/SharedGameDaoImpl.java: Recompile with -Xlint:deprecation for details.
+/home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/servers/http/RestMethodsMapping.java: /home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/servers/http/RestMethodsMapping.java uses unchecked or unsafe operations.
+/home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/servers/http/RestMethodsMapping.java: Recompile with -Xlint:unchecked for details.
+
+--- maven-resources-plugin:2.6:testResources (default-testResources) @ server ---
+Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+Copying 179 resources
+
+--- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ server ---
+Changes detected - recompiling the module!
+Compiling 55 source files to /home/ilya/citech/projects/game-server/target/test-classes
+/home/ilya/citech/projects/game-server/src/test/java/pss/chess/server/servers/MinaSessionTest.java: /home/ilya/citech/projects/game-server/src/test/java/pss/chess/server/servers/MinaSessionTest.java uses or overrides a deprecated API.
+/home/ilya/citech/projects/game-server/src/test/java/pss/chess/server/servers/MinaSessionTest.java: Recompile with -Xlint:deprecation for details.
+
+--- maven-surefire-plugin:2.12.4:test (default-test) @ server ---
+Tests are skipped.
+
+--- maven-jar-plugin:2.4:jar (default-jar) @ server ---
+Building jar: /home/ilya/citech/projects/game-server/target/chess-server.jar
+
+--- maven-install-plugin:2.4:install (default-install) @ server ---
+Installing /home/ilya/citech/projects/game-server/target/chess-server.jar to /home/ilya/.m2/repository/pss/server/2.1.0-SNAPSHOT/server-2.1.0-SNAPSHOT.jar
+Installing /home/ilya/citech/projects/game-server/pom.xml to /home/ilya/.m2/repository/pss/server/2.1.0-SNAPSHOT/server-2.1.0-SNAPSHOT.pom
+------------------------------------------------------------------------
+BUILD SUCCESS
+------------------------------------------------------------------------
+Total time:  10.944 s
+Finished at: 2020-08-03T23:03:45+03:00
+------------------------------------------------------------------------

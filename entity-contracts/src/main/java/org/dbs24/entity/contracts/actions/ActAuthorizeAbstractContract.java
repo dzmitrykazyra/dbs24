@@ -39,10 +39,10 @@ public class ActAuthorizeAbstractContract extends AbstractContractAction<Abstrac
 
 //        return (NullSafe.create()
 //                .execute2result(() -> {
-//                    return !entity.getIsAuthorized() && (entity.getEntityStatus().getEntity_status_id().equals(SysConst.ES_VALID));
+//                    return !entity.getIsAuthorized() && (entity.getEntityStatus().getEntity_status_id().equals(ES_VALID));
 //                }))
 //                .catchException2result((e) -> {
-//                    return SysConst.IS_NOT_ALLOWED_ACTION;
+//                    return IS_NOT_ALLOWED_ACTION;
 //                })
 //                .<Boolean>getObject();
         return true;

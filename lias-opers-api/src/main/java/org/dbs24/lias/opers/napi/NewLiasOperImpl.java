@@ -125,7 +125,7 @@ public class NewLiasOperImpl implements OldLiasOper {
                                 .filter(operAttr -> operAttr.getClass().isAnnotationPresent(DocAttrLinkProperty.class))
                                 .forEach((operAttr) -> {
 //                                    final Field field = operAttr.getClass().getField("attrValue");
-//                                    field.setAccessible(SysConst.BOOLEAN_TRUE);
+//                                    field.setAccessible(BOOLEAN_TRUE);
                                     final DocAttrLinkProperty dal = ((DocAttrLinkProperty) operAttr.getClass().getAnnotation(DocAttrLinkProperty.class));
                                     NewLiasOperImpl.linkedFields.put(dal.docAttr(), operAttr.getClass());
                                 });
@@ -134,7 +134,7 @@ public class NewLiasOperImpl implements OldLiasOper {
 //                                .unordered()
 //                                .filter(field -> field.isAnnotationPresent(DocAttrLinkProperty.class))
 //                                .forEach((field) -> {
-//                                    field.setAccessible(SysConst.BOOLEAN_TRUE);
+//                                    field.setAccessible(BOOLEAN_TRUE);
 //                                    final DocAttrLinkProperty dal = ((DocAttrLinkProperty) field.getAnnotation(DocAttrLinkProperty.class));
 //                                    NewLiasOperImpl.linkedFields.put(dal.docAttr(), field);
 //                                });

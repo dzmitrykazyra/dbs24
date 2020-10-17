@@ -16,7 +16,7 @@ import org.dbs24.entity.core.api.LiasContractAction;
 
 import org.dbs24.lias.opers.napi.OperAttr;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.lias.opers.api.LiasOpersConst;
 import lombok.Data;
 import org.dbs24.lias.opers.napi.LiasFinanceOper;
@@ -223,7 +223,7 @@ public abstract class AbstractLiasContractOper<T extends AbstractEntityServiceCo
         final String s;
 
         if (NullSafe.isNull(this.getMvm())) {
-            s = SysConst.STRING_NULL;
+            s = STRING_NULL;
         } else {
             s = (String) ((List) this.getMvm().get(clazz.getSimpleName())).iterator().next();
         }

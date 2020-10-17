@@ -40,7 +40,7 @@ public class ActCalculateTariffSums<T extends AbstractEntityServiceContract> ext
     @Autowired
     private GenericApplicationContext genericApplicationContext;
 
-    //private final TariffCalculations tariffCalculations = NullSafe.createObject(TariffCalculations.class, SysConst.LONG_ZERO);
+    //private final TariffCalculations tariffCalculations = NullSafe.createObject(TariffCalculations.class, LONG_ZERO);
     private LocalDate D1, D2;
     private Collection<TariffCalcRecord> newTariffCalcRecords = ServiceFuncs.<TariffCalcRecord>createCollection();
 

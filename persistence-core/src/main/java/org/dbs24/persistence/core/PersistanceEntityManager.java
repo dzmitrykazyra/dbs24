@@ -52,9 +52,9 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
     @Value("${persistence.debug:false}")
     private Boolean persistenceDebug;
     @Value("${russian_ref_lang}")
-    private String russianRefLan; // = SysConst.STRING_FALSE;
+    private String russianRefLan; // = STRING_FALSE;
     @Value("${defaultJdbcBatchSize}")
-    private Integer defaultJdbcBatchSize; // = SysConst.STRING_FALSE;
+    private Integer defaultJdbcBatchSize; // = STRING_FALSE;
 
     @Override
     public void initialize() {
@@ -303,7 +303,7 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
     }
     //==========================================================================
 //    public final <T> Collection<T> executeNativeQuery(final String sql) {
-//        return this.executeNativeQuery(sql, SysConst.STRING_NULL);
+//        return this.executeNativeQuery(sql, STRING_NULL);
 //    }
 
     //==========================================================================

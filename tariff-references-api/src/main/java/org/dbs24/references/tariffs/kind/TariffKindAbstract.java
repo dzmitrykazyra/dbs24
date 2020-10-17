@@ -12,7 +12,7 @@ import org.dbs24.references.api.AbstractRefRecord;
 import org.dbs24.references.api.ReferenceRec;
 import java.util.Map;
 import org.dbs24.references.tariffs.serv.TariffServ;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.core.api.ActionEntity;
 import java.time.LocalDate;
 import org.dbs24.application.core.service.funcs.GenericFuncs;
@@ -37,10 +37,10 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
     private Integer tariff_scheme_id;
     //private Integer rate_id;
     private String tariff_kind_name;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate actual_date;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate close_date;
     // тарифицируемая услуга
@@ -158,7 +158,7 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
 //        final Integer newRateId = ObjectRoot
 //                .getStaticDbService()
 //                .createCallQuery("{:RES = call tariff_insertorupdate_TariffRates(:RATE, :PLAN, :SERV, :KIND, :SHEME, :RNAME, :AD, :CD)} ")
-//                .setParamByNameAsOutput("RES", SysConst.INTEGER_ZERO)
+//                .setParamByNameAsOutput("RES", INTEGER_ZERO)
 //                .setParamByName("RATE", this.getTariffRate().getRate_id())
 //                .setParamByName("PLAN", plan_id)
 //                .setParamByName("SERV", this.tariff_serv_id)
@@ -229,7 +229,7 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
 //        final Integer newTariff_calc_id = ObjectRoot
 //                .getStaticDbService()
 //                .createCallQuery("{:RES = call tariff_insertorupdate_calc_record(:ID, :SERV, :KIND, :ENT, :CURR)} ")
-//                .setParamByNameAsOutput("RES", SysConst.INT_ZERO)
+//                .setParamByNameAsOutput("RES", INT_ZERO)
 //                .setParamByName("ID", this.getTariff_calc_id())
 //                .setParamByName("SERV", this.tariff_serv_id)
 //                .setParamByName("KIND", this.tariff_kind_id)
@@ -277,10 +277,10 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
 //    protected TariffCalcSumOld addTariffCalcSum(final LocalDate ld, final BigDecimal bd) {
 //        return new TariffCalcSumImpl()
 //                .setTariff_calc_date(ld)
-//                .setAccrualBasis(SysConst.BIGDECIMAL_ZERO)
-//                .setPercRate(SysConst.BIGDECIMAL_ZERO)
+//                .setAccrualBasis(BIGDECIMAL_ZERO)
+//                .setPercRate(BIGDECIMAL_ZERO)
 //                .setTariff_sum(bd)
-//                .setTax_sum(SysConst.BIGDECIMAL_NULL);
+//                .setTax_sum(BIGDECIMAL_NULL);
 //
 //    }
 

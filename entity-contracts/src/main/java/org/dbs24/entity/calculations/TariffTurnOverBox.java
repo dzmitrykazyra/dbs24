@@ -6,7 +6,7 @@
 package org.dbs24.entity.calculations;
 
 import org.dbs24.entity.debts.LiasAction;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.tariff.TariffRate;
 import org.dbs24.entity.tariff.TariffRecordAbstract;
 import org.dbs24.references.tariffs.kind.TariffRowCalculator;
@@ -81,7 +81,7 @@ public class TariffTurnOverBox extends TariffBoxAbstract {
                 accrualSum = null;
             }
 
-            this.addOrReplaceTariffSum(liasAction.getLiasDate(), liasAction.getLiasSum().abs(), accrualRate, accrualSum, SysConst.BIGDECIMAL_NULL);
+            this.addOrReplaceTariffSum(liasAction.getLiasDate(), liasAction.getLiasSum().abs(), accrualRate, accrualSum, BIGDECIMAL_NULL);
 
             if (liasAction.getLiasDate().equals(v_tariffRateRecord.getRateDate())) {
                 percRate = v_tariffRateRecord.getRateValue();

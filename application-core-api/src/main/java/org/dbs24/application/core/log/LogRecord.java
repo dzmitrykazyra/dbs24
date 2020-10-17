@@ -13,13 +13,13 @@ package org.dbs24.application.core.log;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 import java.time.LocalDateTime;
 
 public class LogRecord implements LogRec {
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATETIME_MS_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_MS_FORMAT)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime recDate;
     private String recClass;
@@ -29,7 +29,7 @@ public class LogRecord implements LogRec {
 
     public LogRecord() {
         super();
-        ip_address = SysConst.APPLICATION_ADDRESS;
+        ip_address = APPLICATION_ADDRESS;
     }
 
     public LogRecord(final LocalDateTime recDate, final String recDetails) {

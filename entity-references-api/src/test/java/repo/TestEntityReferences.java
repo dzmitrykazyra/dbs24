@@ -21,7 +21,7 @@ import org.dbs24.repository.*;
 import org.dbs24.service.EntityReferencesService;
 import org.dbs24.repository.EntityStatusesRepository;
 import lombok.Data;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import config.TestRepoConfig;
 import org.dbs24.entity.status.EntityStatusPK;
 

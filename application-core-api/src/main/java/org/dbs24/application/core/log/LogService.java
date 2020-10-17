@@ -7,7 +7,7 @@ package org.dbs24.application.core.log;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.Map;
@@ -31,12 +31,12 @@ public abstract class LogService {
     public static final String SERV_MAIL = "/4serviceMail";
     //==========================================================================
     //==========================================================================
-    private final static String msgMask = SysConst.EMPTY_STRING
+    private final static String msgMask = EMPTY_STRING
             //            .concat("//=========================================================\n")
             .concat(" %s");
 //            .concat("//=========================================================\n");
 
-    private final static String msgMask2 = SysConst.EMPTY_STRING
+    private final static String msgMask2 = EMPTY_STRING
             //.concat("//=========================================================\n")
             .concat(" %s: %s");
 //            .concat("//=========================================================\n");
@@ -183,7 +183,7 @@ public abstract class LogService {
     }
 
     private static String getModuleName(final String classUrl) {
-        String moduleName = SysConst.EMPTY_STRING;
+        String moduleName = EMPTY_STRING;
         int indexOff = classUrl.lastIndexOf("/WEB-INF");
         if (indexOff > 0) {
             String url = classUrl.substring(0, classUrl.lastIndexOf("/WEB-INF"));

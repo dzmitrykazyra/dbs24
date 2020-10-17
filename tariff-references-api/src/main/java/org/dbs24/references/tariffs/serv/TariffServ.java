@@ -18,7 +18,7 @@ import java.util.Map;
 import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 /**
  *
@@ -55,7 +55,7 @@ public class TariffServ extends AbstractRefRecord implements ReferenceRec {
         final Class annClazz = (Class<A>) TariffServId.class;
 
         // значения для справочника берутся из аннотаций классов
-        ReflectionFuncs.processPkgClassesCollection(SysConst.REFERENCE_PACKAGE, clazz, annClazz,
+        ReflectionFuncs.processPkgClassesCollection(REFERENCE_PACKAGE, clazz, annClazz,
                 (tkClass) -> {
 
                     final A classAnnotation = (A) AnnotationFuncs.getAnnotation(tkClass, annClazz);

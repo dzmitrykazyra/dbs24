@@ -9,7 +9,7 @@ import org.dbs24.entity.core.api.Action;
 import org.dbs24.entity.core.api.ActionEntity;
 import org.dbs24.entity.action.ActionCode;
 import org.dbs24.persistence.api.PersistenceSetup;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import javax.persistence.*;
@@ -38,7 +38,7 @@ public class AbstractPersistenceAction implements Action {
     private ActionEntity entity;
 
     @Column(name = "user_id", updatable = false)
-    private Long userId = SysConst.SERVICE_USER_ID;
+    private Long userId = SERVICE_USER_ID;
     //@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ManyToOne
     @JoinColumn(name = "action_code", referencedColumnName = "action_code", updatable = false)
@@ -46,7 +46,7 @@ public class AbstractPersistenceAction implements Action {
     @Column(name = "execute_date", updatable = false)
     private LocalDateTime executeDate = LocalDateTime.now();
     @Column(name = "action_address", updatable = false)
-    private String actionAddress = SysConst.getCurrentIp();
+    private String actionAddress = getCurrentIp();
     @Column(name = "err_msg")
     private String errMsg;
     @Column(name = "action_duration", updatable = false)

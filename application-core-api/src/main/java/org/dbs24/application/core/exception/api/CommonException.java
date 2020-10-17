@@ -5,7 +5,7 @@
  */
 package org.dbs24.application.core.exception.api;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 import java.sql.SQLException;
 
@@ -23,17 +23,17 @@ public class CommonException extends InternalAppException {
 
     // общая процедура обработки исключений
     public static void ProcessException(Exception e) throws InternalAppException {
-        CommonException.ProcessException(e, SysConst.EMPTY_STRING, SysConst.EMPTY_STRING);
+        CommonException.ProcessException(e, EMPTY_STRING, EMPTY_STRING);
     }
 
     // общая процедура обработки исключений
     public static void ProcessException(Exception e, final String errMsg) throws InternalAppException {
-        CommonException.ProcessException(e, SysConst.EMPTY_STRING, errMsg);
+        CommonException.ProcessException(e, EMPTY_STRING, errMsg);
     }
 
     // общая процедура обработки исключений
     public static void ProcessException(final SQLException e, final String errMsg) throws InternalAppException {
-        CommonException.ProcessException(e, SysConst.EMPTY_STRING, errMsg);
+        CommonException.ProcessException(e, EMPTY_STRING, errMsg);
     }
 
     // общая процедура обработки исключений

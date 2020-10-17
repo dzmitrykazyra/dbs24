@@ -5,7 +5,7 @@
  */
 package org.dbs24.service;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.core.api.CachedReferencesClasses;
 import org.dbs24.entity.core.api.EntityClassesPackages;
 import lombok.Data;
@@ -26,7 +26,7 @@ import org.dbs24.consts.WorldChessConst;
  */
 @Data
 @Service
-@EntityClassesPackages(pkgList = {SysConst.ENTITY_PACKAGE})
+@EntityClassesPackages(pkgList = {ENTITY_PACKAGE})
 @CachedReferencesClasses(classes = {Piece.class, MoveNotice.class, CheckerBoard.class, ChessEngine.class})
 @Import({WorldChessConfig.class})
 public class WorldChessActionExecutionService<P extends Player, G extends Game> extends ActionExecutionService {
@@ -45,7 +45,7 @@ public class WorldChessActionExecutionService<P extends Player, G extends Game> 
                 (abstractChessPlayer) -> {
 
                     //retailLoanContract.setCreation_date(LocalDateTime.now());
-                    abstractChessPlayer.setEntityStatus(EntityStatus.findEntityStatus(WorldChessConst.WCP_PLAYER, SysConst.ES_VALID));
+                    abstractChessPlayer.setEntityStatus(EntityStatus.findEntityStatus(WorldChessConst.WCP_PLAYER, ES_VALID));
                     abstractChessPlayer.setFirstName(firstName);
                     abstractChessPlayer.setLastName(lastName);
                     abstractChessPlayer.setTotalGames(totalGames);
@@ -74,7 +74,7 @@ public class WorldChessActionExecutionService<P extends Player, G extends Game> 
                 (abstractChessGame) -> {
 
                     //retailLoanContract.setCreation_date(LocalDateTime.now());
-                    abstractChessGame.setEntityStatus(EntityStatus.findEntityStatus(WorldChessConst.WCP_GAME, SysConst.ES_VALID));
+                    abstractChessGame.setEntityStatus(EntityStatus.findEntityStatus(WorldChessConst.WCP_GAME, ES_VALID));
                     abstractChessGame.setWhitePlayer((AbstractPlayer) chessPlayer1);
                     abstractChessGame.setBlackPlayer((AbstractPlayer) chessPlayer2);
                     abstractChessGame.setWhitePlayerPoints(whitePlayerPoints);

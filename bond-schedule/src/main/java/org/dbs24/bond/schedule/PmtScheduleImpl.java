@@ -23,7 +23,7 @@ import org.dbs24.entity.core.api.DefaultEntityStatus;
 import org.dbs24.entity.core.api.EntityKindId;
 import org.dbs24.entity.core.api.EntityTypeId;
 import org.dbs24.exception.api.CreateEntityException;
-import org.dbs24.sysconst.api.SysConst;
+import org.dbs24.api.SysConst;
 import org.dbs24.entity.core.api.EntityKindsRef;
 
 /**
@@ -116,7 +116,7 @@ public final class PmtScheduleImpl extends AbstractEntityImpl implements PmtSche
     }
 
     @Override
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
     public LocalDate getFrom_date() {
         return from_date;
@@ -127,7 +127,7 @@ public final class PmtScheduleImpl extends AbstractEntityImpl implements PmtSche
     }
 
     @Override
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
     public LocalDate getLast_date() {
         return last_date;

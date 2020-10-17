@@ -7,7 +7,7 @@ package org.dbs24.persistence.api;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import lombok.Data;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -25,12 +25,12 @@ public class PersistenceCollection<T extends PersistenceEntity> {
     public Collection<T> getPersistenceCollection() {
 
         synchronized (this.isValid) {
-            if (this.isValid.compareAndSet(SysConst.BOOLEAN_TRUE, SysConst.BOOLEAN_FALSE)) {
+            if (this.isValid.compareAndSet(BOOLEAN_TRUE, BOOLEAN_FALSE)) {
 
                 persistenceCollection.clear();
                 
 
-                this.isValid.set(SysConst.BOOLEAN_TRUE);
+                this.isValid.set(BOOLEAN_TRUE);
             }
         }
 

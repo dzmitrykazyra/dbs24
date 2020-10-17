@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.FilterComparator;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.persistence.api.PersistenceEntity;
 import java.util.Collection;
 import java.util.Map;
@@ -80,7 +80,7 @@ public abstract class AbstractRefRecord implements PersistenceEntity {
     //==========================================================================
     public static String getTranslatedValue(final LangStrValue langStrValue) {
 
-        return (SysConst.RUSSIAN_REF_LANG.get()
+        return (RUSSIAN_REF_LANG.get()
                 ? langStrValue.getRu() : langStrValue.getEn()); // 
     }
 }

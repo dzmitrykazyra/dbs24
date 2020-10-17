@@ -7,7 +7,7 @@ package org.dbs24.application.core.nullsafe;
 
 import org.dbs24.application.core.exception.api.InternalAppException;
 import org.dbs24.application.core.log.LogService;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -30,7 +30,7 @@ public class NullSafe { // implements NullSafe {
     private String exceptionMsg;
     private volatile Object result;
     private volatile Throwable throwable;
-    private Boolean logException = SysConst.BOOLEAN_TRUE; // признак необходимости записи в лог возникшего исключения
+    private Boolean logException = BOOLEAN_TRUE; // признак необходимости записи в лог возникшего исключения
     private Boolean exceptionFlag = Boolean.FALSE;
     protected volatile Object inputParam;
     private volatile CodeBlockResult cb4watcher;
@@ -54,7 +54,7 @@ public class NullSafe { // implements NullSafe {
     //--------------------------------------------------------------------------
     public NullSafe() {
         super();
-        this.setResult(SysConst.OBJECT_NULL);
+        this.setResult(OBJECT_NULL);
         //stopWatcher = StopWatcher.create();
     }
 
@@ -386,11 +386,11 @@ public class NullSafe { // implements NullSafe {
     //==========================================================================
     protected final void processThrowableException(final Throwable th) {
 
-        final String resultClass = String.format("result class: '%s' ", null != result ? result.getClass().getCanonicalName() : SysConst.NOT_DEFINED);
-        final String resultValue = String.format("result value: '%s' ", null != result ? NullSafe.getStringObjValue(this.result) : SysConst.NOT_DEFINED);
+        final String resultClass = String.format("result class: '%s' ", null != result ? result.getClass().getCanonicalName() : NOT_DEFINED);
+        final String resultValue = String.format("result value: '%s' ", null != result ? NullSafe.getStringObjValue(this.result) : NOT_DEFINED);
 
-        final String inputParamClass = String.format("inputParam class: '%s' ", null != inputParam ? inputParam.getClass().getCanonicalName() : SysConst.NOT_DEFINED);
-        final String inputParamValue = String.format("inputParam value: '%s' ", null != inputParam ? NullSafe.getStringObjValue(this.inputParam) : SysConst.NOT_DEFINED);
+        final String inputParamClass = String.format("inputParam class: '%s' ", null != inputParam ? inputParam.getClass().getCanonicalName() : NOT_DEFINED);
+        final String inputParamValue = String.format("inputParam value: '%s' ", null != inputParam ? NullSafe.getStringObjValue(this.inputParam) : NOT_DEFINED);
 
         final String thMsg = String.format("%s \n %s \n %s \n %s \n %s \n %s",
                 InternalAppException.getExtendedErrMessage(th),
@@ -512,10 +512,10 @@ public class NullSafe { // implements NullSafe {
         T t;
 
         try {
-            t = (T) SysConst.LONG_ZERO;
+            t = (T) LONG_ZERO;
         } catch (Throwable th) {
             try {
-                t = (T) SysConst.INTEGER_ZERO;
+                t = (T) INTEGER_ZERO;
             } catch (Throwable th1) {
                 t = (T) BigDecimal.ZERO;
             }
@@ -543,10 +543,10 @@ public class NullSafe { // implements NullSafe {
     public static <T> T getSafeDate(final String value) {
 
         return (T) NullSafe.create(value)
-                //                .setResult((Object) SysConst.LONG_ZERO)
+                //                .setResult((Object) LONG_ZERO)
                 .execute2result(() -> {
 
-                    return LocalDate.parse(value, SysConst.DEFAULT_DATE_FORMATTER);
+                    return LocalDate.parse(value, DEFAULT_DATE_FORMATTER);
                 })
                 .<T>getObject();
 
@@ -566,13 +566,13 @@ public class NullSafe { // implements NullSafe {
 //    }
     public <V> V getObject() {
 
-        V nsResult = (V) SysConst.OBJECT_NULL;
+        V nsResult = (V) OBJECT_NULL;
 
         try {
             nsResult = (V) this.result;
         } catch (Throwable th) {
             this.processThrowableException(th);
-            //nsResult = (V) SysConst.OBJECT_NULL;
+            //nsResult = (V) OBJECT_NULL;
         } finally {
             printWatcher();
         }
@@ -673,7 +673,7 @@ public class NullSafe { // implements NullSafe {
                 if (null != getStopWatcher()) {
 
                     final String details = NullSafe.create(this.cb4watcher)
-                            .whenIsNull(() -> SysConst.EMPTY_STRING)
+                            .whenIsNull(() -> EMPTY_STRING)
                             .safeExecute2result(this.cb4watcher)
                             .<String>getObject();
 
@@ -784,13 +784,13 @@ public class NullSafe { // implements NullSafe {
 
     public static String getStringObjValue(final Object object) {
 
-        return NullSafe.create(SysConst.STRING_NULL, NullSafe.DONT_THROW_EXCEPTION)
-                .whenIsNull(() -> ((LocalDate) object).format(SysConst.FORMAT_dd_MM_yyyy))
+        return NullSafe.create(STRING_NULL, NullSafe.DONT_THROW_EXCEPTION)
+                .whenIsNull(() -> ((LocalDate) object).format(FORMAT_dd_MM_yyyy))
                 .whenIsNull(() -> String.format("%s", object))
                 .whenIsNull(() -> String.format("%d", object))
                 .whenIsNull(() -> String.format("%f", object))
                 .whenIsNull(() -> String.format("%b", object))
-                .whenIsNull(() -> SysConst.NOT_DEFINED)
+                .whenIsNull(() -> NOT_DEFINED)
                 .<String>getObject();
     }
 

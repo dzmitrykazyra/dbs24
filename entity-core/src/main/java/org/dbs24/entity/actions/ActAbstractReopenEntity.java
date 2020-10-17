@@ -7,7 +7,7 @@ package org.dbs24.entity.actions;
 
 import org.dbs24.entity.core.AbstractAction;
 import org.dbs24.application.core.exception.api.InternalAppException;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.core.AbstractActionEntity;
 
 /**
@@ -19,14 +19,14 @@ public class ActAbstractReopenEntity<T extends AbstractActionEntity> extends Act
     //==========================================================================
 //    public static Boolean isAllowed(final AbstractActionEntity entity) {
 //
-//        return (AbstractAction.isAllowed(entity, SysConst.ES_CLOSED)
-//                || AbstractAction.isAllowed(entity, SysConst.ES_CANCELLED));
+//        return (AbstractAction.isAllowed(entity, ES_CLOSED)
+//                || AbstractAction.isAllowed(entity, ES_CANCELLED));
 //    }
 //
     //==========================================================================
     @Override
     protected void changeEntityStatus() {
-       // this.getEntity().updateEntityStatus(SysConst.ES_VALID);
+       // this.getEntity().updateEntityStatus(ES_VALID);
 
     }
 //
@@ -34,8 +34,8 @@ public class ActAbstractReopenEntity<T extends AbstractActionEntity> extends Act
 //    @Override
 //    protected void afterCommit() {
 //        // установили статус "действующая" на сделке
-//        this.getEntity().setEntityStatus(SysConst.ES_VALID);
-//        this.getEntity().setClose_date(SysConst.LOCALDATE_NULL);
+//        this.getEntity().setEntityStatus(ES_VALID);
+//        this.getEntity().setClose_date(LOCALDATE_NULL);
 //    }
     
 }

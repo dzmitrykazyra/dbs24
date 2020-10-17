@@ -39,7 +39,7 @@ public abstract class RestEasyRestServer<T extends RestProcessor> implements Res
 
     @Override
     public void start(final int socketAddr) {
-        //String errMsg = SysConst.EMPTY_STRING;
+        //String errMsg = EMPTY_STRING;
         //log.trace("try to start rest service");
 
         //Smt2ts.setRemoteCommand(remoteCommand);

@@ -8,7 +8,7 @@ package org.dbs24.application.core.service.funcs;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.dbs24.application.core.exception.api.InternalAppException;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -74,7 +74,7 @@ public final class ServiceFuncs {
 
         synchronized (collection) {
 
-            return NullSafe.create(SysConst.OBJECT_NULL, !ServiceFuncs.THROW_WHEN_NOT_FOUND)
+            return NullSafe.create(OBJECT_NULL, !ServiceFuncs.THROW_WHEN_NOT_FOUND)
                     .execute2result(() -> {
 
                         return collection
@@ -101,7 +101,7 @@ public final class ServiceFuncs {
 
         synchronized (collection) {
 
-            return (T) NullSafe.create(SysConst.OBJECT_NULL, !ServiceFuncs.SF_DONT_THROW_EXC)
+            return (T) NullSafe.create(OBJECT_NULL, !ServiceFuncs.SF_DONT_THROW_EXC)
                     .execute2result(() -> {
 
                         return collection
@@ -122,7 +122,7 @@ public final class ServiceFuncs {
     public static <T> Collection<T> filterCollection_Silent(final Collection<T> collection,
             final FilterComparator<T> filterComparator) {
 
-        return NullSafe.create(SysConst.OBJECT_NULL, !ServiceFuncs.THROW_WHEN_NOT_FOUND)
+        return NullSafe.create(OBJECT_NULL, !ServiceFuncs.THROW_WHEN_NOT_FOUND)
                 .execute2result(() -> {
 
                     return collection
@@ -171,7 +171,7 @@ public final class ServiceFuncs {
             final String exceptionMessage,
             final Boolean raiseExceptionWhenNotFound) {
         synchronized (collection) {
-            return NullSafe.create(SysConst.OBJECT_NULL, !raiseExceptionWhenNotFound)
+            return NullSafe.create(OBJECT_NULL, !raiseExceptionWhenNotFound)
                     .execute2result(() -> {
 
                         return collection
@@ -201,7 +201,7 @@ public final class ServiceFuncs {
             final String exceptionMessage,
             final Boolean raiseExceptionWhenNotFound) {
         synchronized (collection) {
-            return NullSafe.create(SysConst.OBJECT_NULL, !raiseExceptionWhenNotFound)
+            return NullSafe.create(OBJECT_NULL, !raiseExceptionWhenNotFound)
                     .execute2result(() -> {
 
                         return collection
@@ -232,7 +232,7 @@ public final class ServiceFuncs {
     public static <K, V> V getMapValue_silent(final Map<K, V> collection,
             final MapComparator<K, V> mapComparator) {
         synchronized (collection) {
-            return NullSafe.create(SysConst.OBJECT_NULL, !ServiceFuncs.SF_DONT_THROW_EXC)
+            return NullSafe.create(OBJECT_NULL, !ServiceFuncs.SF_DONT_THROW_EXC)
                     .execute2result(() -> {
 
                         return collection
@@ -255,7 +255,7 @@ public final class ServiceFuncs {
             final MapComparator<K, V> mapComparator) {
         synchronized (collection) {
 
-            return Optional.ofNullable(NullSafe.create(SysConst.OBJECT_NULL, !ServiceFuncs.SF_DONT_THROW_EXC)
+            return Optional.ofNullable(NullSafe.create(OBJECT_NULL, !ServiceFuncs.SF_DONT_THROW_EXC)
                     .execute2result(() -> {
 
                         return collection
@@ -301,7 +301,7 @@ public final class ServiceFuncs {
 
         synchronized (collection) {
 
-            return NullSafe.create(SysConst.OBJECT_NULL)
+            return NullSafe.create(OBJECT_NULL)
                     .execute2result(() -> {
 
                         return collection
@@ -324,7 +324,7 @@ public final class ServiceFuncs {
 
         synchronized (collection) {
 
-            return NullSafe.create(SysConst.OBJECT_NULL, !raiseExceptionWhenNotFound)
+            return NullSafe.create(OBJECT_NULL, !raiseExceptionWhenNotFound)
                     .execute2result(() -> {
 
                         return collection
@@ -375,19 +375,19 @@ public final class ServiceFuncs {
 
     //==========================================================================
     public static <T> T getPropertySafe(final PropertyGetter propertyGetter) {
-        return (T) ServiceFuncs.<T>getPropertySafe(propertyGetter, (T) SysConst.OBJECT_NULL);
+        return (T) ServiceFuncs.<T>getPropertySafe(propertyGetter, (T) OBJECT_NULL);
     }
 
     //==========================================================================    
     public static String getStringObjValue(final Object object) {
 
-        return NullSafe.create(SysConst.STRING_NULL, NullSafe.DONT_THROW_EXCEPTION)
-                .whenIsNull(() -> ((LocalDate) object).format(SysConst.FORMAT_dd_MM_yyyy))
+        return NullSafe.create(STRING_NULL, NullSafe.DONT_THROW_EXCEPTION)
+                .whenIsNull(() -> ((LocalDate) object).format(FORMAT_dd_MM_yyyy))
                 .whenIsNull(() -> String.format("%s", object))
                 .whenIsNull(() -> String.format("%d", object))
                 .whenIsNull(() -> String.format("%f", object))
                 .whenIsNull(() -> String.format("%b", object))
-                .whenIsNull(() -> SysConst.NOT_DEFINED)
+                .whenIsNull(() -> NOT_DEFINED)
                 .<String>getObject();
     }
 

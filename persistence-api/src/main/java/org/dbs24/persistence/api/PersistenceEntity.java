@@ -6,7 +6,7 @@
 package org.dbs24.persistence.api;
 
 import org.dbs24.application.core.log.LogService;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import java.io.Serializable;
 
 /**
@@ -16,6 +16,6 @@ import java.io.Serializable;
 public interface PersistenceEntity extends Serializable, Cloneable {
 
     public default Boolean justCreated() {
-        return SysConst.BOOLEAN_FALSE;
+        return BOOLEAN_FALSE;
     }
 }

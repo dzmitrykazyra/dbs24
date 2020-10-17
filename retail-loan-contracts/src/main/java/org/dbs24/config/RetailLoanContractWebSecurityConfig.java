@@ -5,8 +5,8 @@
  */
 package org.dbs24.config;
 
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.rest.RetailLoanContractRest;
-//import org.dbs24.security.jwt.*;
 import org.springframework.context.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -27,7 +27,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
  */
 @Configuration
 @ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE})
-//@EntityScan(basePackages = {SysConst.ENTITY_PACKAGE, SysConst.REFERENCE_PACKAGE})
+//@EntityScan(basePackages = {ENTITY_PACKAGE, REFERENCE_PACKAGE})
 @PropertySource(APP_PROPERTIES)
 //@EnableWebFlux
 @EnableWebFluxSecurity

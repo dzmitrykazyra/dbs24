@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.dbs24.spring.boot.api.AbstractSpringBootApplication;
 //import org.springframework.boot.actuate.autoconfigure.security.ManagementWebSecurityAutoConfiguration;
@@ -22,8 +22,8 @@ import org.dbs24.spring.boot.api.AbstractSpringBootApplication;
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 //@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class})
-@PropertySource(SysConst.APP_PROPERTIES)
-@EnableJpaRepositories(basePackages = SysConst.REPOSITORY_PACKAGE)
+@PropertySource(APP_PROPERTIES)
+@EnableJpaRepositories(basePackages = REPOSITORY_PACKAGE)
 public class TestSpringBootApp extends SpringBoot4Test {
 
 //    public static void main(String[] args) {

@@ -14,7 +14,7 @@ import org.dbs24.entity.core.api.EntityClassesPackages;
 import org.dbs24.entity.status.EntityStatus;
 import org.dbs24.entity.status.EntityStatusPK;
 import java.time.LocalDateTime;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 /**
  *
@@ -22,7 +22,7 @@ import org.dbs24.application.core.sysconst.SysConst;
  */
 @Data
 @Service
-@EntityClassesPackages(pkgList = {SysConst.SECURITY_PACKAGE})
+@EntityClassesPackages(pkgList = {SECURITY_PACKAGE})
 public class SecurityActionsService extends ActionExecutionService {
 
     public ApplicationUser createUser(final String login,

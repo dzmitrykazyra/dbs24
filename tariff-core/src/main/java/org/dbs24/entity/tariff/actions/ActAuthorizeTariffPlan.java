@@ -12,7 +12,7 @@ import org.dbs24.entity.core.api.EntityConst;
 import org.dbs24.entity.core.api.PreViewDialog;
 import org.dbs24.entity.core.api.ViewAction;
 import org.dbs24.references.tariffs.api.TariffConst;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import javax.persistence.Entity;
@@ -43,10 +43,10 @@ public class ActAuthorizeTariffPlan extends AbstractAction<AbstractTariffPlan> {
 //
 //        return (NullSafe.create()
 //                .execute2result(() -> {
-//                    return !entity.getIsAuthorized() && (entity.getEntityStatus().getEntity_status_id().equals(SysConst.ES_VALID));
+//                    return !entity.getIsAuthorized() && (entity.getEntityStatus().getEntity_status_id().equals(ES_VALID));
 //                }))
 //                .catchException2result((e) -> {
-//                    return SysConst.IS_NOT_ALLOWED_ACTION;
+//                    return IS_NOT_ALLOWED_ACTION;
 //                })
 //                .<Boolean>getObject();
 //

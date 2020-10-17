@@ -20,7 +20,7 @@ import org.dbs24.references.tariffs.api.TariffConst;
 import org.dbs24.references.tariffs.kind.TariffKind;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.entity.core.AbstractActionEntity;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.tariff.api.TariffKindProcessor;
 //import org.dbs24.tariffs.references.TariffReferencesService;
 import org.dbs24.entity.core.api.ActionClassesPackages;
@@ -43,20 +43,20 @@ import lombok.Data;
         entiy_status = {
             @EntityStatusId(
                     entity_type_id = TariffConst.ENTITY_TARIFF_PLAN,
-                    entity_status_id = SysConst.ES_VALID,
+                    entity_status_id = ES_VALID,
                     entity_status_name = "Действующий тарифный план")
             ,
             @EntityStatusId(
                     entity_type_id = TariffConst.ENTITY_TARIFF_PLAN,
-                    entity_status_id = SysConst.ES_CLOSED,
+                    entity_status_id = ES_CLOSED,
                     entity_status_name = "Закрытый тарифный план")
             ,
             @EntityStatusId(
                     entity_type_id = TariffConst.ENTITY_TARIFF_PLAN,
-                    entity_status_id = SysConst.ES_CANCELLED,
+                    entity_status_id = ES_CANCELLED,
                     entity_status_name = "Аннулированный тарифный план")
         })
-@DefaultEntityStatus(entity_status = SysConst.ES_VALID)
+@DefaultEntityStatus(entity_status = ES_VALID)
 @ActionClassesPackages(pkgList = {"org.dbs24.entity.tariff.actions"})
 public class AbstractTariffPlan extends AbstractActionEntity
         implements TariffPlan {
@@ -65,11 +65,11 @@ public class AbstractTariffPlan extends AbstractActionEntity
     private String tariffPlanName;
     @Column(name = "tariff_plan_code")
     private String tariffPlanCode;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
     @Column(name = "actual_date")
     private LocalDate actualDate;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
     @Column(name = "finish_date")
     private LocalDate finishDate;

@@ -20,7 +20,7 @@ import org.dbs24.entity.document.DocAttrValue;
 import org.dbs24.lias.opers.napi.LiasFinanceOper;
 import org.dbs24.lias.opers.attrs.DOC_TEMPLATE_ID;
 import org.dbs24.application.core.locale.NLS;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.lias.opers.api.LiasOpersConst;
 import org.dbs24.references.documents.docattr.DocAttr;
 import org.dbs24.references.documents.docstatus.DocStatus;
@@ -74,7 +74,7 @@ public class LiasDocumentBuilders extends AbstractApplicationBean {
         document.setDocTemplate(DocTemplate.findDocTemplate(liasFinanceOper.<Integer>attrDef(LiasOpersConst.DOC_TEMPLATE_ID_CLASS, DocumentsConst.DTR_BASE)));
         document.setDocServerDate(LocalDateTime.now());
         document.setDocDate(liasFinanceOper.<LocalDate>attrDef(LiasOpersConst.LIAS_DATE_CLASS, LocalDate.now()));
-        document.setUserId(SysConst.SERVICE_USER_ID);
+        document.setUserId(SERVICE_USER_ID);
         document.setDocAttrs(dav);
 
         docBuilder.buldDocument(document);
@@ -120,7 +120,7 @@ public class LiasDocumentBuilders extends AbstractApplicationBean {
                                                         dav.setDocAttr(DocAttr.findDocAttr(ai));
                                                         dav.setDocAttrValue((String) NLS.getObject2String(
                                                                 liasFinanceOper.attrDef(field.getValue(),
-                                                                        SysConst.NOT_DEFINED)));
+                                                                        NOT_DEFINED)));
                                                         dav.setDocument(document);
                                                         dac.add(dav);
                                                     });

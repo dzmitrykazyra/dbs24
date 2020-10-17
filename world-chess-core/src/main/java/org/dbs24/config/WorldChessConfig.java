@@ -5,7 +5,7 @@
  */
 package org.dbs24.config;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.spring.config.MainApplicationConfig;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,9 +17,9 @@ import org.springframework.context.annotation.PropertySource;
  */
 
 @Configuration
-@ComponentScan(basePackages = {SysConst.SERVICE_PACKAGE, SysConst.RESTFUL_PACKAGE})
-@EntityScan(basePackages = {SysConst.ENTITY_PACKAGE, SysConst.REFERENCE_PACKAGE})
-@PropertySource(SysConst.APP_PROPERTIES)
+@ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE})
+@EntityScan(basePackages = {ENTITY_PACKAGE, REFERENCE_PACKAGE})
+@PropertySource(APP_PROPERTIES)
 public class WorldChessConfig extends MainApplicationConfig {
     
 }

@@ -14,7 +14,7 @@ import org.dbs24.application.core.service.funcs.AnnotationFuncs;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.application.core.service.funcs.ReflectionFuncs;
 import java.lang.reflect.Method;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.application.core.nullsafe.NullSafe;
 
 /**
@@ -119,13 +119,13 @@ public abstract class AbstractReferencesList<T extends AbstractReference> extend
                     .stream()
                     .sorted((refClass1, refClass2) -> { // достаем признак порядкового номера из аннотации
 
-                        final Integer order_num1 = (NullSafe.create(SysConst.OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
+                        final Integer order_num1 = (NullSafe.create(OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
                                 .execute2result(() -> {
                                     return ((ReferenceSyncOrder) AnnotationFuncs.getAnnotation(refClass1, ReferenceSyncOrder.class
                                     )).order_num();
                                 }, Integer.valueOf("10000"))).<Integer>getObject();
 
-                        final Integer order_num2 = (NullSafe.create(SysConst.OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
+                        final Integer order_num2 = (NullSafe.create(OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
                                 .execute2result(() -> {
                                     return ((ReferenceSyncOrder) AnnotationFuncs.getAnnotation(refClass2, ReferenceSyncOrder.class
                                     )).order_num();

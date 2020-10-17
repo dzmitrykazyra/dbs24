@@ -5,7 +5,7 @@
  */
 package org.dbs24.test.api;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 /**
  *
@@ -29,7 +29,7 @@ public class TestResult {
     public void addLogMsg(final String logMsg) {
         //this.logMsg = (String) NullSafe.nvl(this.logMsg, "");
         if (null == this.logMsg) {
-            this.logMsg = SysConst.EMPTY_STRING;
+            this.logMsg = EMPTY_STRING;
         }
         this.logMsg = this.logMsg.concat(logMsg);
     }

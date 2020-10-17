@@ -22,7 +22,7 @@ import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 /**
  *
@@ -59,7 +59,7 @@ public class TariffKind extends AbstractRefRecord implements ReferenceRec {
         final Class<A> annClazz = (Class<A>) TariffKindId.class;
 
         // значения для справочника берутся из аннотаций классов
-        ReflectionFuncs.processPkgClassesCollection(SysConst.TARIFF_PACKAGE, clazz, annClazz,
+        ReflectionFuncs.processPkgClassesCollection(TARIFF_PACKAGE, clazz, annClazz,
                 (tkClass) -> {
 
                     final A ClassAnnotation = AnnotationFuncs.<A>getAnnotation(tkClass, annClazz);
@@ -91,7 +91,7 @@ public class TariffKind extends AbstractRefRecord implements ReferenceRec {
 //            final Class<A> annClazz = (Class<A>) TariffKindId.class;
 //
 //            // значения для справочника берутся из аннотаций классов
-//            ReflectionFuncs.processPkgClassesCollection(SysConst.TARIFF_PACKAGE, clazz, annClazz,
+//            ReflectionFuncs.processPkgClassesCollection(TARIFF_PACKAGE, clazz, annClazz,
 //                    (tkClass) -> {
 //
 //                        final A classAnnotation = AnnotationFuncs.<A>getAnnotation(tkClass, annClazz);

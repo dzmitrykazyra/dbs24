@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 import org.dbs24.entity.debts.LiasDebtRest;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.tariff.TariffRate;
 import org.dbs24.entity.tariff.TariffRecordAbstract;
 import org.dbs24.references.tariffs.kind.TariffCalcSumExtended;
@@ -101,7 +101,7 @@ public final class TariffRestBox extends TariffBoxAbstract {
                 accrualSum = null;
             }
 
-            this.addTariffSum(ld4add, accrualbasis, accrualRate, accrualSum, SysConst.BIGDECIMAL_NULL);
+            this.addTariffSum(ld4add, accrualbasis, accrualRate, accrualSum, BIGDECIMAL_NULL);
             ld1 = ld1.plusDays(1);
         }
     }

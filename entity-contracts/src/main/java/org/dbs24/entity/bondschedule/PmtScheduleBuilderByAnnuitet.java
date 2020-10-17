@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.kind.EntityKind;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -58,7 +58,7 @@ public class PmtScheduleBuilderByAnnuitet extends PmtScheduleBuilder {
             pmtScheduleLine.setFromDate(fromLd);
             pmtScheduleLine.setToDate(cntLd.minusDays(1));
             pmtScheduleLine.setAppearDate(cntLd);
-            pmtScheduleLine.setPaySum(SysConst.BIGDECIMAL_ZERO);
+            pmtScheduleLine.setPaySum(BIGDECIMAL_ZERO);
             pmtScheduleLine.setCalcDate(LocalDate.now());
 
             // добавили строку графика

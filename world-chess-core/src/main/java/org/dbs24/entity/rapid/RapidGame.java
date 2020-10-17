@@ -6,7 +6,7 @@
 package org.dbs24.entity.rapid;
 
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.core.AbstractActionEntity;
 import javax.persistence.*;
 import lombok.Data;
@@ -42,21 +42,21 @@ import org.dbs24.entity.GameAction;
         entiy_status = {
             @EntityStatusId(
                     entity_type_id = WorldChessConst.WCP_GAME,
-                    entity_status_id = SysConst.ES_VALID,
+                    entity_status_id = ES_VALID,
                     entity_status_name = "Действующая партия")
             ,
             @EntityStatusId(
                     entity_type_id = WorldChessConst.WCP_GAME,
-                    entity_status_id = SysConst.ES_CLOSED,
+                    entity_status_id = ES_CLOSED,
                     entity_status_name = "Завершенная партия")
             ,
             @EntityStatusId(
                     entity_type_id = WorldChessConst.WCP_GAME,
-                    entity_status_id = SysConst.ES_CANCELLED,
+                    entity_status_id = ES_CANCELLED,
                     entity_status_name = "Отложенная партия")
         })
-@DefaultEntityStatus(entity_status = SysConst.ES_VALID)
-@ActionClassesPackages(pkgList = {SysConst.ACTIONS_PACKAGE})
+@DefaultEntityStatus(entity_status = ES_VALID)
+@ActionClassesPackages(pkgList = {ACTIONS_PACKAGE})
 public class RapidGame extends AbstractGame {
 
 //    @ManyToOne

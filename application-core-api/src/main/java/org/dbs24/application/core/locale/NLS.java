@@ -9,7 +9,7 @@ package org.dbs24.application.core.locale;
 import org.dbs24.application.core.api.ObjectRoot;
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.time.*;
@@ -51,33 +51,33 @@ public final class NLS extends ObjectRoot {
     //==========================================================================
     public static final String getStringDate(final LocalDate ld) {
 
-        return (NullSafe.isNull(ld)) ? SysConst.EMPTY_STRING : ld.format(NLS.FORMAT_dd_MM_yyyy);
+        return (NullSafe.isNull(ld)) ? EMPTY_STRING : ld.format(NLS.FORMAT_dd_MM_yyyy);
 
     }
 
     public static final String getStringTime(LocalTime lt) {
 
-        return (NullSafe.isNull(lt)) ? SysConst.EMPTY_STRING : lt.format(NLS.FORMAT_HH_mm_ss);
+        return (NullSafe.isNull(lt)) ? EMPTY_STRING : lt.format(NLS.FORMAT_HH_mm_ss);
 
     }
 
     public static final String getStringTimeMS(LocalTime lt) {
 
-        return (NullSafe.isNull(lt)) ? SysConst.EMPTY_STRING : lt.format(NLS.FORMAT_HH_mm_ss_SSS);
+        return (NullSafe.isNull(lt)) ? EMPTY_STRING : lt.format(NLS.FORMAT_HH_mm_ss_SSS);
 
     }
 
     //==========================================================================
     public static final String getStringDateTime(final LocalDateTime ldt) {
 
-        return (NullSafe.isNull(ldt)) ? SysConst.EMPTY_STRING : ldt.format(NLS.FORMAT_dd_MM_yyyy__HH_mm_ss);
+        return (NullSafe.isNull(ldt)) ? EMPTY_STRING : ldt.format(NLS.FORMAT_dd_MM_yyyy__HH_mm_ss);
 
     }
 
     //==========================================================================
     public static final String getStringDateTimeMS(final LocalDateTime ldt) {
 
-        return (NullSafe.isNull(ldt)) ? SysConst.EMPTY_STRING : ldt.format(NLS.FORMAT_dd_MM_yyyy__HH_mm_ss_SSS);
+        return (NullSafe.isNull(ldt)) ? EMPTY_STRING : ldt.format(NLS.FORMAT_dd_MM_yyyy__HH_mm_ss_SSS);
 
     }
 
@@ -100,9 +100,9 @@ public final class NLS extends ObjectRoot {
     public static final String getObject2String(final Object value) {
 
         return NullSafe.create(value)
-                //                .setResult((Object) SysConst.LONG_ZERO)
+                //                .setResult((Object) LONG_ZERO)
                 .whenIsNull(() -> {
-                    return SysConst.NOT_DEFINED;
+                    return NOT_DEFINED;
                 })
                 .safeExecute2result((ns_value) -> {
                     final String stringValue;

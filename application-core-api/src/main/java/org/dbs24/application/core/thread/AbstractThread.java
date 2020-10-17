@@ -6,7 +6,7 @@
 package org.dbs24.application.core.thread;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 /**
  *
@@ -73,7 +73,7 @@ public abstract class AbstractThread extends Thread {
     }
 
     protected Boolean canRun() {
-        Boolean canRun = SysConst.BOOLEAN_TRUE;
+        Boolean canRun = BOOLEAN_TRUE;
 
         if (NullSafe.notNull(dependencyThread)) {
             canRun = dependencyThread.getIsValid();

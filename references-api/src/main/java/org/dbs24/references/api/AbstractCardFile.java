@@ -19,7 +19,7 @@ public abstract class AbstractCardFile<T extends ReferenceRec> {
 
     public AbstractCardFile() {
         super();
-        //loadReference(SysConst.BOOLEAN_TRUE, 0);
+        //loadReference(BOOLEAN_TRUE, 0);
     }
 
     //==========================================================================

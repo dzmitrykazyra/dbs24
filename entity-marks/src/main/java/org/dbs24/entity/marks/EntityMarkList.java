@@ -16,7 +16,7 @@ import org.dbs24.entity.marks.api.EntityMark;
 import org.dbs24.application.core.log.LogService;
 //import org.dbs24.services.api.ServiceLocator;
 //import org.dbs24.services.FS24JdbcService;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.application.core.nullsafe.NullSafe;
 
 /**
@@ -217,7 +217,7 @@ public final class EntityMarkList {
     //==========================================================================
     public Integer getMarkValue(final Integer mark_id, final Integer default_mark_value_id) {
 
-        return NullSafe.create(default_mark_value_id, SysConst.IS_SILENT_EXECUTE)
+        return NullSafe.create(default_mark_value_id, IS_SILENT_EXECUTE)
                 .inititialize(() -> {
                     this.entityMarks = ServiceFuncs.<EntityMark>getOrCreateCollection(this.entityMarks);
                 })

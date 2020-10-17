@@ -22,7 +22,7 @@ import org.dbs24.entity.bondschedule.PmtSchedule;
 import org.dbs24.references.bond.schedule.api.PmtScheduleAlg;
 import org.dbs24.references.bond.schedule.api.PmtScheduleTerm;
 import org.dbs24.references.tariffs.serv.TariffServ;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 /**
  *
@@ -45,7 +45,7 @@ public class ContractSchedulesBuilders extends AbstractApplicationBean {
         final Class<PmtScheduleCalcAlgId> annClazz = PmtScheduleCalcAlgId.class;
 
         // значения для справочника берутся из аннотаций классов
-        ReflectionFuncs.processPkgClassesCollection(SysConst.ENTITY_PACKAGE, clazz, annClazz,
+        ReflectionFuncs.processPkgClassesCollection(ENTITY_PACKAGE, clazz, annClazz,
                 entClazz -> scheduleBuilders.add(entClazz));
 
         if (scheduleBuilders.isEmpty()) {

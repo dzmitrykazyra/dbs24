@@ -9,7 +9,7 @@ import org.dbs24.spring.unit.SpringBoot4Test;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 /**
@@ -18,8 +18,8 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 //@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class})
-@PropertySource(SysConst.APP_PROPERTIES)
-@EnableJpaRepositories(basePackages = SysConst.REPOSITORY_PACKAGE)
+@PropertySource(APP_PROPERTIES)
+@EnableJpaRepositories(basePackages = REPOSITORY_PACKAGE)
 public class TestSpringBootApp extends SpringBoot4Test {
     
 }

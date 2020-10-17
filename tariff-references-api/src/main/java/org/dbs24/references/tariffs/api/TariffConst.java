@@ -5,7 +5,7 @@
  */
 package org.dbs24.references.tariffs.api;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.references.tariffs.kind.TariffKindAbstract;
 import org.dbs24.references.tariffs.kind.TariffKindId;
 import org.dbs24.references.tariffs.serv.TariffServId;
@@ -16,7 +16,7 @@ import org.dbs24.references.tariffs.serv.TariffServId;
  */
 public class TariffConst {
     
-    //public static Boolean tariffDebug = SysConst.BOOLEAN_FALSE;
+    //public static Boolean tariffDebug = BOOLEAN_FALSE;
     
 
     public static final Class<TariffServId> TARIFF_SERVID_CLASS = TariffServId.class;

@@ -33,7 +33,7 @@ public class LiasFinanceOper {
 //        final Object value = attrValue.value();
 //        final String logRecord = String.format("attrValue: %s = (%s) %s",
 //                attrValue.getClass().getInterfaces()[0].getSimpleName(),
-//                NullSafe.notNull(value) ? value.getClass().getSimpleName() : SysConst.UNKNOWN,
+//                NullSafe.notNull(value) ? value.getClass().getSimpleName() : UNKNOWN,
 //                value);
 //
 //        LogService.LogInfo(attrValue.getClass(), () -> logRecord);

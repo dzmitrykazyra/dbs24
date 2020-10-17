@@ -12,7 +12,7 @@ import org.dbs24.entity.core.api.DefaultEntityStatus;
 import org.dbs24.entity.core.api.EntityTypeId;
 //import org.dbs24.exception.api.CreateEntityException;
 import org.dbs24.fields.desc.FieldDescriptionImpl;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import java.util.Collection;
 
 /**
@@ -20,7 +20,7 @@ import java.util.Collection;
  * @author kazyra_d
  */
 @IsSingleInstance
-@DefaultEntityStatus(entity_status = SysConst.ES_VALID)
+@DefaultEntityStatus(entity_status = ES_VALID)
 @EntityTypeId(entity_type_id = 500, entity_type_name = "Сервисная энтити")
 //@ActionClassesCollectionLink(collection_service = ServiceActionClassesService.class)
 public class ServiceEntity { // extends AbstractActionEntity {
@@ -61,7 +61,7 @@ public class ServiceEntity { // extends AbstractActionEntity {
 
     //==========================================================================    
 //    public Long getUserId() {
-//        if (userId.equals(SysConst.LONG_ZERO)) {
+//        if (userId.equals(LONG_ZERO)) {
 //            this.userId = AbstractActionEntity.getCurrentUserId();
 //        }
 //        return userId;

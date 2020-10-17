@@ -3,7 +3,7 @@ package org.dbs24.entity.core;
 import org.dbs24.application.core.exception.api.InternalAppException;
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.entity.core.api.ActionEntity;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.AnnotationFuncs;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
@@ -35,7 +35,7 @@ public abstract class AbstractAction<T extends ActionEntity>
         extends AbstractPersistenceAction {
 
     @Value("${entity.core.debug:false}")
-    private Boolean entityCoreDebug = SysConst.BOOLEAN_FALSE;
+    private Boolean entityCoreDebug = BOOLEAN_FALSE;
     
     @Autowired
     private PersistanceEntityManager persistanceEntityManager;    
@@ -237,7 +237,7 @@ public abstract class AbstractAction<T extends ActionEntity>
     //==========================================================================
     public void refreshModifiedEntities() {
 
-        Boolean needRefresh = SysConst.BOOLEAN_FALSE;
+        Boolean needRefresh = BOOLEAN_FALSE;
 
         if (AnnotationFuncs.isAnnotated(this.getClass(), RefreshEntity.class)) {
             needRefresh = AnnotationFuncs.<RefreshEntity>getAnnotation(this.getClass(), RefreshEntity.class).refresh();
@@ -311,7 +311,7 @@ public abstract class AbstractAction<T extends ActionEntity>
 
     protected boolean isValid() {
 
-        return SysConst.BOOLEAN_TRUE;
+        return BOOLEAN_TRUE;
     }
 
     public void initialize() {
@@ -338,7 +338,7 @@ public abstract class AbstractAction<T extends ActionEntity>
 
         return (NullSafe.create()
                 .execute2result(() -> (entity.getEntityStatus().getEntityStatusId().equals(allowedStatus))))
-                .catchException2result((e) -> SysConst.IS_NOT_ALLOWED_ACTION)
+                .catchException2result((e) -> IS_NOT_ALLOWED_ACTION)
                 .<Boolean>getObject();
 
 //        return (entity.getEntityStatus().getEntity_status_id().equals(allowedStatus));

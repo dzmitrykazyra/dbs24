@@ -10,7 +10,7 @@ import org.dbs24.entity.contracts.AbstractEntityServiceContract;
 import org.dbs24.entity.document.Document;
 import java.util.Collection;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import lombok.Data;
 
@@ -93,7 +93,7 @@ public abstract class AbstractContractDocumentAction<T extends AbstractEntitySer
 //                                                    .find(AbstractJdbcService.class)
 //                                                    .createCallQuery("{:RES = call documents_insertorupdate_document(:ID, :P_ID, :DTID, :DS, :ENT, :DD, :DCD, :UID)}")
 //                                                    .setParamByNameAsOutput("RES", Long.MIN_VALUE)
-//                                                    .setParamByName("ID", SysConst.LONG_ZERO)
+//                                                    .setParamByName("ID", LONG_ZERO)
 //                                                    .setParamByName("P_ID", this.getParentDocId())
 //                                                    .setParamByName("DTID", docs.getDoc_template().getDoc_template_id())
 //                                                    .setParamByName("DS", docs.getDoc_status().getDoc_status_id())

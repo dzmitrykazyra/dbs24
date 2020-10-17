@@ -13,7 +13,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.dbs24.service.WorldChessActionExecutionService;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.springframework.context.annotation.Bean;
 
 /**
@@ -21,10 +21,10 @@ import org.springframework.context.annotation.Bean;
  * @author Козыро Дмитрий
  */
 @Configuration
-@ComponentScan(basePackages = {SysConst.SERVICE_PACKAGE, SysConst.RESTFUL_PACKAGE})
-@EntityScan(basePackages = {SysConst.ENTITY_PACKAGE, SysConst.REFERENCE_PACKAGE})
-@PropertySource(SysConst.APP_PROPERTIES)
-//@EnableJpaRepositories(basePackages = SysConst.REPOSITORY_PACKAGE)
+@ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE})
+@EntityScan(basePackages = {ENTITY_PACKAGE, REFERENCE_PACKAGE})
+@PropertySource(APP_PROPERTIES)
+//@EnableJpaRepositories(basePackages = REPOSITORY_PACKAGE)
 @Import({WorldChessActionExecutionService.class})
 public class WorlChessTestConfig extends WorldChessConfig {
 

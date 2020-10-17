@@ -38,7 +38,7 @@ import org.dbs24.application.core.log.LogService;
 import org.dbs24.rest.exception.InvalidResponseException;
 import org.dbs24.rest.exception.FileUploadException;
 import java.time.LocalDateTime;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.application.core.nullsafe.StopWatcher;
 import java.util.stream.Collectors;
 import java.util.Timer;
@@ -57,7 +57,7 @@ import lombok.Data;
 public abstract class RestProcessor {// extends ObjectRoot {
 
     @Value("${reactive.rest.debug:false}")
-    private Boolean restDebug = SysConst.BOOLEAN_FALSE;
+    private Boolean restDebug = BOOLEAN_FALSE;
 
     // коллекция подтвердающих сообщений
     protected final static Collection<ReqInfo> REQUESTS_LIST = ServiceFuncs.<ReqInfo>createCollection();
@@ -72,13 +72,13 @@ public abstract class RestProcessor {// extends ObjectRoot {
     public RestProcessor() {
         super();
 
-//        this.LOAD_FROM_DB = LogService.getWarPackageName().endsWith(SysConst.LOG_PKG_NAME);
+//        this.LOAD_FROM_DB = LogService.getWarPackageName().endsWith(LOG_PKG_NAME);
 //        LogService.LogInfo(this.getClass(), () -> String.format("USE_DB_SOURCE = %b, hc = %d, Class = %s",
 //                this.LOAD_FROM_DB,
 //                this.hashCode(),
 //                this.getClass().getCanonicalName()));
 //
-        if (!LogService.getWarPackageName().endsWith(SysConst.LOG_PKG_NAME)) {
+        if (!LogService.getWarPackageName().endsWith(LOG_PKG_NAME)) {
 
             // сервис для подтверждения rest-запросов
             final long timerDelay = 2000;
@@ -152,7 +152,7 @@ public abstract class RestProcessor {// extends ObjectRoot {
             final String serverConnectTimeout,
             final Boolean useGZIP) {
 
-        //String targetServer = SysConst.EMPTY_STRING;
+        //String targetServer = EMPTY_STRING;
         String dataTransferFormat = HttpConst.APP_JSON;
 
 //        if (NullSafe.isNull(serverReadTimeout)) {
@@ -194,7 +194,7 @@ public abstract class RestProcessor {// extends ObjectRoot {
     //==========================================================================
     protected Invocation.Builder buildMultiPartRequest(final String targetServer, final String path) {
 
-        //String targetServer = SysConst.EMPTY_STRING;
+        //String targetServer = EMPTY_STRING;
         final String dataTransferFormat = HttpConst.APP_JSON;
         final String acceptEncoding = HttpConst.GZIP_ACCEPT_ENCODING;
 
@@ -503,7 +503,7 @@ public abstract class RestProcessor {// extends ObjectRoot {
 
     public Response uploadFile(MultipartFormDataInput input, final String uploadDirectory) {
 
-        String fileName = SysConst.EMPTY_STRING;
+        String fileName = EMPTY_STRING;
 
         Map<String, List<InputPart>> formParts = input.getFormDataMap();
 
@@ -552,7 +552,7 @@ public abstract class RestProcessor {// extends ObjectRoot {
             if ((name.trim().startsWith("filename"))) {
 
                 String[] tmp = name.split("=");
-                String fileName = tmp[1].trim().replaceAll("\"", SysConst.EMPTY_STRING);
+                String fileName = tmp[1].trim().replaceAll("\"", EMPTY_STRING);
 
                 return fileName;
             }
@@ -688,7 +688,7 @@ public abstract class RestProcessor {// extends ObjectRoot {
 //                                return ServiceLocator
 //                                        .find(AbstractJdbcService.class)
 //                                        .createCallQuery("{:RES = call vcs_get_reg_param_value_ext(:P)}")
-//                                        .setParamByNameAsOutput("RES", SysConst.EMPTY_STRING)
+//                                        .setParamByNameAsOutput("RES", EMPTY_STRING)
 //                                        .setParamByName("P", paramName)
 //                                        .<String>getSingleFieldValue();
 //
@@ -799,8 +799,8 @@ public abstract class RestProcessor {// extends ObjectRoot {
                                                 response.getStatusInfo().getReasonPhrase()))
                                         .setReqDuration((int) stopWatcher.getExecutionTime())
                                         .setReqHashCode(hashCode)
-                                        .setIsConfirmed(SysConst.BOOLEAN_TRUE)
-                                        .setReqIp(SysConst.APPLICATION_ADDRESS)
+                                        .setIsConfirmed(BOOLEAN_TRUE)
+                                        .setReqIp(APPLICATION_ADDRESS)
                                 );
 //                            LogService.LogInfo(this.getClass(), String.format("reqList count = %s",
 //                                    REQ_LIST.size()));

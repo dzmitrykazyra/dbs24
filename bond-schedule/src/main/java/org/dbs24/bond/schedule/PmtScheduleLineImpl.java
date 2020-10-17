@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.dbs24.bond.schedule.api.PmtScheduleLine;
-import org.dbs24.sysconst.api.SysConst;
+import org.dbs24.api.SysConst;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -21,7 +21,7 @@ public class PmtScheduleLineImpl implements PmtScheduleLine {
 
     private Integer schedule_id;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     private LocalDate actual_date;
 
     private LocalDate from_date;
@@ -49,7 +49,7 @@ public class PmtScheduleLineImpl implements PmtScheduleLine {
     }
 
     @Override
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
     public LocalDate getActual_date() {
         return actual_date;
@@ -60,7 +60,7 @@ public class PmtScheduleLineImpl implements PmtScheduleLine {
     }
 
     @Override
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
     public LocalDate getFrom_date() {
         return from_date;
@@ -71,7 +71,7 @@ public class PmtScheduleLineImpl implements PmtScheduleLine {
     }
 
     @Override
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
     public LocalDate getTo_date() {
         return to_date;
@@ -82,7 +82,7 @@ public class PmtScheduleLineImpl implements PmtScheduleLine {
     }
 
     @Override
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
     public LocalDate getAppear_date() {
         return appear_date;
@@ -102,7 +102,7 @@ public class PmtScheduleLineImpl implements PmtScheduleLine {
     }
 
     @Override
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
     public LocalDate getCalc_date() {
         return calc_date;

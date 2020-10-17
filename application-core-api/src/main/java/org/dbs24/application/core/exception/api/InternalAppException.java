@@ -5,7 +5,7 @@
  */
 package org.dbs24.application.core.exception.api;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 /**
  *
@@ -31,7 +31,7 @@ public class InternalAppException extends RuntimeException {
     //==========================================================================
     public static String getExtendedErrMessage(final Throwable th) {
         String errMsg = "no error details";
-        String errCause = SysConst.EMPTY_STRING;
+        String errCause = EMPTY_STRING;
 
         if (null != th) {
 

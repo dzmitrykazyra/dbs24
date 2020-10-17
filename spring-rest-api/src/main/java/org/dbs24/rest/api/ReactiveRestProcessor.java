@@ -8,7 +8,7 @@ package org.dbs24.rest.api;
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.nullsafe.StopWatcher;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.spring.core.api.ApplicationService;
 import org.springframework.beans.factory.annotation.Value;
 import lombok.Data;
@@ -24,7 +24,7 @@ import reactor.core.publisher.Mono;
 public abstract class ReactiveRestProcessor extends RestProcessor implements ApplicationService {
 
     @Value("${reactive.rest.debug:false}")
-    private Boolean restDebug = SysConst.BOOLEAN_FALSE;
+    private Boolean restDebug = BOOLEAN_FALSE;
     private StopWatcher stopWatcher;
 
     @Override
@@ -55,7 +55,7 @@ public abstract class ReactiveRestProcessor extends RestProcessor implements App
                         //.map( x -> x)
                         .doOnSuccess(entity -> {
                             if (this.getRestDebug()) {
-                                stopWatcher = StopWatcher.create(SysConst.EMPTY_STRING);
+                                stopWatcher = StopWatcher.create(EMPTY_STRING);
                             }
 
                             // выполнение лямды, обработка конкретной сущности
@@ -95,7 +95,7 @@ public abstract class ReactiveRestProcessor extends RestProcessor implements App
                         .doOnSuccess(entity -> {
 
                             if (this.getRestDebug()) {
-                                this.stopWatcher = StopWatcher.create(SysConst.EMPTY_STRING);
+                                this.stopWatcher = StopWatcher.create(EMPTY_STRING);
                             }
 
                             // выполнение лямды, обработка конкретной сущности

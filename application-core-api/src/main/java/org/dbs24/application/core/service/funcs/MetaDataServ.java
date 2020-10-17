@@ -6,7 +6,7 @@
 package org.dbs24.application.core.service.funcs;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -49,7 +49,7 @@ public final class MetaDataServ {
                                     customCollection.addCustomRecord(() -> String.format(stringMask,
                                             method.getName(),
                                             method.getReturnType().getName(),
-                                            ServiceFuncs.<String>getPropertySafe(() -> method.invoke(metaData, null), SysConst.NOT_DEFINED)));
+                                            ServiceFuncs.<String>getPropertySafe(() -> method.invoke(metaData, null), NOT_DEFINED)));
                                 }
                             });
                     // свойства
@@ -58,12 +58,12 @@ public final class MetaDataServ {
                             //.filter(method -> !method.getName().substring(0, 3).equals("set"))
                             .forEach(field -> {
 
-                                field.setAccessible(SysConst.BOOLEAN_TRUE);
+                                field.setAccessible(BOOLEAN_TRUE);
 
                                 customCollection.addCustomRecord(() -> String.format(stringMask,
                                         field.getName(),
                                         field.getType().getName(),
-                                        ServiceFuncs.<String>getPropertySafe(() -> field.get(metaData), SysConst.NOT_DEFINED)));
+                                        ServiceFuncs.<String>getPropertySafe(() -> field.get(metaData), NOT_DEFINED)));
                             });
 
                 });
@@ -102,7 +102,7 @@ public final class MetaDataServ {
 
                             record = record.concat(String.format("%50s: '%s';\n",
                                     columnName,
-                                    ServiceFuncs.<String>getPropertySafe(() -> resultSet.getObject(columnName), SysConst.NOT_DEFINED)));
+                                    ServiceFuncs.<String>getPropertySafe(() -> resultSet.getObject(columnName), NOT_DEFINED)));
                             //columnClass = this.getJavaTypeBySqlType(rsmd.getColumnType(i));
                         }
 

@@ -36,7 +36,7 @@ import org.dbs24.entity.contracts.AbstractEntityContract;
 import org.dbs24.entity.bondschedule.PmtSchedule;
 import org.dbs24.service.LiasDocumentBuilders;
 import org.dbs24.spring.core.api.ServiceLocator;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.application.core.locale.NLS;
 
 /**
@@ -312,13 +312,13 @@ public class LiasDebt extends ObjectRoot implements PersistenceEntity {
             if (!lastRest.isEmpty()) {
                 newRest = lastRest.get(0).getRest();
             } else {
-                newRest = SysConst.BIGDECIMAL_ZERO;
+                newRest = BIGDECIMAL_ZERO;
             }
 
             final LiasDebtRest liasDebtRest = NullSafe.createObject(LiasDebtRest.class);
 
             liasDebtRest.setRest(newRest);
-            liasDebtRest.setRestType(SysConst.INTEGER_ONE);
+            liasDebtRest.setRestType(INTEGER_ONE);
             liasDebtRest.setRestDate(operDate);
             liasDebtRest.setLiasDebt(this);
 

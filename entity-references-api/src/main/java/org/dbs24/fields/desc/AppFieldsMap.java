@@ -7,7 +7,7 @@ package org.dbs24.fields.desc;
 
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.application.core.log.LogService;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +33,7 @@ public class AppFieldsMap {
 
                     final AppFieldsCaptions afc = NullSafe.createObject(AppFieldsCaptions.class);
 
-                    afc.loadReference(SysConst.FORCE_RELOAD, Long.valueOf(app_id));
+                    afc.loadReference(FORCE_RELOAD, Long.valueOf(app_id));
 
                     // настройки конкретного пользователя
                     final Collection<AppFieldCaption> lstFltr
@@ -47,7 +47,7 @@ public class AppFieldsMap {
                     if (lstFltr.isEmpty()) {
                         lstFltr2 = ServiceFuncs.<AppFieldCaption>filterCollection_Silent(
                                 afc.getCardFiles(),
-                                attr -> attr.getUser_id().equals(SysConst.SERVICE_USER_ID));
+                                attr -> attr.getUser_id().equals(SERVICE_USER_ID));
                     } else {
                         lstFltr2 = lstFltr;
                     }
@@ -65,7 +65,7 @@ public class AppFieldsMap {
                                             final AppFieldCaption newField = NullSafe.createObject(AppFieldCaption.class);
 
                                             newField.setApp_id(app_id);
-                                            newField.setUser_id(SysConst.SERVICE_USER_ID);
+                                            newField.setUser_id(SERVICE_USER_ID);
                                             // взять из аннотации
                                             newField.setField_name(fldDesc.getField_name());
                                             newField.setField_caption(fldDesc.getField_caption());
@@ -97,7 +97,7 @@ public class AppFieldsMap {
     //==========================================================================
     public Collection<FieldDescription> getFieldDescription(final Integer app_id, final Long user_id) {
 
-        return NullSafe.create(SysConst.OBJECT_NULL)
+        return NullSafe.create(OBJECT_NULL)
                 .execute2result(() -> {
 
                     final Collection<FieldDescription> col = ServiceFuncs.<FieldDescription>createCollection();
@@ -118,7 +118,7 @@ public class AppFieldsMap {
                     if (lstFltr.isEmpty()) {
                         lstFltr2 = ServiceFuncs.<AppFieldCaption>filterCollection_Silent(
                                 afc.getCardFiles(),
-                                attr -> attr.getUser_id().equals(SysConst.SERVICE_USER_ID));
+                                attr -> attr.getUser_id().equals(SERVICE_USER_ID));
                     } else {
                         lstFltr2 = lstFltr;
                     }
@@ -170,7 +170,7 @@ public class AppFieldsMap {
 //        // настройки конкретного пользователя не найдены
 //        // пользуем дефолтные настройки
 //        if (lstFltr.isEmpty()) {
-//            lstFltr = ((List<AppFieldCaption>) afc.getCardFiles()).stream().filter(p -> p.getUser_id().equals(SysConst.SERVICE_USER_ID)).collect(Collectors.toList());
+//            lstFltr = ((List<AppFieldCaption>) afc.getCardFiles()).stream().filter(p -> p.getUser_id().equals(SERVICE_USER_ID)).collect(Collectors.toList());
 //        }
 //
 //        List<FieldDescription> answer = (List<FieldDescription>) ServiceFuncs.<FieldDescription>createCollection();

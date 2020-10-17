@@ -1,0 +1,329 @@
+cd /home/ilya/citech/projects/game-server; JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64 /snap/netbeans/30/netbeans/java/maven/bin/mvn clean install -DskipTests=true
+Scanning for projects...
+
+Some problems were encountered while building the effective model for pss:server:jar:2.1.0-SNAPSHOT
+'dependencies.dependency.systemPath' for pss:core-server:jar should not point at files within the project directory, ${project.basedir}/jars/core-server-1.0.1.jar will be unresolvable by dependent projects @ line 194, column 25
+
+It is highly recommended to fix these problems because they threaten the stability of your build.
+
+For this reason, future Maven versions might no longer support building such malformed projects.
+
+
+-----------------------------< pss:server >-----------------------------
+Building ChessServer 2.1.0-SNAPSHOT
+--------------------------------[ jar ]---------------------------------
+
+--- maven-clean-plugin:2.5:clean (default-clean) @ server ---
+Deleting /home/ilya/citech/projects/game-server/target
+
+--- maven-resources-plugin:2.6:resources (default-resources) @ server ---
+Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+Copying 179 resources
+
+--- maven-compiler-plugin:3.8.1:compile (default-compile) @ server ---
+Changes detected - recompiling the module!
+Compiling 1459 source files to /home/ilya/citech/projects/game-server/target/classes
+/home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/dao/SharedGameDaoImpl.java: /home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/dao/SharedGameDaoImpl.java uses or overrides a deprecated API.
+/home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/dao/SharedGameDaoImpl.java: Recompile with -Xlint:deprecation for details.
+/home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/servers/http/RestMethodsMapping.java: /home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/servers/http/RestMethodsMapping.java uses unchecked or unsafe operations.
+/home/ilya/citech/projects/game-server/src/main/java/pss/chess/server/servers/http/RestMethodsMapping.java: Recompile with -Xlint:unchecked for details.
+Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+-------------------------------------------------------------
+COMPILATION WARNING :
+-------------------------------------------------------------
+pss/chess/server/util/Misc.java:[42,16] sun.misc.BASE64Decoder is internal proprietary API and may be removed in a future release
+pss/chess/server/util/Misc.java:[175,32] sun.misc.BASE64Encoder is internal proprietary API and may be removed in a future release
+pss/chess/server/util/Misc.java:[193,48] sun.misc.BASE64Decoder is internal proprietary API and may be removed in a future release
+pss/chess/server/util/Misc.java:[248,32] sun.misc.BASE64Encoder is internal proprietary API and may be removed in a future release
+pss/chess/server/util/Misc.java:[269,50] sun.misc.BASE64Decoder is internal proprietary API and may be removed in a future release
+5 warnings
+-------------------------------------------------------------
+-------------------------------------------------------------
+COMPILATION ERROR :
+-------------------------------------------------------------
+pss/chess/server/dao/sp/UpdateFideRatings.java:[8,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/UpdateFideRatings.java:[10,40] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/servers/MinaServer.java:[31,35] package org.springframework.context does not exist
+pss/chess/server/client_handler/MinaClientHandler.java:[14,39] package org.springframework.transaction does not exist
+pss/chess/server/server_handler/Server2ServerHandler.java:[8,39] package org.springframework.transaction does not exist
+pss/chess/server/dao/FidePlayerImportDaoImpl.java:[14,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/FidePlayerImportDaoImpl.java:[20,46] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/ChessPlayerAccountDaoImpl.java:[8,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/ChessPlayerAccountDaoImpl.java:[14,48] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/PlayersEloHistoryDaoImpl.java:[15,42] package org.springframework.orm.hibernate3 does not exist
+pss/chess/server/dao/PlayersEloHistoryDaoImpl.java:[16,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/PlayersEloHistoryDaoImpl.java:[23,47] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/GetServerActions.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetServerActions.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetServerActions.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetServerActions.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/GetServerActions.java:[20,39] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/StatisticsPlayerGameDaoImpl.java:[11,42] package org.springframework.orm.hibernate3 does not exist
+pss/chess/server/dao/StatisticsPlayerGameDaoImpl.java:[12,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/StatisticsPlayerGameDaoImpl.java:[19,50] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/ByeDaoImpl.java:[5,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/ByeDaoImpl.java:[7,33] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/VegaDataBaseDaoImpl.java:[7,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/VegaDataBaseDaoImpl.java:[11,51] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/InboxLoaderDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/InboxLoaderDaoImpl.java:[8,41] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/DeleteAccountingSubscriptionSessions.java:[9,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/DeleteAccountingSubscriptionSessions.java:[10,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/DeleteAccountingSubscriptionSessions.java:[12,59] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/CheatingFocusEventDaoImpl.java:[5,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/CheatingFocusEventDaoImpl.java:[7,48] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/CardTypeValidityDaoImpl.java:[5,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/CardTypeValidityDaoImpl.java:[7,46] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/CheckExpiredTitles.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckExpiredTitles.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckExpiredTitles.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckExpiredTitles.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/CheckExpiredTitles.java:[17,41] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/CardBaseDaoImpl.java:[11,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/CardBaseDaoImpl.java:[16,47] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/CouponBaseDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/CouponBaseDaoImpl.java:[13,49] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/GetActivePlayersByMail.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetActivePlayersByMail.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetActivePlayersByMail.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetActivePlayersByMail.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/GetActivePlayersByMail.java:[23,45] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/ChessPlayerEvaluationHistoryDaoImpl.java:[7,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/ChessPlayerEvaluationHistoryDaoImpl.java:[14,58] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/PersistentConfigurationDaoImpl.java:[7,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/PersistentConfigurationDaoImpl.java:[11,53] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/PlayerRelationDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/PlayerRelationDaoImpl.java:[8,44] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/SystemWarningsBaseDaoImpl.java:[11,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/SystemWarningsBaseDaoImpl.java:[17,57] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/StatisticsPlayerDistribDaoImpl.java:[9,42] package org.springframework.orm.hibernate3 does not exist
+pss/chess/server/dao/StatisticsPlayerDistribDaoImpl.java:[10,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/StatisticsPlayerDistribDaoImpl.java:[14,53] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/ChessEventDaoImpl.java:[8,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/ChessEventDaoImpl.java:[14,40] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/PlayerBaseDaoImpl.java:[16,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/PlayerBaseDaoImpl.java:[41,49] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/LiveLessonBaseDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/LiveLessonBaseDaoImpl.java:[8,53] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/ProxyBaseDaoImpl.java:[3,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/ProxyBaseDaoImpl.java:[7,48] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/GetFilteredVideoInfos.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetFilteredVideoInfos.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetFilteredVideoInfos.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetFilteredVideoInfos.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/GetFilteredVideoInfos.java:[26,44] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/CardAuditDaoImpl.java:[5,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/CardAuditDaoImpl.java:[7,39] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/CheckChampionshipParticipation.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckChampionshipParticipation.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckChampionshipParticipation.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckChampionshipParticipation.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/CheckChampionshipParticipation.java:[17,53] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/RuntimeMigrationDaoImpl.java:[5,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/RuntimeMigrationDaoImpl.java:[9,46] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/PublicTournamentInfoBaseDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/PublicTournamentInfoBaseDaoImpl.java:[8,63] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/TournamentPlayerRegistrationDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/TournamentPlayerRegistrationDaoImpl.java:[10,58] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/GetPEHTop.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetPEHTop.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetPEHTop.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetPEHTop.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/GetPEHTop.java:[20,32] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/sp/UpdateCheatPenaltyOnReEnable.java:[9,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/UpdateCheatPenaltyOnReEnable.java:[10,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/UpdateCheatPenaltyOnReEnable.java:[12,51] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/BonusBaseDaoImpl.java:[10,31] package org.springframework.dao does not exist
+pss/chess/server/dao/BonusBaseDaoImpl.java:[11,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/BonusBaseDaoImpl.java:[17,48] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/DeleteGameDescriptionsByChessEventIds.java:[10,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/DeleteGameDescriptionsByChessEventIds.java:[11,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/DeleteGameDescriptionsByChessEventIds.java:[13,60] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/sp/IsNull.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/IsNull.java:[13,37] package org.springframework.jdbc.core does not exist
+100 errors
+-------------------------------------------------------------
+------------------------------------------------------------------------
+BUILD FAILURE
+------------------------------------------------------------------------
+Total time:  4.831 s
+Finished at: 2020-08-03T23:17:46+03:00
+------------------------------------------------------------------------
+Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.1:compile (default-compile) on project server: Compilation failure: Compilation failure:
+pss/chess/server/dao/sp/UpdateFideRatings.java:[8,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/UpdateFideRatings.java:[10,40] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/servers/MinaServer.java:[31,35] package org.springframework.context does not exist
+pss/chess/server/client_handler/MinaClientHandler.java:[14,39] package org.springframework.transaction does not exist
+pss/chess/server/server_handler/Server2ServerHandler.java:[8,39] package org.springframework.transaction does not exist
+pss/chess/server/dao/FidePlayerImportDaoImpl.java:[14,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/FidePlayerImportDaoImpl.java:[20,46] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/ChessPlayerAccountDaoImpl.java:[8,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/ChessPlayerAccountDaoImpl.java:[14,48] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/PlayersEloHistoryDaoImpl.java:[15,42] package org.springframework.orm.hibernate3 does not exist
+pss/chess/server/dao/PlayersEloHistoryDaoImpl.java:[16,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/PlayersEloHistoryDaoImpl.java:[23,47] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/GetServerActions.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetServerActions.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetServerActions.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetServerActions.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/GetServerActions.java:[20,39] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/StatisticsPlayerGameDaoImpl.java:[11,42] package org.springframework.orm.hibernate3 does not exist
+pss/chess/server/dao/StatisticsPlayerGameDaoImpl.java:[12,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/StatisticsPlayerGameDaoImpl.java:[19,50] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/ByeDaoImpl.java:[5,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/ByeDaoImpl.java:[7,33] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/VegaDataBaseDaoImpl.java:[7,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/VegaDataBaseDaoImpl.java:[11,51] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/InboxLoaderDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/InboxLoaderDaoImpl.java:[8,41] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/DeleteAccountingSubscriptionSessions.java:[9,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/DeleteAccountingSubscriptionSessions.java:[10,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/DeleteAccountingSubscriptionSessions.java:[12,59] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/CheatingFocusEventDaoImpl.java:[5,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/CheatingFocusEventDaoImpl.java:[7,48] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/CardTypeValidityDaoImpl.java:[5,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/CardTypeValidityDaoImpl.java:[7,46] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/CheckExpiredTitles.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckExpiredTitles.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckExpiredTitles.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckExpiredTitles.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/CheckExpiredTitles.java:[17,41] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/CardBaseDaoImpl.java:[11,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/CardBaseDaoImpl.java:[16,47] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/CouponBaseDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/CouponBaseDaoImpl.java:[13,49] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/GetActivePlayersByMail.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetActivePlayersByMail.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetActivePlayersByMail.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetActivePlayersByMail.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/GetActivePlayersByMail.java:[23,45] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/ChessPlayerEvaluationHistoryDaoImpl.java:[7,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/ChessPlayerEvaluationHistoryDaoImpl.java:[14,58] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/PersistentConfigurationDaoImpl.java:[7,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/PersistentConfigurationDaoImpl.java:[11,53] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/PlayerRelationDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/PlayerRelationDaoImpl.java:[8,44] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/SystemWarningsBaseDaoImpl.java:[11,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/SystemWarningsBaseDaoImpl.java:[17,57] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/StatisticsPlayerDistribDaoImpl.java:[9,42] package org.springframework.orm.hibernate3 does not exist
+pss/chess/server/dao/StatisticsPlayerDistribDaoImpl.java:[10,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/StatisticsPlayerDistribDaoImpl.java:[14,53] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/ChessEventDaoImpl.java:[8,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/ChessEventDaoImpl.java:[14,40] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/PlayerBaseDaoImpl.java:[16,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/PlayerBaseDaoImpl.java:[41,49] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/LiveLessonBaseDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/LiveLessonBaseDaoImpl.java:[8,53] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/ProxyBaseDaoImpl.java:[3,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/ProxyBaseDaoImpl.java:[7,48] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/GetFilteredVideoInfos.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetFilteredVideoInfos.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetFilteredVideoInfos.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetFilteredVideoInfos.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/GetFilteredVideoInfos.java:[26,44] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/CardAuditDaoImpl.java:[5,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/CardAuditDaoImpl.java:[7,39] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/CheckChampionshipParticipation.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckChampionshipParticipation.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckChampionshipParticipation.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/CheckChampionshipParticipation.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/CheckChampionshipParticipation.java:[17,53] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/RuntimeMigrationDaoImpl.java:[5,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/RuntimeMigrationDaoImpl.java:[9,46] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/PublicTournamentInfoBaseDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/PublicTournamentInfoBaseDaoImpl.java:[8,63] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/TournamentPlayerRegistrationDaoImpl.java:[6,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/TournamentPlayerRegistrationDaoImpl.java:[10,58] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/GetPEHTop.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetPEHTop.java:[13,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetPEHTop.java:[14,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/GetPEHTop.java:[15,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/GetPEHTop.java:[20,32] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/sp/UpdateCheatPenaltyOnReEnable.java:[9,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/UpdateCheatPenaltyOnReEnable.java:[10,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/UpdateCheatPenaltyOnReEnable.java:[12,51] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/BonusBaseDaoImpl.java:[10,31] package org.springframework.dao does not exist
+pss/chess/server/dao/BonusBaseDaoImpl.java:[11,50] package org.springframework.orm.hibernate3.support does not exist
+pss/chess/server/dao/BonusBaseDaoImpl.java:[17,48] cannot find symbol
+  symbol: class HibernateDaoSupport
+pss/chess/server/dao/sp/DeleteGameDescriptionsByChessEventIds.java:[10,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/DeleteGameDescriptionsByChessEventIds.java:[11,39] package org.springframework.jdbc.object does not exist
+pss/chess/server/dao/sp/DeleteGameDescriptionsByChessEventIds.java:[13,60] cannot find symbol
+  symbol: class StoredProcedure
+pss/chess/server/dao/sp/IsNull.java:[12,37] package org.springframework.jdbc.core does not exist
+pss/chess/server/dao/sp/IsNull.java:[13,37] package org.springframework.jdbc.core does not exist
+-> [Help 1]
+
+To see the full stack trace of the errors, re-run Maven with the -e switch.
+Re-run Maven using the -X switch to enable full debug logging.
+
+For more information about the errors and possible solutions, please read the following articles:
+[Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

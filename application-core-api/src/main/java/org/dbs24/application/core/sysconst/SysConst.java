@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class SysConst {
 
 //    public static Boolean TEST_MODE_RUNNING = Boolean.FALSE;  
-//    public static String TEST_MODE_LAST_ERR_MSG = SysConst.STRING_NULL;
+//    public static String TEST_MODE_LAST_ERR_MSG = STRING_NULL;
     public static final AtomicBoolean RUSSIAN_REF_LANG = NullSafe.createObject(AtomicBoolean.class);
     public static final String APPNAME = "dbs24";
     public static final String CRLF = "\n";
@@ -108,10 +108,10 @@ public final class SysConst {
     public static final Integer MR_TRADE_IS_ATHORIZED = 1; // сделка авторизована
     public static final String NOT_ALLOWED_ACTION = "action is not allowed for execution";
 
-    //public static final Boolean TEST_MODE = SysConst.BOOLEAN_TRUE;
+    //public static final Boolean TEST_MODE = BOOLEAN_TRUE;
     public static final Boolean FORCED_RELOAD = Boolean.TRUE;
 
-    public static final String APPLICATION_ADDRESS = SysConst.getCurrentIp();
+    public static final String APPLICATION_ADDRESS = getCurrentIp();
 
     public static final Object OBJECT_NULL = null;
 

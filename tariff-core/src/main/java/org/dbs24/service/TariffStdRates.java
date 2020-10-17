@@ -7,7 +7,7 @@ package org.dbs24.service;
 
 import org.dbs24.spring.core.bean.AbstractApplicationBean;
 //import org.springframework.beans.factory.annotation.Value;
-//import org.dbs24.application.core.sysconst.SysConst;
+//import static org.dbs24.application.core.sysconst.SysConst.*;
 import lombok.Data;
 
 /**
@@ -18,5 +18,5 @@ import lombok.Data;
 public class TariffStdRates extends AbstractApplicationBean {
 
 //    @Value("${tariff.debug:false}")
-//    private Boolean tariffDebug = SysConst.BOOLEAN_FALSE;
+//    private Boolean tariffDebug = BOOLEAN_FALSE;
 }

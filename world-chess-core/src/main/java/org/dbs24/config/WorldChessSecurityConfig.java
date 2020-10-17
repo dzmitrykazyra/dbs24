@@ -5,7 +5,7 @@
  */
 package org.dbs24.config;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import static org.dbs24.consts.WorldChessConst.URI_CREATE_CHESS_PLAYER;
 import static org.dbs24.consts.WorldChessConst.URI_CREATE_CHESS_GAME;
 import static org.dbs24.consts.WorldChessConst.URI_FIND_CHESS_PLAYER;
@@ -39,9 +39,9 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j 
 @Configuration
-@ComponentScan(basePackages = {SysConst.SERVICE_PACKAGE, SysConst.RESTFUL_PACKAGE})
-//@EntityScan(basePackages = {SysConst.ENTITY_PACKAGE, SysConst.REFERENCE_PACKAGE})
-@PropertySource(SysConst.APP_PROPERTIES)
+@ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE})
+//@EntityScan(basePackages = {ENTITY_PACKAGE, REFERENCE_PACKAGE})
+@PropertySource(APP_PROPERTIES)
 //@EnableWebFlux
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity

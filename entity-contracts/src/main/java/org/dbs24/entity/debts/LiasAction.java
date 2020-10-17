@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import org.dbs24.lias.opers.attrs.*;
 //import org.dbs24.log.mgmt.LogService;
 import org.dbs24.application.core.api.ObjectRoot;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.lias.opers.napi.SaveAccretionHist;
 import org.dbs24.persistence.api.PersistenceEntity;
 import org.dbs24.entity.document.Document;

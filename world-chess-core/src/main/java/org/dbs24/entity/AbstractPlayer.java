@@ -5,7 +5,7 @@
  */
 package org.dbs24.entity;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.core.AbstractActionEntity;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -39,21 +39,21 @@ import java.math.BigDecimal;
         entiy_status = {
             @EntityStatusId(
                     entity_type_id = WorldChessConst.WCP_PLAYER,
-                    entity_status_id = SysConst.ES_VALID,
+                    entity_status_id = ES_VALID,
                     entity_status_name = "Действующая игрок")
             ,
             @EntityStatusId(
                     entity_type_id = WorldChessConst.WCP_PLAYER,
-                    entity_status_id = SysConst.ES_CLOSED,
+                    entity_status_id = ES_CLOSED,
                     entity_status_name = "Закрытый аккаунт")
             ,
             @EntityStatusId(
                     entity_type_id = WorldChessConst.WCP_PLAYER,
-                    entity_status_id = SysConst.ES_CANCELLED,
+                    entity_status_id = ES_CANCELLED,
                     entity_status_name = "Заблокированный игрок")
         })
-@DefaultEntityStatus(entity_status = SysConst.ES_VALID)
-@ActionClassesPackages(pkgList = {SysConst.ACTIONS_PACKAGE})
+@DefaultEntityStatus(entity_status = ES_VALID)
+@ActionClassesPackages(pkgList = {ACTIONS_PACKAGE})
 public class AbstractPlayer extends AbstractActionEntity implements Player {
 
     @Column(name = "last_name")

@@ -19,7 +19,7 @@ import java.time.LocalDate;
 import org.dbs24.entity.tariff.TariffCalcSum;
 import org.dbs24.entity.debts.LiasDebt;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.references.api.LiasesConst;
 import org.dbs24.entity.calculations.TariffRestBox;
 import java.math.BigDecimal;

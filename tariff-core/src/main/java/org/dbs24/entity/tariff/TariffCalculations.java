@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.math.BigDecimal;
 import org.dbs24.application.core.api.ObjectRoot;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.application.core.nullsafe.NullSafe;
 
 /**
@@ -55,7 +55,7 @@ public class TariffCalculations {
             final LocalDate D2) {
 
         if (NullSafe.isNull(this.getTariffCalsSums())) {
-            return SysConst.BIGDECIMAL_NULL;
+            return BIGDECIMAL_NULL;
         } else {
 
             return ((Collection<TariffCalcSum>) this.getTariffCalsSums()
@@ -81,7 +81,7 @@ public class TariffCalculations {
             final LocalDate D1,
             final LocalDate D2) {
 
-        return NullSafe.create(SysConst.BIGDECIMAL_ZERO, SysConst.IS_SILENT_EXECUTE)
+        return NullSafe.create(BIGDECIMAL_ZERO, IS_SILENT_EXECUTE)
                 .execute2result(() -> {
                     return this.getInternalCalculationSum(tariffRate, D1, D2);
                 })
@@ -98,7 +98,7 @@ public class TariffCalculations {
 //        final Integer newTariff_calc_id = ObjectRoot
 //                .getStaticDbService()
 //                .createCallQuery("{:RES = call tariff_insertorupdate_calc_record(:ID, :RATE, :ENT)} ")
-//                .setParamByNameAsOutput("RES", SysConst.INTEGER_ZERO)
+//                .setParamByNameAsOutput("RES", INTEGER_ZERO)
 //                .setParamByName("ID", this.getTariff_calc_id())
 //                .setParamByName("RATE", rate_id)
 //                .setParamByName("ENT", this.getEntity_id())

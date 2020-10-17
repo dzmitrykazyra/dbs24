@@ -5,7 +5,7 @@
  */
 package org.dbs24.entity.core.api;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 
 /**
  *

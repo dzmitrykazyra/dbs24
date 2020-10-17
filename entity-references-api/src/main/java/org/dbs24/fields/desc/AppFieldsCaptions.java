@@ -6,7 +6,7 @@
 package org.dbs24.fields.desc;
 
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.references.api.AbstractCardFile;
 //import org.dbs24.services.FS24JdbcService;
 //import org.dbs24.services.api.ServiceLocator;
@@ -47,7 +47,7 @@ public class AppFieldsCaptions extends AbstractCardFile {
         
         if (NullSafe.isNull(appFieldCaption)) {
             appFieldCaption =  ServiceFuncs.<AppFieldCaption>getCollectionElement_silent(this.getCardFiles(),
-                p -> p.getUser_id().equals(SysConst.SERVICE_USER_ID) && p.getField_name().equals(fieldName));
+                p -> p.getUser_id().equals(SERVICE_USER_ID) && p.getField_name().equals(fieldName));
         }
 
         return appFieldCaption;
@@ -57,7 +57,7 @@ public class AppFieldsCaptions extends AbstractCardFile {
 //
 //        if (afc.isEmpty()) {
 //            afc = ((List<AppFieldCaption>) this.getCardFiles()).stream()
-//                    .filter(p -> p.getUser_id().equals(SysConst.SERVICE_USER_ID) && p.getField_name().equals(fieldName)).collect(Collectors.toList());
+//                    .filter(p -> p.getUser_id().equals(SERVICE_USER_ID) && p.getField_name().equals(fieldName)).collect(Collectors.toList());
 //        }
 //
 //        return afc.get(0);

@@ -17,7 +17,7 @@ package org.dbs24.entity.bondschedule;
 //import com.fasterxml.jackson.annotation.JsonFormat;
 //import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 //import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-//import org.dbs24.application.core.sysconst.SysConst;
+//import static org.dbs24.application.core.sysconst.SysConst.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.dbs24.bond.schedule.api.BondScheduleConst;
 //import org.dbs24.bond.schedule.collection.BondSchedulesActionClassesService;

@@ -2,7 +2,7 @@ package tests;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.TestFuncs;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.bond.schedule.api.BondScheduleConst;
 import org.dbs24.entity.contract.subjects.ContractSubject;
 import org.dbs24.entity.counterparties.api.Counterparty;
@@ -71,7 +71,7 @@ public abstract class TestUtil4LoanContract extends Utils4test {
         final LocalDate contractDate = LocalDate.now();
         final LocalDate beginDate = LocalDate.now();
         final LocalDate endDate = beginDate.plusYears(1);
-        final BigDecimal contractSumm = SysConst.MAX_BIGDECIMAL;
+        final BigDecimal contractSumm = MAX_BIGDECIMAL;
         final LoanSource loanSource = LoanSource.findLoanSource(102);
         // код графика выплат ОД
         final PmtScheduleAlg pmtScheduleAlg = PmtScheduleAlg.findLoanSource(BondScheduleConst.BS_ALG_BYREST);
@@ -115,11 +115,11 @@ public abstract class TestUtil4LoanContract extends Utils4test {
 
                             plan.addServKindId(TariffKind.findTariffKind(TariffConst.TK_CURRENT_RESTS),
                                     LocalDate.now(),
-                                    SysConst.LOCALDATE_NULL,
+                                    LOCALDATE_NULL,
                                     (tariffPlan2Serv) -> {
                                         // добавление услуги в тарифный план
                                         tariffPlan2Serv.addTariffRate(TariffAccretionScheme.findTariffAccretionScheme(1),
-                                                TariffKind.findTariffKind(TariffConst.TK_CURRENT_RESTS), LocalDate.now(), SysConst.LOCALDATE_NULL, testString,
+                                                TariffKind.findTariffKind(TariffConst.TK_CURRENT_RESTS), LocalDate.now(), LOCALDATE_NULL, testString,
                                                 (tariffRate_1) -> {
 
                                                     final LocalDate ld = LocalDate.now();

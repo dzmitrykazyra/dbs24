@@ -37,7 +37,7 @@ import org.dbs24.references.tariffs.kind.TariffKind;
 import org.dbs24.references.documents.doctemplate.DocTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dbs24.references.documents.docattr.DocAttr;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.component.RetailLoanBondScheduleBuilder;
 import org.springframework.context.annotation.Import;
 import org.dbs24.config.*;
@@ -48,7 +48,7 @@ import org.dbs24.config.*;
  */
 @Data
 @Service
-@EntityClassesPackages(pkgList = {SysConst.ENTITY_PACKAGE})
+@EntityClassesPackages(pkgList = {ENTITY_PACKAGE})
 @CachedReferencesClasses(classes = {ContractSubject.class, LoanSource.class, PmtScheduleAlg.class,
     PmtScheduleTerm.class, Currency.class, LiasDebtState.class, LiasKind.class, LiasType.class,
     LiasBaseAssetType.class, LiasFinOperCode.class, LiasOperStatus.class, LiasActionType.class,
