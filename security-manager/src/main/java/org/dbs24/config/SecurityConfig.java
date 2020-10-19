@@ -11,11 +11,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.dbs24.spring.config.AbstractApplicationConfiguration;
 import static org.dbs24.application.core.sysconst.SysConst.*;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Configuration
 @ComponentScan(basePackages = {SERVICE_PACKAGE})
-//@EntityScan(basePackages = {SECURITY_PACKAGE, ENTITY_PACKAGE})
+@EntityScan(basePackages = {ENTITY_PACKAGE, SECURITY_PACKAGE})
 @PropertySource(APP_PROPERTIES)
 public class SecurityConfig extends AbstractApplicationConfiguration {
 

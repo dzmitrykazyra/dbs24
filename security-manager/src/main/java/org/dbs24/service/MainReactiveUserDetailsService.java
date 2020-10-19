@@ -23,16 +23,18 @@ public class MainReactiveUserDetailsService implements ReactiveUserDetailsServic
     @Value("${reactive.rest.debug:false}")
     private Boolean restDebug = BOOLEAN_FALSE;
 
-    final ApplicationUserRepository applicationUserRepository;
+    @Autowired
+    ApplicationUserRepository applicationUserRepository;
+
+    //==========================================================================
     final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public MainReactiveUserDetailsService(ApplicationUserRepository applicationUserRepository,
-            PasswordEncoder passwordEncoder) {
-        this.applicationUserRepository = applicationUserRepository;
+    public MainReactiveUserDetailsService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
 
+    //==========================================================================
     @Override
     public Mono<UserDetails> findByUsername(final String userName) {
 

@@ -173,7 +173,8 @@
                     <include>liases-references-api.jar</include>        
                     <include>documents-api.jar</include>  
                     <include>documents-references-api.jar</include>  
-                    <include>tariff-references-api.jar</include>                    
+                    <include>tariff-references-api.jar</include>
+                    <include>security-manager.jar</include>                    
                 </includes>
                 <targetPath>${project.build.outputDirectory}/${source.directory.libs}/</targetPath>
             </resource>
