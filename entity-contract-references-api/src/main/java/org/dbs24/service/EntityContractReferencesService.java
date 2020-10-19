@@ -8,7 +8,7 @@ package org.dbs24.service;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 import org.dbs24.entity.contract.subjects.ContractSubject;
-import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.persistence.core.PersistenceEntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dbs24.spring.core.api.ApplicationService;
 
@@ -21,13 +21,13 @@ import org.dbs24.spring.core.api.ApplicationService;
 public class EntityContractReferencesService implements ApplicationService {
 
     @Autowired
-    private PersistanceEntityManager persistanceEntityManager;
+    private PersistenceEntityManager PersistenceEntityManager;
 
     //==========================================================================
     public final void createContractSubject(final Integer contractSubjectId,
             final String contractSubjectName) {
 
-        persistanceEntityManager.<ContractSubject>mergePersistenceEntity(ContractSubject.class,
+        PersistenceEntityManager.<ContractSubject>mergePersistenceEntity(ContractSubject.class,
                 contractSubject -> {
 
                     contractSubject.setContractSubjectId(contractSubjectId);

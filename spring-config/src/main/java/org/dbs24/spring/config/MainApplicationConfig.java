@@ -5,15 +5,17 @@
  */
 package org.dbs24.spring.config;
 
+import javax.persistence.EntityManagerFactory;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.spring.core.application.setup.ExceptionsCollectorBean;
 import org.dbs24.spring.core.mail.MailManager;
-import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.persistence.core.PersistenceEntityManager;
 import org.springframework.context.annotation.Bean;
 import org.dbs24.spring.core.repository.JpaRepositoriesCoolection;
 import org.dbs24.service.WebClientMgmt;
-import org.springframework.beans.factory.annotation.Value;
 import lombok.Data;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 /**
  *
@@ -22,12 +24,23 @@ import lombok.Data;
 @Data
 public abstract class MainApplicationConfig extends AbstractApplicationConfiguration {
 
-    @Value("${spring.profiles.active}")
-    private String activeEnv;
+//    @Value("${spring.profiles.active}")
+//    private String activeEnv;
+    @Bean
+    public PersistenceEntityManager entityManager() {
+        return NullSafe.createObject(PersistenceEntityManager.class);
+    }
 
     @Bean
-    public PersistanceEntityManager entityManager() {
-        return NullSafe.createObject(PersistanceEntityManager.class);
+    public EntityManagerFactory entityManagerFactory() {
+        return entityManager().getFactory();
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+        final JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManager().getFactory());
+        return transactionManager;
     }
 
     @Bean

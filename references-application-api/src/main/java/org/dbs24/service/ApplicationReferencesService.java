@@ -8,7 +8,7 @@ package org.dbs24.service;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import lombok.Data;
 import org.springframework.stereotype.Service;
-import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.persistence.core.PersistenceEntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.dbs24.references.application.currency.Currency;
 import java.util.stream.Collectors;
@@ -23,13 +23,13 @@ import java.util.stream.Collectors;
 public class ApplicationReferencesService extends AbstractApplicationService {
 
     @Autowired
-    private PersistanceEntityManager persistanceEntityManager;
+    private PersistenceEntityManager PersistenceEntityManager;
 
     //==========================================================================
     public final void createCurrency(final Integer currencyId,
             final String currencyIso, final String currencyName) {
 
-        persistanceEntityManager.<Currency>mergePersistenceEntity(Currency.class,
+        PersistenceEntityManager.<Currency>mergePersistenceEntity(Currency.class,
                 currency -> {
 
                     currency.setCurrencyId(currencyId);

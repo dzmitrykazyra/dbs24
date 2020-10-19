@@ -32,7 +32,7 @@ public class SecurityActionsService extends ActionExecutionService {
             final String mail) {
 
         return this.<ApplicationUser>createActionEntity(ApplicationUser.class,
-                (user) -> {
+                user -> {
 
                     user.setName(name);
                     user.setMail(mail);
@@ -46,7 +46,7 @@ public class SecurityActionsService extends ActionExecutionService {
                     entityStatusPK.setEntityStatusId(1);
                     entityStatusPK.setEntityTypeId(100);
 
-                    final EntityStatus userStatus = this.getPersistanceEntityManager()
+                    final EntityStatus userStatus = this.getPersistenceEntityManager()
                             .getEntityManager()
                             .find(EntityStatus.class, entityStatusPK);
 
@@ -61,7 +61,7 @@ public class SecurityActionsService extends ActionExecutionService {
             final String name) {
 
         return this.<ApplicationRole>createActionEntity(ApplicationRole.class,
-                (role) -> {
+                role -> {
 
                     role.setRoleCode(roleCode);
                     role.setRoleName(roleName);
@@ -72,8 +72,8 @@ public class SecurityActionsService extends ActionExecutionService {
                     roleStatusPK.setEntityStatusId(1);
                     roleStatusPK.setEntityTypeId(101);
 
-                    //this.getPersistanceEntityManager().getEntityManager()
-                    final EntityStatus roleStatus = this.getPersistanceEntityManager()
+                    //this.getPersistenceEntityManager().getEntityManager()
+                    final EntityStatus roleStatus = this.getPersistenceEntityManager()
                             .getEntityManager()
                             .find(EntityStatus.class, roleStatusPK);
 

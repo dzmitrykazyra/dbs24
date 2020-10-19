@@ -130,14 +130,14 @@ public final class SysConst {
     //==========================================================================
     public static final String ALL_PACKAGES = "org.dbs24";
     public static final String ENTITY_PACKAGE = ALL_PACKAGES + ".entity";
-    public static final String ACTIONS_PACKAGE = ".entity.actions";
-    public static final String TARIFF_PACKAGE = ".tariff";
-    public static final String REPOSITORY_PACKAGE = ".repository";
-    public static final String COMPONENT_PACKAGE = ".component";
-    public static final String SERVICE_PACKAGE = ".service";
-    public static final String RESTFUL_PACKAGE = ".rest";
-    public static final String SECURITY_PACKAGE = ".entity.security";
-    public static final String REFERENCE_PACKAGE = ".references";
+    public static final String ACTIONS_PACKAGE = ALL_PACKAGES + ".entity.actions";
+    public static final String TARIFF_PACKAGE = ALL_PACKAGES + ".tariff";
+    public static final String REPOSITORY_PACKAGE = ALL_PACKAGES + ".repository";
+    public static final String COMPONENT_PACKAGE = ALL_PACKAGES + ".component";
+    public static final String SERVICE_PACKAGE = ALL_PACKAGES + ".service";
+    public static final String RESTFUL_PACKAGE = ALL_PACKAGES + ".rest";
+    public static final String SECURITY_PACKAGE = ALL_PACKAGES + ".entity.security";
+    public static final String REFERENCE_PACKAGE = ALL_PACKAGES + ".references";
     public static final String APP_PROPERTIES = "classpath:application.properties";
 
     //==========================================================================

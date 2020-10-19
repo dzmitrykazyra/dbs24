@@ -42,7 +42,7 @@ public final class ChessRestApi<T extends AbstractActionEntity> extends Reactive
 
         // поднимаем из репозитория по ИД
         final T existEntity = (T) worldChessActionExecutionService
-                .getPersistanceEntityManager()
+                .getPersistenceEntityManager()
                 .getEntityManager()
                 .<T>find(playerClass, entityId);
 
@@ -141,7 +141,7 @@ public final class ChessRestApi<T extends AbstractActionEntity> extends Reactive
 
                         // поднимаем из репозитория по ИД
                         actionEntity = worldChessActionExecutionService
-                                .getPersistanceEntityManager()
+                                .getPersistenceEntityManager()
                                 .getEntityManager()
                                 .<T>find(entClass, entityId);
 

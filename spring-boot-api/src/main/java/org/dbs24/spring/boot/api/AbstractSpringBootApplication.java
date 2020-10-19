@@ -25,6 +25,7 @@ public abstract class AbstractSpringBootApplication {
     public static final SpringBootInititializer EMPTY_INITIALIZATION = () -> {
     };
 
+    //==========================================================================
     public static void runSpringBootApplication(
             String[] args,
             Class<?> springBootClass,
@@ -53,7 +54,7 @@ public abstract class AbstractSpringBootApplication {
                     log.info(stopWatcher.getStringExecutionTime());
                 });
     }
-
+    //==========================================================================
     public static void initializeContext(final Class<? extends ApplicationConfiguration> clazz) {
         AbstractSpringBootApplication.applicationContext = new AnnotationConfigApplicationContext(clazz);
     }

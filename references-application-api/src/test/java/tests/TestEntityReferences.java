@@ -6,7 +6,7 @@
 package tests;
 
 import org.dbs24.application.core.service.funcs.TestFuncs;
-import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.persistence.core.PersistenceEntityManager;
 import org.dbs24.references.application.currency.Currency;
 import lombok.Data;
 import org.junit.runner.RunWith;
@@ -30,7 +30,7 @@ import org.junit.Test;
 public class TestEntityReferences {
     
     @Autowired
-    private PersistanceEntityManager persistanceEntityManager;
+    private PersistenceEntityManager PersistenceEntityManager;
     
     @Autowired
     private ApplicationReferencesService applicationReferencesService;
@@ -45,9 +45,9 @@ public class TestEntityReferences {
         
         applicationReferencesService.createCurrency(testEntityContractCurrency, testString.substring(1, 3), testString);
         
-        persistanceEntityManager
+        PersistenceEntityManager
                 .getEntityManager()
-                .remove(persistanceEntityManager
+                .remove(PersistenceEntityManager
                         .getEntityManager()
                         .find(Currency.class, testEntityContractCurrency));
         

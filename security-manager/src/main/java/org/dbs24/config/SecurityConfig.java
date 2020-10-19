@@ -9,22 +9,14 @@ import lombok.Data;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.dbs24.repository.*;
 import org.dbs24.spring.config.AbstractApplicationConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.dbs24.application.core.nullsafe.NullSafe;
 import static org.dbs24.application.core.sysconst.SysConst.*;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Configuration
-@ComponentScan(basePackages = SERVICE_PACKAGE)
+@ComponentScan(basePackages = {SERVICE_PACKAGE})
 //@EntityScan(basePackages = {SECURITY_PACKAGE, ENTITY_PACKAGE})
 @PropertySource(APP_PROPERTIES)
-//@EnableJpaRepositories(basePackages = REPOSITORY_PACKAGE)
 public class SecurityConfig extends AbstractApplicationConfiguration {
 
 //    @Bean

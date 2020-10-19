@@ -5,8 +5,8 @@
  */
 package org.dbs24.service;
 
-import org.dbs24.application.core.log.LogService;
 import static org.dbs24.application.core.sysconst.SysConst.*;
+import org.dbs24.application.core.log.LogService;
 import org.dbs24.entity.security.ApplicationUser;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.stereotype.*;
@@ -17,21 +17,21 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.userdetails.UserDetails;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Service
 public class MainReactiveUserDetailsService implements ReactiveUserDetailsService {
 
     @Value("${reactive.rest.debug:false}")
     private Boolean restDebug = BOOLEAN_FALSE;
 
-    @Autowired
-    private ApplicationUserRepository applicationUserRepository;
+    final ApplicationUserRepository applicationUserRepository;
+    final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public MainReactiveUserDetailsService(ApplicationUserRepository applicationUserRepository,
+            PasswordEncoder passwordEncoder) {
+        this.applicationUserRepository = applicationUserRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public Mono<UserDetails> findByUsername(final String userName) {

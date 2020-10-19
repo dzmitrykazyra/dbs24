@@ -17,14 +17,15 @@ import org.dbs24.config.*;
 //@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class})
 @PropertySource(APP_PROPERTIES)
 @EnableJpaRepositories(REPOSITORY_PACKAGE)
-@Import({RetailLoanContractCommonConfig.class,
-    RetailLoanContractWebSecurityConfig.class})
-    //SecurityConfig.class})
+@Import({
+    RetailLoanContractCommonConfig.class,
+    RetailLoanContractWebSecurityConfig.class,
+    SecurityConfig.class})
 public class RetailLoanContractBoot extends AbstractSpringBootApplication {
 
     public static void main(String[] args) {
         AbstractSpringBootApplication.runSpringBootApplication(args,
                 RetailLoanContractBoot.class,
-                AbstractSpringBootApplication.EMPTY_INITIALIZATION);
+                EMPTY_INITIALIZATION);
     }
 }

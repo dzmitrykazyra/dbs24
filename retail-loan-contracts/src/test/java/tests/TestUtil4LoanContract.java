@@ -12,7 +12,7 @@ import org.dbs24.entity.RetailLoanContract;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import org.dbs24.entity.tariff.TariffRate_1;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
-import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.persistence.core.PersistenceEntityManager;
 import org.dbs24.references.application.currency.Currency;
 import org.dbs24.references.bond.schedule.api.PmtScheduleAlg;
 import org.dbs24.references.bond.schedule.api.PmtScheduleTerm;
@@ -48,7 +48,7 @@ public abstract class TestUtil4LoanContract extends Utils4test {
     @Before
     public void setUp() {
         assertNotNull(this.getWebClientMgmt());
-        assertNotNull(this.getPersistanceEntityManager());
+        assertNotNull(this.getPersistenceEntityManager());
         assertNotNull(this.getRetailLoanContractActionsService());
         assertNotNull(this.getTariffCoreActionsService());
         assertNotNull(this.getCounterpartyActionsService());
@@ -100,7 +100,7 @@ public abstract class TestUtil4LoanContract extends Utils4test {
         final String testString = TestFuncs.generateTestString20();
         final Integer kindId = TariffConst.EK_TP_FOR_RETAIL_LOAN_CONTRACT;
 
-//        final EntityKind entityKind = persistanceEntityManager
+//        final EntityKind entityKind = PersistenceEntityManager
 //                .getEntityManager()
 //                .find(EntityKind.class, kindId);
         final EntityKind entityKind = EntityKind.findEntityKind(kindId);

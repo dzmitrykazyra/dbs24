@@ -6,7 +6,7 @@
 package org.dbs24.service;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.persistence.core.PersistenceEntityManager;
 import org.springframework.stereotype.Service;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +25,14 @@ import org.dbs24.spring.core.api.ApplicationService;
 public class EntityReferencesService implements ApplicationService {
 
     @Autowired
-    private PersistanceEntityManager persistanceEntityManager;
+    private PersistenceEntityManager PersistenceEntityManager;
 
     //==========================================================================
     public final void createNewEntityType(final Integer entityTypeId,
             final String entityTypeName,
             final String entityAppName) {
 
-        persistanceEntityManager.<EntityType>mergePersistenceEntity(EntityType.class,
+        PersistenceEntityManager.<EntityType>mergePersistenceEntity(EntityType.class,
                 entityType -> {
 
                     entityType.setEntityAppName(entityAppName);
@@ -48,7 +48,7 @@ public class EntityReferencesService implements ApplicationService {
             final Integer entityTypeId,
             final String entityKindName) {
 
-        persistanceEntityManager.<EntityKind>mergePersistenceEntity(EntityKind.class,
+        PersistenceEntityManager.<EntityKind>mergePersistenceEntity(EntityKind.class,
                 entity -> {
 
                     entity.setEntityKindId(entityKindId);
@@ -63,7 +63,7 @@ public class EntityReferencesService implements ApplicationService {
             final Integer entityTypeId,
             final String entityStatusName) {
 
-        persistanceEntityManager.<EntityStatus>mergePersistenceEntity(EntityStatus.class,
+        PersistenceEntityManager.<EntityStatus>mergePersistenceEntity(EntityStatus.class,
                 entity -> {
 
                     entity.setEntityStatusId(entityStatusId);
@@ -79,7 +79,7 @@ public class EntityReferencesService implements ApplicationService {
             final String appName,
             final Boolean isClosed) {
 
-        persistanceEntityManager.<ActionCode>mergePersistenceEntity(ActionCode.class,
+        PersistenceEntityManager.<ActionCode>mergePersistenceEntity(ActionCode.class,
                 entity -> {
                     entity.setActionCode(actionCode);
                     entity.setActionName(actionName);

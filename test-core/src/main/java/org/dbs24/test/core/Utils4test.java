@@ -11,7 +11,7 @@ import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.nullsafe.StopWatcher;
 import org.dbs24.entity.core.AbstractPersistenceEntity;
-import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.persistence.core.PersistenceEntityManager;
 import java.util.Collection;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public abstract class Utils4test {
     private int port;
 
     @Autowired
-    private PersistanceEntityManager persistanceEntityManager;
+    private PersistenceEntityManager PersistenceEntityManager;
 
     @Autowired
     private WebClientMgmt webClientMgmt;
@@ -59,7 +59,7 @@ public abstract class Utils4test {
 
         LogService.LogInfo(this.getClass(), () -> String.format("Reload last entity (%s)", className));
 
-        final Collection<T> collection = this.getPersistanceEntityManager()
+        final Collection<T> collection = this.getPersistenceEntityManager()
                 .getEntityManager()
                 .createQuery(query)
                 .getResultList();
@@ -89,7 +89,7 @@ public abstract class Utils4test {
 
         LogService.LogInfo(this.getClass(), () -> String.format("Reload all entities (%s)", className));
 
-        final Collection<T> collection = this.getPersistanceEntityManager()
+        final Collection<T> collection = this.getPersistenceEntityManager()
                 .getEntityManager()
                 .createQuery(query)
                 .getResultList();

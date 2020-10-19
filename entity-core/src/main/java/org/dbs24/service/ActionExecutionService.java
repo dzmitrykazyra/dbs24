@@ -10,7 +10,7 @@ import org.dbs24.application.core.service.funcs.AnnotationFuncs;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import org.dbs24.entity.core.AbstractPersistenceEntity;
-import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.persistence.core.PersistenceEntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 import org.dbs24.entity.core.api.EntityClassesPackages;
@@ -85,7 +85,7 @@ public abstract class ActionExecutionService extends AbstractApplicationService 
             = ServiceFuncs.getOrCreateMap_Safe(ServiceFuncs.MAP_NULL);
 
     @Autowired
-    private PersistanceEntityManager persistanceEntityManager;
+    private PersistenceEntityManager PersistenceEntityManager;
 
     @Autowired
     private EntityReferencesService entityReferencesService;
@@ -426,7 +426,7 @@ public abstract class ActionExecutionService extends AbstractApplicationService 
                                                     // коллекция записей справочника
                                                     final Collection collection = (Collection) ((Method) ns_method).invoke(null);
                                                     // сохранение в бд
-                                                    getPersistanceEntityManager()
+                                                    getPersistenceEntityManager()
                                                             .executeTransaction(em -> {
                                                                 collection
                                                                         .stream()
@@ -441,7 +441,7 @@ public abstract class ActionExecutionService extends AbstractApplicationService 
                                 // перечитываем справочники
                                 NullSafe.create()
                                         .execute((stmt) -> {
-                                            final Collection<? extends AbstractRefRecord> collection = this.getPersistanceEntityManager()
+                                            final Collection<? extends AbstractRefRecord> collection = this.getPersistenceEntityManager()
                                                     .getEntityManager()
                                                     .createQuery("Select t from " + clazz.getSimpleName() + " t")
                                                     .getResultList();
@@ -493,11 +493,11 @@ public abstract class ActionExecutionService extends AbstractApplicationService 
         final StopWatcher stopWatcher = StopWatcher.create();
 
         // поиск сущности
-        final T entity = this.getPersistanceEntityManager()
+        final T entity = this.getPersistenceEntityManager()
                 .getEntityManager()
                 .<T>find(entClass, entityId);
 
-//        this.getPersistanceEntityManager()
+//        this.getPersistenceEntityManager()
 //                .getEntityManager()
 //                .refresh(entity);
         log.debug("Refresh entity is finished (%d, %d ms)",

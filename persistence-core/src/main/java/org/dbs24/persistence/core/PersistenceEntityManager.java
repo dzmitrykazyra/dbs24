@@ -6,7 +6,6 @@
 package org.dbs24.persistence.core;
 
 import static org.dbs24.application.core.sysconst.SysConst.*;
-import org.dbs24.application.core.service.funcs.CustomCollectionImpl;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import javax.persistence.*;
@@ -23,15 +22,20 @@ import org.springframework.beans.factory.annotation.Value;
 import javax.transaction.UserTransaction;
 import javax.naming.InitialContext;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.stereotype.Component;
+import java.util.Arrays;
+import org.springframework.beans.factory.config.BeanDefinition;
 
 @Data
 @Slf4j
-public class PersistanceEntityManager extends AbstractApplicationBean {
+@Component
+public class PersistenceEntityManager extends AbstractApplicationBean {
 
     private final AtomicBoolean safeMode = NullSafe.createObject(AtomicBoolean.class);
     //@PersistenceUnit
     private EntityManager entityManager;
-    //@PersistenceContext
     private EntityManagerFactory factory;
     @Value("${persistenceUnitName}")
     private String persistenceUnitName;
@@ -45,16 +49,18 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
     private String persistenceJdbcPassword;
     @Value("${spring.jpa.database-platform}")
     private String hibernateDialect;
-    //private static SessionFactory sessionFactory;
     private Map<String, Object> properties;
     @Value("${debug}")
     private String debugMode;
     @Value("${persistence.debug:false}")
     private Boolean persistenceDebug;
-    @Value("${russian_ref_lang}")
-    private String russianRefLan; // = STRING_FALSE;
-    @Value("${defaultJdbcBatchSize}")
-    private Integer defaultJdbcBatchSize; // = STRING_FALSE;
+    @Value("${russian_ref_lang:false}")
+    private String russianRefLan;
+    @Value("${defaultJdbcBatchSize:false}")
+    private Integer defaultJdbcBatchSize;
+
+    @Autowired
+    private GenericApplicationContext genericApplicationContext;
 
     @Override
     public void initialize() {
@@ -105,6 +111,8 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
             NullSafe.create()
                     .execute(() -> {
 
+                        log.debug(this.getBeansDefs());
+
                         log.info("{}: try to create/recreate entity manager ", this.persistenceUnitName);
 
                         if (NullSafe.notNull(this.getEntityManager())) {
@@ -129,7 +137,27 @@ public class PersistanceEntityManager extends AbstractApplicationBean {
 
             this.safeMode.set(BOOLEAN_FALSE);
         }
-        //}
+    }
+
+    //==========================================================================
+    private String getBeansDefs() {
+
+        final String[] beansDefs = genericApplicationContext
+                .getBeanDefinitionNames();
+
+        return Arrays.stream(beansDefs)
+                .sorted((s1, s2) -> s1.compareTo(s2))
+                .reduce(String.format("Spring beans list (%d): \n",
+                        beansDefs.length),
+                        (x, y) -> {
+                            final BeanDefinition bd = genericApplicationContext.getBeanDefinition(y);
+                            final String bcn = String.format("%s: %s [%s, %s]",
+                                    y,
+                                    bd.getBeanClassName(),
+                                    bd.getScope(),
+                                    bd.getResourceDescription());
+                            return x.concat("\n").concat(bcn);
+                        });
     }
 
     //==========================================================================

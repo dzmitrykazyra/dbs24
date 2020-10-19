@@ -44,7 +44,7 @@ public class RetailLoanContractRest<T extends RetailLoanContract> extends Reacti
 
         // поднимаем из репозитория по ИД
         final T existEntity = (T) retailLoanContractActionsService
-                .getPersistanceEntityManager()
+                .getPersistenceEntityManager()
                 .getEntityManager()
                 .<T>find(rlcClass, entityId);
 
@@ -113,7 +113,7 @@ public class RetailLoanContractRest<T extends RetailLoanContract> extends Reacti
 
                         // поднимаем из репозитория по ИД
                         actionEntity = (T) retailLoanContractActionsService
-                                .getPersistanceEntityManager()
+                                .getPersistenceEntityManager()
                                 .getEntityManager()
                                 .<T>find(rlcClass, entityId);
 

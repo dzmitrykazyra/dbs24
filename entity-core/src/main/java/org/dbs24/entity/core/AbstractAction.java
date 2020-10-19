@@ -9,7 +9,7 @@ import org.dbs24.application.core.service.funcs.AnnotationFuncs;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.entity.core.api.ActionClassesPackages;
 import org.dbs24.persistence.api.PersistenceEntity;
-import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.persistence.core.PersistenceEntityManager;
 import java.util.Collection;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.annotation.Propagation;
@@ -38,7 +38,7 @@ public abstract class AbstractAction<T extends ActionEntity>
     private Boolean entityCoreDebug = BOOLEAN_FALSE;
     
     @Autowired
-    private PersistanceEntityManager persistanceEntityManager;    
+    private PersistenceEntityManager PersistenceEntityManager;    
 
     //==========================================================================
     private final Collection<PersistenceEntity> persistenceEntities
@@ -74,16 +74,16 @@ public abstract class AbstractAction<T extends ActionEntity>
             this.stopWatcher = StopWatcher.create();
             this.beforeUpdate();
 
-            this.getPersistanceEntityManager()
+            this.getPersistenceEntityManager()
                     .getEntityManager()
                     .unwrap(Session.class)
-                    .setJdbcBatchSize(this.getJdbcBatchSize());//this.getPersistanceEntityManager().getDefaultJdbcBatchSize());
+                    .setJdbcBatchSize(this.getJdbcBatchSize());//this.getPersistenceEntityManager().getDefaultJdbcBatchSize());
 
             // наполнение в предках объектов для персистенса
             //this.doUpdate();
             //final AbstractPersistenceAction<T> ent2persist = NullSafe.createObject(AbstractPersistenceAction.class); 
             // сохранили объекты
-            getPersistanceEntityManager()
+            getPersistenceEntityManager()
                     .executeTransaction(em -> {
                         //.executeUserTransaction(em -> {
 
@@ -123,7 +123,7 @@ public abstract class AbstractAction<T extends ActionEntity>
                                     this.updatePersistenceAction();
                                     this.updateMainEntity();
                                 });
-                        this.getPersistanceEntityManager()
+                        this.getPersistenceEntityManager()
                                 .getEntityManager()
                                 .flush();
                     });
@@ -150,7 +150,7 @@ public abstract class AbstractAction<T extends ActionEntity>
     //==========================================================================
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public void registerActionFail(final Throwable th) {
-        getPersistanceEntityManager()
+        getPersistenceEntityManager()
                 .executeTransaction(em -> {
 
                     this.setErrMsg(String.format("%s: \n %s",
@@ -167,7 +167,7 @@ public abstract class AbstractAction<T extends ActionEntity>
 
             this.getEntity().setCreation_date(LocalDateTime.now());
 
-            getPersistanceEntityManager()
+            getPersistenceEntityManager()
                     .getEntityManager()
                     .persist(this.getEntity());
         }
@@ -179,13 +179,13 @@ public abstract class AbstractAction<T extends ActionEntity>
 
         obj.setLastModify(this.getPersistAction().getExecuteDate());
 
-        getPersistanceEntityManager().getEntityManager().persist(obj);
+        getPersistenceEntityManager().getEntityManager().persist(obj);
 
     }
 
     //==========================================================================
     private void createPersistenceAction() {
-        this.setPersistAction(getPersistanceEntityManager().<AbstractPersistenceAction>createPersistenceEntity(
+        this.setPersistAction(getPersistenceEntityManager().<AbstractPersistenceAction>createPersistenceEntity(
                 AbstractPersistenceAction.class,
                 (action) -> {
                     action.setEntity(this.getEntity());
@@ -203,7 +203,7 @@ public abstract class AbstractAction<T extends ActionEntity>
 //        this.getPersistAction().setNotes(ServiceFuncs.getJsonFromObject(this.getEntity()));
         this.getPersistAction()
                 .setErrMsg(this.getErrMsg());
-        this.getPersistanceEntityManager()
+        this.getPersistenceEntityManager()
                 .getEntityManager()
                 .merge(this.getPersistAction());
     }
@@ -224,14 +224,14 @@ public abstract class AbstractAction<T extends ActionEntity>
     }
 
     protected void afterExecute() {
-//        this.getPersistanceEntityManager()
+//        this.getPersistenceEntityManager()
 //                .getEntityManager()
 //                .clear();
     }
 
     //==========================================================================
     protected Integer getJdbcBatchSize() {
-        return (this.getPersistanceEntityManager().getDefaultJdbcBatchSize());
+        return (this.getPersistenceEntityManager().getDefaultJdbcBatchSize());
     }
 
     //==========================================================================
@@ -261,18 +261,18 @@ public abstract class AbstractAction<T extends ActionEntity>
                         .toUpperCase());
             }
             // обновление кэша
-            getPersistanceEntityManager()
+            getPersistenceEntityManager()
                     .getFactory()
                     .getCache()
                     .evict(this.getEntity().getClass(),
                             this.getEntity().entityId());
 
             // поиск сущности
-//            final ActionEntity entity = persistanceEntityManager
+//            final ActionEntity entity = PersistenceEntityManager
 //                    .getEntityManager()
 //                    .find(this.getEntity().getClass(), this.getEntity().entityId());
             // обновление главной сущности
-            getPersistanceEntityManager()
+            getPersistenceEntityManager()
                     .getEntityManager()
                     .refresh(this.getEntity());
 
@@ -290,7 +290,7 @@ public abstract class AbstractAction<T extends ActionEntity>
 //                        LogService.LogInfo(this.getClass(), () -> String.format("refresh persistene entity (%s)",
 //                                obj.getClass().getSimpleName()).toUpperCase());
 //
-//                        persistanceEntityManager
+//                        PersistenceEntityManager
 //                                .getEntityManager()
 //                                .refresh(obj);
 //                    });

@@ -6,7 +6,7 @@ import org.dbs24.entity.type.EntityType;
 import org.dbs24.entity.kind.EntityKind;
 import org.dbs24.entity.status.EntityStatus;
 import org.dbs24.entity.action.ActionCode;
-import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.persistence.core.PersistenceEntityManager;
 import java.time.LocalDateTime;
 import org.hibernate.Session;
 import org.junit.Test;
@@ -43,7 +43,7 @@ public class TestEntityReferences {
 
 //public class TestRepositories extends Unit4Test<TestSpringBoot, TestRepoConfig> {
     @Autowired
-    private PersistanceEntityManager persistanceEntityManager;
+    private PersistenceEntityManager PersistenceEntityManager;
 
 //    @Autowired
 //    private EntityTypesRepository entityTypesRepository;
@@ -81,19 +81,19 @@ public class TestEntityReferences {
         entityStatusPK.setEntityStatusId(entityStatusId4Test);
         entityStatusPK.setEntityTypeId(entityType4Test);
 
-        final EntityStatus entityStatus = persistanceEntityManager
+        final EntityStatus entityStatus = PersistenceEntityManager
                 .getEntityManager()
                 .find(EntityStatus.class, entityStatusPK);
 
-        persistanceEntityManager
+        PersistenceEntityManager
                 .getEntityManager()
                 .remove(entityStatus);
 
-        persistanceEntityManager
-                .getEntityManager().remove(persistanceEntityManager
+        PersistenceEntityManager
+                .getEntityManager().remove(PersistenceEntityManager
                         .getEntityManager().find(EntityKind.class, entityKind4Test));
-        persistanceEntityManager
-                .getEntityManager().remove(persistanceEntityManager
+        PersistenceEntityManager
+                .getEntityManager().remove(PersistenceEntityManager
                         .getEntityManager().find(EntityType.class, entityType4Test));
 
         //this.printAllRepositories();
@@ -107,7 +107,7 @@ public class TestEntityReferences {
 
         entityReferencesService.createNewActionCode(entityActionCode4Test, testString, testString, Boolean.FALSE);
 
-        persistanceEntityManager.getEntityManager().remove(persistanceEntityManager.getEntityManager().find(ActionCode.class,
+        PersistenceEntityManager.getEntityManager().remove(PersistenceEntityManager.getEntityManager().find(ActionCode.class,
                 entityActionCode4Test));
 
     }
