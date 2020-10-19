@@ -36,7 +36,7 @@ import org.springframework.context.annotation.Profile;
 @ComponentScan(basePackages = SERVICE_PACKAGE)
 //@EntityClassesPackages(pkgList = {"org.dbs24.entity.tariff"})
 @EntityClassesPackages(pkgList = {ENTITY_PACKAGE + ".tariff"})
-public class TariffCoreService extends ActionExecutionService {
+public class TariffCoreService extends AbstractActionExecutionService {
 
     @Bean
     @Profile("dev")

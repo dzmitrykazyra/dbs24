@@ -9,10 +9,6 @@ import org.dbs24.spring.boot.api.AbstractSpringBootApplication;
 import org.springframework.context.annotation.Import;
 import org.dbs24.config.*;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 //@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class})
 @PropertySource(APP_PROPERTIES)

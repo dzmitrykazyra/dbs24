@@ -1,6 +1,6 @@
 #!/bin/sh
 export JAVA_HOME="/usr/lib/jvm/jdk-16" 
-export MAVEN_OPTS="-Xms1024m"
+export MAVEN_OPTS="-Xms4096m"
 cd ..
 mvn clean install -DskipTests=true
 cd retail-loan-contracts

@@ -54,7 +54,7 @@ import org.dbs24.config.*;
     LiasBaseAssetType.class, LiasFinOperCode.class, LiasOperStatus.class, LiasActionType.class,
     DocStatus.class, DocTemplate.class, DocAttr.class, TariffAccretionScheme.class, TariffServ.class, TariffKind.class})
 @Import({RetailLoanContractCommonConfig.class, RetailLoanContractWebSecurityConfig.class})
-public class RetailLoanContractActionsService extends ActionExecutionService {
+public class RetailLoanContractActionsService extends AbstractActionExecutionService {
 
     final ContractSchedulesBuilders contractSchedulesBuilders;
     final LiasDocumentBuilders documentBuilders;

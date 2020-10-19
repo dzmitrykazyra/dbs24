@@ -51,44 +51,40 @@ import org.springframework.util.Assert;
 import org.dbs24.persistence.core.PersisntanceEntityCreator;
 import org.dbs24.persistence.api.PersistenceEntity;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 @Slf4j
 @CachedReferencesClasses(classes = {EntityStatus.class, EntityKind.class, ActionCode.class, Mark.class, MarkValue.class})
-public abstract class ActionExecutionService extends AbstractApplicationService {
+public abstract class AbstractActionExecutionService extends AbstractApplicationService {
 
     @Value("${entity.core.ref.synchronize:true}")
     private Boolean refSynchronize = BOOLEAN_TRUE;
 
     @Autowired
-    private GenericApplicationContext genericApplicationContext;
+    GenericApplicationContext genericApplicationContext;
+
+    @Autowired
+    PersistenceEntityManager persistenceEntityManager;
+
+    @Autowired
+    EntityReferencesService entityReferencesService;
 
     //==========================================================================
-    private final Collection<Pair> CLASS_ENT2ACTION
+    final Collection<Pair> CLASS_ENT2ACTION
             = ServiceFuncs.createCollection();
 
-    private final Collection<? extends AbstractActionEntity> enityCollection
+    final Collection<? extends AbstractActionEntity> enityCollection
             = ServiceFuncs.createCollection();
 
     // сущность - действие
 //    private final Map<Class<ENT>, Class<ACT>> CLASS_ENT2ACTION
 //            = ServiceFuncs.getOrCreateMap_Safe(ServiceFuncs.MAP_NULL);
     // действие - номер действия
-    private final Map<Integer, Class<ACT>> CLASS_INT2ACTION
+    final Map<Integer, Class<ACT>> CLASS_INT2ACTION
             = ServiceFuncs.getOrCreateMap_Safe(ServiceFuncs.MAP_NULL);
 
     // сущность - статус сущности
-    private final Map<Class<ENT>, Integer> CLASS_ENT2STATUS
+    final Map<Class<ENT>, Integer> CLASS_ENT2STATUS
             = ServiceFuncs.getOrCreateMap_Safe(ServiceFuncs.MAP_NULL);
-
-    @Autowired
-    private PersistenceEntityManager PersistenceEntityManager;
-
-    @Autowired
-    private EntityReferencesService entityReferencesService;
 
     //==========================================================================
     class IllegalActionForEntity extends InternalAppException {

@@ -12,7 +12,7 @@ import org.dbs24.entity.contracts.AbstractEntityServiceContract;
 import org.dbs24.entity.core.AbstractAction;
 import org.dbs24.entity.status.EntityStatus;
 import org.dbs24.spring.core.api.ServiceLocator;
-import org.dbs24.service.ActionExecutionService;
+import org.dbs24.service.AbstractActionExecutionService;
 import java.time.LocalDateTime;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +46,7 @@ public abstract class ActCreateOrUpdateContract<T extends AbstractEntityServiceC
 
             // сохранение графиков платежей
             if (NullSafe.notNull(t.getPmtSchedules())) {
-                final ActionExecutionService aes = ServiceLocator.<ActionExecutionService>findService(ActionExecutionService.class);
+                final AbstractActionExecutionService aes = ServiceLocator.<AbstractActionExecutionService>findService(AbstractActionExecutionService.class);
                 // инициализация
                 t.getPmtSchedules()
                         .stream()

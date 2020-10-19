@@ -256,9 +256,7 @@ public final class ServiceFuncs {
         synchronized (collection) {
 
             return Optional.ofNullable(NullSafe.create(OBJECT_NULL, !ServiceFuncs.SF_DONT_THROW_EXC)
-                    .execute2result(() -> {
-
-                        return collection
+                    .execute2result(() ->  collection
                                 .entrySet()
                                 .stream()
                                 .unordered()
@@ -267,8 +265,7 @@ public final class ServiceFuncs {
                                 .entrySet()
                                 .iterator()
                                 .next()
-                                .getValue();
-                    })
+                                .getValue())
                     .<V>getObject());
         }
     }

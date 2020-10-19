@@ -65,13 +65,13 @@ public abstract class AbstractRefRecord implements PersistenceEntity {
             final Class<T> clazz,
             final FilterComparator<T> filterComparator) {
 
-        return (T) ServiceFuncs.getMapValue(AbstractRefRecord.REF_CACHE, mapEntry -> mapEntry.getKey().equals(clazz))
+        return (T) ServiceFuncs.getMapValue(REF_CACHE, mapEntry -> mapEntry.getKey().equals(clazz))
                 .orElseThrow(() -> new RefCollectionIsNotFound(String.format("Reference collection is not found (%s)", clazz.getCanonicalName())))
                 .stream()
                 .map(x -> (T) x)
                 .collect(Collectors.toList())
                 .stream()
-                .filter((fltr) -> filterComparator.getFilter(fltr))
+                .filter(fltr -> filterComparator.getFilter(fltr))
                 .findFirst()
                 .orElseThrow(() -> new ActRefeenceRecordIsNotFound(String.format("%s is not found (%s) ",
                 clazz.getSimpleName(), filterComparator.toString())));

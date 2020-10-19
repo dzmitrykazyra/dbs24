@@ -14,10 +14,6 @@ import lombok.Data;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-/**
- *
- * @author kazyra_d
- */
 @Data
 @Entity
 @Table(name = "TariffAccretionSchemeRef")
@@ -37,9 +33,9 @@ public class TariffAccretionScheme extends AbstractRefRecord implements Referenc
         //   map.put(String.format("%d - %s", this.getTariff_scheme_id(), this.getTariff_scheme_name()), this.getTariff_scheme_id());
     }
 
-    //==========================================================================
-    public static final TariffAccretionScheme findTariffAccretionScheme(final Integer tariffAccretionSchemeId) {
-        return AbstractRefRecord.<TariffAccretionScheme>getRefeenceRecord(TariffAccretionScheme.class,
-                record -> record.getTariffSchemeId().equals(tariffAccretionSchemeId));
-    }
+//    //==========================================================================
+//    public static final TariffAccretionScheme findTariffAccretionScheme(final Integer tariffAccretionSchemeId) {
+//        return AbstractRefRecord.<TariffAccretionScheme>getRefeenceRecord(TariffAccretionScheme.class,
+//                record -> record.getTariffSchemeId().equals(tariffAccretionSchemeId));
+//    }
 }

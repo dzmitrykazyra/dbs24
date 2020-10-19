@@ -16,14 +16,9 @@ import org.dbs24.entity.status.EntityStatusPK;
 import java.time.LocalDateTime;
 import static org.dbs24.application.core.sysconst.SysConst.*;
 
-/**
- *
- * @author Козыро Дмитрий
- */
-@Data
 @Service
 @EntityClassesPackages(pkgList = {SECURITY_PACKAGE})
-public class SecurityActionsService extends ActionExecutionService {
+public class SecurityActionsService extends AbstractActionExecutionService {
 
     public ApplicationUser createUser(final String login,
             final String password,

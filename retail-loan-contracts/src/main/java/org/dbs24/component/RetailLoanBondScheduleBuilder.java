@@ -15,10 +15,6 @@ import org.dbs24.bond.schedule.api.BondScheduleConst;
 import org.dbs24.service.ContractSchedulesBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- *
- * @author N76VB
- */
 @Component
 public class RetailLoanBondScheduleBuilder extends BondScheduleBuilder<RetailLoanContract> {
 
