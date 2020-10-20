@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Data
 @Service
-public class TariffReferencesService extends AbstractApplicationService {
+public class TariffReferencesService extends AbstractReferencesService {
 
     final PersistenceEntityManager persistenceEntityManager;
 

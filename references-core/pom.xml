@@ -19,7 +19,12 @@
             <artifactId>references-api</artifactId>
             <version>${app.version}</version>            
         </dependency> 
-<!--        <dependency>
+        <dependency>
+            <groupId>org.dbs24</groupId>
+            <artifactId>persistence-core</artifactId>
+            <version>${app.version}</version>            
+        </dependency> 
+        <!--        <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>object-api</artifactId>
             <version>${app.version}</version>            
