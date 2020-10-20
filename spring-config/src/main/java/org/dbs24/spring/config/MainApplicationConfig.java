@@ -16,8 +16,6 @@ import lombok.Data;
 @Data
 public abstract class MainApplicationConfig extends AbstractApplicationConfiguration {
 
-//    @Value("${spring.profiles.active}")
-//    private String activeEnv;
     @Bean
     public ExceptionsCollectorBean exceptionManager() {
         return NullSafe.createObject(ExceptionsCollectorBean.class);

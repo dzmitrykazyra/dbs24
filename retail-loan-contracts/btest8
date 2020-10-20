@@ -1,0 +1,9 @@
+#!/bin/sh
+clear
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+export MAVEN_OPTS="-Xms4096m"
+cd ..
+mvn -version
+mvn clean install -DskipTest=true
+cd retail-loan-contracts
+mvn test

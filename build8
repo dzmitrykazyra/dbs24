@@ -1,4 +1,6 @@
 #!/bin/sh
 export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 export MAVEN_OPTS="-Xms2048m"
+clear
+mvn -version
 mvn clean install -DskipTests=true

@@ -1,4 +1,0 @@
-#!/bin/sh
-
-git add -A && git commit -m "update"
-git push https://github.com/dzmitrykazyra/dbs24 refs/heads/dev:refs/heads/dev
