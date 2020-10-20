@@ -240,7 +240,7 @@ public abstract class AbstractActionExecutionService extends AbstractApplication
                 this.getClass().getCanonicalName());
 
         //
-        final Class logClass = log.getClass();
+        final Class<?> logClass = log.getClass();
         final String logClassName = logClass.getCanonicalName();
 
         if (!this.getGenericApplicationContext().containsBean(logClassName)) {
@@ -379,12 +379,12 @@ public abstract class AbstractActionExecutionService extends AbstractApplication
     @PostConstruct
     public void loadSysReferences() {
 
-        Class clAss = this.getClass();
+        Class<? extends AbstractActionExecutionService> clAss = this.getClass();
 
         while (NullSafe.notNull(clAss)) {
 
-            final Annotation annotation = AnnotationFuncs.<CachedReferencesClasses>getAnnotation(clAss, CachedReferencesClasses.class
-            );
+            final Class<? extends AbstractActionExecutionService> servFinalClass = clAss;
+            final Annotation annotation = AnnotationFuncs.<CachedReferencesClasses>getAnnotation(clAss, CachedReferencesClasses.class);
 
             if (NullSafe.notNull(annotation)) {
 
@@ -395,16 +395,10 @@ public abstract class AbstractActionExecutionService extends AbstractApplication
                         .sorted((refClass1, refClass2) -> { // достаем признак порядкового номера из аннотации
 
                             final Integer order_num1 = (NullSafe.create(OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
-                                    .execute2result(() -> {
-                                        return ((ReferenceSyncOrder) AnnotationFuncs.getAnnotation(refClass1, ReferenceSyncOrder.class
-                                        )).order_num();
-                                    }, Integer.valueOf("10000"))).<Integer>getObject();
+                                    .execute2result(() -> (AnnotationFuncs.getAnnotation(refClass1, ReferenceSyncOrder.class)).order_num(), Integer.valueOf("10000"))).<Integer>getObject();
 
                             final Integer order_num2 = (NullSafe.create(OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
-                                    .execute2result(() -> {
-                                        return ((ReferenceSyncOrder) AnnotationFuncs.getAnnotation(refClass2, ReferenceSyncOrder.class
-                                        )).order_num();
-                                    }, Integer.valueOf("10000"))).<Integer>getObject();
+                                    .execute2result(() -> (AnnotationFuncs.getAnnotation(refClass2, ReferenceSyncOrder.class)).order_num(), Integer.valueOf("10000"))).<Integer>getObject();
 
                             return order_num1.compareTo(order_num2);
                         })
@@ -414,22 +408,19 @@ public abstract class AbstractActionExecutionService extends AbstractApplication
 
                                 // синхронизировать справочник в БД
                                 if (refSynchronize) {
-                                    NullSafe.create(this.findRegisterMethod(clazz, "getActualReferencesList"))
-                                            .safeExecute((ns_method) -> {
+                                    NullSafe.create(this.findRegisterMethod(servFinalClass, clazz, "getActualRefRecords"))
+                                            .safeExecute(ns_method -> {
                                                 synchronized (clazz) {
 
-                                                    log.debug(clazz.getCanonicalName());
+                                                    log.info("Register reference '{}'", clazz.getCanonicalName());
                                                     // коллекция записей справочника
-                                                    final Collection collection = (Collection) ((Method) ns_method).invoke(null);
+                                                    final Collection collection = (Collection) ((Method) ns_method).invoke(clazz);
                                                     // сохранение в бд
                                                     getPersistenceEntityManager()
-                                                            .executeTransaction(em -> {
-                                                                collection
-                                                                        .stream()
-                                                                        .forEach(record -> {
-                                                                            em.merge(record);
-                                                                        });
-                                                            });
+                                                            .executeTransaction(em -> collection
+                                                            .stream()
+                                                            .forEach(record -> em.merge(record)
+                                                            ));
                                                 }
                                             }).throwException();
                                 }
@@ -453,7 +444,7 @@ public abstract class AbstractActionExecutionService extends AbstractApplication
                             }
                         });
             }
-            clAss = clAss.getSuperclass();
+            clAss = (Class<? extends AbstractActionExecutionService>) clAss.getSuperclass();
         }
 
         log.info("There are [{}] system reference(s) loaded '{}' ",
@@ -462,19 +453,24 @@ public abstract class AbstractActionExecutionService extends AbstractApplication
     }
 
     //--------------------------------------------------------------------------
-    private Method findRegisterMethod(final Class clazz, final String methodName) {
-        final String key = String.format("%s.%s",
-                clazz.getCanonicalName(),
-                methodName);
+    private Method findRegisterMethod(
+            Class<? extends AbstractActionExecutionService> serviceClass,
+            Class<?> clazz,
+            String methodName) {
+
+        final String key = String.format("%s.%s(%s)",
+                serviceClass.getCanonicalName(),
+                methodName,
+                clazz.getCanonicalName());
+
+        log.debug("Lookup for '{}' method", key);
 
         return (NullSafe.create()
-                .execute2result(() -> {
-                    return clazz.getMethod(methodName);
-                })
-                .catchMsgException((errMsg) -> {
-                    log.error("methodName not found ('{}', class='{}') ({})",
+                .execute2result(() -> serviceClass.getMethod(methodName, clazz))
+                .catchMsgException(errMsg -> {
+                    log.error("methodName not found ('{}', signature='{}') ({})",
                             methodName,
-                            clazz.getCanonicalName(),
+                            key,
                             errMsg);
                 }))
                 .<Method>getObject();

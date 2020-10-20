@@ -22,10 +22,6 @@ import org.dbs24.spring.core.api.ServiceLocator;
 import javax.persistence.*;
 import lombok.Data;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Entity
 @Data
 @Table(name = "rlc_loanContracts")
