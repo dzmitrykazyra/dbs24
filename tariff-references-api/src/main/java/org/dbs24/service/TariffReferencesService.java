@@ -18,6 +18,7 @@ public class TariffReferencesService extends AbstractApplicationService {
 
     final PersistenceEntityManager persistenceEntityManager;
 
+    //==========================================================================
     @Autowired
     public TariffReferencesService(PersistenceEntityManager persistenceEntityManager) {
         this.persistenceEntityManager = persistenceEntityManager;
@@ -28,5 +29,4 @@ public class TariffReferencesService extends AbstractApplicationService {
         return AbstractRefRecord.<TariffAccretionScheme>getRefeenceRecord(TariffAccretionScheme.class,
                 record -> record.getTariffSchemeId().equals(tariffAccretionSchemeId));
     }
-
 }

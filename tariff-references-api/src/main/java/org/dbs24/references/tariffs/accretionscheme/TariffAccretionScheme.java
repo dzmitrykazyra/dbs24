@@ -24,18 +24,7 @@ public class TariffAccretionScheme extends AbstractRefRecord implements Referenc
 
     @Id
     @Column(name = "tariff_scheme_id")
-    private Integer tariffSchemeId;
+    Integer tariffSchemeId;
     @Column(name = "tariff_scheme_name")
-    private String tariffSchemeName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //   map.put(String.format("%d - %s", this.getTariff_scheme_id(), this.getTariff_scheme_name()), this.getTariff_scheme_id());
-    }
-
-//    //==========================================================================
-//    public static final TariffAccretionScheme findTariffAccretionScheme(final Integer tariffAccretionSchemeId) {
-//        return AbstractRefRecord.<TariffAccretionScheme>getRefeenceRecord(TariffAccretionScheme.class,
-//                record -> record.getTariffSchemeId().equals(tariffAccretionSchemeId));
-//    }
+    String tariffSchemeName;
 }

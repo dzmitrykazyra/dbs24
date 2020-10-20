@@ -6,13 +6,8 @@
 package org.dbs24.references.tariffs.stdrategroup;
 
 import org.dbs24.references.api.ReferenceRec;
-import java.util.Map;
 import org.dbs24.references.api.AbstractRefRecord;
 
-/**
- *
- * @author kazyra_d
- */
 public class TariffStdRatesGroup extends AbstractRefRecord implements ReferenceRec {
 
     private Integer tariff_std_group_id;
@@ -46,10 +41,4 @@ public class TariffStdRatesGroup extends AbstractRefRecord implements ReferenceR
         this.tariff_std_group_name = tariff_std_group_name;
         return this;
     }
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getTariff_std_group_id(), this.getTariff_std_group_name()), this.getTariff_std_group_id());
-    }
-
 }

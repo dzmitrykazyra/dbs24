@@ -77,8 +77,6 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
     }
 
     //==========================================================================
-    // РґРµС„РѕР»С‚РЅР°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ РЅР°РїРѕР»РЅРµРЅРёСЏ РјР°РїР°
-    // РјРѕР¶РµС‚ Р±С‹С‚СЊ РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅ РІ РѕР±СЉРµРєС‚Рµ-РЅР°СЃР»РµРґРЅРёРєРµ РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ СЃРїСЂР°РІРѕС‡РЅРёРєР°
     protected void initReferenceMap() {
 
         getReferenceMap().clear();
@@ -88,7 +86,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
 
                     (this.getRefRecords()).forEach((object) -> {
 
-                        ((ReferenceRec) object).record2Map(this.getReferenceMap());
+//                        ((ReferenceRec) object).record2Map(this.getReferenceMap());
 
                     });
                 });

@@ -37,11 +37,6 @@ public class DocStatus extends AbstractRefRecord implements ReferenceRec {
     @Column(name = "doc_status_name")
     private String docStatusName;
 
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //map.put(String.format("%d - %s", this.getDoc_status_id(), this.getDoc_status_name()), this.getDoc_status_id());
-    }
-
     //==========================================================================
     public static final DocStatus findDocStatus(final Integer statusId) {
         return AbstractRefRecord.<DocStatus>getRefeenceRecord(DocStatus.class,

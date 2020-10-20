@@ -33,11 +33,6 @@ public class EntityStatus extends AbstractRefRecord implements ReferenceRec {
     @Column(name = "entity_status_name")
     private String entityStatusName;
 
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(this.toString(), this.getEntityStatusId());
-    }
-
     //==========================================================================
     public static final EntityStatus findEntityStatus(final Integer EntityTypeId, final Integer EntityStatusId) {
         return AbstractRefRecord.<EntityStatus>getRefeenceRecord(EntityStatus.class,

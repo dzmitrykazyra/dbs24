@@ -29,10 +29,4 @@ public class DocTemplateGroup extends AbstractRefRecord implements ReferenceRec 
     private Integer docTemplateGroupId;
     @Column(name = "doc_template_group_name")
     private String docTemplateGroupName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-//        map.put(String.format("%d - %s", this.getDoc_template_group_id(), this.getDoc_template_group_name()), this.getDoc_template_group_id());
-    }
-
 }

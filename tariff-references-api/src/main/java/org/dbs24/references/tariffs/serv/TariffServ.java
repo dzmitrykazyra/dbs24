@@ -20,10 +20,6 @@ import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import static org.dbs24.application.core.sysconst.SysConst.*;
 
-/**
- *
- * @author kazyra_d
- */
 @Data
 @Entity
 @Table(name = "TariffServsRef")
@@ -41,11 +37,6 @@ public class TariffServ extends AbstractRefRecord implements ReferenceRec {
     private String tariffServName;
     @Column(name = "client_pay")
     private Boolean clientPay;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.tariffServId, this.tariffServName), this.getTariffServId());
-    }
 
     //==========================================================================
     public static <T extends TariffServ, A extends TariffServId> Collection<T> getActualReferencesList() {

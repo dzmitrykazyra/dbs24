@@ -32,12 +32,6 @@ public class ActionCode extends AbstractRefRecord implements ReferenceRec {
     private String appName;
     @Column(name = "is_closed")
     private Boolean isClosed;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(this.toString(), this.getActionCode());
-    }
-
     //==========================================================================
     public static final ActionCode findActionCode(final Integer ActionCodeId) {
         return AbstractRefRecord.<ActionCode>getRefeenceRecord(ActionCode.class,

@@ -13,10 +13,6 @@ import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-/**
- *
- * @author kazyra_d
- */
 @Data
 @Entity
 @Cacheable
@@ -29,11 +25,6 @@ public class LoanSource extends AbstractRefRecord implements ReferenceRec {
     private Integer loanSourceId;
     @Column(name = "loan_source_name")
     private String loanSourceName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getLoanSourceId(), this.toString()), this.getLoanSourceId());
-    }
 
     //==========================================================================
     public static final LoanSource findLoanSource(final Integer LoanSourceId) {

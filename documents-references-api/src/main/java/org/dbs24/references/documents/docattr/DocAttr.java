@@ -13,10 +13,6 @@ import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Cache;
 
-/**
- *
- * @author kazyra_d
- */
 @Data
 @Entity
 @Cacheable
@@ -31,11 +27,6 @@ public class DocAttr extends AbstractRefRecord implements ReferenceRec {
     private String docAttrCcode;
     @Column(name = "doc_attr_name")
     private String docAttrName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //map.put(String.format("%s - %s", this.getDoc_attr_code(), this.getDoc_attr_name()), 0);
-    }
 
     //==========================================================================
     public static final DocAttr findDocAttr(final Integer attrId) {

@@ -32,12 +32,7 @@ public class CheckerBoard extends AbstractRefRecord implements ReferenceRec {
     private String checkerboardCode;
     @Column(name = "checkerboard_name")
     private String checkerboard_Name;
-    
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //map.put(String.format("%d - %s", this.getLiasTypeId(), this.getLiasTypeName()), this.getLiasTypeId());
-    }
-    
+      
     public static final CheckerBoard findCheckerboard(final String checkerboard) {
         return AbstractRefRecord.<CheckerBoard>getRefeenceRecord(CheckerBoard.class,
                 record -> record.getCheckerboardCode().equals(checkerboard));

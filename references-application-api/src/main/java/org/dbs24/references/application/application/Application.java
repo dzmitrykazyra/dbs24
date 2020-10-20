@@ -59,9 +59,4 @@ public class Application extends AbstractRefRecord implements ReferenceRec {
         this.app_url = app_url;
         return this;
     }
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getApp_id(), this.app_name), this.getApp_id());
-    }
 }

@@ -91,11 +91,6 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
     }
 
     @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getTariff_serv_id(), this.getTariff_kind_name()), this.getTariff_serv_id());
-    }
-
-    @Override
     public LocalDate getActual_date() {
 
         if (NullSafe.isNull(actual_date)) {

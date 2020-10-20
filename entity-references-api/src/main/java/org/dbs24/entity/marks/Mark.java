@@ -30,10 +30,4 @@ public class Mark extends AbstractRefRecord implements ReferenceRec {
     private String markName;
     @Column(name = "mark_group")
     private String markGroup;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getMarkId(), this.getMarkName()), this.getMarkId());
-    }
-
 }

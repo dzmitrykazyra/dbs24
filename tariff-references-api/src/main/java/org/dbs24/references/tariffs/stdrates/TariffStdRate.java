@@ -9,10 +9,6 @@ import org.dbs24.references.api.ReferenceRec;
 import java.util.Map;
 import org.dbs24.references.api.AbstractRefRecord;
 
-/**
- *
- * @author kazyra_d
- */
 public class TariffStdRate extends AbstractRefRecord implements ReferenceRec {
 
     private Integer tariff_std_rate_id;
@@ -50,10 +46,4 @@ public class TariffStdRate extends AbstractRefRecord implements ReferenceRec {
         this.tariff_std_rate_name = tariff_std_rate_name;
         return this;
     }
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getTariff_std_rate_id(), this.getTariff_std_rate_name()), this.getTariff_std_rate_id());
-    }
-
 }

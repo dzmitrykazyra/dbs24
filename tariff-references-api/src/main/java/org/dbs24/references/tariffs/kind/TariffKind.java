@@ -47,11 +47,6 @@ public class TariffKind extends AbstractRefRecord implements ReferenceRec {
     @Column(name = "tariff_kind_name")
     private String tariffKindName;
 
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //map.put(String.format("%d - %s", this.getTariff_group_id(), this.getTariff_group_name()), this.getTariff_group_id());
-    }
-
     public static <T extends TariffKind, A extends TariffKindId> Collection<T> getActualReferencesList() {
 
         final Collection<T> actualList = ServiceFuncs.<T>createCollection();

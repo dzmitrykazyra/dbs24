@@ -30,10 +30,4 @@ public class DocType extends AbstractRefRecord implements ReferenceRec {
     private Integer docTypeId;
     @Column(name = "doc_type_name")
     private String docTypeName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //map.put(String.format("%d - %s", this.getDoc_type_id(), this.getDoc_type_name()), this.getDoc_type_id());
-    }
-
 }

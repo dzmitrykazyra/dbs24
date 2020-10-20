@@ -60,9 +60,4 @@ public class Function extends AbstractRefRecord implements ReferenceRec {
         this.function_group_id = function_group_id;
         return this;
     }
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getFunction_id(), this.getFunction_name()), this.getFunction_id());
-    }
 }

@@ -32,9 +32,4 @@ public class EntityType extends AbstractRefRecord implements ReferenceRec {
     private String entityTypeName;
     @Column(name = "entity_app_name")
     private String entityAppName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(this.toString(), this.getEntityTypeId());
-    }
 }

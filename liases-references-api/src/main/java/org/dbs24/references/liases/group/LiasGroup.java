@@ -30,9 +30,4 @@ public class LiasGroup extends AbstractRefRecord implements ReferenceRec {
 
     @Column(name = "lias_group_name")
     private String liasGroupName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getLiasGroupId(), this.getLiasGroupName()), this.getLiasGroupId());
-    }
 }

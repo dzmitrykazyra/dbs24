@@ -34,18 +34,5 @@ public class ApplicationReferencesService extends AbstractApplicationService {
                     currency.setCurrencyName(currencyName);
 
                 });
-    }
-    //==========================================================================
-//    public Currency getCurrency(final Integer currencyId) {
-//
-//        return ServiceFuncs.getMapValue(this.getREF_CACHE(), mapEntry -> mapEntry.getKey().equals(Currency.class))
-//                .get()
-//                .stream()
-//                .map(x -> (Currency) x)
-//                .collect(Collectors.toList())
-//                .stream()
-//                .filter(currency -> currency.getCurrencyId().equals(currencyId))
-//                .findFirst()
-//                .get();
-//    }    
+    } 
 }

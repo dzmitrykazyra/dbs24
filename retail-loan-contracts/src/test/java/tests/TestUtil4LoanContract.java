@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import org.junit.Before;
+import org.dbs24.service.TariffReferencesService;
 import static org.junit.Assert.assertNotNull;
 //import static org.junit.Assert.assertFalse;
 //import static org.junit.Assert.assertTrue;
@@ -45,6 +46,9 @@ public abstract class TestUtil4LoanContract extends Utils4test {
     @Autowired
     private TariffCoreService tariffCoreActionsService;
 
+    @Autowired
+    private TariffReferencesService tariffReferencesService;
+
     @Before
     public void setUp() {
         assertNotNull(this.getWebClientMgmt());
@@ -52,6 +56,7 @@ public abstract class TestUtil4LoanContract extends Utils4test {
         assertNotNull(this.getRetailLoanContractActionsService());
         assertNotNull(this.getTariffCoreActionsService());
         assertNotNull(this.getCounterpartyActionsService());
+        assertNotNull(this.getTariffReferencesService());
     }
 
     //==========================================================================
@@ -118,7 +123,7 @@ public abstract class TestUtil4LoanContract extends Utils4test {
                                     LOCALDATE_NULL,
                                     (tariffPlan2Serv) -> {
                                         // добавление услуги в тарифный план
-                                        tariffPlan2Serv.addTariffRate(TariffAccretionScheme.findTariffAccretionScheme(1),
+                                        tariffPlan2Serv.addTariffRate(tariffReferencesService.findTariffAccretionScheme(1),
                                                 TariffKind.findTariffKind(TariffConst.TK_CURRENT_RESTS), LocalDate.now(), LOCALDATE_NULL, testString,
                                                 (tariffRate_1) -> {
 

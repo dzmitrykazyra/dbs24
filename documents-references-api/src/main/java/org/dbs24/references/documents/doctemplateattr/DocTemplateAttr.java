@@ -29,10 +29,4 @@ public class DocTemplateAttr extends AbstractRefRecord implements ReferenceRec {
     private Integer docTemplateId;
     @Column(name = "doc_attr_id")
     private Integer docAttrId;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //map.put(String.format("%s - %s", this.getDoc_attr_id(), this.getIs_mandatory()), 0);
-    }
-
 }

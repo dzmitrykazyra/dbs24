@@ -35,9 +35,4 @@ public class EntAttrTemplate extends AbstractRefRecord implements ReferenceRec {
         this.attr_id = attr_id;
         return this;
     }
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //map.put(String.format("%d - %s", getAttr_template_id(), getAttr_id()), this.getAttr_id());
-    }
 }

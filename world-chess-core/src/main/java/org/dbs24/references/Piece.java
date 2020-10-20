@@ -10,7 +10,6 @@ import org.dbs24.references.api.AbstractRefRecord;
 import org.dbs24.references.api.LangStrValue;
 import org.dbs24.references.api.ReferenceRec;
 import java.util.Collection;
-import java.util.Map;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,11 +33,6 @@ public class Piece extends AbstractRefRecord implements ReferenceRec {
     private String pieceCode;
     @Column(name = "piece_name")
     private String pieceName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //map.put(String.format("%d - %s", this.getLiasTypeId(), this.getLiasTypeName()), this.getLiasTypeId());
-    }
 
     public static final Piece findPiece(final String pieceCode) {
         return AbstractRefRecord.<Piece>getRefeenceRecord(Piece.class,

@@ -65,10 +65,4 @@ public class AppFieldCaption  extends AbstractRefRecord implements ReferenceRec 
     public void setField_tooltip(final String field_tooltip) {
         this.field_tooltip = field_tooltip;
     }
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getApp_id(), this.getField_name()), this.getApp_id());
-    }
-
 }

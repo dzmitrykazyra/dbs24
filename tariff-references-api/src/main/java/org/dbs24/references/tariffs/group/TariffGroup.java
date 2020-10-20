@@ -19,10 +19,6 @@ import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 @Entity
 @Table(name = "TariffGroupsRef")
@@ -36,11 +32,6 @@ public class TariffGroup extends AbstractRefRecord implements ReferenceRec {
     private Integer tariffGroupId;
     @Column(name = "tariff_group_name")
     private String tariffGroupName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //map.put(String.format("%d - %s", this.getTariff_group_id(), this.getTariff_group_name()), this.getTariff_group_id());
-    }
 
     //==========================================================================
     public static final TariffGroup findTariffGroup(final Integer tariffGroupId) {

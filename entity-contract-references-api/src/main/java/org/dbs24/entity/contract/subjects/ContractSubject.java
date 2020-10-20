@@ -5,10 +5,6 @@
  */
 package org.dbs24.entity.contract.subjects;
 
-/**
- *
- * @author kazyra_d
- */
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.application.core.exception.api.InternalAppException;
 import java.util.Map;
@@ -36,11 +32,6 @@ public class ContractSubject extends AbstractRefRecord implements ReferenceRec {
     private Integer contractSubjectId;
     @Column(name = "contract_subject_name")
     private String contractSubjectName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(this.toString(), this.getContractSubjectId());
-    }
 
     //==========================================================================
     public static final ContractSubject findContractSubject(final Integer liasContractSubjectId) {

@@ -29,11 +29,6 @@ public class LiasDebtState extends AbstractRefRecord implements ReferenceRec {
     @Column(name = "debt_state_name")
     private String debtStateName;
 
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getDebtStateId(), this.getDebtStateName()), this.getDebtStateId());
-    }
-
     public static final LiasDebtState findLiasDebtState(final Integer liasLiasDebtStateId) {
         return AbstractRefRecord.<LiasDebtState>getRefeenceRecord(LiasDebtState.class,
                 record -> record.getDebtStateId().equals(liasLiasDebtStateId));
