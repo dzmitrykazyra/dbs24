@@ -7,7 +7,7 @@ package org.dbs24.tariff;
 
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import org.dbs24.entity.core.api.EntityKindId;
-import org.dbs24.references.tariffs.api.TariffConst;
+import org.dbs24.consts.TariffConst;
 /**
  *
  * @author Козыро Дмитрий

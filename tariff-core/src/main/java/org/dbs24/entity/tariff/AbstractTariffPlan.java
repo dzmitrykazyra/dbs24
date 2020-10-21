@@ -16,7 +16,7 @@ import org.dbs24.entity.core.api.EntityStatusesRef;
 import org.dbs24.entity.core.api.EntityTypeId;
 import org.dbs24.entity.kind.EntityKind;
 import org.dbs24.entity.status.EntityStatusId;
-import org.dbs24.references.tariffs.api.TariffConst;
+import org.dbs24.consts.TariffConst;
 import org.dbs24.references.tariffs.kind.TariffKind;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.entity.core.AbstractActionEntity;

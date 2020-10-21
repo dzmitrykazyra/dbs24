@@ -4,5 +4,5 @@ export MAVEN_OPTS="-Xms1024m"
 clear
 mvn -version
 mvn clean install -DskipTests=true
-mvn exec:java -Dexec.mainClass="org.dbs24.RetailLoanContractBoot"
+mvn exec:java -Dexec.mainClass="org.dbs24.RetailLoanContractBoot" -Djava.awt.headless=true
 #mvn exec:java -Dexec.mainClass="org.dbs24.RetailLoanContractBoot" -Dexec.classpathScope=runtime

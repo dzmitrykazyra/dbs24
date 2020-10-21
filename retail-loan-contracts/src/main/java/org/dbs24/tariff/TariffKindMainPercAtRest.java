@@ -7,7 +7,7 @@ package org.dbs24.tariff;
 
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.StopWatcher;
-import org.dbs24.references.tariffs.api.TariffConst;
+import org.dbs24.consts.TariffConst;
 import org.dbs24.entity.tariff.TariffKindService;
 import org.dbs24.references.tariffs.kind.TariffKindId;
 import org.dbs24.entity.tariff.TariffRate_1;

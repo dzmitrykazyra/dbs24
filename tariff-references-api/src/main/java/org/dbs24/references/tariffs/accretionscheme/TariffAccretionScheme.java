@@ -6,7 +6,6 @@
 package org.dbs24.references.tariffs.accretionscheme;
 
 import org.dbs24.references.api.ReferenceRec;
-import java.util.Map;
 import org.dbs24.references.api.AbstractRefRecord;
 import org.dbs24.references.api.ReferenceSyncOrder;
 import javax.persistence.*;
@@ -19,7 +18,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "TariffAccretionSchemeRef")
 @ReferenceSyncOrder(order_num = 1)
 @Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class TariffAccretionScheme extends AbstractRefRecord implements ReferenceRec {
 
     @Id

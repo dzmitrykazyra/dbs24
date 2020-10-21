@@ -8,12 +8,8 @@ package org.dbs24.entity.liases.templates;
 import org.dbs24.lias.opers.api.LiasOperTemplateId;
 import org.dbs24.lias.opers.napi.LiasOper2Tariff;
 import org.dbs24.references.api.LiasesConst;
-import org.dbs24.references.tariffs.api.TariffConst;
+import org.dbs24.consts.TariffConst;
 
-/**
- *
- * @author kazyra_d
- */
 @LiasOperTemplateId(template_id = 1)
 @LiasOper2Tariff(tariff_serv_id = TariffConst.TS_MAIN_PERCENTS,
         debt_state_id = LiasesConst.LDS_NORMAL_DEBTS,

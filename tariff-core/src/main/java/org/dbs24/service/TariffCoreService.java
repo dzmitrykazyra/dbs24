@@ -17,7 +17,7 @@ import org.dbs24.entity.tariff.AbstractTariffPlan;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
-import org.dbs24.references.tariffs.api.TariffConst;
+import org.dbs24.consts.TariffConst;
 import org.dbs24.entity.status.EntityStatus;
 import org.dbs24.references.api.AbstractRefRecord;
 import org.dbs24.entity.tariff.TariffPlanProcessor;

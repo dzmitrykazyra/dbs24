@@ -7,10 +7,6 @@ package org.dbs24.consts;
 
 import org.dbs24.entity.RetailLoanContract;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 public final class RetailLoanContractConst {
 
     public static final int LOAN2INDIVIDUAL = 2100; // кредит физическому лицу

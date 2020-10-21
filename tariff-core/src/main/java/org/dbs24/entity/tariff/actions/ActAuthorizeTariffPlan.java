@@ -11,7 +11,7 @@ import org.dbs24.entity.core.api.AllowedMethod;
 import org.dbs24.entity.core.api.EntityConst;
 import org.dbs24.entity.core.api.PreViewDialog;
 import org.dbs24.entity.core.api.ViewAction;
-import org.dbs24.references.tariffs.api.TariffConst;
+import org.dbs24.consts.TariffConst;
 import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import org.dbs24.application.core.nullsafe.NullSafe;

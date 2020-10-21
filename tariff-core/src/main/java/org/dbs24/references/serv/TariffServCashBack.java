@@ -9,7 +9,7 @@ package org.dbs24.references.serv;
  *
  * @author Козыро Дмитрий
  */
-import org.dbs24.references.tariffs.api.TariffConst;
+import org.dbs24.consts.TariffConst;
 import org.dbs24.references.tariffs.serv.TariffServ;
 import org.dbs24.references.tariffs.serv.TariffServId;
 

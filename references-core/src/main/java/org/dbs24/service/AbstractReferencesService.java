@@ -72,13 +72,18 @@ public abstract class AbstractReferencesService extends AbstractApplicationServi
 
                                 // синхронизировать справочник в БД
                                 if (refSynchronize) {
-                                    NullSafe.create(this.findRegisterMethod(servFinalClass, String.format("get%sRecords", clazz.getSimpleName())))
+                                    NullSafe.create(this.findRegisterMethod(servFinalClass, String.format("get%sCollection", clazz.getSimpleName())))
                                             .safeExecute(ns_method -> {
                                                 synchronized (clazz) {
 
                                                     log.info("Register reference '{}'", clazz.getCanonicalName());
                                                     // коллекция записей справочника
                                                     final Collection collection = (Collection) ((Method) ns_method).invoke(null);
+
+                                                    log.info("Reference {} is registered ({} recs) ",
+                                                            clazz.getCanonicalName(),
+                                                            collection.size()
+                                                    );
                                                     // сохранение в бд
                                                     getPersistenceEntityManager()
                                                             .executeTransaction(em -> collection
@@ -90,7 +95,7 @@ public abstract class AbstractReferencesService extends AbstractApplicationServi
 
                                 // перечитываем справочники
                                 NullSafe.create()
-                                        .execute((stmt) -> {
+                                        .execute(stmt -> {
                                             final Collection<? extends AbstractRefRecord> collection = this.getPersistenceEntityManager()
                                                     .getEntityManager()
                                                     .createQuery("Select t from " + clazz.getSimpleName() + " t")
@@ -101,8 +106,7 @@ public abstract class AbstractReferencesService extends AbstractApplicationServi
                                                     clazz.getCanonicalName()));
 
                                         })
-                                        .catchException(e
-                                                -> log.error("Can't load refernce '{}' ({}) ", clazz.getCanonicalName(), e.getMessage()))
+                                        .catchException(e -> log.error("Can't load refernce '{}' ({}) ", clazz.getCanonicalName(), e.getMessage()))
                                         .throwException();
                             }
                         });

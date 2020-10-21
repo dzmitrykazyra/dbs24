@@ -11,7 +11,7 @@ import org.dbs24.entity.core.api.AllowedMethod;
 import org.dbs24.entity.core.api.EntityWarningsList;
 //import org.dbs24.exception.api.EntityWarningsException;
 //import org.dbs24.application.core.exception.api.InternalAppException;
-import org.dbs24.references.tariffs.api.TariffConst;
+import org.dbs24.consts.TariffConst;
 import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import lombok.Data;

@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.dbs24.references.tariffs.api;
+package org.dbs24.consts;
 
 import static org.dbs24.application.core.sysconst.SysConst.*;
+import org.dbs24.references.tariffs.accretionscheme.TariffAccretionScheme;
+import org.dbs24.references.tariffs.group.TariffGroup;
 import org.dbs24.references.tariffs.kind.TariffKindAbstract;
 import org.dbs24.references.tariffs.kind.TariffKindId;
 import org.dbs24.references.tariffs.serv.TariffServId;
 
-/**
- *
- * @author Козыро Дмитрий
- */
-public class TariffConst {
+public final class TariffConst {
     
     //public static Boolean tariffDebug = BOOLEAN_FALSE;
     
@@ -22,6 +20,8 @@ public class TariffConst {
     public static final Class<TariffServId> TARIFF_SERVID_CLASS = TariffServId.class;
     public static final Class<TariffKindAbstract> TARIFF_KIND_ABSTRACT_CLASS = TariffKindAbstract.class;
     public static final Class<TariffKindId> TARIFF_KINDID_CLASS = TariffKindId.class;
+    public static final Class<TariffAccretionScheme> TARIFF_ACCRETION_SCHEME_CLASS = TariffAccretionScheme.class;
+    public static final Class<TariffGroup> TARIFF_GROUP_CLASS = TariffGroup.class;
     
     public static final int TG_LOANS = 101;  // Предоставление средств в форме кредита
 

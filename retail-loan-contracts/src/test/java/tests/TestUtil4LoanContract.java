@@ -18,7 +18,7 @@ import org.dbs24.references.bond.schedule.api.PmtScheduleAlg;
 import org.dbs24.references.bond.schedule.api.PmtScheduleTerm;
 import org.dbs24.references.loan.api.LoanSource;
 import org.dbs24.references.tariffs.accretionscheme.TariffAccretionScheme;
-import org.dbs24.references.tariffs.api.TariffConst;
+import org.dbs24.consts.TariffConst;
 import org.dbs24.references.tariffs.kind.TariffKind;
 import org.dbs24.service.CounterpartyActionsService;
 import org.dbs24.service.RetailLoanContractActionsService;
