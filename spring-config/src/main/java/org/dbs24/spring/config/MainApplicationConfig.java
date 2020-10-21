@@ -21,10 +21,10 @@ public abstract class MainApplicationConfig extends AbstractApplicationConfigura
         return NullSafe.createObject(ExceptionsCollectorBean.class);
     }
 
-    @Bean
-    public WebClientMgmt webClientMgmt() {
-        return NullSafe.<WebClientMgmt>createObject(WebClientMgmt.class);
-    }
+//    @Bean
+//    public WebClientMgmt webClientMgmt() {
+//        return NullSafe.<WebClientMgmt>createObject(WebClientMgmt.class);
+//    }
 
     @Bean
     public MailManager mailManager() {

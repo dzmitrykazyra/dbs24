@@ -376,105 +376,105 @@ public abstract class AbstractActionExecutionService extends AbstractApplication
     }
 
     //==========================================================================
-    @PostConstruct
-    public void loadSysReferences() {
-
-        Class<? extends AbstractActionExecutionService> clAss = this.getClass();
-
-        while (NullSafe.notNull(clAss)) {
-
-            final Class<? extends AbstractActionExecutionService> servFinalClass = clAss;
-            final Annotation annotation = AnnotationFuncs.<CachedReferencesClasses>getAnnotation(clAss, CachedReferencesClasses.class);
-
-            if (NullSafe.notNull(annotation)) {
-
-                final Class[] classes = AnnotationFuncs.<CachedReferencesClasses>getAnnotation(clAss, CachedReferencesClasses.class
-                ).classes();
-
-                Arrays.stream(classes)
-                        .sorted((refClass1, refClass2) -> { // достаем признак порядкового номера из аннотации
-
-                            final Integer order_num1 = (NullSafe.create(OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
-                                    .execute2result(() -> (AnnotationFuncs.getAnnotation(refClass1, ReferenceSyncOrder.class)).order_num(), Integer.valueOf("10000"))).<Integer>getObject();
-
-                            final Integer order_num2 = (NullSafe.create(OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
-                                    .execute2result(() -> (AnnotationFuncs.getAnnotation(refClass2, ReferenceSyncOrder.class)).order_num(), Integer.valueOf("10000"))).<Integer>getObject();
-
-                            return order_num1.compareTo(order_num2);
-                        })
-                        .forEach(clazz -> {
-
-                            if (!ServiceFuncs.getMapValue(AbstractRefRecord.REF_CACHE, mapEntry -> mapEntry.getKey().equals(clazz)).isPresent()) {
-
-                                // синхронизировать справочник в БД
-                                if (refSynchronize) {
-                                    NullSafe.create(this.findRegisterMethod(servFinalClass, clazz, "getActualRefRecords"))
-                                            .safeExecute(ns_method -> {
-                                                synchronized (clazz) {
-
-                                                    log.info("Register reference '{}'", clazz.getCanonicalName());
-                                                    // коллекция записей справочника
-                                                    final Collection collection = (Collection) ((Method) ns_method).invoke(clazz);
-                                                    // сохранение в бд
-                                                    getPersistenceEntityManager()
-                                                            .executeTransaction(em -> collection
-                                                            .stream()
-                                                            .forEach(record -> em.merge(record)
-                                                            ));
-                                                }
-                                            }).throwException();
-                                }
-
-                                // перечитываем справочники
-                                NullSafe.create()
-                                        .execute((stmt) -> {
-                                            final Collection<? extends AbstractRefRecord> collection = this.getPersistenceEntityManager()
-                                                    .getEntityManager()
-                                                    .createQuery("Select t from " + clazz.getSimpleName() + " t")
-                                                    .getResultList();
-
-                                            AbstractRefRecord.REF_CACHE.put(clazz, collection);
-                                            log.debug(String.format("Reference '%s' is loaded ",
-                                                    clazz.getCanonicalName()));
-
-                                        })
-                                        .catchException(e
-                                                -> log.error("Can't load refernce '{}' ({}) ", clazz.getCanonicalName(), e.getMessage()))
-                                        .throwException();
-                            }
-                        });
-            }
-            clAss = (Class<? extends AbstractActionExecutionService>) clAss.getSuperclass();
-        }
-
-        log.info("There are [{}] system reference(s) loaded '{}' ",
-                AbstractRefRecord.REF_CACHE.size(),
-                this.getClass().getCanonicalName());
-    }
-
-    //--------------------------------------------------------------------------
-    private Method findRegisterMethod(
-            Class<? extends AbstractActionExecutionService> serviceClass,
-            Class<?> clazz,
-            String methodName) {
-
-        final String key = String.format("%s.%s(%s)",
-                serviceClass.getCanonicalName(),
-                methodName,
-                clazz.getCanonicalName());
-
-        log.debug("Lookup for '{}' method", key);
-
-        return (NullSafe.create()
-                .execute2result(() -> serviceClass.getMethod(methodName, clazz))
-                .catchMsgException(errMsg -> {
-                    log.error("methodName not found ('{}', signature='{}') ({})",
-                            methodName,
-                            key,
-                            errMsg);
-                }))
-                .<Method>getObject();
-    }
+//    @PostConstruct
+//    public void loadSysReferences() {
+//
+//        Class<? extends AbstractActionExecutionService> clAss = this.getClass();
+//
+//        while (NullSafe.notNull(clAss)) {
+//
+//            final Class<? extends AbstractActionExecutionService> servFinalClass = clAss;
+//            final Annotation annotation = AnnotationFuncs.<CachedReferencesClasses>getAnnotation(clAss, CachedReferencesClasses.class);
+//
+//            if (NullSafe.notNull(annotation)) {
+//
+//                final Class[] classes = AnnotationFuncs.<CachedReferencesClasses>getAnnotation(clAss, CachedReferencesClasses.class
+//                ).classes();
+//
+//                Arrays.stream(classes)
+//                        .sorted((refClass1, refClass2) -> { // достаем признак порядкового номера из аннотации
+//
+//                            final Integer order_num1 = (NullSafe.create(OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
+//                                    .execute2result(() -> (AnnotationFuncs.getAnnotation(refClass1, ReferenceSyncOrder.class)).order_num(), Integer.valueOf("10000"))).<Integer>getObject();
+//
+//                            final Integer order_num2 = (NullSafe.create(OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
+//                                    .execute2result(() -> (AnnotationFuncs.getAnnotation(refClass2, ReferenceSyncOrder.class)).order_num(), Integer.valueOf("10000"))).<Integer>getObject();
+//
+//                            return order_num1.compareTo(order_num2);
+//                        })
+//                        .forEach(clazz -> {
+//
+//                            if (!ServiceFuncs.getMapValue(AbstractRefRecord.REF_CACHE, mapEntry -> mapEntry.getKey().equals(clazz)).isPresent()) {
+//
+//                                // синхронизировать справочник в БД
+//                                if (refSynchronize) {
+//                                    NullSafe.create(this.findRegisterMethod(servFinalClass, clazz, "getActualRefRecords"))
+//                                            .safeExecute(ns_method -> {
+//                                                synchronized (clazz) {
+//
+//                                                    log.info("Register reference '{}'", clazz.getCanonicalName());
+//                                                    // коллекция записей справочника
+//                                                    final Collection collection = (Collection) ((Method) ns_method).invoke(clazz);
+//                                                    // сохранение в бд
+//                                                    getPersistenceEntityManager()
+//                                                            .executeTransaction(em -> collection
+//                                                            .stream()
+//                                                            .forEach(record -> em.merge(record)
+//                                                            ));
+//                                                }
+//                                            }).throwException();
+//                                }
+//
+//                                // перечитываем справочники
+//                                NullSafe.create()
+//                                        .execute((stmt) -> {
+//                                            final Collection<? extends AbstractRefRecord> collection = this.getPersistenceEntityManager()
+//                                                    .getEntityManager()
+//                                                    .createQuery("Select t from " + clazz.getSimpleName() + " t")
+//                                                    .getResultList();
+//
+//                                            AbstractRefRecord.REF_CACHE.put(clazz, collection);
+//                                            log.debug(String.format("Reference '%s' is loaded ",
+//                                                    clazz.getCanonicalName()));
+//
+//                                        })
+//                                        .catchException(e
+//                                                -> log.error("Can't load refernce '{}' ({}) ", clazz.getCanonicalName(), e.getMessage()))
+//                                        .throwException();
+//                            }
+//                        });
+//            }
+//            clAss = (Class<? extends AbstractActionExecutionService>) clAss.getSuperclass();
+//        }
+//
+//        log.info("There are [{}] system reference(s) loaded '{}' ",
+//                AbstractRefRecord.REF_CACHE.size(),
+//                this.getClass().getCanonicalName());
+//    }
+//
+//    //--------------------------------------------------------------------------
+//    private Method findRegisterMethod(
+//            Class<? extends AbstractActionExecutionService> serviceClass,
+//            Class<?> clazz,
+//            String methodName) {
+//
+//        final String key = String.format("%s.%s(%s)",
+//                serviceClass.getCanonicalName(),
+//                methodName,
+//                clazz.getCanonicalName());
+//
+//        log.debug("Lookup for '{}' method", key);
+//
+//        return (NullSafe.create()
+//                .execute2result(() -> serviceClass.getMethod(methodName, clazz))
+//                .catchMsgException(errMsg -> {
+//                    log.error("methodName not found ('{}', signature='{}') ({})",
+//                            methodName,
+//                            key,
+//                            errMsg);
+//                }))
+//                .<Method>getObject();
+//    }
 
     //==========================================================================
     public <T extends AbstractPersistenceEntity> T reloadCreatedEntity(final Class<T> entClass,

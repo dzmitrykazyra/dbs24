@@ -37,12 +37,13 @@ public abstract class AbstractReferencesService extends AbstractApplicationServi
 
     @Autowired
     PersistenceEntityManager persistenceEntityManager;
-    
-    
+
     @PostConstruct
     public void loadSysReferences() {
 
         Class<? extends AbstractReferencesService> clAss = this.getClass();
+
+        log.debug("Loading system references ({})", clAss.getCanonicalName());
 
         while (NullSafe.notNull(clAss)) {
 
@@ -71,19 +72,18 @@ public abstract class AbstractReferencesService extends AbstractApplicationServi
 
                                 // синхронизировать справочник в БД
                                 if (refSynchronize) {
-                                    NullSafe.create(this.findRegisterMethod(servFinalClass, clazz, "getActualRefRecords"))
+                                    NullSafe.create(this.findRegisterMethod(servFinalClass, String.format("get%sRecords", clazz.getSimpleName())))
                                             .safeExecute(ns_method -> {
                                                 synchronized (clazz) {
 
                                                     log.info("Register reference '{}'", clazz.getCanonicalName());
                                                     // коллекция записей справочника
-                                                    final Collection collection = (Collection) ((Method) ns_method).invoke(clazz);
+                                                    final Collection collection = (Collection) ((Method) ns_method).invoke(null);
                                                     // сохранение в бд
                                                     getPersistenceEntityManager()
                                                             .executeTransaction(em -> collection
                                                             .stream()
-                                                            .forEach(record -> em.merge(record)
-                                                            ));
+                                                            .forEach(record -> em.merge(record)));
                                                 }
                                             }).throwException();
                                 }
@@ -118,24 +118,22 @@ public abstract class AbstractReferencesService extends AbstractApplicationServi
     //--------------------------------------------------------------------------
     private Method findRegisterMethod(
             Class<? extends AbstractReferencesService> serviceClass,
-            Class<?> clazz,
             String methodName) {
 
-        final String key = String.format("%s.%s(%s)",
+        final String key = String.format("%s.%s",
                 serviceClass.getCanonicalName(),
-                methodName,
-                clazz.getCanonicalName());
+                methodName);
 
         log.debug("Lookup for '{}' method", key);
 
         return (NullSafe.create()
-                .execute2result(() -> serviceClass.getMethod(methodName, clazz))
+                .execute2result(() -> serviceClass.getMethod(methodName))
                 .catchMsgException(errMsg -> {
-                    log.error("methodName not found ('{}', signature='{}') ({})",
+                    log.error("method not found ('{}', '{}')",
                             methodName,
                             key,
                             errMsg);
                 }))
                 .<Method>getObject();
-    }      
+    }
 }
