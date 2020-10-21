@@ -37,7 +37,7 @@ import org.dbs24.entity.marks.MarkValue;
 import org.dbs24.entity.status.EntityStatusId;
 import org.dbs24.references.api.AbstractRefRecord;
 import java.lang.annotation.Annotation;
-import org.dbs24.entity.core.api.CachedReferencesClasses;
+import org.dbs24.references.core.CachedReferencesClasses;
 import org.dbs24.references.api.ReferenceSyncOrder;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

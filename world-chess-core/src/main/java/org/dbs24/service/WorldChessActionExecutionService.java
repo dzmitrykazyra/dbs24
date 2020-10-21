@@ -6,7 +6,7 @@
 package org.dbs24.service;
 
 import static org.dbs24.application.core.sysconst.SysConst.*;
-import org.dbs24.entity.core.api.CachedReferencesClasses;
+import org.dbs24.references.core.CachedReferencesClasses;
 import org.dbs24.entity.core.api.EntityClassesPackages;
 import lombok.Data;
 import org.springframework.context.annotation.Import;

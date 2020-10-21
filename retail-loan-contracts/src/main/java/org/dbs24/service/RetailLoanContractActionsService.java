@@ -28,7 +28,7 @@ import org.dbs24.references.application.currency.Currency;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import org.dbs24.references.tariffs.accretionscheme.TariffAccretionScheme;
 import java.math.BigDecimal;
-import org.dbs24.entity.core.api.CachedReferencesClasses;
+import org.dbs24.references.core.CachedReferencesClasses;
 import org.dbs24.consts.RetailLoanContractConst;
 import org.dbs24.references.liases.actiontype.LiasActionType;
 import org.dbs24.references.documents.docstatus.DocStatus;
