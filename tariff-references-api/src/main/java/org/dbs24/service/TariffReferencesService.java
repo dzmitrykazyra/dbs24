@@ -28,33 +28,23 @@ import org.dbs24.references.tariffs.group.TariffGroup;
 public class TariffReferencesService extends AbstractReferencesService {
 
     //==========================================================================
-
     public final TariffAccretionScheme findTariffAccretionScheme(Integer tariffAccretionSchemeId) {
         return AbstractRefRecord.<TariffAccretionScheme>getRefeenceRecord(TARIFF_ACCRETION_SCHEME_CLASS,
                 record -> record.getTariffSchemeId().equals(tariffAccretionSchemeId));
     }
 
     //==========================================================================
-    public static final <T extends TariffAccretionScheme> Collection<T> getTariffAccretionSchemeCollection() {
+    public static final Collection<TariffAccretionScheme> getTariffAccretionSchemeCollection() {
 
-        final Collection<T> actualList = ServiceFuncs.<T>createCollection();
-        final Class<T> clazz = (Class<T>) TARIFF_ACCRETION_SCHEME_CLASS;
-
-        log.debug("initialize ref values {}", clazz.getCanonicalName());
-
-        final String[][] constList = new String[][]{
-            {"1", "30/360"},
-            {"2", "FACT/FACT"}
-        };
-
-        Arrays.stream(constList)
-                .unordered()
-                .forEach(stringRow -> actualList.add((T) NullSafe.<T>createObject(clazz, object -> {
-            object.setTariffSchemeId(Integer.valueOf(stringRow[0]));
-            object.setTariffSchemeName(stringRow[1]);
-        })));
-
-        return actualList;
+        return AbstractReferencesService.<TariffAccretionScheme>getGenericCollection(
+                TARIFF_ACCRETION_SCHEME_CLASS, new String[][]{
+                    {"1", "30/360"},
+                    {"2", "FACT/FACT"}
+                },
+                (record, stringRow) -> {
+                    record.setTariffSchemeId(Integer.valueOf(stringRow[0]));
+                    record.setTariffSchemeName(stringRow[1]);
+                });
     }
 
     //==========================================================================
@@ -64,22 +54,15 @@ public class TariffReferencesService extends AbstractReferencesService {
     }
 
     //==========================================================================
-    public static <T extends TariffGroup> Collection<T> getTariffGroupCollection() {
+    public static Collection<TariffGroup> getTariffGroupCollection() {
 
-        final Collection<T> actualList = ServiceFuncs.<T>createCollection();
-        final Class<T> clazz = (Class<T>) TARIFF_GROUP_CLASS;
-        final String[][] constList = new String[][]{
-            {"101", "Loan issue", "Представление средств в виде кредита"}
-        };
-
-        Arrays.stream(constList)
-                .unordered()
-                .forEach(stringRow
-                        -> actualList.add((T) NullSafe.<T>createObject(clazz, (object) -> {
-                    object.setTariffGroupId(Integer.valueOf(stringRow[0]));
-                    object.setTariffGroupName(AbstractRefRecord.getTranslatedValue(new LangStrValue(stringRow[1], stringRow[2])));
-                })));
-
-        return actualList;
+        return AbstractReferencesService.<TariffGroup>getGenericCollection(
+                TARIFF_GROUP_CLASS, new String[][]{
+                    {"101", "Loan issue", "Представление средств в виде кредита"}
+                },
+                (record, stringRow) -> {
+                    record.setTariffGroupId(Integer.valueOf(stringRow[0]));
+                    record.setTariffGroupName(AbstractRefRecord.getTranslatedValue(new LangStrValue(stringRow[1], stringRow[2])));
+                });
     }
 }

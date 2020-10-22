@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.GenericApplicationContext;
 import org.dbs24.references.core.CachedReferencesClasses;
+import org.dbs24.references.api.ReferenceProcessor;
 
 @Data
 @Slf4j
@@ -139,5 +140,21 @@ public abstract class AbstractReferencesService extends AbstractApplicationServi
                             errMsg);
                 }))
                 .<Method>getObject();
+    }
+
+    //==========================================================================
+    protected static <T extends AbstractRefRecord> Collection<T> getGenericCollection(
+            Class<T> clazz,
+            String[][] refArray,
+            ReferenceProcessor<T> referenceProcessor) {
+
+        final Collection<T> recordCollection = ServiceFuncs.<T>createCollection();
+
+        Arrays.stream(refArray)
+                .unordered()
+                .forEach(stringRow -> recordCollection.add(NullSafe.<T>createObject(
+                clazz, object -> referenceProcessor.processRef(object, stringRow))));
+
+        return recordCollection;
     }
 }

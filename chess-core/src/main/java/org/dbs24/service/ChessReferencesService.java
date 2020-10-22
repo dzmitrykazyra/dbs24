@@ -5,7 +5,6 @@
  */
 package org.dbs24.service;
 
-import java.util.Arrays;
 import java.util.Collection;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +17,7 @@ import org.dbs24.references.Piece;
 import org.dbs24.references.api.AbstractRefRecord;
 import org.dbs24.references.api.LangStrValue;
 import org.dbs24.references.core.CachedReferencesClasses;
+import static org.dbs24.consts.WorldChessConst.*;
 import org.springframework.stereotype.Service;
 
 @Data
@@ -27,32 +27,24 @@ import org.springframework.stereotype.Service;
 public class ChessReferencesService extends AbstractReferencesService {
 
     public static final Piece findPiece(final String pieceCode) {
-        return AbstractRefRecord.<Piece>getRefeenceRecord(Piece.class,
+        return AbstractRefRecord.<Piece>getRefeenceRecord(PIECE_CLASS,
                 record -> record.getPieceCode().equals(pieceCode));
     }
 
     //==========================================================================
-    public static <T extends Piece> Collection<T> getPieceCollection() {
+    public static Collection<Piece> getPieceCollection() {
 
-        final Collection<T> actualList = ServiceFuncs.<T>createCollection();
-        final Class<T> clazz = (Class<T>) (Piece.class);
-
-        final String[][] constList = new String[][]{
+        return AbstractReferencesService.<Piece>getGenericCollection(PIECE_CLASS, new String[][]{
             {"K", "King", "Король"},
             {"Q", "Queen", "Ферзь"},
             {"R", "Rook", "Ладья"},
             {"B", "BeeShop", "Слон"},
             {"N", "Knight", "Конь"},
-            {"P", "Pawn", "Пешка"}
-        };
-
-        Arrays.stream(constList)
-                .forEach(stringRow
-                        -> actualList.add((T) NullSafe.<T>createObject(clazz, object -> {
-                    object.setPieceCode(stringRow[0]);
-                    object.setPieceName(AbstractRefRecord.getTranslatedValue(new LangStrValue(stringRow[1], stringRow[2])));
-                })));
-        return actualList;
+            {"P", "Pawn", "Пешка"}},
+                (record, stringRow) -> {
+                    record.setPieceCode(stringRow[0]);
+                    record.setPieceName(AbstractRefRecord.getTranslatedValue(new LangStrValue(stringRow[1], stringRow[2])));
+                });
     }
 
     //==========================================================================
@@ -91,25 +83,16 @@ public class ChessReferencesService extends AbstractReferencesService {
     }
 
     //==========================================================================
-    public static <T extends ChessEngine> Collection<T> getChessEngineCollection() {
+    public static Collection<ChessEngine> getChessEngineCollection() {
 
-        final Collection<T> actualList = ServiceFuncs.<T>createCollection();
-        final Class<T> clazz = (Class<T>) (ChessEngine.class);
-
-        final String[][] engineList = new String[][]{
-            {"1", "Deep rybka", "Рыбка"},
-            {"2", "StockFish 5", "Стокфиш"}
-        };
-
-        Arrays.stream(engineList)
-                .unordered()
-                .forEach(engine
-                        -> actualList.add((T) NullSafe.<T>createObject(clazz, object -> {
-                    object.setEngineId(Integer.valueOf(engine[0]));
-                    object.setEngineName(AbstractRefRecord.getTranslatedValue(new LangStrValue(engine[1], engine[2])));
-                })));
-
-        return actualList;
+        return AbstractReferencesService.<ChessEngine>getGenericCollection(CHESS_ENGINE_CLASS, new String[][]{
+            {"1", "DR2", "Deep rybka", "Рыбка"},
+            {"2", "SF5", "StockFish 5", "Стокфиш"}},
+                (record, stringRow) -> {
+                    record.setEngineId(Integer.valueOf(stringRow[0]));
+                    record.setEngineCode(stringRow[1]);
+                    record.setEngineName(AbstractRefRecord.getTranslatedValue(new LangStrValue(stringRow[2], stringRow[3])));
+                });
     }
 
     //==========================================================================
@@ -119,12 +102,9 @@ public class ChessReferencesService extends AbstractReferencesService {
     }
 
     //==========================================================================
-    public static <T extends MoveNotice> Collection<T> getMoveNoticeCollection() {
+    public static Collection<MoveNotice> getMoveNoticeCollection() {
 
-        final Collection<T> actualList = ServiceFuncs.<T>createCollection();
-        final Class<T> clazz = (Class<T>) (MoveNotice.class);
-
-        final String[][] constList = new String[][]{
+        return AbstractReferencesService.<MoveNotice>getGenericCollection(MOVE_NOTICE_CLASS, new String[][]{
             {"+", "Шах", "Шах"},
             {"=", "Deuce", "Ничья"},
             {"#", "Finish", "Мат"},
@@ -132,16 +112,9 @@ public class ChessReferencesService extends AbstractReferencesService {
             {"?", "Bad move", "Плохой ход"},
             {"?", "Bad move", "Плохой ход"},
             {"???", "Very Bad move", "Что за нах?"}
-        };
-
-        Arrays.stream(constList)
-                .unordered()
-                .forEach(stringRow
-                        -> actualList.add((T) NullSafe.<T>createObject(clazz, object -> {
-                    object.setNoticeCode(stringRow[0]);
-                    object.setNoticeName(AbstractRefRecord.getTranslatedValue(new LangStrValue(stringRow[1], stringRow[2])));
-                })));
-
-        return actualList;
+        }, (record, stringRow) -> {
+            record.setNoticeCode(stringRow[0]);
+            record.setNoticeName(AbstractRefRecord.getTranslatedValue(new LangStrValue(stringRow[1], stringRow[2])));
+        });
     }
 }

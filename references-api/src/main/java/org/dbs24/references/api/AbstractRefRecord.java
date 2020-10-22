@@ -17,10 +17,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.Data;
 
-/**
- *
- * @author kazyra_d
- */
 @Data
 public abstract class AbstractRefRecord implements PersistenceEntity {
 

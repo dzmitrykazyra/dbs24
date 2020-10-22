@@ -7,6 +7,7 @@ package org.dbs24.consts;
 
 import org.dbs24.entity.classic.ClassicGame;
 import org.dbs24.entity.*;
+import org.dbs24.references.*;
 
 public final class WorldChessConst {
 
@@ -37,4 +38,9 @@ public final class WorldChessConst {
 
     public static final Class<AbstractPlayer> CHESS_PLAYER_CLASS = AbstractPlayer.class;
     public static final Class<ClassicGame> CHESS_GAME_CLASS = ClassicGame.class;
+    
+    public static final Class<Piece> PIECE_CLASS = Piece.class;
+    public static final Class<ChessEngine> CHESS_ENGINE_CLASS = ChessEngine.class;
+    public static final Class<MoveNotice> MOVE_NOTICE_CLASS = MoveNotice.class;
+    
 }

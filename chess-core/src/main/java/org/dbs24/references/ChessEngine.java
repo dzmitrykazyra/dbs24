@@ -22,6 +22,8 @@ public class ChessEngine extends AbstractRefRecord implements ReferenceRec {
     @Id
     @Column(name = "engine_id")
     private Integer engineId;
+    @Column(name = "engine_code")
+    private String engineCode;
     @Column(name = "engine_name")
     private String engineName;
 }
