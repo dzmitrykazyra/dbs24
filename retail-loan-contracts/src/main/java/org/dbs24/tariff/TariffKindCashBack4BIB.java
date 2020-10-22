@@ -5,10 +5,6 @@
  */
 package org.dbs24.tariff;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 import org.dbs24.consts.TariffConst;
 import org.dbs24.entity.tariff.TariffKindService;
 import org.dbs24.references.tariffs.kind.TariffKindId;
@@ -36,5 +32,4 @@ public class TariffKindCashBack4BIB extends TariffKindService<TariffServCashBack
             final LocalDate D1, final LocalDate D2) {
         return null;
     }
-
 }

@@ -8,10 +8,6 @@ package org.dbs24.consts;
 import org.dbs24.entity.classic.ClassicGame;
 import org.dbs24.entity.*;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 public final class WorldChessConst {
 
     public static final int WCP_PLAYER = 10002; // Игрок в шахматы

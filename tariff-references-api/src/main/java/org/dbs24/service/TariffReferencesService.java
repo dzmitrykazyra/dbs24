@@ -27,13 +27,6 @@ import org.dbs24.references.tariffs.group.TariffGroup;
 @CachedReferencesClasses(classes = {TariffGroup.class, TariffAccretionScheme.class})
 public class TariffReferencesService extends AbstractReferencesService {
 
-    final PersistenceEntityManager persistenceEntityManager;
-
-    //==========================================================================
-    @Autowired
-    public TariffReferencesService(PersistenceEntityManager persistenceEntityManager) {
-        this.persistenceEntityManager = persistenceEntityManager;
-    }
     //==========================================================================
 
     public final TariffAccretionScheme findTariffAccretionScheme(Integer tariffAccretionSchemeId) {
@@ -50,7 +43,7 @@ public class TariffReferencesService extends AbstractReferencesService {
         log.debug("initialize ref values {}", clazz.getCanonicalName());
 
         final String[][] constList = new String[][]{
-            {"1", "30/365"},
+            {"1", "30/360"},
             {"2", "FACT/FACT"}
         };
 

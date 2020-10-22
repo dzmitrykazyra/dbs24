@@ -21,10 +21,6 @@ import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Configuration
 @ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE})
 //@EntityScan(basePackages = {ENTITY_PACKAGE, REFERENCE_PACKAGE})

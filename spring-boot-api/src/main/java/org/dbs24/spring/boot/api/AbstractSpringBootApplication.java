@@ -36,24 +36,27 @@ public abstract class AbstractSpringBootApplication {
 
         NullSafe.create()
                 .execute(() -> {
+                    log.info("TRY 2 START {} ", applicationName);
                     SpringApplication.run(springBootClass, args);
                     sbi.initialize();
+                    log.info("APPLICATION SUCCESSFULLY STARTED {} ", applicationName);
                 })
                 .catchException(e -> {
-                    log.info(stopWatcher.getStringExecutionTime());
+                    log.error("ERROR STARTING APPLICATION '{}', reason: '{}' ", applicationName, e.getLocalizedMessage());
+                    log.error(stopWatcher.getStringExecutionTime());
                     log.error("{} exception \n {}: '{}'",
                             applicationName,
                             e.getClass().getCanonicalName(),
                             e.getLocalizedMessage());
-                    log.error("{} application is stopped",
-                            applicationName);
+                    log.error("{} APPLICATION IS STOPPED", applicationName);
                     System.exit(-1);
                 })
                 .finallyBlock(() -> {
-                    log.debug("finally initialisation");
+                    log.debug("finally initialization");
                     log.info(stopWatcher.getStringExecutionTime());
                 });
     }
+
     //==========================================================================
     public static void initializeContext(final Class<? extends ApplicationConfiguration> clazz) {
         AbstractSpringBootApplication.applicationContext = new AnnotationConfigApplicationContext(clazz);

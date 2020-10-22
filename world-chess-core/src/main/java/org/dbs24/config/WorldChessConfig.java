@@ -17,7 +17,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 
 @Configuration
-@ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE})
+@ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE, COMPONENT_PACKAGE})
 @EntityScan(basePackages = {ENTITY_PACKAGE, REFERENCE_PACKAGE})
 @PropertySource(APP_PROPERTIES)
 public class WorldChessConfig extends MainApplicationConfig {

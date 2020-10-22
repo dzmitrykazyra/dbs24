@@ -27,8 +27,6 @@ import org.dbs24.consts.WorldChessConst;
 @Data
 @Service
 @EntityClassesPackages(pkgList = {ENTITY_PACKAGE})
-@CachedReferencesClasses(classes = {Piece.class, MoveNotice.class, CheckerBoard.class, ChessEngine.class})
-@Import({WorldChessConfig.class})
 public class WorldChessActionExecutionService<P extends Player, G extends Game> extends AbstractActionExecutionService {
 
     public P createPlayer(

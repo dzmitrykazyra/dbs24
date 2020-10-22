@@ -21,12 +21,8 @@ import reactor.core.publisher.Mono;
 import org.dbs24.service.WorldChessActionExecutionService;
 import org.dbs24.entity.core.AbstractActionEntity;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Component
-public final class ChessRestApi<T extends AbstractActionEntity> extends ReactiveRestProcessor {
+public class ChessRestApi<T extends AbstractActionEntity> extends ReactiveRestProcessor {
 
     @Autowired
     private WorldChessActionExecutionService worldChessActionExecutionService;
@@ -67,7 +63,7 @@ public final class ChessRestApi<T extends AbstractActionEntity> extends Reactive
 
     //==========================================================================
     // создание игрока
-    public Mono<ServerResponse> createChessPlayer(final ServerRequest request) {
+    public Mono<ServerResponse> createChessPlayer(ServerRequest request) {
 
         return this.<T>processServerRequest(request, playerClass,
                 entity -> {

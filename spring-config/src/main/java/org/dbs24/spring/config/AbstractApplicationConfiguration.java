@@ -8,9 +8,5 @@ package org.dbs24.spring.config;
 import org.dbs24.spring.core.api.ApplicationConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 public abstract class AbstractApplicationConfiguration implements ApplicationConfiguration {
 }

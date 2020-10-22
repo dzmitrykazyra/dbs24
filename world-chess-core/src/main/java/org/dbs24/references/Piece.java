@@ -33,34 +33,4 @@ public class Piece extends AbstractRefRecord implements ReferenceRec {
     private String pieceCode;
     @Column(name = "piece_name")
     private String pieceName;
-
-    public static final Piece findPiece(final String pieceCode) {
-        return AbstractRefRecord.<Piece>getRefeenceRecord(Piece.class,
-                record -> record.getPieceCode().equals(pieceCode));
-    }
-    //==========================================================================
-    public static <T extends Piece> Collection<T> getActualReferencesList() {
-
-        final Collection<T> actualList = ServiceFuncs.<T>createCollection();
-        final Class<T> clazz = (Class<T>) (Piece.class);
-
-        final String[][] constList = new String[][]{
-            {"K", "King", "Король"},
-            {"Q", "Queen", "Ферзь"},
-            {"R", "Rook", "Ладья"},
-            {"B", "BeeShop", "Слон"},
-            {"N", "Knight", "Конь"},
-            {"P", "Pawn", "Пешка"}
-        };
-        
-        Arrays.stream(constList)
-                .unordered()
-                .forEach(stringRow
-                        -> actualList.add((T) NullSafe.<T>createObject(clazz, (object) -> {
-                    object.setPieceCode(stringRow[0]);
-                    object.setPieceName(AbstractRefRecord.getTranslatedValue(new LangStrValue(stringRow[1], stringRow[2])));
-                })));        
-       
-        return actualList;
-    }
 }
