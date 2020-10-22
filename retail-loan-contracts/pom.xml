@@ -150,7 +150,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>              
-
     </dependencies>  
     <build>
         <finalName>retail-loan-contracts</finalName> 

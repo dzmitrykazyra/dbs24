@@ -22,7 +22,7 @@ import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @Configuration
-@ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE})
+@ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE, COMPONENT_PACKAGE})
 //@EntityScan(basePackages = {ENTITY_PACKAGE, REFERENCE_PACKAGE})
 @PropertySource(APP_PROPERTIES)
 //@EnableWebFlux

@@ -14,12 +14,7 @@ import org.dbs24.service.ChessActionExecutionService;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import static org.dbs24.application.core.sysconst.SysConst.*;
-import org.springframework.context.annotation.Bean;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Configuration
 @ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE})
 @EntityScan(basePackages = {ENTITY_PACKAGE, REFERENCE_PACKAGE})

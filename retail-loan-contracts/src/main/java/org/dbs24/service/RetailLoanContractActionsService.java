@@ -42,10 +42,6 @@ import org.dbs24.component.RetailLoanBondScheduleBuilder;
 import org.springframework.context.annotation.Import;
 import org.dbs24.config.*;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 @Service
 @EntityClassesPackages(pkgList = {ENTITY_PACKAGE})
