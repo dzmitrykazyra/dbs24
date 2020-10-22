@@ -5,11 +5,8 @@
  */
 package org.dbs24.references;
 
-import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.references.api.AbstractRefRecord;
-import org.dbs24.references.api.LangStrValue;
 import org.dbs24.references.api.ReferenceRec;
-import java.util.Collection;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,8 +15,6 @@ import javax.persistence.Table;
 import lombok.Data;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import java.util.Arrays;
 
 @Data
 @Entity
