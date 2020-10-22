@@ -120,7 +120,7 @@ public abstract class AbstractReferencesService extends AbstractApplicationServi
                 this.getClass().getCanonicalName());
     }
 
-    //--------------------------------------------------------------------------
+    //==========================================================================
     private Method findRegisterMethod(
             Class<? extends AbstractReferencesService> serviceClass,
             String methodName) {

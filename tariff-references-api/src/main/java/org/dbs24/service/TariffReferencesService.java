@@ -5,18 +5,13 @@
  */
 package org.dbs24.service;
 
-import java.util.Arrays;
 import lombok.Data;
-import org.dbs24.persistence.core.PersistenceEntityManager;
 import org.dbs24.references.api.AbstractRefRecord;
 import org.dbs24.references.core.CachedReferencesClasses;
 import org.dbs24.references.tariffs.accretionscheme.TariffAccretionScheme;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Collection;
 import lombok.extern.slf4j.Slf4j;
-import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import static org.dbs24.consts.TariffConst.*;
 import org.dbs24.references.api.LangStrValue;
 import org.dbs24.references.tariffs.group.TariffGroup;
