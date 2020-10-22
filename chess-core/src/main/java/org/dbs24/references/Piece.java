@@ -18,7 +18,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Data
 @Entity
-@Table(name = "wc_PiecesRef")
+@Table(name = "chess_piecesRef")
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Piece extends AbstractRefRecord implements ReferenceRec {

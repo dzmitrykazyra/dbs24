@@ -9,7 +9,7 @@
     <artifactId>chess-sandbox</artifactId>
     <packaging>jar</packaging>
     <build>
-        <finalName>world-chess-single-games</finalName> 
+        <finalName>chess-sandbox</finalName> 
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -23,7 +23,7 @@
                 <includes>
                     <include>entity-core.jar</include>
                     <include>entity-references-api.jar</include>                   
-                    <include>world-chess-core.jar</include>
+                    <include>chess-core.jar</include>
                 </includes>
                 <targetPath>${project.build.outputDirectory}/${source.directory.libs}/</targetPath>
             </resource>
