@@ -133,12 +133,12 @@ public abstract class AbstractReferencesService extends AbstractApplicationServi
 
         return (NullSafe.create()
                 .execute2result(() -> serviceClass.getMethod(methodName))
-                .catchMsgException(errMsg -> {
-                    log.error("method not found ('{}', '{}')",
-                            methodName,
-                            key,
-                            errMsg);
-                }))
+                .catchMsgException(errMsg
+                        -> log.error("method not found ('{}', '{}')",
+                        methodName,
+                        key,
+                        errMsg)
+                ))
                 .<Method>getObject();
     }
 
