@@ -64,7 +64,7 @@
         </dependency> 
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>world-chess-core</artifactId>
+            <artifactId>chess-core</artifactId>
             <version>${app.version}</version>            
         </dependency>  
         <dependency>

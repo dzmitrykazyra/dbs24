@@ -18,14 +18,14 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
-import org.dbs24.service.WorldChessActionExecutionService;
+import org.dbs24.service.ChessActionExecutionService;
 import org.dbs24.entity.core.AbstractActionEntity;
 
 @Component
 public class ChessRestApi<T extends AbstractActionEntity> extends ReactiveRestProcessor {
 
     @Autowired
-    private WorldChessActionExecutionService worldChessActionExecutionService;
+    private ChessActionExecutionService worldChessActionExecutionService;
     //==========================================================================
     final Class<T> playerClass = (Class<T>) AbstractPlayer.class;
     final Class<T> gameClass = (Class<T>) AbstractGame.class;

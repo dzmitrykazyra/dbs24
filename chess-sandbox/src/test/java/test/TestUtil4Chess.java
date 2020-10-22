@@ -15,7 +15,7 @@ import org.dbs24.entity.classic.*;
 import org.dbs24.references.*;
 import org.dbs24.test.core.Utils4test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.dbs24.service.WorldChessActionExecutionService;
+import org.dbs24.service.ChessActionExecutionService;
 import java.math.BigDecimal;
 //import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 public class TestUtil4Chess<P extends Player, G extends Game> extends Utils4test {
 
     @Autowired
-    private WorldChessActionExecutionService worldChessActionExecutionService;
+    private ChessActionExecutionService worldChessActionExecutionService;
 
     protected P generateTestPlayer() {
 

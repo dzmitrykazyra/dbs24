@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 
-import org.dbs24.service.WorldChessActionExecutionService;
+import org.dbs24.service.ChessActionExecutionService;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import static org.dbs24.application.core.sysconst.SysConst.*;
@@ -25,7 +25,7 @@ import org.springframework.context.annotation.Bean;
 @EntityScan(basePackages = {ENTITY_PACKAGE, REFERENCE_PACKAGE})
 @PropertySource(APP_PROPERTIES)
 //@EnableJpaRepositories(basePackages = REPOSITORY_PACKAGE)
-@Import({WorldChessActionExecutionService.class})
-public class WorlChessTestConfig extends WorldChessConfig {
+@Import({ChessActionExecutionService.class})
+public class ChessTestConfig extends ChessConfig {
 
 }

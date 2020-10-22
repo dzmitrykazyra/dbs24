@@ -7,8 +7,8 @@ package org.dbs24;
 
 import static org.dbs24.application.core.sysconst.SysConst.*;
 import org.dbs24.config.SecurityConfig;
-import org.dbs24.config.WorldChessConfig;
-import org.dbs24.config.WorldChessSecurityConfig;
+import org.dbs24.config.ChessConfig;
+import org.dbs24.config.ChessSecurityConfig;
 import org.dbs24.spring.boot.api.AbstractSpringBootApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -21,8 +21,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @PropertySource(APP_PROPERTIES)
 @EnableJpaRepositories(basePackages = REPOSITORY_PACKAGE)
 @Import({
-    WorldChessSecurityConfig.class,
-    WorldChessConfig.class,
+    ChessSecurityConfig.class,
+    ChessConfig.class,
     SecurityConfig.class})
 public class SandBoxBoot extends AbstractSpringBootApplication {
 

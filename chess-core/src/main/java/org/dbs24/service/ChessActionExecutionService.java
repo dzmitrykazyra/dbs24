@@ -11,7 +11,7 @@ import org.dbs24.entity.core.api.EntityClassesPackages;
 import lombok.Data;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Service;
-import org.dbs24.config.WorldChessConfig;
+import org.dbs24.config.ChessConfig;
 import org.dbs24.references.*;
 import org.dbs24.entity.*;
 import org.dbs24.entity.classic.*;
@@ -27,7 +27,7 @@ import org.dbs24.consts.WorldChessConst;
 @Data
 @Service
 @EntityClassesPackages(pkgList = {ENTITY_PACKAGE})
-public class WorldChessActionExecutionService<P extends Player, G extends Game> extends AbstractActionExecutionService {
+public class ChessActionExecutionService<P extends Player, G extends Game> extends AbstractActionExecutionService {
 
     public P createPlayer(
             final String lastName,

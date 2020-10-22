@@ -28,14 +28,8 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import org.springframework.web.reactive.function.server.RouterFunction;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import org.dbs24.config.*;
 import org.dbs24.rest.*;
 import lombok.extern.slf4j.Slf4j; 
-
-/**
- *
- * @author N76VB
- */
 
 @Slf4j 
 @Configuration
@@ -45,23 +39,22 @@ import lombok.extern.slf4j.Slf4j;
 //@EnableWebFlux
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
-public class WorldChessSecurityConfig extends AbstractWebSecurityConfig {
+public class ChessSecurityConfig extends AbstractWebSecurityConfig {
 
     @Bean
-    public RouterFunction<ServerResponse> mgmtRetailLoanContract(final ChessRestApi ChessRestApiHandler) {
+    public RouterFunction<ServerResponse> restChessBean(ChessRestApi chessRestApiHandler) {
 
-        return route(POST(URI_CREATE_CHESS_PLAYER).and(accept(MediaType.APPLICATION_JSON)), ChessRestApiHandler::createChessPlayer)
-                .andRoute(POST(URI_CREATE_CHESS_GAME).and(accept(MediaType.APPLICATION_JSON)), ChessRestApiHandler::createClassisChessGame)
-                .andRoute(POST(URI_EXECUTE_ACTION).and(accept(MediaType.APPLICATION_JSON)), ChessRestApiHandler::executeAction)
-                .andRoute(GET(URI_FIND_CHESS_PLAYER).and(accept(MediaType.APPLICATION_JSON)), ChessRestApiHandler::findChessPlayer);
+        return route(POST(URI_CREATE_CHESS_PLAYER).and(accept(MediaType.APPLICATION_JSON)), chessRestApiHandler::createChessPlayer)
+                .andRoute(POST(URI_CREATE_CHESS_GAME).and(accept(MediaType.APPLICATION_JSON)), chessRestApiHandler::createClassisChessGame)
+                .andRoute(POST(URI_EXECUTE_ACTION).and(accept(MediaType.APPLICATION_JSON)), chessRestApiHandler::executeAction)
+                .andRoute(GET(URI_FIND_CHESS_PLAYER).and(accept(MediaType.APPLICATION_JSON)), chessRestApiHandler::findChessPlayer);
 
     }
     //==========================================================================
 
     @Bean
     @Profile("production")
-    public SecurityWebFilterChain springSecurityFilterChain(final ServerHttpSecurity http) {
-        
+    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         
         log.debug("create bean");
 //        final AuthenticationWebFilter authenticationJWT = new AuthenticationWebFilter(new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsService()));
@@ -101,5 +94,4 @@ public class WorldChessSecurityConfig extends AbstractWebSecurityConfig {
 //                .httpBasic();
         //.authenticationManager(authenticationManager);
     }
-
 }

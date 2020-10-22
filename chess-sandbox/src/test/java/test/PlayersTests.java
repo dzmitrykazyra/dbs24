@@ -22,7 +22,6 @@ import org.springframework.http.MediaType;
 import reactor.core.publisher.Mono;
 import org.dbs24.entity.*;
 import org.dbs24.entity.classic.*;
-import org.dbs24.references.MoveNotice;
 import static org.dbs24.consts.WorldChessConst.*;
 
 /**
@@ -34,7 +33,7 @@ import static org.dbs24.consts.WorldChessConst.*;
 //  We create a `@SpringBootTest`, starting an actual server on a `RANDOM_PORT`
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //@EnableAutoConfiguration(exclude = ReactiveSecurityAutoConfiguration.class)
-@Import({WorldChessSecurityConfig.class})
+@Import({ChessSecurityConfig.class})
 public class PlayersTests<G extends ClassicGame, P extends AbstractPlayer> extends TestUtil4Chess {
 
     @Autowired

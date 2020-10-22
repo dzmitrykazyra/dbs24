@@ -34,9 +34,10 @@ public abstract class AbstractSpringBootApplication {
         final String applicationName = springBootClass.getCanonicalName();
         final StopWatcher stopWatcher = StopWatcher.create(String.format("%s loading ", applicationName));
 
+        log.info("TRY 2 START {} ", applicationName);
         NullSafe.create()
                 .execute(() -> {
-                    log.info("TRY 2 START {} ", applicationName);
+
                     SpringApplication.run(springBootClass, args);
                     sbi.initialize();
                     log.info("APPLICATION SUCCESSFULLY STARTED {} ", applicationName);
