@@ -6,7 +6,7 @@
         <artifactId>dbs24</artifactId>
         <version>1.0</version>
     </parent>
-    <artifactId>world-chess-core</artifactId>
+    <artifactId>chess-core</artifactId>
     <packaging>jar</packaging>
     
     <build>
@@ -90,4 +90,5 @@
             <version>${app.version}</version>
         </dependency> 
     </dependencies>
+    <name>chess-core</name>
 </project>

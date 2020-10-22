@@ -76,3 +76,5 @@
 /spring-websockets/target/
 /persistence-core/target/
 /spring-core/target/
+/chess-core/target/
+/chess-sandbox/target/

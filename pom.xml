@@ -111,10 +111,10 @@
         <module>liases</module>
         <module>documents-api</module>
         <module>spring-rest-api</module>
-        <module>world-chess-core</module>
         <module>jwt-api</module>
         <module>spring-websockets</module>
-        <module>world-chess-sandbox</module>
+        <module>chess-core</module>
+        <module>chess-sandbox</module>
     </modules>
 
     <dependencies>

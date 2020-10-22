@@ -6,7 +6,7 @@
         <artifactId>dbs24</artifactId>
         <version>1.0</version>
     </parent>
-    <artifactId>world-chess-sandbox</artifactId>
+    <artifactId>chess-sandbox</artifactId>
     <packaging>jar</packaging>
     <build>
         <finalName>world-chess-single-games</finalName> 
@@ -194,5 +194,5 @@
             </exclusions>
         </dependency>  
     </dependencies>
-    <name>world-chess-sandbox</name>
+    <name>chess-sandbox</name>
 </project>
