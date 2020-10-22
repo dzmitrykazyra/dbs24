@@ -25,7 +25,7 @@ import static org.dbs24.application.core.sysconst.SysConst.*;
 @Table(name = "TariffServsRef")
 @ReferenceSyncOrder(order_num = 1)
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class TariffServ extends AbstractRefRecord implements ReferenceRec {
 
     @Id

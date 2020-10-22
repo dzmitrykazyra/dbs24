@@ -5,10 +5,7 @@
  */
 package org.dbs24.spring.boot.api;
 
-/**
- *
- * @author Козыро Дмитрий
- */
+import javax.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +16,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 @Slf4j
 public abstract class AbstractSpringBootApplication {
+
+    final StopWatcher stopWatcher = StopWatcher.create();
 
     static ApplicationContext applicationContext;
 
@@ -49,7 +48,7 @@ public abstract class AbstractSpringBootApplication {
                             applicationName,
                             e.getClass().getCanonicalName(),
                             e.getLocalizedMessage());
-                    log.error("{} APPLICATION IS STOPPED", applicationName);
+                    log.error("APPLICATION IS STOPPED {}", applicationName);
                     System.exit(-1);
                 })
                 .finallyBlock(() -> {
@@ -59,11 +58,20 @@ public abstract class AbstractSpringBootApplication {
     }
 
     //==========================================================================
-    public static void initializeContext(final Class<? extends ApplicationConfiguration> clazz) {
+    public static void initializeContext(Class<? extends ApplicationConfiguration> clazz) {
         AbstractSpringBootApplication.applicationContext = new AnnotationConfigApplicationContext(clazz);
     }
 
     public static ApplicationContext getApplicationContext() {
         return AbstractSpringBootApplication.applicationContext;
+    }
+
+    //==========================================================================
+    @PreDestroy
+    protected void destroyApplication() {
+
+        final String applicationName = this.getClass().getCanonicalName();
+        log.info("APPLICATION IS STOPPED ({}) ", applicationName);
+        log.info("{}: {}", applicationName, stopWatcher.getStringExecutionTime());
     }
 }

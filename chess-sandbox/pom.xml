@@ -8,54 +8,6 @@
     </parent>
     <artifactId>chess-sandbox</artifactId>
     <packaging>jar</packaging>
-    <build>
-        <finalName>chess-sandbox</finalName> 
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <!--                <includes>
-                    <include>**/*.properties</include>
-                </includes>-->
-            </resource>
-            <resource>
-                <directory>${main.basedir}/${source.directory.libs}/</directory>
-                <includes>
-                    <include>entity-core.jar</include>
-                    <include>entity-references-api.jar</include>                   
-                    <include>chess-core.jar</include>
-                </includes>
-                <targetPath>${project.build.outputDirectory}/${source.directory.libs}/</targetPath>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>${source.directory.libs}/</classpathPrefix>
-                        </manifest>
-                    </archive>
-                    <excludes>
-                        <exclude>**/*.properties</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <dependencies>
         <dependency>
             <groupId>org.dbs24</groupId>
@@ -197,12 +149,54 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-            <version>${spring-boot.version}</version>
-        </dependency>                      
+        </dependency>                           
     </dependencies>
-    <name>chess-sandbox</name>
+    <build>
+        <finalName>chess-sandbox</finalName> 
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <!--                <includes>
+                    <include>**/*.properties</include>
+                </includes>-->
+            </resource>
+            <resource>
+                <directory>${main.basedir}/${source.directory.libs}/</directory>
+                <includes>
+                    <include>entity-core.jar</include>
+                    <include>entity-references-api.jar</include>                   
+                    <include>chess-core.jar</include>
+                </includes>
+                <targetPath>${project.build.outputDirectory}/${source.directory.libs}/</targetPath>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>${source.directory.libs}/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                    <excludes>
+                        <exclude>**/*.properties</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>   
 </project>

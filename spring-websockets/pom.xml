@@ -15,10 +15,10 @@
             <version>${javax-websocket.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
             <version>${spring-boot.version}</version>
-        </dependency>    
+        </dependency>    -->
     </dependencies>
 </project>
