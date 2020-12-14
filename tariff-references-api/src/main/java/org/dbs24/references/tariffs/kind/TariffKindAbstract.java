@@ -6,13 +6,15 @@
 package org.dbs24.references.tariffs.kind;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.dbs24.references.api.AbstractRefRecord;
 import org.dbs24.references.api.ReferenceRec;
 import java.util.Map;
 import org.dbs24.references.tariffs.serv.TariffServ;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.entity.core.api.ActionEntity;
 import java.time.LocalDate;
 import org.dbs24.application.core.service.funcs.GenericFuncs;
@@ -37,12 +39,17 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
     private Integer tariff_scheme_id;
     //private Integer rate_id;
     private String tariff_kind_name;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    //--------------------------------------------------------------------------
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class) 
     private LocalDate actual_date;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = SysConst.DATE_FORMAT)
+    //--------------------------------------------------------------------------
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
     @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class) 
     private LocalDate close_date;
+    //--------------------------------------------------------------------------
     // тарифицируемая услуга
     private TS tariffServ;
     // ставки тарифа
@@ -66,7 +73,7 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
         return tariff_kind_id;
     }
 
-    public TariffKindAbstract setTariff_kind_id(final Integer tariff_kind_id) {
+    public TariffKindAbstract setTariff_kind_id( Integer tariff_kind_id) {
         this.tariff_kind_id = tariff_kind_id;
         return this;
     }
@@ -76,7 +83,7 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
         return tariff_serv_id;
     }
 
-    public TariffKindAbstract setTariff_serv_id(final Integer tariff_serv_id) {
+    public TariffKindAbstract setTariff_serv_id( Integer tariff_serv_id) {
         this.tariff_serv_id = tariff_serv_id;
         return this;
     }
@@ -85,14 +92,9 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
         return tariff_kind_name;
     }
 
-    public TariffKindAbstract setTariff_kind_name(final String tariff_kind_name) {
+    public TariffKindAbstract setTariff_kind_name( String tariff_kind_name) {
         this.tariff_kind_name = tariff_kind_name;
         return this;
-    }
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getTariff_serv_id(), this.getTariff_kind_name()), this.getTariff_serv_id());
     }
 
     @Override
@@ -105,7 +107,7 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
         return actual_date;
     }
 
-    public void setActual_date(final LocalDate actual_date) {
+    public void setActual_date( LocalDate actual_date) {
         this.actual_date = actual_date;
     }
 
@@ -114,7 +116,7 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
         return close_date;
     }
 
-    public void setClose_date(final LocalDate close_date) {
+    public void setClose_date( LocalDate close_date) {
         this.close_date = close_date;
     }
 
@@ -123,7 +125,7 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
         return tariff_scheme_id;
     }
 
-    public TariffKindAbstract setTariff_scheme_id(final Integer tariff_scheme_id) {
+    public TariffKindAbstract setTariff_scheme_id( Integer tariff_scheme_id) {
         this.tariff_scheme_id = tariff_scheme_id;
         return this;
     }
@@ -153,12 +155,12 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
 
     //==========================================================================
 //    @Override
-//    public void store(final Long plan_id) {
+//    public void store( Long plan_id) {
 //
 //        final Integer newRateId = ObjectRoot
 //                .getStaticDbService()
 //                .createCallQuery("{:RES = call tariff_insertorupdate_TariffRates(:RATE, :PLAN, :SERV, :KIND, :SHEME, :RNAME, :AD, :CD)} ")
-//                .setParamByNameAsOutput("RES", SysConst.INTEGER_ZERO)
+//                .setParamByNameAsOutput("RES", INTEGER_ZERO)
 //                .setParamByName("RATE", this.getTariffRate().getRate_id())
 //                .setParamByName("PLAN", plan_id)
 //                .setParamByName("SERV", this.tariff_serv_id)
@@ -191,7 +193,7 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
     //==========================================================================
     // рассчитать сумму тарифа за период
 //    @Override
-//    public Collection<TariffCalcSum> calculateTariff(final E entity, final LocalDate D1, final LocalDate D2) {
+//    public Collection<TariffCalcSum> calculateTariff( E entity, LocalDate D1, LocalDate D2) {
 //        LogService.LogInfo(this.getClass(), String.format("Calculate tariff for %s ",
 //                entity.getClass().getCanonicalName()));
 //        // заполнили в entity детализацию тарифа
@@ -229,7 +231,7 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
 //        final Integer newTariff_calc_id = ObjectRoot
 //                .getStaticDbService()
 //                .createCallQuery("{:RES = call tariff_insertorupdate_calc_record(:ID, :SERV, :KIND, :ENT, :CURR)} ")
-//                .setParamByNameAsOutput("RES", SysConst.INT_ZERO)
+//                .setParamByNameAsOutput("RES", INT_ZERO)
 //                .setParamByName("ID", this.getTariff_calc_id())
 //                .setParamByName("SERV", this.tariff_serv_id)
 //                .setParamByName("KIND", this.tariff_kind_id)
@@ -243,7 +245,7 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
 //==========================================================================
 // сохранить рассчитанную сумму тарифа за период    
 //    @Override
-//    public void storeTariffSums(final LocalDate D1, final LocalDate D2) {
+//    public void storeTariffSums( LocalDate D1, LocalDate D2) {
 //
 //        this.storeCalcRecord();
 //
@@ -269,18 +271,18 @@ public abstract class TariffKindAbstract<TS extends TariffServ, E extends Action
         return tariff_calc_id;
     }
 
-    public void setTariff_calc_id(final Integer tariff_calc_id) {
+    public void setTariff_calc_id( Integer tariff_calc_id) {
         this.tariff_calc_id = tariff_calc_id;
     }
 
     //==========================================================================
-//    protected TariffCalcSumOld addTariffCalcSum(final LocalDate ld, final BigDecimal bd) {
+//    protected TariffCalcSumOld addTariffCalcSum( LocalDate ld, BigDecimal bd) {
 //        return new TariffCalcSumImpl()
 //                .setTariff_calc_date(ld)
-//                .setAccrualBasis(SysConst.BIGDECIMAL_ZERO)
-//                .setPercRate(SysConst.BIGDECIMAL_ZERO)
+//                .setAccrualBasis(BIGDECIMAL_ZERO)
+//                .setPercRate(BIGDECIMAL_ZERO)
 //                .setTariff_sum(bd)
-//                .setTax_sum(SysConst.BIGDECIMAL_NULL);
+//                .setTax_sum(BIGDECIMAL_NULL);
 //
 //    }
 

@@ -5,16 +5,12 @@
  */
 package org.dbs24.tariff;
 
-/**
- *
- * @author Козыро Дмитрий
- */
-import org.dbs24.references.tariffs.api.TariffConst;
+import org.dbs24.consts.TariffConst;
 import org.dbs24.entity.tariff.TariffKindService;
 import org.dbs24.references.tariffs.kind.TariffKindId;
 import org.dbs24.entity.tariff.TariffRate_1;
 import org.dbs24.entity.calculations.TariffRestBox;
-import org.dbs24.entity.retail.loan.contracts.AbstractRetailLoanContract;
+import org.dbs24.entity.AbstractRetailLoanContract;
 import org.dbs24.entity.tariff.TariffCalcSum;
 import org.dbs24.entity.tariff.TariffRate;
 import org.dbs24.references.serv.TariffServCashBack;
@@ -33,8 +29,7 @@ public class TariffKindCashBack4BIB extends TariffKindService<TariffServCashBack
     public Collection<TariffCalcSum> calculateTariff(
             final AbstractRetailLoanContract entity,
             final TariffRate tariffRate,
-            final LocalDate D1, final LocalDate D2) {
+            final LocalDate D1, LocalDate D2) {
         return null;
     }
-
 }

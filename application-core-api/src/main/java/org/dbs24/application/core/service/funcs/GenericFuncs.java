@@ -19,13 +19,13 @@ import java.util.Collection;
 public final class GenericFuncs {
 
     @SuppressWarnings("unchecked")
-    public static Class<?> getTypeParameterClass(final Class<?> parametrizedType) {
+    public static Class<?> getTypeParameterClass( Class<?> parametrizedType) {
         return (Class<?>) GenericFuncs.getTypeParameterClass(parametrizedType, 0);
     }
 
     //==========================================================================
     @SuppressWarnings("unchecked")
-    public static Class<?> getTypeParameterClass(final Class<?> parametrizedType, final int paramNum) {
+    public static Class<?> getTypeParameterClass( Class<?> parametrizedType, int paramNum) {
 
 //        LogService.LogInfo(parametrizedType, () -> String.format("%s: process '%s' type (paramNum - %d )",
 //                LogService.getCurrentObjProcName(GenericFuncs.class),
@@ -51,7 +51,7 @@ public final class GenericFuncs {
 
     //==========================================================================
     @SuppressWarnings("unchecked")
-    public static Class<?> getTypeParameterObject(final Class<?> parametrizedType, final int paramNum) {
+    public static Class<?> getTypeParameterObject( Class<?> parametrizedType, int paramNum) {
 //        return (Class<?>) (((ParameterizedType) parametrizedType
 //                .getGenericSuperclass())
 //                .getActualTypeArguments()[paramNum]);
@@ -71,7 +71,7 @@ public final class GenericFuncs {
     }
 
     //==========================================================================
-    public static Class getElementClass(final Collection collection) {
+    public static Class getElementClass( Collection collection) {
         final Class clazz;
 
         if (collection.isEmpty()) {

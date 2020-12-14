@@ -8,7 +8,6 @@ package test.boot;
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.repository.ApplicationUserRepository;
 import org.dbs24.repository.ApplicationRoleRepository;
-import org.dbs24.spring.unit.SpringBoot4Test;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -16,23 +15,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @SpringBootApplication
-@ComponentScan(basePackages = SysConst.SERVICE_PACKAGE)
-@PropertySource(SysConst.APP_PROPERTIES)
-@EntityScan(basePackages = {SysConst.SECURITY_PACKAGE, SysConst.ENTITY_PACKAGE})
-@EnableJpaRepositories(basePackages = SysConst.REPOSITORY_PACKAGE)
+@ComponentScan(basePackages = SERVICE_PACKAGE)
+@PropertySource(APP_PROPERTIES)
+@EntityScan(basePackages = {SECURITY_PACKAGE, ENTITY_PACKAGE})
+@EnableJpaRepositories(basePackages = REPOSITORY_PACKAGE)
 //public class SpringSecurityBoot extends AbstractSpringBootApplication {
-public class SpringSecurityBoot extends SpringBoot4Test {
+public class SpringSecurityBoot {
 
     //==========================================================================
 //    @Bean
-//    public CommandLineRunner clrRoleRepository(final ApplicationRoleRepository applicationRoleRepository) {
+//    public CommandLineRunner clrRoleRepository( ApplicationRoleRepository applicationRoleRepository) {
 //        return (args) -> {
 //
 //            // final Collection<KeyWordRecords> op2 = keyWordsRepository.findKeyWords();
@@ -44,7 +39,7 @@ public class SpringSecurityBoot extends SpringBoot4Test {
 //    }
     //==========================================================================
     @Bean
-    public CommandLineRunner clrUserRepository(final ApplicationUserRepository applicationUserRepository) {
+    public CommandLineRunner clrUserRepository( ApplicationUserRepository applicationUserRepository) {
         return (args) -> {
 
             //applicationUserRepository.findByPassword("dd");
@@ -64,7 +59,7 @@ public class SpringSecurityBoot extends SpringBoot4Test {
     }
     //==========================================================================
     @Bean
-    public CommandLineRunner clrRoleRepository(final ApplicationRoleRepository applicationRoleRepository) {
+    public CommandLineRunner clrRoleRepository( ApplicationRoleRepository applicationRoleRepository) {
         return (args) -> {
 
             //applicationUserRepository.findByPassword("dd");

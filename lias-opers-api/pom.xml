@@ -4,28 +4,25 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>lias-opers-api</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>bond-schedule-api</artifactId>
-            <version>${app.version}</version>           
+            <artifactId>bond-schedule-api</artifactId>         
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>documents-references-api</artifactId>
-            <version>${app.version}</version>          
+            <artifactId>documents-references-api</artifactId> 
         </dependency>   
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>attribute-api</artifactId>
-            <version>${app.version}</version>         
         </dependency>               
     </dependencies>
     <build>
-        <finalName>lias-opers-api</finalName> 
+        <finalName>${project.name}</finalName>
     </build>
 </project>

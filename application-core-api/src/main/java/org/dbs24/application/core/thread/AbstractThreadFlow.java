@@ -39,7 +39,7 @@ public abstract class AbstractThreadFlow {
     }
 
     //==========================================================================
-    public void setThreadsList(final Collection<AbstractThread> threadsList) {
+    public void setThreadsList( Collection<AbstractThread> threadsList) {
         this.threadsList = threadsList;
     }
 
@@ -124,7 +124,7 @@ public abstract class AbstractThreadFlow {
         return throwable;
     }
 
-    public void setThrowable(final Throwable throwable) {
+    public void setThrowable( Throwable throwable) {
         this.throwable = throwable;
     }
 
@@ -132,7 +132,7 @@ public abstract class AbstractThreadFlow {
         return isValid;
     }
 
-    public void setIsValid(final Boolean isValid) {
+    public void setIsValid( Boolean isValid) {
         this.isValid = isValid;
     }
 
@@ -140,7 +140,7 @@ public abstract class AbstractThreadFlow {
         return exceptionMsg;
     }
 
-    public void setExceptionMsg(final String exceptionMsg) {
+    public void setExceptionMsg( String exceptionMsg) {
         this.exceptionMsg = exceptionMsg;
     }
 

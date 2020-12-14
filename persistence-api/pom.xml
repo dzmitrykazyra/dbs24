@@ -4,23 +4,25 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>persistence-api</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>application-core-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>application-core-api</artifactId>          
         </dependency> 
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>spring-core-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>spring-core-api</artifactId> 
         </dependency> 
     </dependencies>
     <build>
-        <finalName>persistence-api</finalName> 
+        <finalName>${project.name}</finalName>
     </build>  
 </project>

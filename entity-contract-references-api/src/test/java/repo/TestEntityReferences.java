@@ -6,7 +6,7 @@
 package repo;
 
 import org.dbs24.application.core.service.funcs.TestFuncs;
-import org.dbs24.persistence.core.PersistanceEntityManager;
+import org.dbs24.component.PersistenceEntityManager;
 import lombok.Data;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import config.TestReferencesConfig;
 import org.dbs24.service.EntityContractReferencesService;
 import org.junit.Test;
-import org.dbs24.entity.contract.subjects.ContractSubject;
+import org.dbs24.entity.ContractSubject;
 
 /**
  *
@@ -30,7 +30,7 @@ import org.dbs24.entity.contract.subjects.ContractSubject;
 public class TestEntityReferences {
 
     @Autowired
-    private PersistanceEntityManager persistanceEntityManager;
+    private PersistenceEntityManager PersistenceEntityManager;
 
     @Autowired
     private EntityContractReferencesService entityContractReferencesService;
@@ -45,10 +45,10 @@ public class TestEntityReferences {
 
         entityContractReferencesService.createContractSubject(entityContractSubjectId, testString);
 
-        persistanceEntityManager
+        PersistenceEntityManager
                 .getEntityManager()
                 .remove(
-                        persistanceEntityManager
+                        PersistenceEntityManager
                                 .getEntityManager()
                                 .find(ContractSubject.class, entityContractSubjectId));
 

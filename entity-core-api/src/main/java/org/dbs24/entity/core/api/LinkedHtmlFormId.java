@@ -9,7 +9,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 
 /**
  *
@@ -19,5 +19,5 @@ import org.dbs24.application.core.sysconst.SysConst;
 @Target(ElementType.TYPE) //on class level
 public @interface LinkedHtmlFormId {
 
-    public String value() default SysConst.EMPTY_STRING;
+    public String value() default EMPTY_STRING;
 }

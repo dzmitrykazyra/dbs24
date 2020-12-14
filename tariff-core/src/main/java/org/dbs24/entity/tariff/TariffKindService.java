@@ -18,7 +18,7 @@ import java.util.Collection;
 import lombok.Data;
 import org.dbs24.service.TariffStdRates;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
@@ -31,7 +31,7 @@ public abstract class TariffKindService<TS extends TariffServ, E extends ActionE
         extends TariffKind {
 
     @Value("${tariff.debug:false}")
-    private Boolean tariffDebug = SysConst.BOOLEAN_FALSE;
+    private Boolean tariffDebug = BOOLEAN_FALSE;
     
     private StopWatcher stopWatcher;
 

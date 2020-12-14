@@ -6,7 +6,7 @@
 package org.dbs24.fields.desc;
 
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.references.api.AbstractCardFile;
 //import org.dbs24.services.FS24JdbcService;
 //import org.dbs24.services.api.ServiceLocator;
@@ -24,7 +24,7 @@ public class AppFieldsCaptions extends AbstractCardFile {
     }
 
     @Override
-    protected void loadReference(final Boolean needReload, final Long app_id) {
+    protected void loadReference( Boolean needReload, Long app_id) {
 
         // подзагрузили в кеш
         if (needReload) {
@@ -40,14 +40,14 @@ public class AppFieldsCaptions extends AbstractCardFile {
     }
 
     //==========================================================================
-    private AppFieldCaption getActualAppFieldCaption(final Long user_id, final String fieldName) {
+    private AppFieldCaption getActualAppFieldCaption( Long user_id, String fieldName) {
 
         AppFieldCaption appFieldCaption =  ServiceFuncs.<AppFieldCaption>getCollectionElement_silent(this.getCardFiles(),
                 p -> p.getUser_id().equals(user_id) && p.getField_name().equals(fieldName));
         
         if (NullSafe.isNull(appFieldCaption)) {
             appFieldCaption =  ServiceFuncs.<AppFieldCaption>getCollectionElement_silent(this.getCardFiles(),
-                p -> p.getUser_id().equals(SysConst.SERVICE_USER_ID) && p.getField_name().equals(fieldName));
+                p -> p.getUser_id().equals(SERVICE_USER_ID) && p.getField_name().equals(fieldName));
         }
 
         return appFieldCaption;
@@ -57,20 +57,20 @@ public class AppFieldsCaptions extends AbstractCardFile {
 //
 //        if (afc.isEmpty()) {
 //            afc = ((List<AppFieldCaption>) this.getCardFiles()).stream()
-//                    .filter(p -> p.getUser_id().equals(SysConst.SERVICE_USER_ID) && p.getField_name().equals(fieldName)).collect(Collectors.toList());
+//                    .filter(p -> p.getUser_id().equals(SERVICE_USER_ID) && p.getField_name().equals(fieldName)).collect(Collectors.toList());
 //        }
 //
 //        return afc.get(0);
     }
 
     //==========================================================================
-    public String getAttrCaption(final Long user_id, final String fieldName) {
+    public String getAttrCaption( Long user_id, String fieldName) {
 
         return getActualAppFieldCaption(user_id, fieldName).getField_caption();
     }
 
     //==========================================================================
-    public String getAttrToolTip(final Long user_id, final String fieldName) {
+    public String getAttrToolTip( Long user_id, String fieldName) {
 
         return getActualAppFieldCaption(user_id, fieldName).getField_tooltip();
     }

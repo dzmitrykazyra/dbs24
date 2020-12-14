@@ -5,7 +5,7 @@
  */
 package org.dbs24.test.api;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 
 /**
  *
@@ -26,10 +26,10 @@ public class TestResult {
         return logMsg;
     }
 
-    public void addLogMsg(final String logMsg) {
+    public void addLogMsg( String logMsg) {
         //this.logMsg = (String) NullSafe.nvl(this.logMsg, "");
         if (null == this.logMsg) {
-            this.logMsg = SysConst.EMPTY_STRING;
+            this.logMsg = EMPTY_STRING;
         }
         this.logMsg = this.logMsg.concat(logMsg);
     }
@@ -38,7 +38,7 @@ public class TestResult {
         return errCount;
     }
 
-    public void setErrCount(final Integer errCount) {
+    public void setErrCount( Integer errCount) {
         this.errCount = errCount;
     }
 
@@ -46,7 +46,7 @@ public class TestResult {
         return errKeyWord;
     }
 
-    public void setErrKeyWord(final String errKeyWord) {
+    public void setErrKeyWord( String errKeyWord) {
         this.errKeyWord = errKeyWord;
     }
 

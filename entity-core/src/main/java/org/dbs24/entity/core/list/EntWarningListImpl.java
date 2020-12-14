@@ -21,7 +21,7 @@ public class EntWarningListImpl implements EntityWarningsList {
 
     Map<String, String> warningList = null;
 
-    public void addWarning(final String fldKey, final String warningMsg) {
+    public void addWarning( String fldKey, String warningMsg) {
 
         LogService.LogWarn(this.getClass(),
                 LogService.getCurrentObjProcName(this),
@@ -56,7 +56,7 @@ public class EntWarningListImpl implements EntityWarningsList {
 
     //==========================================================================
     @Override
-    public String get_field_warning(final String fldName) {
+    public String get_field_warning( String fldName) {
 
         return NullSafe.create(this.warningList)
                 .whenIsNull(() -> {

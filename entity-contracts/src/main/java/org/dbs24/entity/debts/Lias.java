@@ -11,7 +11,7 @@ import org.dbs24.lias.opers.attrs.*;
 import java.time.LocalDate;
 import java.util.Collection;
 //import org.dbs24.entity.liases.references.LiasesReferencesService;
-import org.dbs24.entity.contracts.AbstractEntityContract;
+import org.dbs24.entity.AbstractEntityContract;
 import org.dbs24.application.core.api.ObjectRoot;
 //import org.dbs24.services.api.ServiceLocator;
 import java.math.BigDecimal;
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.lias.opers.api.LiasOpersConst;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.lias.opers.napi.LiasFinanceOper;
 import org.dbs24.persistence.api.PersistenceEntity;
 import javax.persistence.*;
@@ -83,7 +83,7 @@ public class Lias extends ObjectRoot implements PersistenceEntity {
     //==========================================================================
     // создание новой финоперации
     //==========================================================================
-    public void createLiasOper(final BigDecimal liasSum,
+    public void createLiasOper( BigDecimal liasSum,
             final LocalDate operDate,
             final Integer liasFinOperCode,
             final Integer liasTypeID,
@@ -115,13 +115,13 @@ public class Lias extends ObjectRoot implements PersistenceEntity {
     }
 
     //==========================================================================
-    public void createOrUpdateLiasRests(final LiasFinanceOper liasFinanceOper) {
+    public void createOrUpdateLiasRests( LiasFinanceOper liasFinanceOper) {
         this.createOrUpdateLiasRests(liasFinanceOper.<BigDecimal>attr(LiasOpersConst.LIAS_SUMM_CLASS),
                 liasFinanceOper.<LocalDate>attr(LiasOpersConst.LIAS_DATE_CLASS));
     }
 
     //==========================================================================
-    private void createOrUpdateLiasRests(final BigDecimal liasSum, final LocalDate operDate) {
+    private void createOrUpdateLiasRests( BigDecimal liasSum, LocalDate operDate) {
 
         if (!ServiceFuncs.getCollectionElement(this.getLiasRests(),
                 lr -> lr.getRestDate().equals(operDate)).isPresent()) {
@@ -139,13 +139,13 @@ public class Lias extends ObjectRoot implements PersistenceEntity {
             if (!lastRest.isEmpty()) {
                 newRest = lastRest.get(0).getRest();
             } else {
-                newRest = SysConst.BIGDECIMAL_ZERO;
+                newRest = BIGDECIMAL_ZERO;
             }
 
             final LiasRest liasRest = NullSafe.createObject(LiasRest.class);
 
             liasRest.setRest(newRest);
-            liasRest.setRestType(SysConst.INTEGER_ONE);
+            liasRest.setRestType(INTEGER_ONE);
             liasRest.setRestDate(operDate);
             liasRest.setLias(this);
 
@@ -167,7 +167,7 @@ public class Lias extends ObjectRoot implements PersistenceEntity {
 
     //==========================================================================
 //    @Deprecated
-//    public void createLiasOper(final LiasFinanceOper liasFinanceOper) {
+//    public void createLiasOper( LiasFinanceOper liasFinanceOper) {
 //        this.createLiasOper(liasFinanceOper.attr(LiasOpersConst.LIAS_SUMM_CLASS),
 //                liasFinanceOper.attr(LiasOpersConst.LIAS_DATE_CLASS),
 //                liasFinanceOper.attr(LiasOpersConst.LIAS_FINOPER_CODE_CLASS),

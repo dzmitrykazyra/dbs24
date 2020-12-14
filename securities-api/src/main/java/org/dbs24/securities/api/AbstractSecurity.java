@@ -14,7 +14,7 @@ import org.dbs24.exception.api.CreateEntityException;
 
 public abstract class AbstractSecurity extends AbstractEntityContract {
 
-    public AbstractSecurity(final Long entity_id) throws CreateEntityException {
+    public AbstractSecurity( Long entity_id) throws CreateEntityException {
         super(entity_id);
     }
 

@@ -7,15 +7,14 @@ package org.dbs24.service;
 
 import lombok.Data;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.dbs24.spring.core.bean.AbstractApplicationBean;
+import org.dbs24.spring.core.api.AbstractApplicationBean;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 public class WebClientMgmt extends AbstractApplicationBean {
 
-    private WebClient webClient = WebClient.create();
+    final WebClient webClient;
 
+    public WebClientMgmt() {
+        this.webClient = WebClient.create();
+    }
 }

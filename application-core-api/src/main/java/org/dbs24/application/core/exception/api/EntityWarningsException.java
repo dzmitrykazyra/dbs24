@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class EntityWarningsException extends InternalAppException {
 
-    public EntityWarningsException(final String message) {
+    public EntityWarningsException( String message) {
         super(message);
     }
 

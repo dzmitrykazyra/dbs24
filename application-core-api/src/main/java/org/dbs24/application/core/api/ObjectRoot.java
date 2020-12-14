@@ -12,12 +12,12 @@ package org.dbs24.application.core.api;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 //import org.dbs24.registry.api.RegistryCoreService;
-//import org.dbs24.jpa.entity.service.PersistanceEntityManagerService;
+//import org.dbs24.jpa.entity.service.PersistenceEntityManagerService;
 
 public abstract class ObjectRoot extends Object implements Serializable, Cloneable {
 
 //    private static RegistryCoreService rcs;
-    //private volatile static PersistanceEntityManagerService persistanceEntityManagerService;
+    //private volatile static PersistenceEntityManagerService PersistenceEntityManagerService;
     @JsonIgnore
     private final Object monitorLock = new Object();
 
@@ -48,7 +48,7 @@ public abstract class ObjectRoot extends Object implements Serializable, Cloneab
 //    }
     //==========================================================================
 //    @JsonIgnore
-//    public PersistanceEntityManagerService getPersistanceService() {
+//    public PersistenceEntityManagerService getPersistanceService() {
 //
 //        return ObjectRoot.getStaticPersistanceService();
 //    }
@@ -72,24 +72,24 @@ public abstract class ObjectRoot extends Object implements Serializable, Cloneab
 
         synchronized (ObjectRoot.monitorDbServiceLock) {
 
-//            NullSafe.create(ObjectRoot.persistanceEntityManagerService)
-//                    .whenIsNull(() -> ObjectRoot.persistanceEntityManagerService
-//                    = ServiceLocator.find(PersistanceEntityManagerService.class));
+//            NullSafe.create(ObjectRoot.PersistenceEntityManagerService)
+//                    .whenIsNull(() -> ObjectRoot.PersistenceEntityManagerService
+//                    = ServiceLocator.find(PersistenceEntityManagerService.class));
         }
     }
 
     //==========================================================================
     //==========================================================================
 //    @JsonIgnore
-//    public static PersistanceEntityManagerService getStaticPersistanceService() {
+//    public static PersistenceEntityManagerService getStaticPersistanceService() {
 //
-//        return NullSafe.create(ObjectRoot.persistanceEntityManagerService)
+//        return NullSafe.create(ObjectRoot.PersistenceEntityManagerService)
 //                .whenIsNull(() -> {
 //                    ObjectRoot.initializePersistanceService();
-//                    return ObjectRoot.persistanceEntityManagerService;
+//                    return ObjectRoot.PersistenceEntityManagerService;
 //
 //                })
-//                .<PersistanceEntityManagerService>getObject();
+//                .<PersistenceEntityManagerService>getObject();
 //
 //    }
     //==========================================================================

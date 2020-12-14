@@ -6,7 +6,7 @@
 package org.dbs24.entity.tariff;
 
 import org.dbs24.application.core.api.ObjectRoot;
-import org.dbs24.application.core.nullsafe.NullSafe;
+import org.dbs24.stmt.StmtProcessor;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.entity.core.AbstractPersistenceEntity;
 import org.dbs24.persistence.api.PersistenceEntity;
@@ -15,8 +15,6 @@ import javax.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
 import org.dbs24.application.core.service.funcs.FilterComparator;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.stream.Collectors;
 
 /**
@@ -35,7 +33,7 @@ public class TariffCalcRecord extends ObjectRoot implements PersistenceEntity {
     private Integer tariffCalcId;
     //--------------------------------------------------------------------------
     @ManyToOne
-    @JoinColumn(name = "rate_id", referencedColumnName = "rate_id")    
+    @JoinColumn(name = "rate_id", referencedColumnName = "rate_id")
     private TariffRate tariffRate;
     //--------------------------------------------------------------------------
     @ManyToOne
@@ -46,11 +44,11 @@ public class TariffCalcRecord extends ObjectRoot implements PersistenceEntity {
     private Collection<TariffCalcSum> tariffSums = ServiceFuncs.<TariffCalcSum>createCollection();
 
     //==========================================================================
-    public void mergeRecord(final TariffCalcRecord tariffCalcRecord, final LocalDate D1, final LocalDate D2) {
-        if (NullSafe.isNull(this.getTariffRate())) {
+    public void mergeRecord(TariffCalcRecord tariffCalcRecord, LocalDate D1, LocalDate D2) {
+        if (StmtProcessor.isNull(this.getTariffRate())) {
             this.setTariffRate(tariffCalcRecord.getTariffRate());
         }
-        if (NullSafe.isNull(this.getEntity())) {
+        if (StmtProcessor.isNull(this.getEntity())) {
             this.setEntity(tariffCalcRecord.getEntity());
         }
 
@@ -73,9 +71,9 @@ public class TariffCalcRecord extends ObjectRoot implements PersistenceEntity {
                 .getTariffSums()
                 .stream()
                 .filter(tcs -> TCSC.getFilter(tcs))
-                .forEach(sum -> { 
+                .forEach(sum -> {
                     sum.setTariffCalcRecord(this);
-                    this.getTariffSums().add(sum);                     
+                    this.getTariffSums().add(sum);
                 });
     }
 

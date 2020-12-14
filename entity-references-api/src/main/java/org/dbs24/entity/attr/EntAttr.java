@@ -45,10 +45,4 @@ public class EntAttr extends AbstractRefRecord implements ReferenceRec {
         this.attr_code = attr_code;
         return this;
     }
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getAttr_id(), this.getAttr_name()), this.getAttr_id());
-    }
-
 }

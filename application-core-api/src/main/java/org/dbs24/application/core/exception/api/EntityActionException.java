@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class EntityActionException extends InternalAppException {
 
-    public EntityActionException(final String message) {
+    public EntityActionException( String message) {
         super(message);
     }
 

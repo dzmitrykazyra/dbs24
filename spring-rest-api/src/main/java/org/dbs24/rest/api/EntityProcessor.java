@@ -5,11 +5,8 @@
  */
 package org.dbs24.rest.api;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @FunctionalInterface
-public interface EntityProcessor<T> {
-    T processEntity(T entity);
+public interface EntityProcessor<T, V> {
+
+    V processEntity(T entity);
 }

@@ -5,7 +5,7 @@
  */
 package org.dbs24.application.core.service.funcs;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 //import org.dbs24.application.core.log.LogService;
 
 /**
@@ -14,15 +14,15 @@ import org.dbs24.application.core.sysconst.SysConst;
  */
 public final class CustomCollectionImpl implements CustomCollection {
 
-    private String collectionRecord = SysConst.NOT_DEFINED;
+    private String collectionRecord = NOT_DEFINED;
 
-    public CustomCollectionImpl(final String initialHeader) {
+    public CustomCollectionImpl( String initialHeader) {
         super();
         this.collectionRecord = initialHeader;
     }
 
     @Override
-    public void addCustomRecord(final CustomRecord customRecord) {
+    public void addCustomRecord( CustomRecord customRecord) {
         collectionRecord = collectionRecord.concat(customRecord.getRecord());
     }
 

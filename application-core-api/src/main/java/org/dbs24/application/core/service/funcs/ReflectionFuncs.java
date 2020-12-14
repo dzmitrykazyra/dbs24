@@ -12,20 +12,16 @@ import org.reflections.Reflections;
 import java.util.ArrayList;
 import java.util.Collection;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 public final class ReflectionFuncs {
-    
-    public static <T extends Class> Collection<T> createPkgClassesCollection(final String packageName, final T rootClazz) {
-        
+
+    public static <T extends Class> Collection<T> createPkgClassesCollection(String packageName, T rootClazz) {
+
         return new ArrayList<>((Collection<T>) (new Reflections(packageName)).getSubTypesOf(rootClazz));
     }
 
     //==========================================================================
-    public static <T> Collection<T> createPkgClassesCollectionExt(final String packageName, final Class<T> rootClazz) {
-        
+    public static <T> Collection<T> createPkgClassesCollectionExt(String packageName, Class<T> rootClazz) {
+
         return new ArrayList<>((Collection<T>) (new Reflections(packageName)).getSubTypesOf(rootClazz));
     }
 
@@ -42,8 +38,6 @@ public final class ReflectionFuncs {
                 .filter(p -> !p.isInterface())
                 .filter(p -> !Modifier.isAbstract(p.getModifiers()))
                 .filter(p -> NullSafe.isNull(annClass) || AnnotationFuncs.isAnnotated(p, annClass))
-                .forEach((refClazz) -> {
-                    servClassProcessor.processClass((Class) refClazz);
-                });        
+                .forEach(refClazz -> servClassProcessor.processClass((Class) refClazz));
     }
 }

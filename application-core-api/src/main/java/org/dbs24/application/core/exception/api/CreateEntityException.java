@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class CreateEntityException extends InternalAppException {
 
-    public CreateEntityException(final String message) {
+    public CreateEntityException( String message) {
         super(message);
     }
 

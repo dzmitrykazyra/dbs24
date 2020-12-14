@@ -7,10 +7,6 @@ package org.dbs24.service;
 import org.dbs24.spring.core.api.ApplicationService;
 import lombok.Data;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 public abstract class AbstractApplicationService implements ApplicationService {
 

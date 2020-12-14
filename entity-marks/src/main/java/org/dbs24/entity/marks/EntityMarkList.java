@@ -16,7 +16,7 @@ import org.dbs24.entity.marks.api.EntityMark;
 import org.dbs24.application.core.log.LogService;
 //import org.dbs24.services.api.ServiceLocator;
 //import org.dbs24.services.FS24JdbcService;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.application.core.nullsafe.NullSafe;
 
 /**
@@ -35,7 +35,7 @@ public final class EntityMarkList {
         super();
     }
 
-    public EntityMarkList(final Long entity_id) {
+    public EntityMarkList( Long entity_id) {
         this.entity_id = entity_id;
         NullSafe.create()
                 .execute(() -> {
@@ -48,12 +48,12 @@ public final class EntityMarkList {
         return entityMarksActions;
     }
 
-    public void setEntityMarksActions(final Collection<EntityMarkHistory> entityMarksActions) {
+    public void setEntityMarksActions( Collection<EntityMarkHistory> entityMarksActions) {
         this.entityMarksActions = entityMarksActions;
     }
     //==========================================================================
 
-    public void refresh(final Long entity_id, Date from, Date to) {
+    public void refresh( Long entity_id, Date from, Date to) {
         //List<EntityHistoryAction> historyActions = new ArrayList<>();
         this.entityMarksActions = ServiceFuncs.<EntityMarkHistory>getOrCreateCollection(this.entityMarksActions);
 
@@ -215,9 +215,9 @@ public final class EntityMarkList {
     }
 
     //==========================================================================
-    public Integer getMarkValue(final Integer mark_id, final Integer default_mark_value_id) {
+    public Integer getMarkValue( Integer mark_id, Integer default_mark_value_id) {
 
-        return NullSafe.create(default_mark_value_id, SysConst.IS_SILENT_EXECUTE)
+        return NullSafe.create(default_mark_value_id, IS_SILENT_EXECUTE)
                 .inititialize(() -> {
                     this.entityMarks = ServiceFuncs.<EntityMark>getOrCreateCollection(this.entityMarks);
                 })
@@ -230,7 +230,7 @@ public final class EntityMarkList {
     }
 
     //==========================================================================
-    public void saveEntityMark(final Long entity_id, final Long action_id, final Integer mark_id, final Integer mark_value_id) {
+    public void saveEntityMark( Long entity_id, Long action_id, Integer mark_id, Integer mark_value_id) {
 
 //        ServiceLocator
 //                .find(FS24JdbcService.class)
@@ -243,7 +243,7 @@ public final class EntityMarkList {
     }
 
     //==========================================================================
-    public void addEntityMark(final Integer mark_id, final Integer mark_value_id) {
+    public void addEntityMark( Integer mark_id, Integer mark_value_id) {
         //List<EntityHistoryAction> historyActions = new ArrayList<>();
         Integer v_mark_id = mark_id;
         Integer v_mark_value_id = mark_value_id;
@@ -264,7 +264,7 @@ public final class EntityMarkList {
     }
 
     //==========================================================================
-    public void removeEntityMark(final Integer mark_id) {
+    public void removeEntityMark( Integer mark_id) {
 
         entityMarks.remove(
                 ServiceFuncs.<EntityMark>getCollectionElement(this.entityMarks,

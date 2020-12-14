@@ -32,15 +32,4 @@ public class PmtScheduleTerm extends AbstractRefRecord implements ReferenceRec {
     private String pmtTermName;
     @Column(name = "is_actual")
     private Boolean isActual;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(this.toString(), this.getPmtTermId());
-    }
-
-    //==========================================================================
-    public final static PmtScheduleTerm findPmtScheduleTerm(final Integer PmtScheduleTermId) {
-        return AbstractRefRecord.<PmtScheduleTerm>getRefeenceRecord(PmtScheduleTerm.class,
-                record -> record.getPmtTermId().equals(PmtScheduleTermId));
-    }
 }

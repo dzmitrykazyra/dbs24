@@ -1,0 +1,6 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-16" 
+export MAVEN_OPTS="-Xms1024m"
+clear
+mvn -version
+mvn install -DskipTests=true

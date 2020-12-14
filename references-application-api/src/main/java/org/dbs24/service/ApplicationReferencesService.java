@@ -5,50 +5,59 @@
  */
 package org.dbs24.service;
 
-import org.dbs24.application.core.service.funcs.ServiceFuncs;
+import java.util.Collection;
 import lombok.Data;
 import org.springframework.stereotype.Service;
-import org.dbs24.persistence.core.PersistanceEntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.dbs24.references.application.currency.Currency;
-import java.util.stream.Collectors;
+import org.dbs24.component.PersistenceEntityManager;
+import static org.dbs24.consts.ReferenceApplicationConst.*;
+import org.dbs24.entity.*;
+import org.dbs24.references.api.AbstractRefRecord;
+import org.dbs24.references.core.CachedReferencesClasses;
 
-
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 @Service
-public class ApplicationReferencesService extends AbstractApplicationService {
+@CachedReferencesClasses(classes = {Currency.class})
+public class ApplicationReferencesService extends AbstractReferencesService {
+
+    final PersistenceEntityManager persistenceEntityManager;
 
     @Autowired
-    private PersistanceEntityManager persistanceEntityManager;
-
-    //==========================================================================
-    public final void createCurrency(final Integer currencyId,
-            final String currencyIso, final String currencyName) {
-
-        persistanceEntityManager.<Currency>mergePersistenceEntity(Currency.class,
-                currency -> {
-
-                    currency.setCurrencyId(currencyId);
-                    currency.setCurrencyIso(currencyIso);
-                    currency.setCurrencyName(currencyName);
-
-                });
+    public ApplicationReferencesService(PersistenceEntityManager persistenceEntityManager) {
+        this.persistenceEntityManager = persistenceEntityManager;
     }
+
     //==========================================================================
-//    public Currency getCurrency(final Integer currencyId) {
+//    @Deprecated
+//    public final void createCurrency(Integer currencyId,
+//            final String currencyIso, String currencyName) {
 //
-//        return ServiceFuncs.getMapValue(this.getREF_CACHE(), mapEntry -> mapEntry.getKey().equals(Currency.class))
-//                .get()
-//                .stream()
-//                .map(x -> (Currency) x)
-//                .collect(Collectors.toList())
-//                .stream()
-//                .filter(currency -> currency.getCurrencyId().equals(currencyId))
-//                .findFirst()
-//                .get();
-//    }    
+//        persistenceEntityManager.<Currency>mergePersistenceEntity(Currency.class,
+//                currency -> {
+//                    currency.setCurrencyId(currencyId);
+//                    currency.setCurrencyIso(currencyIso);
+//                    currency.setCurrencyName(currencyName);
+//                });
+//    }
+
+    //==========================================================================
+    public static final Currency findCurrency(Integer currencyId) {
+        return AbstractRefRecord.<Currency>getRefeenceRecord(Currency.class,
+                record -> record.getCurrencyId().equals(currencyId));
+    }
+
+    //==========================================================================
+    public static final Collection<Currency> getCurrencyCollection() {
+
+        return getGenericCollection(CURRENCY_CLASS, new String[][]{
+            {"840", "USD", "Доллар США"},
+            {"978", "EUR", "Евро"},
+            {"933", "BYN", "Белорусский рубль"},
+            {"999", "999", "9999"}
+        }, (record, stringRow) -> {
+            record.setCurrencyId(Integer.valueOf(stringRow[0]));
+            record.setCurrencyIso(stringRow[1]);
+            record.setCurrencyName(stringRow[2]);
+        });
+    }
 }

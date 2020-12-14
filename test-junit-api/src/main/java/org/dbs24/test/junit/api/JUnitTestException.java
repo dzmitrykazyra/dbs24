@@ -11,7 +11,7 @@ package org.dbs24.test.junit.api;
  */
 public class JUnitTestException extends Exception {
 
-    public JUnitTestException(final String message) {
+    public JUnitTestException( String message) {
         super(message);
     }
 }

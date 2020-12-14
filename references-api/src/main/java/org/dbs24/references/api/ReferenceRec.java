@@ -7,12 +7,8 @@ package org.dbs24.references.api;
 
 import java.util.Map;
 
-/**
- *
- * @author kazyra_d
- */
 public interface ReferenceRec {
     
-    void record2Map(Map<String, Integer> map);
+    //void record2Map(Map<String, Integer> map);
 
 }

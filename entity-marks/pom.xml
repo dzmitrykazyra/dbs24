@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>entity-marks</artifactId>
     <packaging>jar</packaging>
@@ -12,13 +12,12 @@
     <dependencies>    
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>entity-marks-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>entity-marks-api</artifactId>          
         </dependency>
     </dependencies>        
     
     <build>
-        <finalName>entity-marks</finalName> 
+        <finalName>${project.name}</finalName>
     </build>      
     
 </project>

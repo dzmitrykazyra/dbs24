@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class InsertIntoActionsException extends InternalAppException {
 
-    public InsertIntoActionsException(final String message) {
+    public InsertIntoActionsException( String message) {
         super(message);
     }
 

@@ -14,7 +14,7 @@ public class LangStrValue {
     private String en;
     private String ru;
 
-    public LangStrValue(final String en, final String ru) {
+    public LangStrValue( String en, String ru) {
         this.en = en;
         this.ru = ru;
     }
@@ -24,7 +24,7 @@ public class LangStrValue {
         return en;
     }
 
-    public void setEn(final String en) {
+    public void setEn( String en) {
         this.en = en;
     }
 
@@ -32,7 +32,7 @@ public class LangStrValue {
         return ru;
     }
 
-    public void setRu(final String ru) {
+    public void setRu( String ru) {
         this.ru = ru;
     }
 

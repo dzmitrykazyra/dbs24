@@ -31,12 +31,7 @@ public class LiasActionType extends AbstractRefRecord implements ReferenceRec {
     @Column(name = "action_type_name")
     private String actionTypeName;
 
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getActionTypeId(), this.getActionTypeName()), this.getActionTypeId());
-    }
-    
-       public final static LiasActionType findLiasActionType(final Integer liasActionTypeId) {
+    public static final LiasActionType findLiasActionType( Integer liasActionTypeId) {
         return AbstractRefRecord.<LiasActionType>getRefeenceRecord(LiasActionType.class,
                 record -> record.getActionTypeId().equals(liasActionTypeId));
     }

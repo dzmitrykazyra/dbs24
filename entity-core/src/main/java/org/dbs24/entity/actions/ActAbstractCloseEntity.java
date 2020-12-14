@@ -8,7 +8,7 @@ package org.dbs24.entity.actions;
 import org.dbs24.entity.core.AbstractAction;
 import org.dbs24.entity.core.AbstractActionEntity;
 import org.dbs24.application.core.exception.api.InternalAppException;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import java.time.LocalDateTime;
 
 /**
@@ -17,15 +17,15 @@ import java.time.LocalDateTime;
  */
 public class ActAbstractCloseEntity<T extends AbstractActionEntity> extends ActAbstractChangeEntityStatus<T> {
 
-//    public static Boolean isAllowed(final AbstractActionEntity entity) {
+//    public static Boolean isAllowed( AbstractActionEntity entity) {
 //
-//        return (entity.getIsAuthorized() && AbstractAction.isAllowed(entity, SysConst.ES_VALID));
+//        return (entity.getIsAuthorized() && AbstractAction.isAllowed(entity, ES_ACTUAL));
 //    }
 //
     //==========================================================================
     @Override
     protected void changeEntityStatus() {
-        //this.getEntity().updateEntityStatus(SysConst.ES_CLOSED);
+        //this.getEntity().updateEntityStatus(ES_CLOSED);
 
     }
 //
@@ -33,8 +33,8 @@ public class ActAbstractCloseEntity<T extends AbstractActionEntity> extends ActA
 //    @Override
 //    protected void afterCommit() {
 //        // установили статус "завершено" на сделке
-//        this.setUnathorized(SysConst.ES_CLOSED);
-//        this.getEntity().setEntityStatus(SysConst.ES_CLOSED);
+//        this.setUnathorized(ES_CLOSED);
+//        this.getEntity().setEntityStatus(ES_CLOSED);
 //        this.getEntity().setClose_date(LocalDateTime.now().toLocalDate());
 //    }
 }

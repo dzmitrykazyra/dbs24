@@ -17,12 +17,12 @@ public final class ParallelThreadFlow<T> extends AbstractThreadFlow {
 
     private T object;
 
-    public ParallelThreadFlow(final T t) {
+    public ParallelThreadFlow( T t) {
         this.object = t;
     }
 
     //==========================================================================
-    public final void addParallelThread(final NewThread newThread) {
+    public final void addParallelThread( NewThread newThread) {
 
         final AbstractThread actionThread = newThread.getNewThread();
 
@@ -101,7 +101,7 @@ public final class ParallelThreadFlow<T> extends AbstractThreadFlow {
         return object;
     }
 
-    public void setObject(final T object) {
+    public void setObject( T object) {
         this.object = object;
     }
 

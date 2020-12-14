@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class InsertIntoLoanContractsException extends InternalAppException {
 
-    public InsertIntoLoanContractsException(final String message) {
+    public InsertIntoLoanContractsException( String message) {
         super(message);
     }
 

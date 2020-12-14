@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class ActClassesCollectionNotSpecified extends InternalAppException {
 
-    public ActClassesCollectionNotSpecified(final String message) {
+    public ActClassesCollectionNotSpecified( String message) {
         super(message);
     }
 

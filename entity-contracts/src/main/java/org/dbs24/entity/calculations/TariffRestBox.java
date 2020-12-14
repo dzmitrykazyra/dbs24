@@ -5,14 +5,13 @@
  */
 package org.dbs24.entity.calculations;
 
-import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 import org.dbs24.entity.debts.LiasDebtRest;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.entity.tariff.TariffRate;
 import org.dbs24.entity.tariff.TariffRecordAbstract;
 import org.dbs24.references.tariffs.kind.TariffCalcSumExtended;
@@ -22,17 +21,12 @@ import java.util.List;
 import lombok.Data;
 import reactor.core.publisher.Flux;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
-/**
- *
- * @author kazyra_d
- */
 @Data
 public final class TariffRestBox extends TariffBoxAbstract {
 
     //==========================================================================
-    public void createCalculationsOld(final LocalDate D1,
+    public void createCalculationsOld( LocalDate D1,
             final LocalDate D2,
             final Collection<LiasDebtRest> liasDebtRest,
             final TariffRate tariffRate,
@@ -101,7 +95,7 @@ public final class TariffRestBox extends TariffBoxAbstract {
                 accrualSum = null;
             }
 
-            this.addTariffSum(ld4add, accrualbasis, accrualRate, accrualSum, SysConst.BIGDECIMAL_NULL);
+            this.addTariffSum(ld4add, accrualbasis, accrualRate, accrualSum, BIGDECIMAL_NULL);
             ld1 = ld1.plusDays(1);
         }
     }
@@ -134,7 +128,7 @@ public final class TariffRestBox extends TariffBoxAbstract {
     //--------------------------------------------------------------------------
     private LiasDebtRest liasDebtRest_last;
 
-    private BigDecimal getAccrualBasis(final LocalDate ld) {
+    private BigDecimal getAccrualBasis( LocalDate ld) {
         // начальный базис
         if (restsIterator.hasNext()) {
             while (liasDebtRest_last.getRestDate().isBefore(ld)
@@ -151,7 +145,7 @@ public final class TariffRestBox extends TariffBoxAbstract {
     //--------------------------------------------------------------------------
     private TariffRecordAbstract tariffRateRecord_last;
 
-    private BigDecimal getActualRate(final LocalDate ld) {
+    private BigDecimal getActualRate( LocalDate ld) {
         // начальный базис
 
         if (rateIterator.hasNext()) {
@@ -167,16 +161,15 @@ public final class TariffRestBox extends TariffBoxAbstract {
     }
 
     //--------------------------------------------------------------------------
-    public void createCalculations(final LocalDate D1,
-            final LocalDate D2) {
+    public void createCalculations( LocalDate d1,
+            final LocalDate d2) {
 //        LocalDate ld1 = D1;
-        LocalDate ld2 = D2.plusDays(1);
+        LocalDate ld2 = d2.plusDays(1);
 
-        this.setFluxTariffSums(Flux.generate(
-                AtomicInteger::new,
+        this.setFluxTariffSums(Flux.generate(AtomicInteger::new,
                 (state, sink) -> {
 
-                    final LocalDate ld4add = D1.plusDays(state.getAndIncrement());
+                    final LocalDate ld4add = d1.plusDays(state.getAndIncrement());
 
                     //sink.next("3 x " + i + " = " + 3*i);                  
                     final BigDecimal accrualRate = this.getActualRate(ld4add);
@@ -201,7 +194,9 @@ public final class TariffRestBox extends TariffBoxAbstract {
                     return state;
                 }));
 
-        this.getFluxTariffSums().subscribe().dispose();
+        this.getFluxTariffSums()
+                .subscribe()
+                .dispose();
 
     }
 }

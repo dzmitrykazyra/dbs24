@@ -9,7 +9,7 @@ package org.dbs24.test.api;
  *
  * @author Козыро Дмитрий
  */
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
@@ -45,8 +45,8 @@ public final class TestConst {
     //==========================================================================
     public static final void prepareTestException() {
 
-        //TEST_RESULTS.put(testClass, SysConst.STRING_NULL);
-        TEST_RESULTS.put(TEST_RESULTS.size() + 1, SysConst.STRING_NULL);
+        //TEST_RESULTS.put(testClass, STRING_NULL);
+        TEST_RESULTS.put(TEST_RESULTS.size() + 1, STRING_NULL);
     }
 
     //==========================================================================
@@ -60,7 +60,7 @@ public final class TestConst {
     }
 
     //==========================================================================
-    public static final void registerTestException(final String msgException) {
+    public static final void registerTestException( String msgException) {
 
         final NavigableMap.Entry<Integer, String> entry = TestConst.getLastTestEntry();
         if (null == entry.getValue()) {
@@ -73,7 +73,7 @@ public final class TestConst {
 
         final NavigableMap.Entry<Integer, String> entry = TestConst.getLastTestEntry();
         if (null == entry.getValue()) {
-            TEST_RESULTS.replace(entry.getKey(), SysConst.STRING_NULL);
+            TEST_RESULTS.replace(entry.getKey(), STRING_NULL);
         }
     }
 }

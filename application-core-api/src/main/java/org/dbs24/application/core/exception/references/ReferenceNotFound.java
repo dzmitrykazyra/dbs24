@@ -18,7 +18,7 @@ public class ReferenceNotFound extends InternalAppException {
 
     }
 
-    public ReferenceNotFound(final String aErrMsg) {
+    public ReferenceNotFound( String aErrMsg) {
         super(aErrMsg);
     }
 

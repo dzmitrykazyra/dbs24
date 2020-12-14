@@ -5,10 +5,6 @@
  */
 package org.dbs24.application.core.nullsafe;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @FunctionalInterface
 public interface CodeBlockEx {
     void someCode(Throwable th) throws Throwable;

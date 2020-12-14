@@ -5,49 +5,52 @@
  */
 package org.dbs24.application.core.service.funcs;
 
+import java.time.LocalDateTime;
 import org.dbs24.application.core.nullsafe.NullSafe;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 public final class SysEnvFuncs {
 
     //==========================================================================
     public static final String getSysEnvFuns() {
-        final CustomCollectionImpl customCollection = NullSafe.createObject(CustomCollectionImpl.class, "System env \n");
 
-        System.getenv()
+        return System.getenv()
                 .keySet()
                 .stream()
-                .unordered()
-                .forEach(obj -> {
-
-                    customCollection.addCustomRecord(() -> String.format("%40s = '%s'\n",
-                            obj,
-                            //ServiceFuncs.getStringObjValue(paramsMap.get(obj)), NullSafe.create(paramsMap.get(obj))
-                            ServiceFuncs.getStringObjValue(System.getenv().get(obj))));
-
-                });
-
-        return customCollection.getRecord();
-
+                .sorted()
+                .reduce("System env \n ",
+                        (x, y) -> x.concat(" ").concat(String.format("%40s = '%s'\n",
+                                y, NullSafe.getStringObjValue(System.getenv(y)))));
     }
     //==========================================================================
 
     public static final String getSysProperties() {
-        //======================================================================
-        final CustomCollectionImpl customCollection1 = NullSafe.createObject(CustomCollectionImpl.class, "sysProperties \n");
 
-        System.getProperties()
-                .forEach((k, v) -> {
+        return System.getProperties()
+                .keySet()
+                .stream()
+                .map(x -> (String) x)
+                .sorted()
+                .reduce("sysProperties \n ", (x, y) -> x.concat(" ").concat(String.format("%40s = '%s'\n",
+                y, NullSafe.getStringObjValue(System.getProperty(y)))));
+    }
 
-                    customCollection1.addCustomRecord(() -> String.format("%40s = '%s'\n",
-                            (String) k,
-                            //ServiceFuncs.getStringObjValue(paramsMap.get(obj)), NullSafe.create(paramsMap.get(obj))
-                            ServiceFuncs.getStringObjValue((Object) v)));
-                });
+    //==========================================================================
+    public static final String getMemoryStatistics() {
 
-        return customCollection1.getRecord();
+        int mb = 1024 * 1024;
+
+        // get Runtime instance
+        final Runtime instance = Runtime.getRuntime();
+
+        return String.format(
+                "Heap utilization statistics [MB] "
+                + ", Total Memory: %d"
+                + ", Free Memory: %d"
+                + ", Used Memory: %d"
+                + ", Max Memory: %d",
+                instance.totalMemory() / mb,
+                instance.freeMemory() / mb,
+                (instance.totalMemory() - instance.freeMemory()) / mb,
+                instance.maxMemory() / mb);
     }
 }

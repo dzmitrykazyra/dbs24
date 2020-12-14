@@ -29,12 +29,7 @@ public class LiasBaseAssetType extends AbstractRefRecord implements ReferenceRec
     @Column(name = "base_asset_type_name")
     private String baseAssetTypeName;
 
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getBaseAssetTypeId(), this.getBaseAssetTypeName()), this.getBaseAssetTypeId());
-    }
-
-    public final static LiasBaseAssetType findLiasBaseAssetType(final Integer liasBaseAssetTypeId) {
+    public static final LiasBaseAssetType findLiasBaseAssetType( Integer liasBaseAssetTypeId) {
         return AbstractRefRecord.<LiasBaseAssetType>getRefeenceRecord(LiasBaseAssetType.class,
                 record -> record.getBaseAssetTypeId().equals(liasBaseAssetTypeId));
     }

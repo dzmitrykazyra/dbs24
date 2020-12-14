@@ -11,7 +11,7 @@ package org.dbs24.application.core.log;
  */
 
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.apache.log4j.PropertyConfigurator;
+//import org.apache.log4j.PropertyConfigurator;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -30,7 +30,7 @@ public final class Log4jBox {
                 .execute(() -> {
 
                     //this.log4file = "d:\\fs24\\log4j.properties";
-                    PropertyConfigurator.configure(log4file);
+  //                  PropertyConfigurator.configure(log4file);
 
                     log4jProperties.load(new FileInputStream(log4file));
                 }).throwException();

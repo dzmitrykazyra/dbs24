@@ -20,7 +20,7 @@ public class EntityTest {
         return action_code;
     }
 
-    public void setAction_code(final Integer action_code) {
+    public void setAction_code( Integer action_code) {
         this.action_code = action_code;
     }
 
@@ -28,7 +28,7 @@ public class EntityTest {
         return action_name;
     }
 
-    public void setAction_name(final String action_name) {
+    public void setAction_name( String action_name) {
         this.action_name = action_name;
     }
 
@@ -36,7 +36,7 @@ public class EntityTest {
         return app_name;
     }
 
-    public void setApp_name(final String app_name) {
+    public void setApp_name( String app_name) {
         this.app_name = app_name;
     }
 }

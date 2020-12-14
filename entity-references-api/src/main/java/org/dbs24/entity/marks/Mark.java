@@ -12,14 +12,10 @@ import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-/**
- *
- * @author kazyra_d
- */
 @Entity
 @Data
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "core_marksRef")
 public class Mark extends AbstractRefRecord implements ReferenceRec {
 
@@ -30,10 +26,4 @@ public class Mark extends AbstractRefRecord implements ReferenceRec {
     private String markName;
     @Column(name = "mark_group")
     private String markGroup;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getMarkId(), this.getMarkName()), this.getMarkId());
-    }
-
 }

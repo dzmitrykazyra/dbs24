@@ -11,5 +11,5 @@ package org.dbs24.test.api;
  */
 @FunctionalInterface
 public interface PropertyHandler {
-    Object assign_property(final String propertyName, Object value);
+    Object assign_property( String propertyName, Object value);
 }

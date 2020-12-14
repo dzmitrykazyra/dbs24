@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class IllegalActionClass extends InternalAppException {
 
-    public IllegalActionClass(final String message) {
+    public IllegalActionClass( String message) {
         super(message);
     }
 }

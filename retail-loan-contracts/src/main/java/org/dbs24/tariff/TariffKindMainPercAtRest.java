@@ -7,11 +7,11 @@ package org.dbs24.tariff;
 
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.StopWatcher;
-import org.dbs24.references.tariffs.api.TariffConst;
+import org.dbs24.consts.TariffConst;
 import org.dbs24.entity.tariff.TariffKindService;
 import org.dbs24.references.tariffs.kind.TariffKindId;
 import org.dbs24.entity.tariff.TariffRate_1;
-import org.dbs24.entity.retail.loan.contracts.AbstractRetailLoanContract;
+import org.dbs24.entity.AbstractRetailLoanContract;
 import org.dbs24.test.api.TestConst;
 import org.dbs24.references.serv.TariffServMainPerc;
 import java.util.Collection;
@@ -19,7 +19,7 @@ import java.time.LocalDate;
 import org.dbs24.entity.tariff.TariffCalcSum;
 import org.dbs24.entity.debts.LiasDebt;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.references.api.LiasesConst;
 import org.dbs24.entity.calculations.TariffRestBox;
 import java.math.BigDecimal;
@@ -32,10 +32,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.dbs24.service.TariffStdRates;
 
-/**
- *
- * @author Козыро Дмитрий
- */
+
 @TariffKindId(
         //        tariff_serv_class = TariffServCashBack.class,
         tariff_serv_id = TariffConst.TS_MAIN_PERCENTS,
@@ -58,7 +55,7 @@ public class TariffKindMainPercAtRest extends TariffKindService<TariffServMainPe
     public Collection<TariffCalcSum> calculateTariff(
             final AbstractRetailLoanContract contract,
             final TariffRate tariffRate,
-            final LocalDate D1, final LocalDate D2) {
+            final LocalDate D1, LocalDate D2) {
 
         if (this.getTariffDebug()) {
 

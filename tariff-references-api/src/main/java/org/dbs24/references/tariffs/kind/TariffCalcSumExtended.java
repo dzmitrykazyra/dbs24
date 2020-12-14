@@ -22,7 +22,7 @@ public class TariffCalcSumExtended {
     private BigDecimal tariff_sum;
     private BigDecimal tax_sum;
 
-    public static TariffCalcSumExtended create(final LocalDate tariff_calc_date,
+    public static TariffCalcSumExtended create( LocalDate tariff_calc_date,
             final BigDecimal accrualBasis,
             final BigDecimal percRate,
             final BigDecimal tariff_sum,
@@ -40,7 +40,7 @@ public class TariffCalcSumExtended {
     }
 
     //==========================================================================
-    public void incTariff_sum(final BigDecimal tariff_sum) {
+    public void incTariff_sum( BigDecimal tariff_sum) {
         this.tariff_sum.add(tariff_sum);
     }
 }

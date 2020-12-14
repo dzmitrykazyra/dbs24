@@ -5,17 +5,20 @@
  */
 package org.dbs24.entity.bondschedule;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.dbs24.persistence.api.PersistenceEntity;
 import javax.persistence.*;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import static org.dbs24.consts.SysConst.DATE_FORMAT;
 
-/**
- *
- * @author Козыро Дмитрий
- */
+
 @Data
 @Entity
 @Table(name = "core_PmtScheduleLines")
@@ -33,6 +36,9 @@ public class PmtScheduleLine implements PersistenceEntity {
 //    private Long schedule_id;
     @Id
     @Column(name = "actual_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)     
     private LocalDate actualDate;
     @Id
     @Column(name = "from_date")

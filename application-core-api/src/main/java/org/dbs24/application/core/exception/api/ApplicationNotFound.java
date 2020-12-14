@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class ApplicationNotFound extends InternalAppException {
 
-    public ApplicationNotFound(final String message) {
+    public ApplicationNotFound( String message) {
         super(message);
     }
 

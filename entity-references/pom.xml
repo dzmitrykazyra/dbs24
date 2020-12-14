@@ -4,34 +4,18 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>entity-references</artifactId>
     <packaging>jar</packaging>
     
     <dependencies>
-        <!--        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>log-mgmt</artifactId>
-            <version>${app.version}</version>            
-        </dependency>     
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>exception-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>    -->              
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>entity-references-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>entity-references-api</artifactId>        
         </dependency>
-        <!--        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>services-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>        -->
     </dependencies>
     <build>
-        <finalName>entity-references</finalName>
+        <finalName>${project.name}</finalName>
     </build>
 </project>

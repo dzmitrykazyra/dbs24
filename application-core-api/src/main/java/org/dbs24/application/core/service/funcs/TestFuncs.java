@@ -12,9 +12,17 @@ import java.util.UUID;
  * @author Козыро Дмитрий
  */
 public final class TestFuncs {
+
+    public static final String generateTestString15() {
+        return generateTestString(15);
+    }
     
-    public final static String generateTestString20() {
-        return UUID.randomUUID().toString().substring(1, 20);
+    public static final String generateTestString20() {
+        return generateTestString(20);
+    }
+
+    public static final String generateTestString(int strLength ) {
+        return UUID.randomUUID().toString().substring(1, strLength);
     }
     
 }

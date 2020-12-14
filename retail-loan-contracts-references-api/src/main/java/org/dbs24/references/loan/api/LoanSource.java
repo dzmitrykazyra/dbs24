@@ -5,18 +5,12 @@
  */
 package org.dbs24.references.loan.api;
 
-import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.references.api.ReferenceRec;
-import java.util.Map;
 import org.dbs24.references.api.AbstractRefRecord;
 import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-/**
- *
- * @author kazyra_d
- */
 @Data
 @Entity
 @Cacheable
@@ -29,15 +23,4 @@ public class LoanSource extends AbstractRefRecord implements ReferenceRec {
     private Integer loanSourceId;
     @Column(name = "loan_source_name")
     private String loanSourceName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getLoanSourceId(), this.toString()), this.getLoanSourceId());
-    }
-
-    //==========================================================================
-    public final static LoanSource findLoanSource(final Integer LoanSourceId) {
-        return AbstractRefRecord.<LoanSource>getRefeenceRecord(LoanSource.class,
-                record -> record.getLoanSourceId().equals(LoanSourceId));
-    }
 }

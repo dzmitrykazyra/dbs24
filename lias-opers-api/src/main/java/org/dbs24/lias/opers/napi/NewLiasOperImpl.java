@@ -30,7 +30,7 @@ public class NewLiasOperImpl implements OldLiasOper {
 
     //--------------------------------------------------------------------------
     @Override
-    public <LD extends OperAttr> NewLiasOperImpl addAttr(final LD attrValue) {
+    public <LD extends OperAttr> NewLiasOperImpl addAttr( LD attrValue) {
 
 //        LogService.LogInfo(attrValue.getClass(), () -> String.format("attrValue: %s = (%s) %s",
 //                attrValue.getClass().getInterfaces()[0].getSimpleName(),
@@ -42,7 +42,7 @@ public class NewLiasOperImpl implements OldLiasOper {
 
     //--------------------------------------------------------------------------
     @Override
-    public <LD extends OperAttr> void updateAttr(final LD attrValue) {
+    public <LD extends OperAttr> void updateAttr( LD attrValue) {
         //замена через удаление, используется только при тестировании
 
         final OperAttr operAttr = ServiceFuncs.<OperAttr>getCollectionElement(
@@ -59,7 +59,7 @@ public class NewLiasOperImpl implements OldLiasOper {
 
     //--------------------------------------------------------------------------
     @Override
-    public <V> V attrValue(final Class<? extends OperAttr> clazz) {
+    public <V> V attrValue( Class<? extends OperAttr> clazz) {
 
         final OperAttr operAttr = ServiceFuncs.<OperAttr>getCollectionElement_silent(
                 this.getOperAttrsCollection(),
@@ -125,7 +125,7 @@ public class NewLiasOperImpl implements OldLiasOper {
                                 .filter(operAttr -> operAttr.getClass().isAnnotationPresent(DocAttrLinkProperty.class))
                                 .forEach((operAttr) -> {
 //                                    final Field field = operAttr.getClass().getField("attrValue");
-//                                    field.setAccessible(SysConst.BOOLEAN_TRUE);
+//                                    field.setAccessible(BOOLEAN_TRUE);
                                     final DocAttrLinkProperty dal = ((DocAttrLinkProperty) operAttr.getClass().getAnnotation(DocAttrLinkProperty.class));
                                     NewLiasOperImpl.linkedFields.put(dal.docAttr(), operAttr.getClass());
                                 });
@@ -134,7 +134,7 @@ public class NewLiasOperImpl implements OldLiasOper {
 //                                .unordered()
 //                                .filter(field -> field.isAnnotationPresent(DocAttrLinkProperty.class))
 //                                .forEach((field) -> {
-//                                    field.setAccessible(SysConst.BOOLEAN_TRUE);
+//                                    field.setAccessible(BOOLEAN_TRUE);
 //                                    final DocAttrLinkProperty dal = ((DocAttrLinkProperty) field.getAnnotation(DocAttrLinkProperty.class));
 //                                    NewLiasOperImpl.linkedFields.put(dal.docAttr(), field);
 //                                });
@@ -152,7 +152,7 @@ public class NewLiasOperImpl implements OldLiasOper {
 
     //==========================================================================
     @Override
-    public <V extends LiasOperActionExt> V getOperAction(final Class<V> clazz) {
+    public <V extends LiasOperActionExt> V getOperAction( Class<V> clazz) {
         return (V) ServiceFuncs.<V>getCollectionElement_silent(
                 (Collection<V>) this.getAdvancedActions(),
                 action -> action.getClass().getInterfaces()[0].equals(clazz));
@@ -160,7 +160,7 @@ public class NewLiasOperImpl implements OldLiasOper {
 
     //--------------------------------------------------------------------------
     //@Override
-    public <LOA extends LiasOperActionExt> NewLiasOperImpl addExtAction(final LOA extAction) {
+    public <LOA extends LiasOperActionExt> NewLiasOperImpl addExtAction( LOA extAction) {
 
         this.getAdvancedActions().add(extAction);
         return this;

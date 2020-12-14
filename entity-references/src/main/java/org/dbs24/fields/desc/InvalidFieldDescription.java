@@ -13,7 +13,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class InvalidFieldDescription extends InternalAppException {
 
-    public InvalidFieldDescription(final String message) {
+    public InvalidFieldDescription( String message) {
         super(message);
     }
 

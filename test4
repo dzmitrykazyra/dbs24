@@ -1,0 +1,3 @@
+cd /home/kdg/dbs24/retail-loan-contracts;
+JAVA_HOME=/usr/lib/jvm/jdk-16
+/opt/netbeans/java/maven/bin/mvn -Dtest=org.dbs24.test.TestRetailLoanContracts --debug -X surefire:test

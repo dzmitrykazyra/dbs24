@@ -16,7 +16,7 @@ public enum AppLanguage {
 
     Integer appLanguage;
 
-    AppLanguage(final Integer i) {
+    AppLanguage( Integer i) {
         appLanguage = i;
     }
 
@@ -28,7 +28,7 @@ public enum AppLanguage {
         return this.name();
     }
 
-    public static AppLanguage getEnum(final Integer _id) {
+    public static AppLanguage getEnum( Integer _id) {
         AppLanguage[] As = AppLanguage.values();
         for (int i = 0; i < As.length; i++) {
             if (_id.equals(As[i].getAppLanguageId())) {

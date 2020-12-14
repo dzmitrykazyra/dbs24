@@ -9,7 +9,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 
 /**
  *
@@ -23,5 +23,5 @@ public @interface EntityAttrId {
 
     String attrName();
 
-    String attrName_en() default SysConst.NOT_DEFINED;
+    String attrName_en() default NOT_DEFINED;
 }

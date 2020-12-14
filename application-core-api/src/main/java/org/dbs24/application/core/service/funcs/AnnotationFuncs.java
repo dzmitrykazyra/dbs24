@@ -13,14 +13,14 @@ import java.util.Collection;
 
 public final class AnnotationFuncs {
 
-    public static <T extends Object> Boolean isAnnotated(final Class checkedClass, final Class<T> requiredAnnotation) {
+    public static <T extends Object> Boolean isAnnotated( Class checkedClass, Class<T> requiredAnnotation) {
 
         return NullSafe.notNull(checkedClass.<T>getAnnotation(requiredAnnotation));
 
     }
 
     //==========================================================================
-    public static <T extends Object> Boolean isAnnotated(final Class checkedClass, final Class<T> required, final Boolean checkParentClass) {
+    public static <T extends Object> Boolean isAnnotated( Class checkedClass, Class<T> required, Boolean checkParentClass) {
 
         Boolean result = Boolean.FALSE;
         Class clAss = checkedClass;
@@ -39,14 +39,14 @@ public final class AnnotationFuncs {
     }
 
     //==========================================================================
-    public static <T extends Object> T getAnnotation(final Class checkedClass, final Class<T> requiredAnnotation) {
+    public static <T extends Object> T getAnnotation( Class checkedClass, Class<T> requiredAnnotation) {
 
         //result = (Boolean) annViewAction.isView();
         return (T) checkedClass.<T>getAnnotation(requiredAnnotation);
     }
 
     //==========================================================================
-    public static <T extends Object> T getAnnotation(final Class checkedClass, final Class<T> requiredAnnotation, final Boolean checkParentClass) {
+    public static <T extends Object> T getAnnotation( Class checkedClass, Class<T> requiredAnnotation, Boolean checkParentClass) {
 
         Annotation annotation = null;
         //result = (Boolean) annViewAction.isView();
@@ -67,7 +67,7 @@ public final class AnnotationFuncs {
     }
 
     //==========================================================================
-    public static <T extends Object> Collection<T> getRepeatedAnnotation(final Class checkedClass, final Class<T> requiredAnnotation) {
+    public static <T extends Object> Collection<T> getRepeatedAnnotation( Class checkedClass, Class<T> requiredAnnotation) {
         //return AnnotationFuncs.<T>getRepeatedAnnotation(checkedClass, requiredAnnotation, Boolean.false);
         return AnnotationFuncs.<T>getRepeatedAnnotation(checkedClass, requiredAnnotation, Boolean.FALSE);
     }

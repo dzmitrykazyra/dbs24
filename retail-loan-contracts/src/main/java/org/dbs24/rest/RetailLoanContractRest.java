@@ -5,36 +5,38 @@
  */
 package org.dbs24.rest;
 
-/**
- *
- * @author Козыро Дмитрий
- */
-import org.dbs24.application.core.log.LogService;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.sysconst.SysConst;
-import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
-import org.dbs24.consts.RetailLoanContractConst;
+import static org.dbs24.consts.SysConst.*;
+import static org.dbs24.consts.RetailLoanContractConst.*;
+import org.dbs24.entity.RetailLoanContract;
 import org.dbs24.rest.api.ReactiveRestProcessor;
 import org.dbs24.service.RetailLoanContractActionsService;
-import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.Assert;
+import lombok.extern.log4j.Log4j2;
+import org.dbs24.service.*;
+import org.springframework.web.reactive.socket.WebSocketHandler;
+import org.springframework.web.reactive.socket.WebSocketMessage;
+import reactor.core.publisher.Flux;
 
 @Component
-public class RetailLoanContractRest<T extends RetailLoanContract> extends ReactiveRestProcessor {
+@Log4j2
+public class RetailLoanContractRest extends ReactiveRestProcessor {
+
+    final RetailLoanContractActionsService retailLoanContractActionsService;
 
     @Autowired
-    private RetailLoanContractActionsService retailLoanContractActionsService;
+    public RetailLoanContractRest(RetailLoanContractActionsService retailLoanContractActionsService) {
+        this.retailLoanContractActionsService = retailLoanContractActionsService;
+    }
     //==========================================================================
-    final Class<T> rlcClass = (Class<T>) RetailLoanContractConst.RETAIL_LOAN_CONTRACT_CLASS;
 
     public Mono<ServerResponse> findRetailLoanContract(ServerRequest request) {
 
@@ -42,68 +44,50 @@ public class RetailLoanContractRest<T extends RetailLoanContract> extends Reacti
         final Long entityId = Long.valueOf(request.queryParam("entityId")
                 .orElseThrow(() -> new RuntimeException("Entity ID is not defined in request")));
 
-        // поднимаем из репозитория по ИД
-        final T existEntity = (T) retailLoanContractActionsService
-                .getPersistanceEntityManager()
-                .getEntityManager()
-                .<T>find(rlcClass, entityId);
+        return this.<Void, RetailLoanContract>processServerRequest(request, VOID_CLASS,
+                noJon -> {
 
-        Assert.notNull(existEntity, String.format("%s is not found (entityId=%d)",
-                rlcClass.getSimpleName(),
-                entityId));
+                    // поднимаем из репозитория по ИД
+                    final RetailLoanContract existEntity = retailLoanContractActionsService
+                            .getPersistenceEntityManager()
+                            .getEntityManager()
+                            .find(RETAIL_LOAN_CONTRACT_CLASS, entityId);
 
-        return this.<T>processServerRequest(request, existEntity,
-                entity -> {
+                    Assert.notNull(existEntity, String.format("%s is not found (entityId=%d)",
+                            RETAIL_LOAN_CONTRACT_CLASS.getSimpleName(),
+                            entityId));
 
-                    if (this.getRestDebug()) {
-                        LogService.LogInfo(entity.getClass(), () -> String.format("%s%s (find entityid=%d)",
-                        request.methodName(),
-                        request.path(),
-                        entity.entityId()));
-                    }
-
-                    return entity;
-                }
-        );
+                    return existEntity;
+                }, httpOk);
     }
 
     //==========================================================================
     // создание кредитного договора
-    public Mono<ServerResponse> createRetailLoanContract(final ServerRequest request) {
+    public Mono<ServerResponse> createRetailLoanContract(ServerRequest request) {
 
-        return this.<T>processServerRequest(request, rlcClass,
+        return this.<RetailLoanContract, RetailLoanContract>processServerRequest(request, RETAIL_LOAN_CONTRACT_CLASS,
                 entity -> {
                     // обработка сущности из запроса
                     this.retailLoanContractActionsService.executeAction(
                             entity,
-                            RetailLoanContractConst.MODIFY_INDIVIDUAL_LOAN_CONTRACT,
-                            request.queryParams());
-
-                    if (this.getRestDebug()) {
-                        LogService.LogInfo(entity.getClass(), () -> String.format("%s%s (create entityid=%d)",
-                        request.methodName(),
-                        request.path(),
-                        entity.entityId()));
-                    }
+                            MODIFY_INDIVIDUAL_LOAN_CONTRACT,
+                            null);
 
                     return entity;
-                }
-        );
+                }, httpOk);
     }
 
     //==========================================================================
     // выполнение действия над договором
-    public Mono<ServerResponse> executeAction(final ServerRequest request) {
+    public Mono<ServerResponse> executeAction(ServerRequest request) {
 
-        //final Long entityId = Long.valueOf(request.queryParam("entityId").orElse("0"));
         final Integer actionId = Integer.valueOf(request.queryParam("actionId")
                 .orElseThrow(() -> new RuntimeException("Action code is not defined")));
 
-        //Assert.notNull(entity, "Entity must not be null!");
-        return this.<T>processServerRequest(request, rlcClass,
+        return this.<RetailLoanContract>processServerRequest(request, RETAIL_LOAN_CONTRACT_CLASS,
                 entity -> {
 
-                    final T actionEntity;
+                    final RetailLoanContract actionEntity;
 
                     // тело entity отсутствует
                     if (NullSafe.isNull(entity)) {
@@ -112,10 +96,10 @@ public class RetailLoanContractRest<T extends RetailLoanContract> extends Reacti
                                 .orElseThrow(() -> new RuntimeException("Entity ID is not defined in request")));
 
                         // поднимаем из репозитория по ИД
-                        actionEntity = (T) retailLoanContractActionsService
-                                .getPersistanceEntityManager()
+                        actionEntity = retailLoanContractActionsService
+                                .getPersistenceEntityManager()
                                 .getEntityManager()
-                                .<T>find(rlcClass, entityId);
+                                .find(RETAIL_LOAN_CONTRACT_CLASS, entityId);
 
                     } else {
                         actionEntity = entity;
@@ -123,44 +107,73 @@ public class RetailLoanContractRest<T extends RetailLoanContract> extends Reacti
 
                     final MultiValueMap mvm = request.queryParams();
 
-                    if (this.getRestDebug()) {
-                        LogService.LogInfo(actionEntity.getClass(), () -> String.format("%s%s: execute action  (entityId=%d, actionCode=%d)",
-                        request.methodName(),
-                        request.path(),
-                        actionEntity.entityId(),
-                        actionId));
-                    }
-
-                    //request.queryParams();
                     // выполнение действия над сущностью из запроса
                     this.retailLoanContractActionsService.executeAction(
                             actionEntity,
                             actionId,
-                            mvm);
+                            null);
+                }, httpOk);
+    }
 
-                    if (this.getRestDebug()) {
-                        LogService.LogInfo(actionEntity.getClass(), () -> String.format("%s%s: (execute action code=%d)",
-                        request.methodName(),
-                        request.path(),
-                        actionEntity.entityId()));
-                    }
+    //==========================================================================
+    // test ws
+    //==========================================================================
+    final WebSocketHandler echoHandler1 = session -> {
 
-                    return actionEntity;
-                }
-        );
+        session.receive();
+
+        Mono<WebSocketMessage> outMessage = Mono.just(String.format("Created message %s", LocalDateTime.now().toString()))
+                .log()
+                .doOnSubscribe(s -> {
+                    s.request(Long.MAX_VALUE);
+                    log.debug("{}: start messaging", session.getId());
+                })
+                .doOnNext(x -> log.info("{}: prepare to send '{}'", session.getId(), x))
+                .doOnError(e -> log.error("{}: Error processing '{}'", session.getId(), e.getMessage()))
+                .map(session::textMessage);
+
+        log.debug("{}: Ураааа!!! - 1", session.getId());
+
+        return session.send(outMessage);
+    };
+
+    @Autowired
+    RetailLoanContractWebSocketService webSocketService;
+
+    public Mono<ServerResponse> runWS(ServerRequest request) {
+
+        return this.<Void>processServerRequest(request, VOID_CLASS,
+                entity -> {
+
+                    Mono<Void> resp = webSocketService
+                            .getWebSocketClient()
+                            //.execute(webSocketService.buildUri("ws://104.197.253.120:%d%s", 7001), this.getTestHandler1());
+                            //                    .execute(webSocketService.buildUri("ws://127.0.0.1", this.getPort()), session
+                            //                            -> session.receive()
+                            //                            .doOnNext(s -> log.debug("answer from server: {}", s.getPayloadAsText()))
+                            //                            .then());
+                            //.execute(webSocketService.buildUri("ws://127.0.0.1", this.getPort()), session
+                            .execute(webSocketService.buildUri("ws://104.197.253.120", 7001), session
+                                    -> {
+
+                                Mono<Void> inMsg = session.receive()
+                                        .doOnNext(s -> log.debug("process answer from server: '{}'", s.getPayloadAsText()))
+                                        .then();
+
+                                Flux<WebSocketMessage> outMessages = Flux.just(
+                                        String.format("Client message 1 - %s", LocalDateTime.now().toString()),
+                                        String.format("Client message 2 - %s", LocalDateTime.now().toString()),
+                                        String.format("Client message 3 - %s", LocalDateTime.now().toString()))
+                                        .map(session::textMessage)
+                                        .doOnNext(s -> log.debug("sending to server '{}'", s.getPayloadAsText()));
+
+                                return inMsg
+                                        .and(session.send(outMessages));
+                            }).then();
+
+                    //log.debug("{}: receive response  {}", testName, response.getClass().getCanonicalName());
+                    //this.disposable = response.subscribe();
+                    resp.block(Duration.ofSeconds(1L));
+                }, httpOk);
     }
 }
-
-/*
-
-@RestController
-@RequestMapping("/helloWorld")
-public class ApplicationController {
- 
-  @GetMapping("/welcome")
-  private Mono<String> getMessage() {
-    return Mono.just("Hello World!!");
-  }   
-}
-
- */

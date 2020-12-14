@@ -13,7 +13,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class LiasOperNotFoundException extends InternalAppException {
 
-    public LiasOperNotFoundException(final String message) {
+    public LiasOperNotFoundException( String message) {
         super(message);
     }
 

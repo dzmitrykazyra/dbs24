@@ -5,123 +5,106 @@
  */
 package org.dbs24.rest.api;
 
-import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.nullsafe.StopWatcher;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.spring.core.api.ApplicationService;
 import org.springframework.beans.factory.annotation.Value;
 import lombok.Data;
+import lombok.extern.log4j.Log4j2;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
+import static org.springframework.http.HttpStatus.OK;
+import org.springframework.http.MediaType;
+import org.springframework.util.Assert;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
-public abstract class ReactiveRestProcessor extends RestProcessor implements ApplicationService {
+@Log4j2
+public abstract class ReactiveRestProcessor implements ApplicationService {
 
-    @Value("${reactive.rest.debug:false}")
-    private Boolean restDebug = SysConst.BOOLEAN_FALSE;
-    private StopWatcher stopWatcher;
+    public static final HttpStatusProcessor httpOk = () -> OK;
 
-    @Override
-    protected void initRestService() {
-
-    }
-    //==========================================================================
-//    protected Mono<ServerResponse> executeRestAction(final ServerRequest request, final Class<?> clazz) {
-//        
-//    }
+    @Value("${reactive.rest.debug:true}")
+    private Boolean restDebug = BOOLEAN_FALSE;
 
     //==========================================================================
-    protected <T> Mono<ServerResponse> processServerRequest(final ServerRequest request,
-            final Class<T> clazz,
-            final EntityProcessor<T> reactiveProcessor) {
+    protected <T, V> Mono<ServerResponse> processServerRequest(
+            ServerRequest request,
+            Class<T> clazz,
+            EntityProcessor<T, V> entityProcessor,
+            HttpStatusProcessor httpStatusProcessor) {
 
-        final Mono<T> requestEntity = request.bodyToMono(clazz);
-        if (this.getRestDebug()) {
-            LogService.LogInfo(clazz, () -> String.format("%s%s: START",
-                    request.methodName(),
-                    request.path()));
-        }
+        final StopWatcher stopWatcher = restDebug
+                ? StopWatcher.create(request.methodName().concat(request.path())) : null;
+
+        final T entity = request.bodyToMono(clazz).block();
+        final V response = entityProcessor.processEntity(entity);
+
+        Assert.notNull(response, String.format("%s: response can't be null", request.methodName()));
+
         return ServerResponse
-                .ok()
-                .body(this.<T>log(requestEntity)
-                        .doOnError(e -> LogService.LogErr(e.getClass(), () -> e.getMessage()))
-                        //.subscribe()
-                        //.map( x -> x)
-                        .doOnSuccess(entity -> {
-                            if (this.getRestDebug()) {
-                                stopWatcher = StopWatcher.create(SysConst.EMPTY_STRING);
-                            }
-
-                            // выполнение лямды, обработка конкретной сущности
-                            final T updatedEntity = reactiveProcessor.processEntity(entity);
-
-                            if (this.getRestDebug()) {
-                                LogService.LogInfo(updatedEntity.getClass(), () -> String.format("%s%s: %s",
-                                        request.methodName(),
-                                        request.path(),
-                                        stopWatcher.getStringExecutionTime()));
-                            }
-                        })
-                        .doFinally(s -> {
-
-                            if (this.getRestDebug()) {
-                                LogService.LogInfo(s.getClass(), () -> String.format("%s: FINISH REQUEST %s::%s%s",
-                                        s.name(),
-                                        request.getClass(),
-                                        request.methodName(),
-                                        request.path()));
-                            }
-                        }), clazz);
+                .status(httpStatusProcessor.processHttpStatus())
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(response), response.getClass())
+                .doOnCancel(() -> log.error("cancel {}", request.path()))
+                .doOnError(throwable -> {
+                    log.error("{}: {}",
+                            request.path(),
+                            throwable.getMessage());
+                    ServerResponse
+                            .badRequest()
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .body(Mono.just(throwable.getMessage()), String.class);
+                })
+                .doFinally(df -> {
+                    if (NullSafe.notNull(stopWatcher)) {
+                        log.debug("{}: {}",
+                                df.name(),
+                                stopWatcher.getStringExecutionTime());
+                    }
+                });
     }
 
     //==========================================================================
-    protected <T> Mono<ServerResponse> processServerRequest(final ServerRequest request,
-            final T returnedEntity,
-            final EntityProcessor<T> reactiveProcessor) {
+    protected <T> Mono<ServerResponse> processServerRequest(
+            ServerRequest request,
+            Class<T> clazz,
+            NoBodyEntityProcessor<T> noBodyEntityProcessor,
+            HttpStatusProcessor httpStatusProcessor) {
 
-        final Class<T> clazz = (Class<T>) returnedEntity.getClass();
+        final StopWatcher stopWatcher = restDebug
+                ? StopWatcher.create(request.methodName().concat(request.path())) : null;
 
-        return ServerResponse.ok()
-                .body(this.<T>log(Mono.just(returnedEntity))
-                        .doOnError(e -> LogService.LogErr(e.getClass(), () -> e.getMessage()))
-                        //.subscribe()
-                        //.map( x -> x)
-                        .doOnSuccess(entity -> {
+        final Mono<ServerResponse> serverResponse = NullSafe.create()
+                .execute2result(() -> {
+                    final T entity = request.bodyToMono(clazz).block();
+                    noBodyEntityProcessor.processEntity(entity);
 
-                            if (this.getRestDebug()) {
-                                this.stopWatcher = StopWatcher.create(SysConst.EMPTY_STRING);
-                            }
-
-                            // выполнение лямды, обработка конкретной сущности
-                            final T updatedEntity = reactiveProcessor.processEntity(entity);
-
-                            if (this.getRestDebug()) {
-                                LogService.LogInfo(updatedEntity.getClass(), () -> String.format("%s%s: %s",
-                                        request.methodName(),
-                                        request.path(),
-                                        stopWatcher.getStringExecutionTime()));
-                            }
-                        })
-                        .doFinally(s -> {
-
-                            if (this.getRestDebug()) {
-                                LogService.LogInfo(s.getClass(), () -> String.format("%s: FINISH REQUEST %s::%s%s",
-                                        s.name(),
-                                        request.getClass(),
-                                        request.methodName(),
-                                        request.path()));
-                            }
-                        }), clazz);
+                    return log(
+                            ServerResponse
+                                    .status(httpStatusProcessor.processHttpStatus())
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .build());
+                })
+                .catchException2result(throwable -> {
+                    throwable.printStackTrace();
+                    return ServerResponse
+                            .badRequest()
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .body(Mono.just(throwable.getLocalizedMessage()), String.class);
+                })
+                .getObject();
+        if (NullSafe.notNull(stopWatcher)) {
+            log.debug(stopWatcher.getStringExecutionTime());
+        }
+        return serverResponse;
     }
 
     //==========================================================================
-    protected <T> Mono<T> log(final Mono<T> mono) {
-        return (this.getRestDebug() ? mono.log() : mono);
+    protected <T> Mono<T> log(Mono<T> mono) {
+        return restDebug ? mono.log() : mono;
     }
 }

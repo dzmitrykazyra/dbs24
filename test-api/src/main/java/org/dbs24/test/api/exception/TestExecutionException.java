@@ -13,7 +13,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class TestExecutionException extends InternalAppException {
 
-    public TestExecutionException(final String message) {
+    public TestExecutionException( String message) {
         super(message);
     }
 }

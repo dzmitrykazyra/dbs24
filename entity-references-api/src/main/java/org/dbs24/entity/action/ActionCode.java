@@ -12,10 +12,6 @@ import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-/**
- *
- * @author kazyra_d
- */
 @Entity
 @Data
 @Cacheable
@@ -32,15 +28,4 @@ public class ActionCode extends AbstractRefRecord implements ReferenceRec {
     private String appName;
     @Column(name = "is_closed")
     private Boolean isClosed;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(this.toString(), this.getActionCode());
-    }
-
-    //==========================================================================
-    public final static ActionCode findActionCode(final Integer ActionCodeId) {
-        return AbstractRefRecord.<ActionCode>getRefeenceRecord(ActionCode.class,
-                record -> record.getActionCode().equals(ActionCodeId));
-    }
 }

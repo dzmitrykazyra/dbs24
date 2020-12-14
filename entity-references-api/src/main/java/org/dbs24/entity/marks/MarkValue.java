@@ -11,10 +11,6 @@ import org.dbs24.references.api.ReferenceRec;
 import javax.persistence.*;
 import lombok.Data;
 
-/**
- *
- * @author kazyra_d
- */
 @Entity
 @Data
 @Table(name = "core_marksValuesRef")
@@ -30,9 +26,4 @@ public class MarkValue extends AbstractRefRecord implements ReferenceRec {
     private Integer markValueId;
     @Column(name = "mark_value_name")
     private String markValueName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getMarkValueId(), this.toString()), this.getMarkValueId());
-    }
 }

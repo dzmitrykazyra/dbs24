@@ -10,5 +10,5 @@ package org.dbs24.references.api;
  * @author kazyra_d
  */
 public interface ReferenceLoader {
-    void loadReference(final String referenceName);
+    void loadReference( String referenceName);
 }

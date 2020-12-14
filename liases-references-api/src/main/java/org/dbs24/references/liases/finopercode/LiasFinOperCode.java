@@ -30,11 +30,7 @@ public class LiasFinOperCode extends AbstractRefRecord implements ReferenceRec {
     @Column(name = "fin_oper_name")
     private String finOperName;
 
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getFinOperCode(), this.getFinOperName()), this.getFinOperCode());
-    }
-        public final static LiasFinOperCode findLiasFinOperCode(final Integer liasFinOperCodeId) {
+    public static final LiasFinOperCode findLiasFinOperCode( Integer liasFinOperCodeId) {
         return AbstractRefRecord.<LiasFinOperCode>getRefeenceRecord(LiasFinOperCode.class,
                 record -> record.getFinOperCode().equals(liasFinOperCodeId));
     }

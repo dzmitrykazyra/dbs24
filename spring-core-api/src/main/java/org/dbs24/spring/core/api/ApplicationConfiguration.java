@@ -5,10 +5,7 @@
  */
 package org.dbs24.spring.core.api;
 
-/**
- *
- * @author Козыро Дмитрий
- */
+
 public interface ApplicationConfiguration {
     
 }

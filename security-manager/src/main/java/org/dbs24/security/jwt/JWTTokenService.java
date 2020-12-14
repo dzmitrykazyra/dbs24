@@ -24,6 +24,10 @@ import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+import java.security.Key;
+import java.time.Instant;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.time.Period;
@@ -32,9 +36,9 @@ import java.util.Date;
 import java.util.stream.Collectors;
 
 /**
- * A service to create JWT objects, this one is used when an exchange
- * provides basic authentication.
- * If authentication is successful, a token is added in the response
+ * A service to create JWT objects, this one is used when an exchange provides
+ * basic authentication. If authentication is successful, a token is added in
+ * the response
  */
 public class JWTTokenService {
 
@@ -42,7 +46,7 @@ public class JWTTokenService {
      * Create and sign a JWT object using information from the current
      * authenticated principal
      *
-     * @param subject     Name of current principal
+     * @param subject Name of current principal
      * @param credentials Credentials of current principal
      * @param authorities A collection of granted authorities for this principal
      * @return String representing a valid token
@@ -52,7 +56,6 @@ public class JWTTokenService {
         JWTClaimsSet claimsSet;
 
         //TODO refactor this nasty code
-
         claimsSet = new JWTClaimsSet.Builder()
                 .subject(subject)
                 .issuer("rapha.io")
@@ -76,14 +79,37 @@ public class JWTTokenService {
     }
 
     /**
-     * Returns a millisecond time representation 24hrs from now
-     * to be used as the time the currently token will be valid
+     * Returns a millisecond time representation 24hrs from now to be used as
+     * the time the currently token will be valid
      *
      * @return Time representation 24 from now
      */
-    private static long getExpiration(){
+    private static long getExpiration() {
         return new Date().toInstant()
                 .plus(Period.ofDays(1))
                 .toEpochMilli();
+    }
+    
+    //==========================================================================
+    
+        /**
+     * Just some random key from any fixed string.
+     */
+    private static final Key KEY = Keys.hmacShaKeyFor("bird can fly but fly can not bird".getBytes());
+
+    /**
+     * Far future.
+     * Using {@link Instant#MAX} leads to:
+     * "java.lang.IllegalArgumentException: java.lang.ArithmeticException: long overflow"
+     */
+    private static final Date EXPIRATION = Date.from(Instant.parse("9999-12-03T10:15:30.00Z"));
+    
+    public static String createJwtToken(String userLogin) {
+        return Jwts
+                .builder()
+                .setExpiration(EXPIRATION)
+                .setSubject(userLogin)
+                .signWith(KEY)
+                .compact();
     }
 }

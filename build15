@@ -1,0 +1,7 @@
+#!/bin/sh
+export JAVA_HOME="/lib/jvm/jdk-15.0.1"
+export MAVEN_OPTS="-Xms1024m"
+rm -rf ../.m2/repository/org/dbs24
+clear
+mvn -version
+mvn clean install validate

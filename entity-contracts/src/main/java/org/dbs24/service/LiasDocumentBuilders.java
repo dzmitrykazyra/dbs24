@@ -5,13 +5,11 @@
  */
 package org.dbs24.service;
 
-import org.dbs24.application.core.exception.api.InternalAppException;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.spring.core.bean.AbstractApplicationBean;
+import org.dbs24.spring.core.api.AbstractApplicationBean;
 import org.springframework.stereotype.Service;
 import org.dbs24.references.api.DocTemplateId;
 import java.util.Collection;
-import java.util.Optional;
 import java.util.Arrays;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.application.core.service.funcs.ReflectionFuncs;
@@ -22,7 +20,7 @@ import org.dbs24.entity.document.DocAttrValue;
 import org.dbs24.lias.opers.napi.LiasFinanceOper;
 import org.dbs24.lias.opers.attrs.DOC_TEMPLATE_ID;
 import org.dbs24.application.core.locale.NLS;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.lias.opers.api.LiasOpersConst;
 import org.dbs24.references.documents.docattr.DocAttr;
 import org.dbs24.references.documents.docstatus.DocStatus;
@@ -30,10 +28,6 @@ import org.dbs24.references.documents.doctemplate.DocTemplate;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Service
 public class LiasDocumentBuilders extends AbstractApplicationBean {
 
@@ -49,15 +43,13 @@ public class LiasDocumentBuilders extends AbstractApplicationBean {
                 .stream()
                 .unordered()
                 .filter(p -> AnnotationFuncs.isAnnotated(p, DocumentsConst.DOC_TEMPLATE_ID_ANN))
-                .forEach((c_clazz) -> {
-
-                    templatesList.add(AnnotationFuncs.getAnnotation(c_clazz, DocumentsConst.DOC_TEMPLATE_ID_ANN));
-
-                });
+                .forEach(clazz -> templatesList
+                .add(AnnotationFuncs.getAnnotation(clazz, DocumentsConst.DOC_TEMPLATE_ID_ANN))
+                );
     }
 
     //==========================================================================
-    public DocTemplateId getDocTemplateById(final Integer template_id) {
+    public DocTemplateId getDocTemplateById(Integer template_id) {
 
         return ServiceFuncs.<DocTemplateId>findCollectionElement(this.templatesList,
                 p -> template_id.equals(p.doc_template_id()),
@@ -66,7 +58,7 @@ public class LiasDocumentBuilders extends AbstractApplicationBean {
     }
 
     //==========================================================================
-    public Document createDocument(final DocBuilder docBuilder, final LiasFinanceOper liasFinanceOper) {
+    public Document createDocument(DocBuilder docBuilder, LiasFinanceOper liasFinanceOper) {
 
         final Document document = NullSafe.createObject(Document.class);
 
@@ -76,7 +68,7 @@ public class LiasDocumentBuilders extends AbstractApplicationBean {
         document.setDocTemplate(DocTemplate.findDocTemplate(liasFinanceOper.<Integer>attrDef(LiasOpersConst.DOC_TEMPLATE_ID_CLASS, DocumentsConst.DTR_BASE)));
         document.setDocServerDate(LocalDateTime.now());
         document.setDocDate(liasFinanceOper.<LocalDate>attrDef(LiasOpersConst.LIAS_DATE_CLASS, LocalDate.now()));
-        document.setUserId(SysConst.SERVICE_USER_ID);
+        document.setUserId(SERVICE_USER_ID);
         document.setDocAttrs(dav);
 
         docBuilder.buldDocument(document);
@@ -86,7 +78,7 @@ public class LiasDocumentBuilders extends AbstractApplicationBean {
     }
 
     //==========================================================================
-    protected Collection<DocAttrValue> createNewDocAttrs(final LiasFinanceOper liasFinanceOper, final Document document) {
+    protected Collection<DocAttrValue> createNewDocAttrs(LiasFinanceOper liasFinanceOper, Document document) {
         final DocTemplateId dti = this.getDocTemplateById(liasFinanceOper.<Integer>attr(DOC_TEMPLATE_ID.class));
 
         return this.processDocAttrs(dti, liasFinanceOper, document);
@@ -122,7 +114,7 @@ public class LiasDocumentBuilders extends AbstractApplicationBean {
                                                         dav.setDocAttr(DocAttr.findDocAttr(ai));
                                                         dav.setDocAttrValue((String) NLS.getObject2String(
                                                                 liasFinanceOper.attrDef(field.getValue(),
-                                                                        SysConst.NOT_DEFINED)));
+                                                                        NOT_DEFINED)));
                                                         dav.setDocument(document);
                                                         dac.add(dav);
                                                     });

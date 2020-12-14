@@ -6,7 +6,7 @@
 package org.dbs24.application.core.service.funcs;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -21,7 +21,7 @@ public final class MetaDataServ {
 
     final private static String skipMethods = ",getTypeInfo,notify,wait,equals,notifyAll,";
 
-    public static final <T extends Wrapper> String getAbstractMetaData(final T metaData, final String mdName) {
+    public static final <T extends Wrapper> String getAbstractMetaData( T metaData, String mdName) {
 
         final CustomCollectionImpl customCollection = NullSafe.createObject(CustomCollectionImpl.class, mdName, (entity)-> {});
 
@@ -49,7 +49,7 @@ public final class MetaDataServ {
                                     customCollection.addCustomRecord(() -> String.format(stringMask,
                                             method.getName(),
                                             method.getReturnType().getName(),
-                                            ServiceFuncs.<String>getPropertySafe(() -> method.invoke(metaData, null), SysConst.NOT_DEFINED)));
+                                            ServiceFuncs.<String>getPropertySafe(() -> method.invoke(metaData, null), NOT_DEFINED)));
                                 }
                             });
                     // свойства
@@ -58,12 +58,12 @@ public final class MetaDataServ {
                             //.filter(method -> !method.getName().substring(0, 3).equals("set"))
                             .forEach(field -> {
 
-                                field.setAccessible(SysConst.BOOLEAN_TRUE);
+                                field.setAccessible(BOOLEAN_TRUE);
 
                                 customCollection.addCustomRecord(() -> String.format(stringMask,
                                         field.getName(),
                                         field.getType().getName(),
-                                        ServiceFuncs.<String>getPropertySafe(() -> field.get(metaData), SysConst.NOT_DEFINED)));
+                                        ServiceFuncs.<String>getPropertySafe(() -> field.get(metaData), NOT_DEFINED)));
                             });
 
                 });
@@ -74,7 +74,7 @@ public final class MetaDataServ {
     }
 
     //==========================================================================
-    public static final String getResultSetRecords(final String rsName, final ResultSet resultSet) {
+    public static final String getResultSetRecords( String rsName, ResultSet resultSet) {
 
         final CustomCollectionImpl customCollection = NullSafe.createObject(CustomCollectionImpl.class, String.format("%50s::%s = '%s' ",
                 rsName, ResultSet.class.getName(), " collection of records"));
@@ -102,7 +102,7 @@ public final class MetaDataServ {
 
                             record = record.concat(String.format("%50s: '%s';\n",
                                     columnName,
-                                    ServiceFuncs.<String>getPropertySafe(() -> resultSet.getObject(columnName), SysConst.NOT_DEFINED)));
+                                    ServiceFuncs.<String>getPropertySafe(() -> resultSet.getObject(columnName), NOT_DEFINED)));
                             //columnClass = this.getJavaTypeBySqlType(rsmd.getColumnType(i));
                         }
 

@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class EntityClassNotFound extends InternalAppException {
 
-    public EntityClassNotFound(final String message) {
+    public EntityClassNotFound( String message) {
         super(message);
     }
 

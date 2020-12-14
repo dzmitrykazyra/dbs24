@@ -6,19 +6,12 @@
 package org.dbs24.service;
 
 import org.dbs24.entity.core.api.ReferencesClassesPackages;
-import org.dbs24.spring.core.service.AbstractReferencesService;
-import lombok.Data;
+import org.dbs24.spring.core.data.AbstractReferencesService;
 import org.springframework.stereotype.Service;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 
-/**
- *
- * @author Козыро Дмитрий
- */
-
-@Data
 @Service
-@ReferencesClassesPackages(pkgList = {SysConst.SECURITY_PACKAGE})
+@ReferencesClassesPackages(pkgList = {SECURITY_PACKAGE})
 public class SecurityServiceReferencesService extends AbstractReferencesService {
 
 }

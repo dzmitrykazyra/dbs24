@@ -10,17 +10,14 @@ import java.lang.reflect.Field;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.FilterComparator;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.persistence.api.PersistenceEntity;
+import org.dbs24.exception.*;
 import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.Data;
 
-/**
- *
- * @author kazyra_d
- */
 @Data
 public abstract class AbstractRefRecord implements PersistenceEntity {
 
@@ -47,40 +44,26 @@ public abstract class AbstractRefRecord implements PersistenceEntity {
     }
 
     //==========================================================================
-    static class RefCollectionIsNotFound extends InternalAppException {
-
-        public RefCollectionIsNotFound(final String message) {
-            super(message);
-        }
-    }
-
-    static class ActRefeenceRecordIsNotFound extends InternalAppException {
-
-        public ActRefeenceRecordIsNotFound(final String message) {
-            super(message);
-        }
-    }
-
     public static <T extends AbstractRefRecord> T getRefeenceRecord(
             final Class<T> clazz,
             final FilterComparator<T> filterComparator) {
 
-        return (T) ServiceFuncs.getMapValue(AbstractRefRecord.REF_CACHE, mapEntry -> mapEntry.getKey().equals(clazz))
+        return (T) ServiceFuncs.getMapValue(REF_CACHE, mapEntry -> mapEntry.getKey().equals(clazz))
                 .orElseThrow(() -> new RefCollectionIsNotFound(String.format("Reference collection is not found (%s)", clazz.getCanonicalName())))
                 .stream()
                 .map(x -> (T) x)
                 .collect(Collectors.toList())
                 .stream()
-                .filter((fltr) -> filterComparator.getFilter(fltr))
+                .filter(fltr -> filterComparator.getFilter(fltr))
                 .findFirst()
                 .orElseThrow(() -> new ActRefeenceRecordIsNotFound(String.format("%s is not found (%s) ",
-                clazz.getSimpleName(), filterComparator.toString())));
-
+                clazz.getSimpleName(), clazz.getCanonicalName())));
     }
-    //==========================================================================
-    public static String getTranslatedValue(final LangStrValue langStrValue) {
 
-        return (SysConst.RUSSIAN_REF_LANG.get()
+    //==========================================================================
+    public static String getTranslatedValue(LangStrValue langStrValue) {
+
+        return (RUSSIAN_REF_LANG.get()
                 ? langStrValue.getRu() : langStrValue.getEn()); // 
     }
 }

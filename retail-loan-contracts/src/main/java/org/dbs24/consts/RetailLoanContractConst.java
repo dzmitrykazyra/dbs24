@@ -5,12 +5,10 @@
  */
 package org.dbs24.consts;
 
-import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
+import org.dbs24.entity.RetailLoanContract;
+import com.fasterxml.jackson.core.type.TypeReference;
+import org.springframework.core.ParameterizedTypeReference;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 public final class RetailLoanContractConst {
 
     public static final int LOAN2INDIVIDUAL = 2100; // кредит физическому лицу
@@ -34,4 +32,10 @@ public final class RetailLoanContractConst {
     public static final String REST_RETAIL_LOAN_REPAYMENT = "/retailLoanRepeyment";
     
     public static final Class<RetailLoanContract> RETAIL_LOAN_CONTRACT_CLASS = RetailLoanContract.class;
+    public static final TypeReference<RetailLoanContract> RETAIL_LOAN_CONTRACT_TYPE_REFERENCE = new TypeReference<RetailLoanContract>() {};
+    public static final ParameterizedTypeReference<RetailLoanContract> RETAIL_LOAN_CONTRACT_PMT_TYPE_REFERENCE = new ParameterizedTypeReference<RetailLoanContract>() {};
+    
+    public static final String R_ECHO_ROUTE = "echo";
+    public static final String R_RETAIL_LOAN_CONTRACT = "retailLoanContract";
+    
 }

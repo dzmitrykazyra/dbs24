@@ -28,7 +28,7 @@ public class FunctionGroup extends AbstractRefRecord implements ReferenceRec {
         return function_group_code;
     }
 
-    public FunctionGroup setFunction_group_code(final String function_group_code) {
+    public FunctionGroup setFunction_group_code( String function_group_code) {
         this.function_group_code = function_group_code;
         return this;
     }
@@ -37,7 +37,7 @@ public class FunctionGroup extends AbstractRefRecord implements ReferenceRec {
         return function_group_name;
     }
 
-    public FunctionGroup setFunction_group_name(final String function_group_name) {
+    public FunctionGroup setFunction_group_name( String function_group_name) {
         this.function_group_name = function_group_name;
         return this;
     }
@@ -46,13 +46,8 @@ public class FunctionGroup extends AbstractRefRecord implements ReferenceRec {
         return function_group_id;
     }
 
-    public FunctionGroup setFunction_group_id(final Integer function_group_id) {
+    public FunctionGroup setFunction_group_id( Integer function_group_id) {
         this.function_group_id = function_group_id;
         return this;
-    }
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(String.format("%d - %s", this.getFunction_group_id(), this.getFunction_group_name()), this.getFunction_group_id());
     }
 }

@@ -23,7 +23,7 @@ public abstract class AbstractCardFilesList extends ObjectList {
 
     //==========================================================================
     // СЃРѕР·РґР°РЅРёРµ Рё РґРѕР±Р°РІР»РµРЅРёРµ СЃРїСЂР°РІРѕС‡РЅРёРєР° РІ РєРѕР»Р»РµРєС†РёСЋ
-    public AbstractCardFile findOrCreateReferenceExt(final Class clazz) {
+    public AbstractCardFile findOrCreateReferenceExt( Class clazz) {
 
         AbstractCardFile cardFile = null;
 

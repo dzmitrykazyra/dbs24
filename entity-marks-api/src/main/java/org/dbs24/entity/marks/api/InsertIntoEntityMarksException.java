@@ -13,7 +13,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class InsertIntoEntityMarksException extends InternalAppException {
 
-    public InsertIntoEntityMarksException(final String message) {
+    public InsertIntoEntityMarksException( String message) {
         super(message);
     }
 

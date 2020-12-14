@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class ActionClassNotFound extends InternalAppException {
 
-    public ActionClassNotFound(final String message) {
+    public ActionClassNotFound( String message) {
         super(message);
     }
 

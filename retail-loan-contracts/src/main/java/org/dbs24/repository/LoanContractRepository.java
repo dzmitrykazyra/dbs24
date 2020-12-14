@@ -5,14 +5,11 @@
  */
 package org.dbs24.repository;
 
-import org.dbs24.spring.core.api.ApplicationReactiveRepository;
-import org.dbs24.spring.core.api.ApplicationJpaRepository;
-import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
 
-/**
- *
- * @author Козыро Дмитрий
- */
+import org.dbs24.spring.core.data.ApplicationJpaRepository;
+import org.dbs24.entity.RetailLoanContract;
+
+
 //public interface LoanContractRepository extends ApplicationReactiveRepository<RetailLoanContract, Long> {
 public interface LoanContractRepository extends ApplicationJpaRepository<RetailLoanContract, Long> {
 

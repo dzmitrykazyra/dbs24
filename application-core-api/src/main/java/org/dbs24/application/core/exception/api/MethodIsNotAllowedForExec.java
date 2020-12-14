@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class MethodIsNotAllowedForExec extends InternalAppException {
 
-    public MethodIsNotAllowedForExec(final String message) {
+    public MethodIsNotAllowedForExec( String message) {
         super(message);
     }
 }

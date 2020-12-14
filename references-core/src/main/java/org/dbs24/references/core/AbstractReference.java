@@ -18,7 +18,7 @@ import org.dbs24.references.api.RefClass;
 import org.dbs24.references.api.ReferenceRec;
 import java.util.Collection;
 import java.util.Map;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.application.core.api.ObjectRoot;
 import org.dbs24.application.core.service.funcs.AnnotationFuncs;
 import org.dbs24.application.core.log.LogService;
@@ -47,11 +47,11 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
     private Map<String, Integer> referenceMap;
 
     public AbstractReference() {
-        loadReference(SysConst.FORCED_RELOAD);
+        loadReference(FORCED_RELOAD);
     }
 
-    //protected abstract void loadReference(final Boolean needReload);
-    protected void loadReference(final Boolean needReload) {
+    //protected abstract void loadReference( Boolean needReload);
+    protected void loadReference( Boolean needReload) {
 
         // Р·Р°РіСЂСѓР·РёР»Рё РІ РєРµС€ СЃРїСЂР°РІРѕС‡РЅРёРє
         if (needReload) {
@@ -59,7 +59,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
             // С‡РёСЃС‚РёРј СЃРїРёСЃРѕРє
             getRefRecords().clear();
 
-            String tableName = (NullSafe.create(SysConst.OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
+            String tableName = (NullSafe.create(OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
                     .execute2result(() -> {
                         return ((RefClass) AnnotationFuncs.getAnnotation(this.getClass(), RefClass.class)).db_table_name();
                     })).<String>getObject();
@@ -77,8 +77,6 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
     }
 
     //==========================================================================
-    // РґРµС„РѕР»С‚РЅР°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ РЅР°РїРѕР»РЅРµРЅРёСЏ РјР°РїР°
-    // РјРѕР¶РµС‚ Р±С‹С‚СЊ РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅ РІ РѕР±СЉРµРєС‚Рµ-РЅР°СЃР»РµРґРЅРёРєРµ РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ СЃРїСЂР°РІРѕС‡РЅРёРєР°
     protected void initReferenceMap() {
 
         getReferenceMap().clear();
@@ -88,7 +86,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
 
                     (this.getRefRecords()).forEach((object) -> {
 
-                        ((ReferenceRec) object).record2Map(this.getReferenceMap());
+//                        ((ReferenceRec) object).record2Map(this.getReferenceMap());
 
                     });
                 });
@@ -104,9 +102,9 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
     }
 
     //==========================================================================
-    protected <T> T findReference(final Reference reference, final String referenceNotFoundMsg) {
+    protected <T> T findReference( Reference reference, String referenceNotFoundMsg) {
         T result = null;
-        Boolean needReload = SysConst.FORCED_RELOAD;
+        Boolean needReload = FORCED_RELOAD;
 
         do {
             needReload = !needReload;
@@ -127,7 +125,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
     }
 
     //==========================================================================
-    protected T findCachedRecords(final CachedReference cachedReference) {
+    protected T findCachedRecords( CachedReference cachedReference) {
 
         return ServiceFuncs.<T>getCollectionElement(this.getRefRecords(),
                 p -> cachedReference.compareCachedReference(p),
@@ -144,7 +142,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
     }
 
     //==========================================================================
-    public void setRefRecords(final Collection<T> refRecords) {
+    public void setRefRecords( Collection<T> refRecords) {
         this.refRecords = refRecords;
     }
 
@@ -155,7 +153,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
 //            NullSafe.create()
 //                    .execute(() -> {
 //
-//                        final Class<T> clazz = (NullSafe.create(SysConst.OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
+//                        final Class<T> clazz = (NullSafe.create(OBJECT_NULL, NullSafe.DONT_THROW_EXCEPTION)
 //                                .execute2result(() -> {
 //                                    // класс справочника
 //                                    return ((RefClass) AnnotationFuncs.getAnnotation(this.getClass(), RefClass.class)).reference_class();
@@ -201,11 +199,11 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
 //    }
 
     //==========================================================================
-    protected static Boolean needUpdate(final Class clazz, final Long refHashCode) {
+    protected static Boolean needUpdate( Class clazz, Long refHashCode) {
         return false;
 //        return !(NullSafe.create(ObjectRoot.getStaticDbService()
 //                .createCallQuery("{:RES = call ref_get_version(:REF)}")
-//                .setParamByNameAsOutput("RES", SysConst.LONG_ZERO)
+//                .setParamByNameAsOutput("RES", LONG_ZERO)
 //                .setParamByName("REF", clazz.getSimpleName())
 //                .<Long>getSingleFieldValue())
 //                .<Long>getObject()
@@ -232,7 +230,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
 //                            .mapToLong(record -> ((AbstractRefRecord) record).calcRecordHash())
 //                            .sum();
 //
-//                    if (SysConst.INTEGER_ZERO.equals(hashCodeSum)) {
+//                    if (INTEGER_ZERO.equals(hashCodeSum)) {
 //                        LogGate.LogErr((Class) ns_clazz,
 //                                () -> String.format("Ошибка подсчета суммы хешей записей справочника (%s)",
 //                                        class_ns.getCanonicalName()));
@@ -271,7 +269,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
 //    }
     
     //==========================================================================
-    private static Boolean russianRefLang = SysConst.BOOLEAN_NULL;
+    private static Boolean russianRefLang = BOOLEAN_NULL;
 
     private static Boolean useRussianRefLang() {
 
@@ -282,7 +280,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
         return AbstractReference.russianRefLang;
     }
 
-    public static String getTranslatedValue(final LangStrValue langStrValue) {
+    public static String getTranslatedValue( LangStrValue langStrValue) {
 
         return (AbstractReference.useRussianRefLang()
                 ? langStrValue.getRu() : langStrValue.getEn()); // 

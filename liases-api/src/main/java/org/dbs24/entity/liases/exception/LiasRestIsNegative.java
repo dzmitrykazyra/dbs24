@@ -13,7 +13,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class LiasRestIsNegative extends InternalAppException {
 
-    public LiasRestIsNegative(final String message) {
+    public LiasRestIsNegative( String message) {
         super(message);
     }
 }

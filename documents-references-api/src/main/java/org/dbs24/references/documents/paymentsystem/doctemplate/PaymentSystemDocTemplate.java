@@ -14,10 +14,6 @@ import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Cache;
 
-/**
- *
- * @author kazyra_d
- */
 @Data
 @Entity
 @Cacheable
@@ -36,10 +32,4 @@ public class PaymentSystemDocTemplate extends AbstractRefRecord implements Refer
     private LocalDate actualDate;
     @Column(name = "close_date")
     private LocalDate closeDate;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //map.put(String.format("%d - %d", this.getPmt_sys_id(), this.getFin_oper_code()), this.getPmt_sys_id());
-    }
-
 }

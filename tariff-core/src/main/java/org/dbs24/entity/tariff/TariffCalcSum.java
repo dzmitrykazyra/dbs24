@@ -38,7 +38,7 @@ public class TariffCalcSum extends ObjectRoot implements PersistenceEntity {
     private BigDecimal tariffSumm;
 
     //==========================================================================
-    public static TariffCalcSum create(final TariffCalcSumExtended tariffCalcSumExtended) {
+    public static TariffCalcSum create( TariffCalcSumExtended tariffCalcSumExtended) {
         final TariffCalcSum tariffCalcSum = NullSafe.createObject(TariffCalcSum.class);
 
         tariffCalcSum.setTariffCalcDate(tariffCalcSumExtended.getTariff_calc_date());

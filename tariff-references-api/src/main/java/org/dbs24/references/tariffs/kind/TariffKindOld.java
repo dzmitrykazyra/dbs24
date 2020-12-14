@@ -21,7 +21,7 @@ public interface TariffKindOld<T extends TariffServ, E extends ActionEntity, TR 
         extends Cloneable {
 
 //    TariffRate getTariffRate();
-//    BigDecimal getTariffSum(final TariffCalculations tc, final E entity, final LocalDate D1, final LocalDate D2);
+//    BigDecimal getTariffSum( TariffCalculations tc, E entity, LocalDate D1, LocalDate D2);
 
     Integer getTariff_serv_id();
 
@@ -43,6 +43,6 @@ public interface TariffKindOld<T extends TariffServ, E extends ActionEntity, TR 
 
     Collection<TariffCalcSumOld> calculateTariff(E entity, LocalDate D1, LocalDate D2);
 
-    //void storeTariffSums(final LocalDate D1, final LocalDate D2);
+    //void storeTariffSums( LocalDate D1, LocalDate D2);
 
 }

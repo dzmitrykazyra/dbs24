@@ -22,12 +22,12 @@ public final class ListenersCollection<T extends EventListener> {
     }
 
     //==========================================================================
-    public void addListener(final T listener) {
+    public void addListener( T listener) {
         this.getListeners().add(listener);
     }
     //==========================================================================
 
-    public T findListener(final int listenerId) {
+    public T findListener( int listenerId) {
 
         final T listener = ServiceFuncs.<T>getCollectionElement_silent(this.getListeners(),
                 //l -> l.getClass()
@@ -40,7 +40,7 @@ public final class ListenersCollection<T extends EventListener> {
     }
 
     //==========================================================================
-    public void processEvent(final Event event) {
+    public void processEvent( Event event) {
         this.getListeners()
                 .stream()
                 .unordered()

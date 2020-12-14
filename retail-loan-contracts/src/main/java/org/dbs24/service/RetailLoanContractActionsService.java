@@ -5,79 +5,75 @@
  */
 package org.dbs24.service;
 
-import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.references.bond.schedule.api.PmtScheduleAlg;
 import org.dbs24.references.bond.schedule.api.PmtScheduleTerm;
 import org.dbs24.entity.core.api.EntityClassesPackages;
 import org.dbs24.entity.kind.EntityKind;
-import org.dbs24.entity.status.EntityStatus;
 import lombok.Data;
 import org.springframework.stereotype.Service;
-import org.dbs24.entity.retail.loan.contracts.RetailLoanContract;
+import org.dbs24.entity.RetailLoanContract;
 import java.time.LocalDate;
-import org.dbs24.references.liases.debtstate.LiasDebtState;
-import org.dbs24.references.liases.kind.LiasKind;
-import org.dbs24.references.liases.type.LiasType;
-import org.dbs24.references.liases.baseassettype.LiasBaseAssetType;
-import org.dbs24.references.liases.finopercode.LiasFinOperCode;
-import org.dbs24.references.liases.status.LiasOperStatus;
-import org.dbs24.entity.contract.subjects.ContractSubject;
-import org.dbs24.entity.counterparties.api.Counterparty;
+import org.dbs24.entity.ContractSubject;
+import org.dbs24.entity.Counterparty;
 import org.dbs24.references.loan.api.LoanSource;
-import org.dbs24.references.application.currency.Currency;
+import org.dbs24.entity.Currency;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
-import org.dbs24.references.tariffs.accretionscheme.TariffAccretionScheme;
 import java.math.BigDecimal;
-import org.dbs24.entity.core.api.CachedReferencesClasses;
+import lombok.extern.log4j.Log4j2;
 import org.dbs24.consts.RetailLoanContractConst;
-import org.dbs24.references.liases.actiontype.LiasActionType;
-import org.dbs24.references.documents.docstatus.DocStatus;
-import org.dbs24.references.tariffs.serv.TariffServ;
-import org.dbs24.references.tariffs.kind.TariffKind;
-import org.dbs24.references.documents.doctemplate.DocTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.dbs24.references.documents.docattr.DocAttr;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
+import org.dbs24.component.RetailLoanBondScheduleBuilder;
 import org.springframework.context.annotation.Import;
 import org.dbs24.config.*;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 @Service
-@EntityClassesPackages(pkgList = {SysConst.ENTITY_PACKAGE})
-@CachedReferencesClasses(classes = {ContractSubject.class, LoanSource.class, PmtScheduleAlg.class,
-    PmtScheduleTerm.class, Currency.class, LiasDebtState.class, LiasKind.class, LiasType.class,
-    LiasBaseAssetType.class, LiasFinOperCode.class, LiasOperStatus.class, LiasActionType.class,
-    DocStatus.class, DocTemplate.class, DocAttr.class, TariffAccretionScheme.class, TariffServ.class, TariffKind.class})
-@Import({RetailLoanContractCommonConfig.class, RetailLoanContractWebSecurityConfig.class})
-public class RetailLoanContractActionsService extends ActionExecutionService {
+@EntityClassesPackages(pkgList = {ENTITY_PACKAGE})
+@Log4j2
+//@CachedReferencesClasses(classes = {ContractSubject.class, LoanSource.class, PmtScheduleAlg.class,
+//    PmtScheduleTerm.class, Currency.class, LiasDebtState.class, LiasKind.class, LiasType.class,
+//    LiasBaseAssetType.class, LiasFinOperCode.class, LiasOperStatus.class, LiasActionType.class,
+//    DocStatus.class, DocTemplate.class, DocAttr.class, TariffAccretionScheme.class, TariffServ.class, TariffKind.class})
+@Import({RetailLoanContractCommonConfig.class,
+    RetailLoanContractWebSecurityConfig.class,
+    RetailLoanContractRSocketConfig.class
+})
+public class RetailLoanContractActionsService extends AbstractActionExecutionService {
+
+    final ContractSchedulesBuilders contractSchedulesBuilders;
+    final LiasDocumentBuilders documentBuilders;
+    final RetailLoanBondScheduleBuilder bondScheduleBuilder;
+    final EntityReferencesService entityReferencesService;
 
     @Autowired
-    private ContractSchedulesBuilders contractSchedulesBuilders;
-
-    @Autowired
-    private LiasDocumentBuilders documentBuilders;
+    public RetailLoanContractActionsService(ContractSchedulesBuilders contractSchedulesBuilders,
+            LiasDocumentBuilders documentBuilders,
+            RetailLoanBondScheduleBuilder bondScheduleBuilder,
+            EntityReferencesService entityReferencesService) {
+        this.contractSchedulesBuilders = contractSchedulesBuilders;
+        this.documentBuilders = documentBuilders;
+        this.bondScheduleBuilder = bondScheduleBuilder;
+        this.entityReferencesService = entityReferencesService;
+    }
 
     //==========================================================================
-    public RetailLoanContract createRetailLoanContract(final ContractSubject contractSubject,
-            final Counterparty counterparty,
-            final EntityKind entityKind,
-            final Currency currency,
-            final AbstractTariffPlan tariffPlan,
-            final String contractNum,
-            final LocalDate contractDate,
-            final LocalDate beginDate,
-            final LocalDate endDate,
-            final BigDecimal contractSumm,
-            final LoanSource loanSource,
-            final PmtScheduleAlg pmtScheduleAlg,
-            final PmtScheduleTerm pmtScheduleTerm) {
+    public RetailLoanContract createRetailLoanContract(ContractSubject contractSubject,
+            Counterparty counterparty,
+            EntityKind entityKind,
+            Currency currency,
+            AbstractTariffPlan tariffPlan,
+            String contractNum,
+            LocalDate contractDate,
+            LocalDate beginDate,
+            LocalDate endDate,
+            BigDecimal contractSumm,
+            LoanSource loanSource,
+            PmtScheduleAlg pmtScheduleAlg,
+            PmtScheduleTerm pmtScheduleTerm) {
 
-        final RetailLoanContract rlc = this.<RetailLoanContract>createActionEntity(RetailLoanContract.class,
-                (retailLoanContract) -> {
+        return this.<RetailLoanContract>createActionEntity(RetailLoanContract.class,
+                retailLoanContract -> {
                     retailLoanContract.setContractSubject(contractSubject);
                     retailLoanContract.setCounterparty(counterparty);
                     retailLoanContract.setCurrency(currency);
@@ -91,13 +87,9 @@ public class RetailLoanContractActionsService extends ActionExecutionService {
                     retailLoanContract.setEntityKind(entityKind);
                     retailLoanContract.setContractSumm(contractSumm);
                     retailLoanContract.setLoanSource(loanSource);
-                    //retailLoanContract.setCreation_date(LocalDateTime.now());
-                    retailLoanContract.setEntityStatus(EntityStatus.findEntityStatus(RetailLoanContractConst.LOAN2INDIVIDUAL, 0));
-                    //EntityStatus.getExistEntityStatus(TariffConst.ENTITY_TARIFF_PLAN, 0));
+                    retailLoanContract.setEntityStatus(entityReferencesService.findEntityStatus(RetailLoanContractConst.LOAN2INDIVIDUAL, 0));
                     // построить графики погашения
-                    //retailLoanContract.createBondschedules();
+                    //retailLoanContract.setPmtSchedules(bondScheduleBuilder.createBondschedules(retailLoanContract));
                 });
-
-        return rlc;
     }
 }

@@ -6,33 +6,29 @@
 package org.dbs24.entity.bondschedule;
 
 import org.dbs24.bond.schedule.api.PmtScheduleCalcAlgId;
-import org.dbs24.bond.schedule.api.BondScheduleConst;
+import static org.dbs24.consts.BondScheduleConst.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
-import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.sysconst.SysConst;
-import org.dbs24.entity.kind.EntityKind;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import static org.dbs24.consts.SysConst.*;
+import lombok.extern.log4j.Log4j2;
 
-/**
- *
- * @author Козыро Дмитрий
- */
-@PmtScheduleCalcAlgId(calcAlgId = BondScheduleConst.BS_ALG_BYREST)
+@Log4j2
+@PmtScheduleCalcAlgId(calcAlgId = BS_ALG_BYREST)
 public class PmtScheduleBuilderAtRest extends PmtScheduleBuilder {
 
+//    final EntityReferencesService entityReferencesService;
+//    @Autowired
+//    public PmtScheduleBuilderAtRest(EntityReferencesService entityReferencesService) {
+//        this.entityReferencesService = entityReferencesService;
+//    }
     @Override
     public PmtSchedule createSchedule() {
-//        LogService.LogInfo(this.getClass(),
-//                () -> LogService.getCurrentObjProcName(this));
-
+        
         final PmtSchedule pmtSchedule = NullSafe.createObject(PmtSchedule.class);
 
-        //pmtSchedule.setContract_id(this.getEntity().getEntity_id());
-        pmtSchedule.setEntityKind(EntityKind.findEntityKind(this.getEntityKind()));
+//        pmtSchedule.setEntityKind(entityReferencesService.findEntityKind(this.getEntityKind()));
         pmtSchedule.setPmtScheduleAlg(this.getPmtScheduleAlg());
         pmtSchedule.setPmtScheduleTerm(this.getPmtScheduleTerm());
         pmtSchedule.setFromDate(this.getFrom_date());
@@ -40,38 +36,39 @@ public class PmtScheduleBuilderAtRest extends PmtScheduleBuilder {
 
         // строки графика
         List<PmtScheduleLine> lines = NullSafe.createObject(ArrayList.class);
-
+        
         LocalDate cntLd = this.getFrom_date();
         LocalDate fromLd = LocalDate.now();
-
+        
         do {
 
             //cntLd = cntLd.plusDays(this.getPmtScheduleTerm().getPmt_term_id());
             cntLd = cntLd.plusMonths(this.getPmtScheduleTerm().getPmtTermId() / 30);
-
+            
             if (cntLd.isAfter(cntLd)) {
                 cntLd = this.getLast_date();
             }
 
             // строка графика
             final PmtScheduleLine pmtScheduleLine = NullSafe.createObject(PmtScheduleLine.class);
-
+            
             pmtScheduleLine.setActualDate(LocalDate.now());
             pmtScheduleLine.setFromDate(fromLd);
             pmtScheduleLine.setToDate(cntLd.minusDays(1));
             pmtScheduleLine.setAppearDate(cntLd);
-            pmtScheduleLine.setPaySum(SysConst.BIGDECIMAL_ZERO);
+            pmtScheduleLine.setPaySum(BIGDECIMAL_ZERO);
             pmtScheduleLine.setCalcDate(LocalDate.now());
+            pmtScheduleLine.setPmtSchedule(pmtSchedule);
 
             // добавили строку графика
             lines.add(pmtScheduleLine);
-
+            
             fromLd = cntLd;
-
+            
         } while (cntLd.isBefore(this.getLast_date()));
-
+        
         pmtSchedule.setPmtScheduleLines(lines);
-
+        
         return pmtSchedule;
     }
 }

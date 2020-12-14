@@ -43,13 +43,8 @@ public class DocTemplate extends AbstractRefRecord implements ReferenceRec {
     @Column(name = "doc_type_id")
     private Integer docTypeId;
 
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        //map.put(String.format("%d - %s", this.getDoc_template_id(), this.getDoc_template_code()), this.getDoc_template_id());
-    }
-
     //==========================================================================
-    public final static DocTemplate findDocTemplate(final Integer docTemplate) {
+    public static final DocTemplate findDocTemplate( Integer docTemplate) {
         return AbstractRefRecord.<DocTemplate>getRefeenceRecord(DocTemplate.class,
                 record -> record.getDocTemplateId().equals(docTemplate));
     }

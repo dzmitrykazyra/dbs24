@@ -4,39 +4,31 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>spring-config</artifactId>
     <packaging>jar</packaging>
     <dependencies>
-        <dependency>
+<!--        <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>persistence-core</artifactId>
-            <version>${app.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${app.version}</version>
+            <artifactId>spring-core-api</artifactId>
         </dependency>  
         <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>spring-rest-api</artifactId>
-            <version>${app.version}</version>
-        </dependency>  
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webflux</artifactId>
-            <!--            <optional>true</optional>-->
-            <version>${spring.web.flux}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.projectreactor</groupId>
-            <artifactId>reactor-spring</artifactId>
-            <version>${spring.reactor}</version>
-        </dependency>                     
     </dependencies>
     <build>
-        <finalName>spring-config</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <finalName>${project.name}</finalName>
     </build> 
 </project>

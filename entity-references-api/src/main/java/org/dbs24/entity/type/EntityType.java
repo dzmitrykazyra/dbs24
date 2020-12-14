@@ -5,19 +5,12 @@
  */
 package org.dbs24.entity.type;
 
-import org.dbs24.application.core.nullsafe.NullSafe;
-import java.util.Map;
 import org.dbs24.references.api.ReferenceRec;
 import org.dbs24.references.api.AbstractRefRecord;
 import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-
-/**
- *
- * @author kazyra_d
- */
 @Entity
 @Table(name = "core_EntityTypesRef")
 @Cacheable
@@ -32,9 +25,4 @@ public class EntityType extends AbstractRefRecord implements ReferenceRec {
     private String entityTypeName;
     @Column(name = "entity_app_name")
     private String entityAppName;
-
-    @Override
-    public void record2Map(final Map<String, Integer> map) {
-        map.put(this.toString(), this.getEntityTypeId());
-    }
 }

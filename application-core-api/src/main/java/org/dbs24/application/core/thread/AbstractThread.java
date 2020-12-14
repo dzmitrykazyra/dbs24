@@ -6,7 +6,7 @@
 package org.dbs24.application.core.thread;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 
 /**
  *
@@ -28,7 +28,7 @@ public abstract class AbstractThread extends Thread {
         super(target);
     }
 
-    public AbstractThread(final ThreadGroup tg, final String threadName) {
+    public AbstractThread( ThreadGroup tg, String threadName) {
 
         super(tg, threadName);
         //this.startThread();
@@ -73,7 +73,7 @@ public abstract class AbstractThread extends Thread {
     }
 
     protected Boolean canRun() {
-        Boolean canRun = SysConst.BOOLEAN_TRUE;
+        Boolean canRun = BOOLEAN_TRUE;
 
         if (NullSafe.notNull(dependencyThread)) {
             canRun = dependencyThread.getIsValid();
@@ -111,7 +111,7 @@ public abstract class AbstractThread extends Thread {
         return order;
     }
 
-    public void setOrder(final Integer order) {
+    public void setOrder( Integer order) {
         this.order = order;
     }
 
@@ -127,7 +127,7 @@ public abstract class AbstractThread extends Thread {
         return isValid;
     }
 
-    public void setIsValid(final Boolean isValid) {
+    public void setIsValid( Boolean isValid) {
         this.isValid = isValid;
     }
 
@@ -135,7 +135,7 @@ public abstract class AbstractThread extends Thread {
         return exceptionMsg;
     }
 
-    public void setExceptionMsg(final String exceptionMsg) {
+    public void setExceptionMsg( String exceptionMsg) {
         this.exceptionMsg = exceptionMsg;
     }
 
@@ -143,7 +143,7 @@ public abstract class AbstractThread extends Thread {
         return throwable;
     }
 
-    public void setThrowable(final Throwable throwable) {
+    public void setThrowable( Throwable throwable) {
         this.throwable = throwable;
     }
 }

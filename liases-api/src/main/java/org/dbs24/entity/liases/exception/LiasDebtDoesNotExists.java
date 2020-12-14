@@ -13,7 +13,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class LiasDebtDoesNotExists extends InternalAppException {
 
-    public LiasDebtDoesNotExists(final String message) {
+    public LiasDebtDoesNotExists( String message) {
         super(message);
     }
 }

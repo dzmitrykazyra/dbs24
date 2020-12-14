@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class ReadEntityInstanceException extends InternalAppException {
 
-    public ReadEntityInstanceException(final String message) {
+    public ReadEntityInstanceException( String message) {
         super(message);
     }
 

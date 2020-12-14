@@ -4,64 +4,25 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>test-junit-api</artifactId>
     <packaging>jar</packaging>
     <dependencies>                                 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
         </dependency>
-<!--        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>log-gate</artifactId>
-            <version>${app.version}</version>
-        </dependency>-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+        </dependency>         
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>test-api</artifactId>
-            <version>${app.version}</version>
         </dependency>   
-<!--        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>registry-api</artifactId>
-            <version>${app.version}</version>
-        </dependency>        -->
-<!--        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>generics-api</artifactId>
-            <version>${app.version}</version>
-        </dependency>  
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>services-api</artifactId>
-            <version>${app.version}</version>
-            <type>jar</type>          
-        </dependency> 
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>jdbc-api</artifactId>
-            <version>${app.version}</version>
-            <type>jar</type>          
-        </dependency>                   -->
-<!--        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>jdbc-service-api</artifactId>
-            <version>${app.version}</version>
-            <type>jar</type>          
-        </dependency>
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>locale-api</artifactId>
-            <version>${app.version}</version>
-            <type>jar</type>          
-        </dependency>  
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>reflection-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>                      -->
     </dependencies>
+    <build>
+        <finalName>${project.name}</finalName>
+    </build>
 </project>

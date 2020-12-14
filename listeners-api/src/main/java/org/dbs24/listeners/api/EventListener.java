@@ -11,5 +11,5 @@ package org.dbs24.listeners.api;
  */
 public interface EventListener {
 
-    public void processEvent(final Event event);
+    public void processEvent( Event event);
 }

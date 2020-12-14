@@ -12,7 +12,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class LiasPropertyNotFound extends InternalAppException {
 
-    public LiasPropertyNotFound(final String message) {
+    public LiasPropertyNotFound( String message) {
         super(message);
     }
 }

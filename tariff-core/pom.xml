@@ -4,131 +4,71 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>tariff-core</artifactId>
     <packaging>jar</packaging>
     <dependencies>                                 
-        <!--        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-           <version>7.0</version>
-        </dependency>-->
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>application-core-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>application-core-api</artifactId>      
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>entity-core</artifactId>
-            <version>${app.version}</version>              
         </dependency>                            
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>tariff-core-api</artifactId>
-            <version>${app.version}</version>              
         </dependency>                            
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>tariff-references</artifactId>
-            <version>${app.version}</version>             
+            <artifactId>references-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>references-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>references-application-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>spring-config</artifactId>
-            <version>${app.version}</version>            
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>references-core</artifactId>
-            <version>${app.version}</version>            
         </dependency>    
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>spring-core-api</artifactId>
-            <version>${app.version}</version>            
         </dependency>        
-        <!--        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>spring-boot-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>  -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>            
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
         </dependency> 
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
-            <version>${jpa.version}</version>
-        </dependency> 
-        <!--        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>  -->
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>spring-junit</artifactId>
-            <version>${app.version}</version>   
-            <scope>test</scope>
         </dependency> 
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgres.version}</version>
-        </dependency> 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.core.version}</version>
-            <scope>test</scope>
         </dependency>             
     </dependencies> 
     
     <build>
-        <finalName>tariff-core</finalName>
+        <finalName>${project.name}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven.jar.plugin}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>${source.directory.libs}/</classpathPrefix>
-                            <!--                            <mainClass>test.LeanFTest</mainClass>-->
-                        </manifest>
-                    </archive>
-                    <excludes>
-                        <exclude>**/*.properties</exclude>
-                    </excludes>
-                </configuration>
             </plugin>            
         </plugins>
         <resources>

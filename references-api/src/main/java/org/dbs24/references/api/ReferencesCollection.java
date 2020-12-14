@@ -24,7 +24,7 @@ public final class ReferencesCollection<T extends AbstractRefRecord> {
         this.referenceClassName = "unknown collection";
     }
 
-    public ReferencesCollection(final String referenceClassName) {
+    public ReferencesCollection( String referenceClassName) {
         super();
         this.referenceClassName = referenceClassName;
     }

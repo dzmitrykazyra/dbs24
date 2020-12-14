@@ -2,11 +2,12 @@
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="core_persistence">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jar-file>${source.directory.libs}/persistence-core.jar</jar-file>
         <!--    <mapping-file>jpa/Person-orm.xml</mapping-file>    -->
-<!--        <mapping-file>META-INF/core_abstract_action_orm.xml</mapping-file>
+        <!--        <mapping-file>META-INF/core_abstract_action_orm.xml</mapping-file>
         <mapping-file>META-INF/core_abstract_entity_orm.xml</mapping-file>-->
         <properties>
-<!--            <property name="hibernate.hbm2ddl.auto" value="none"/>
+            <!--            <property name="hibernate.hbm2ddl.auto" value="none"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
             <property name="hibernate.jdbc.batch_size" value="10000"/>
             <property name="show_sql" value="true"/>

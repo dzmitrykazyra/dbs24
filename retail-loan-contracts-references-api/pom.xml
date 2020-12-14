@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>retail-loan-contracts-references-api</artifactId>
     <packaging>jar</packaging>
@@ -12,21 +12,19 @@
     <dependencies>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>references-core</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>references-core</artifactId>      
         </dependency> 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>             
     </dependencies> 
     <build>
-        <finalName>retail-loan-contracts-references-api</finalName> 
+        <finalName>${project.name}</finalName>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
+                <directory>${src.main.resources}</directory>
+                <filtering>${filtering.resources}</filtering>
                 <!--                <includes>
                     <include>**/*.properties</include>
                 </includes>-->
@@ -36,9 +34,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
             </plugin>
         </plugins>
     </build>
-    <name>retail-loan-contracts-references-api</name>
 </project>

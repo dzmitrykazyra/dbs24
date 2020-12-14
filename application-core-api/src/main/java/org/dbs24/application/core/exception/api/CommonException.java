@@ -5,7 +5,7 @@
  */
 package org.dbs24.application.core.exception.api;
 
-import org.dbs24.application.core.sysconst.SysConst;
+import static org.dbs24.consts.SysConst.*;
 
 import java.sql.SQLException;
 
@@ -23,21 +23,21 @@ public class CommonException extends InternalAppException {
 
     // общая процедура обработки исключений
     public static void ProcessException(Exception e) throws InternalAppException {
-        CommonException.ProcessException(e, SysConst.EMPTY_STRING, SysConst.EMPTY_STRING);
+        CommonException.ProcessException(e, EMPTY_STRING, EMPTY_STRING);
     }
 
     // общая процедура обработки исключений
-    public static void ProcessException(Exception e, final String errMsg) throws InternalAppException {
-        CommonException.ProcessException(e, SysConst.EMPTY_STRING, errMsg);
+    public static void ProcessException(Exception e, String errMsg) throws InternalAppException {
+        CommonException.ProcessException(e, EMPTY_STRING, errMsg);
     }
 
     // общая процедура обработки исключений
-    public static void ProcessException(final SQLException e, final String errMsg) throws InternalAppException {
-        CommonException.ProcessException(e, SysConst.EMPTY_STRING, errMsg);
+    public static void ProcessException( SQLException e, String errMsg) throws InternalAppException {
+        CommonException.ProcessException(e, EMPTY_STRING, errMsg);
     }
 
     // общая процедура обработки исключений
-    public static void ProcessException(Exception e, final String errMsg, final String procedureName) throws InternalAppException {
+    public static void ProcessException(Exception e, String errMsg, String procedureName) throws InternalAppException {
         String DetailErrMsg = "Error during program execution!" + CRLF;
 
         DetailErrMsg = DetailErrMsg + CRLF

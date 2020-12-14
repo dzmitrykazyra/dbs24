@@ -9,7 +9,6 @@ package org.dbs24.application.core.nullsafe;
  *
  * @author kazyra_d
  */
-
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -23,7 +22,7 @@ public final class StopWatcher {
         return this.unitName;
     }
 
-    public StopWatcher(final String unitName) {
+    public StopWatcher(String unitName) {
         this();
         this.unitName = unitName;
     }
@@ -35,13 +34,13 @@ public final class StopWatcher {
 
     public static StopWatcher create() {
         return new StopWatcher();
-    }    
-    
-    public static StopWatcher create(final String unitName) {
+    }
+
+    public static StopWatcher create(String unitName) {
         return new StopWatcher(unitName);
     }
 
-    private String getRunnigProcName(final int index) {
+    private String getRunnigProcName(int index) {
         final StackTraceElement ste = Thread.currentThread()
                 .getStackTrace()[index];
         return String.format("%s.%s [%s]",
@@ -53,10 +52,19 @@ public final class StopWatcher {
     public long getExecutionTime() {
         return ChronoUnit.MILLIS.between(ltBegin, LocalTime.now());
     }
+    //==========================================================================
+
+    final int msBorder = 10000;
+    final int secBorder = 300000;
 
     public String getStringExecutionTime() {
-        return String.format("%s: executed in {%d} ms",
+
+        final long ms = this.getExecutionTime();
+        final long value = (ms < msBorder) ? ms : (ms < secBorder) ? (ms / 1000) : (ms / 60000);
+        final String str = (ms < msBorder) ? "ms" : (ms < secBorder) ? "Seconds" : "Minutes";
+
+        return String.format("%s: finished in {%d} %s",
                 unitName,
-                this.getExecutionTime());
+                value, str);
     }
 }

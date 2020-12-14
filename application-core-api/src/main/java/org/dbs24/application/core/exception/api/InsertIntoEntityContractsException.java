@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class InsertIntoEntityContractsException extends InternalAppException {
 
-    public InsertIntoEntityContractsException(final String message) {
+    public InsertIntoEntityContractsException( String message) {
         super(message);
     }
 

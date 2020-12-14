@@ -5,10 +5,9 @@
  */
 package org.dbs24.consts;
 
-/**
- *
- * @author Козыро Дмитрий
- */
+import static org.dbs24.consts.RestHttpConsts.*;
+import org.dbs24.rest.api.*;
+
 public final class SecurityConst {
 
     public static final int FS24_USER = 100;                    // пользователь системы
@@ -17,5 +16,9 @@ public final class SecurityConst {
     public static final int FS24_ROLE_BASE = 101001;                    // базовый роль системы    
     public static final int ACT_CREATE_OR_MODIFY_USER = 1001001; // регистрация пользователя
     public static final int ACT_CREATE_OR_MODIFY_ROLE = 1001002; // регистрация роли
+
+    //==========================================================================
+    public static final Class<SystemInfo> SYSTEM_INFO_CLASS = SystemInfo.class;
+    public static final Class<IamReady> I_AM_READY_CLASS = IamReady.class;
 
 }

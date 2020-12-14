@@ -5,24 +5,26 @@
  */
 package org.dbs24.entity.tariff;
 
-/**
- *
- * @author Козыро Дмитрий
- */
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.dbs24.references.tariffs.accretionscheme.TariffAccretionScheme;
 import org.dbs24.application.core.api.ObjectRoot;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.persistence.api.PersistenceEntity;
 import org.dbs24.references.tariffs.kind.TariffKind;
-import org.dbs24.references.application.currency.Currency;
+import org.dbs24.entity.Currency;
 import java.math.BigDecimal;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import lombok.Data;
+import static org.dbs24.consts.SysConst.DATE_FORMAT;
 
 @Data
 @Entity
@@ -53,10 +55,16 @@ public class TariffRate extends ObjectRoot implements PersistenceEntity {
 
     @Column(name = "rate_name")
     private String rateName;
-
+    //--------------------------------------------------------------------------
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)     
     @Column(name = "actual_date")
     private LocalDate actualDate;
-
+    //--------------------------------------------------------------------------
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)     
     @Column(name = "close_date")
     private LocalDate closeDate;
     //==========================================================================
@@ -111,7 +119,7 @@ public class TariffRate extends ObjectRoot implements PersistenceEntity {
     }
 
     //--------------------------------------------------------------------------
-    public void addTariffRate_1(final LocalDate rateDate, final BigDecimal rateValue, final Currency rateCurrency) {
+    public void addTariffRate_1( LocalDate rateDate, BigDecimal rateValue, Currency rateCurrency) {
         final TariffRate_1 tariffRate_1 = NullSafe.createObject(TariffRate_1.class);
 
         tariffRate_1.setRateDate(rateDate);

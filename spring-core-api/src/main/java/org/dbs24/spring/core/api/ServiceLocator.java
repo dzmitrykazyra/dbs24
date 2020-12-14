@@ -5,10 +5,6 @@
  */
 package org.dbs24.spring.core.api;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import lombok.Data;
 import java.util.Collection;
@@ -19,15 +15,15 @@ public final class ServiceLocator {
     private static final Collection<ApplicationBean> BEANS_LIST
             = ServiceFuncs.<ApplicationBean>createCollection();
 
-    public static void registerService(final ApplicationBean applicationBean) {
+    public static void registerService( ApplicationBean applicationBean) {
         BEANS_LIST.add(applicationBean);
     }
 
-    public static void releaseService(final ApplicationBean applicationBean) {
+    public static void releaseService( ApplicationBean applicationBean) {
         BEANS_LIST.remove(applicationBean);
     }
 
-    public static <T> T findService(final Class<T> clazz) {
+    public static <T> T findService( Class<T> clazz) {
         return (T) ServiceFuncs.<ApplicationBean>findCollectionElement(
                 BEANS_LIST,
                 srv -> srv.getClass().equals(clazz) || clazz.isAssignableFrom(srv.getClass()),

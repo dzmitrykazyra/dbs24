@@ -1,0 +1,8 @@
+#!/bin/sh
+clear
+export JAVA_HOME="/usr/lib/jvm/jdk-16"
+export MAVEN_OPTS="-Xms1024m"
+mvn -version
+cd retail-loan-contracts
+mvn clean install -Pprofile_dev
+mvn test -Pprofile_test_dev -Dtest=org.dbs24.test.TestRSocket -DforkMode=once surefire:test
