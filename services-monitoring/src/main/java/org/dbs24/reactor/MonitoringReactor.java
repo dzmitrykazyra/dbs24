@@ -18,7 +18,8 @@ public class MonitoringReactor extends SimpleSubscriber<MonitoringMessage> {
     public void onNext(MonitoringMessage s) {
 
         switch (s.getMessageType()) {
-            case MONITORING_ABSTRACT_ERROR, MONITORING_ERROR_STARTING_APPLICATION:
+            case MONITORING_ABSTRACT_ERROR:
+            case MONITORING_ERROR_STARTING_APPLICATION:
                 log.error("{}: {}", s.getMessageType(), s.getBody());
                 break;
             default:
