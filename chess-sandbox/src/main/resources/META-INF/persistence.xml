@@ -4,7 +4,9 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jar-file>${source.directory.libs}/entity-core.jar</jar-file>      
         <jar-file>${source.directory.libs}/entity-references-api.jar</jar-file>   
+        <jar-file>${source.directory.libs}/references-application-api.jar</jar-file>
         <jar-file>${source.directory.libs}/chess-core.jar</jar-file>   
+        <jar-file>${source.directory.libs}/security-manager.jar</jar-file>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="none"/>
         </properties>

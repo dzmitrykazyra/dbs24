@@ -29,7 +29,7 @@ public class LiasDebtState extends AbstractRefRecord implements ReferenceRec {
     @Column(name = "debt_state_name")
     private String debtStateName;
 
-    public static final LiasDebtState findLiasDebtState(final Integer liasLiasDebtStateId) {
+    public static final LiasDebtState findLiasDebtState( Integer liasLiasDebtStateId) {
         return AbstractRefRecord.<LiasDebtState>getRefeenceRecord(LiasDebtState.class,
                 record -> record.getDebtStateId().equals(liasLiasDebtStateId));
     }

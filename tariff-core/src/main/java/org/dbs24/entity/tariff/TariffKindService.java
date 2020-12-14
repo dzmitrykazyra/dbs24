@@ -18,7 +18,7 @@ import java.util.Collection;
 import lombok.Data;
 import org.dbs24.service.TariffStdRates;
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import org.springframework.beans.factory.annotation.Value;
 
 /**

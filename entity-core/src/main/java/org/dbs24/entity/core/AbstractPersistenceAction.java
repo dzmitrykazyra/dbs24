@@ -9,7 +9,7 @@ import org.dbs24.entity.core.api.Action;
 import org.dbs24.entity.core.api.ActionEntity;
 import org.dbs24.entity.action.ActionCode;
 import org.dbs24.persistence.api.PersistenceSetup;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import javax.persistence.*;
@@ -46,7 +46,7 @@ public class AbstractPersistenceAction implements Action {
     @Column(name = "execute_date", updatable = false)
     private LocalDateTime executeDate = LocalDateTime.now();
     @Column(name = "action_address", updatable = false)
-    private String actionAddress = getCurrentIp();
+    private String actionAddress = UNKNOWN;
     @Column(name = "err_msg")
     private String errMsg;
     @Column(name = "action_duration", updatable = false)

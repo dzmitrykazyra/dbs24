@@ -1,0 +1,8 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-16" 
+export MAVEN_OPTS="-Xms1024m"
+rm -rf ../.m2/repository/org/dbs24
+clear
+mvn -version
+mvn compile validate verify
+#mvn verify -DskipTests=true

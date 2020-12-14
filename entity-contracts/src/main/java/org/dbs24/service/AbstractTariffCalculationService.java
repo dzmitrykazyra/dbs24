@@ -8,10 +8,6 @@ package org.dbs24.service;
 
 import lombok.Data;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 public abstract class AbstractTariffCalculationService extends AbstractApplicationService {
     

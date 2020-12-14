@@ -7,16 +7,12 @@ package org.dbs24.application.core.nullsafe;
 
 import org.dbs24.application.core.exception.api.InternalAppException;
 import org.dbs24.application.core.log.LogService;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-//import org.dbs24.test.api.TestConst;
-/**
- *
- * @author Козыро Дмитрий
- */
+@Deprecated
 public class NullSafe { // implements NullSafe {
 
     protected final Object monitorLock = new Object();
@@ -42,12 +38,12 @@ public class NullSafe { // implements NullSafe {
     }
 
     //--------------------------------------------------------------------------
-    public static final NullSafe create(final Object object) {
+    public static final NullSafe create(Object object) {
         return new NullSafe(object);
     }
 
     //--------------------------------------------------------------------------
-    public static final NullSafe create(final Object inputParam, final Boolean silentException) {
+    public static final NullSafe create(Object inputParam, Boolean silentException) {
         return new NullSafe(inputParam, silentException);
     }
 
@@ -58,7 +54,7 @@ public class NullSafe { // implements NullSafe {
         //stopWatcher = StopWatcher.create();
     }
 
-    public NullSafe(final Object object) {
+    public NullSafe(Object object) {
         this();
         this.setResult(object);
         if (null != object) {
@@ -71,7 +67,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public NullSafe(final Object inputParam, final Boolean silentException) {
+    public NullSafe(Object inputParam, Boolean silentException) {
         this(inputParam);
         this.inputParam = inputParam;
         this.setResult(inputParam);
@@ -82,24 +78,24 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-//    public static Object nvl(Object value, final Object defValue) {
+//    public static Object nvl(Object value, Object defValue) {
 //        return (Object) ((NullSafe.notNull(value)) ? value : defValue);
 //    }
-//    public static Integer nvl(final Integer value, final Integer defValue) {
+//    public static Integer nvl( Integer value, Integer defValue) {
 //        return ((NullSafe.notNull(value)) ? value : defValue);
 //    }
 //    //==========================================================================
 //
-//    public static String nvl(String value, final String defValue) {
+//    public static String nvl(String value, String defValue) {
 //        return ((NullSafe.notNull(value)) ? value : defValue);
 //    }
     //==========================================================================
-    public NullSafe inititialize(final CodeBlock codeBlock) {
+    public NullSafe inititialize(CodeBlock codeBlock) {
         return this.execute(codeBlock);
     }
 
     //==========================================================================
-    public NullSafe execute(final CodeBlock codeBlock) {
+    public NullSafe execute(CodeBlock codeBlock) {
         try {
             //LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this), blockName);
             codeBlock.someCode();
@@ -112,7 +108,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public NullSafe execute(final CodeBlockParam codeBlockParam) {
+    public NullSafe execute(CodeBlockParam codeBlockParam) {
         try {
             //LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this), blockName);
             codeBlockParam.someCode(this.inputParam);
@@ -125,7 +121,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public NullSafe safeExecute(final CodeBlock codeBlock) {
+    public NullSafe safeExecute(CodeBlock codeBlock) {
         try {
             //LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this), blockName);
             if (null != this.getObject()) {
@@ -139,7 +135,7 @@ public class NullSafe { // implements NullSafe {
         return this;
     }
 
-    public NullSafe safeExecute(final CodeBlockParam codeBlockParam) {
+    public NullSafe safeExecute(CodeBlockParam codeBlockParam) {
         try {
             //LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this), blockName);
             if (null != this.getObject()) {
@@ -153,7 +149,7 @@ public class NullSafe { // implements NullSafe {
         return this;
     }
 
-    public NullSafe safeExecute(final CodeBlockParam codeBlockParam, final Object defaultValue) {
+    public NullSafe safeExecute(CodeBlockParam codeBlockParam, Object defaultValue) {
         try {
             //LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this), blockName);
 
@@ -171,7 +167,7 @@ public class NullSafe { // implements NullSafe {
         return this;
     }
 
-    public NullSafe safeExecute(final CodeBlockParam2Result codeBlockParam2Result, final Object defaultValue) {
+    public NullSafe safeExecute(CodeBlockParam2Result codeBlockParam2Result, Object defaultValue) {
         try {
             //LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this), blockName);
 
@@ -190,7 +186,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public NullSafe execute2result(final CodeBlockResult codeBlockResult) {
+    public NullSafe execute2result(CodeBlockResult codeBlockResult) {
         try {
             //LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this), blockName);
             this.setResult(codeBlockResult.someCodeResult());
@@ -204,7 +200,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public NullSafe execute2result(final CodeBlockResult codeBlockResult, final Object defaultValue) {
+    public NullSafe execute2result(CodeBlockResult codeBlockResult, Object defaultValue) {
         try {
             //LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this), blockName);
             this.setResult(codeBlockResult.someCodeResult());
@@ -219,7 +215,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public NullSafe execute2result(final CodeBlockParam2Result codeBlockParam2Result) {
+    public NullSafe execute2result(CodeBlockParam2Result codeBlockParam2Result) {
         try {
             //LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this), blockName);
             this.setResult(codeBlockParam2Result.someCode(this.inputParam));
@@ -232,7 +228,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public NullSafe safeExecuteWhileNotNull(final CodeBlockParam2Result codeBlockParam2Result) {
+    public NullSafe safeExecuteWhileNotNull(CodeBlockParam2Result codeBlockParam2Result) {
         try {
             //LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this), blockName);
             while ((null != this.getObject())) {
@@ -246,7 +242,7 @@ public class NullSafe { // implements NullSafe {
 
     //==========================================================================
     @Deprecated
-    public NullSafe safeExecute2result(final CodeBlockParam2Result codeBlockParam2Result) {
+    public NullSafe safeExecute2result(CodeBlockParam2Result codeBlockParam2Result) {
         try {
 
             if (null != this.getObject()) {
@@ -260,7 +256,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public NullSafe safeExecute2result(final CodeBlockResult codeBlockResult) {
+    public NullSafe safeExecute2result(CodeBlockResult codeBlockResult) {
         try {
             if (null != codeBlockResult) {
                 if (null != this.getObject()) {
@@ -268,14 +264,14 @@ public class NullSafe { // implements NullSafe {
                 }
             }
 
-        } catch (final Throwable th) {
+        } catch (Throwable th) {
             this.processThrowableException(th);
         }
         return this;
     }
 
     //==========================================================================
-    public NullSafe catchException(final CodeBlockEx codeBlockEx) {
+    public NullSafe catchException(CodeBlockEx codeBlockEx) {
         if (this.getExceptionFlag() && this.getLogException()) {
             if (null != this.getThrowable()) {
                 //LogService.LogErr(this.getClass(), LogService.getCurrentObjProcName(this), () -> "StackTraceInfo:");
@@ -287,7 +283,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    private NullSafe processException(final CodeBlockEx codeBlockEx) {
+    private NullSafe processException(CodeBlockEx codeBlockEx) {
         try {
             //LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this), blockName);
             codeBlockEx.someCode(this.getThrowable());
@@ -298,7 +294,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //===========================================================================    
-    public NullSafe whenIsNull(final CodeBlockResult codeBlockResult) {
+    public NullSafe whenIsNull(CodeBlockResult codeBlockResult) {
         try {
 
             if (null == this.getObject()) {
@@ -312,7 +308,7 @@ public class NullSafe { // implements NullSafe {
         return this;
     }
 
-    public NullSafe whenIsNull(final CodeBlock codeBlock) {
+    public NullSafe whenIsNull(CodeBlock codeBlock) {
         try {
 
             if (null == this.getObject()) {
@@ -327,7 +323,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //===========================================================================    
-    public NullSafe whenIsNull_Safe(final CodeBlockResult codeBlockResult) {
+    public NullSafe whenIsNull_Safe(CodeBlockResult codeBlockResult) {
         try {
             if (null == this.getObject()) {
                 synchronized (this.monitorLock) {
@@ -345,7 +341,7 @@ public class NullSafe { // implements NullSafe {
         return this;
     }
 
-    public NullSafe whenIsNull_Safe(final CodeBlock codeBlock) {
+    public NullSafe whenIsNull_Safe(CodeBlock codeBlock) {
         try {
 
             if (null == this.getObject()) {
@@ -365,18 +361,18 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public NullSafe finallyBlock(final CodeBlock codeBlock) {
+    public NullSafe finallyBlock(CodeBlock codeBlock) {
         return this.execute(codeBlock);
     }
 
     //==========================================================================
-    public NullSafe registerOuterException(final Throwable th, final String thMsg) {
+    public NullSafe registerOuterException(Throwable th, String thMsg) {
         this.addException(th, thMsg);
         return this;
     }
 
     //==========================================================================
-    public NullSafe registerOuterException(final Throwable th) {
+    public NullSafe registerOuterException(Throwable th) {
         if (this.getExceptionFlag()) {
             this.addException(th, th.getMessage().concat(String.format("\n '%s'", this.exceptionMsg)));
         }
@@ -384,7 +380,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    protected final void processThrowableException(final Throwable th) {
+    protected final void processThrowableException(Throwable th) {
 
         final String resultClass = String.format("result class: '%s' ", null != result ? result.getClass().getCanonicalName() : NOT_DEFINED);
         final String resultValue = String.format("result value: '%s' ", null != result ? NullSafe.getStringObjValue(this.result) : NOT_DEFINED);
@@ -416,7 +412,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public NullSafe catchMsgException(final CodeBlockExMsg codeBlockExMsg) {
+    public NullSafe catchMsgException(CodeBlockExMsg codeBlockExMsg) {
         if (this.getExceptionFlag()) {
             codeBlockExMsg.someCode(this.getExceptionMsg());
             if (null != this.getThrowable()) {
@@ -429,7 +425,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public NullSafe catchException2result(final CodeBlockEx2Result codeBlockEx2Result) {
+    public NullSafe catchException2result(CodeBlockEx2Result codeBlockEx2Result) {
         if (this.getExceptionFlag()) {
             try {
                 this.setResult(codeBlockEx2Result.someCode(this.getThrowable()));
@@ -445,7 +441,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    private void addException(final Throwable th, final String thMsg) {
+    private void addException(Throwable th, String thMsg) {
 
 //        final Thread currThread = Thread.currentThread();
         //запуск в отдельном потоке
@@ -470,7 +466,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    private static void registerInternalException(final Throwable th, final String thMsg) {
+    private static void registerInternalException(Throwable th, String thMsg) {
 
 //        LogService.LogErr(th.getClass(), () -> thMsg);
 //
@@ -484,12 +480,12 @@ public class NullSafe { // implements NullSafe {
     }
 
     //======================================================================
-    public static void printStackTrace(final Throwable th) {
+    public static void printStackTrace(Throwable th) {
         NullSafe.internalPrintStackTrace(th);
 
     }
 
-    private static void internalPrintStackTrace(final Throwable th) {
+    private static void internalPrintStackTrace(Throwable th) {
 
         final String callStack = NullSafe.getStackTraceRaw(th);
 
@@ -502,7 +498,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public static final String getStackTraceRaw(final Throwable th) {
+    public static final String getStackTraceRaw(Throwable th) {
         return new StackTraceInfo(th).getStringStackTraceInfo();
     }
 
@@ -524,7 +520,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public static <T> T getSafeNumeric(final String value) {
+    public static <T> T getSafeNumeric(String value) {
 
         return (T) NullSafe.create(value, NullSafe.DONT_THROW_EXCEPTION)
                 .setResult((Object) (T) NullSafe.<T>getDefaultNumericValue())
@@ -540,7 +536,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public static <T> T getSafeDate(final String value) {
+    public static <T> T getSafeDate(String value) {
 
         return (T) NullSafe.create(value)
                 //                .setResult((Object) LONG_ZERO)
@@ -553,7 +549,7 @@ public class NullSafe { // implements NullSafe {
     }
 
 ////////////////////////////////////////////////////////////////////////////
-    public NullSafe setResult(final Object object) {
+    public NullSafe setResult(Object object) {
         this.result = null;
         this.result = object;
         return this;
@@ -584,7 +580,7 @@ public class NullSafe { // implements NullSafe {
         return this.exceptionMsg;
     }
 
-    public void setExceptionMsg(final String exceptionMsg) {
+    public void setExceptionMsg(String exceptionMsg) {
         this.exceptionMsg = exceptionMsg;
     }
 
@@ -592,7 +588,7 @@ public class NullSafe { // implements NullSafe {
         return blockName;
     }
 
-    public void setBlockName(final String blockName) {
+    public void setBlockName(String blockName) {
         this.blockName = blockName;
     }
 
@@ -600,7 +596,7 @@ public class NullSafe { // implements NullSafe {
         return throwable;
     }
 
-    public void setThrowable(final Throwable throwable) {
+    public void setThrowable(Throwable throwable) {
         this.throwable = throwable;
     }
 
@@ -608,7 +604,7 @@ public class NullSafe { // implements NullSafe {
         return logException;
     }
 
-    public void setLogException(final Boolean logException) {
+    public void setLogException(Boolean logException) {
         this.logException = logException;
     }
 
@@ -616,7 +612,7 @@ public class NullSafe { // implements NullSafe {
         return exceptionFlag;
     }
 
-    public void setExceptionFlag(final Boolean exceptionFlag) {
+    public void setExceptionFlag(Boolean exceptionFlag) {
         this.exceptionFlag = exceptionFlag;
     }
 
@@ -636,7 +632,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public <V> NullSafe showResult(final String maskFormat) {
+    public <V> NullSafe showResult(String maskFormat) {
 
 //        try {
 //
@@ -697,7 +693,7 @@ public class NullSafe { // implements NullSafe {
         return this;
     }
 
-    public NullSafe initWatcher(final String watcherName) {
+    public NullSafe initWatcher(String watcherName) {
         //LogService.LogInfo(this.getClass(), stopWatcher.getTimeExecStringMillis());
 //        if (TestConst.PRINT_SQL) {
 //            final StopWatcher stopWatcher = StopWatcher.create(watcherName);
@@ -706,7 +702,7 @@ public class NullSafe { // implements NullSafe {
         return this;
     }
 
-    public NullSafe initWatcher(final String watcherName, final CodeBlockResult cb4watcher) {
+    public NullSafe initWatcher(String watcherName, CodeBlockResult cb4watcher) {
 
         this.initWatcher(watcherName);
         this.cb4watcher = cb4watcher;
@@ -715,7 +711,7 @@ public class NullSafe { // implements NullSafe {
     }
 
     @Deprecated
-    public <T> NullSafe createObject(final CodeBlockResult codeBlockResult) {
+    public <T> NullSafe createObject(CodeBlockResult codeBlockResult) {
 
         try {
             final T object = (T) codeBlockResult.someCodeResult();
@@ -728,14 +724,14 @@ public class NullSafe { // implements NullSafe {
         return this;
     }
 
-    public static <T> T createObject(final Class<T> clazz) {
+    public static <T> T createObject(Class<T> clazz) {
         return NullSafe.create()
                 .execute2result(() -> clazz.newInstance())
                 .throwException()
                 .<T>getObject();
     }
 
-    public static <T> T createObject(final Class<T> clazz, final ObjectBuilder<T> objectBuilder) {
+    public static <T> T createObject(Class<T> clazz, ObjectBuilder<T> objectBuilder) {
         return NullSafe.create()
                 .execute2result(() -> {
                     final T newObject = NullSafe.createObject(clazz);
@@ -782,7 +778,7 @@ public class NullSafe { // implements NullSafe {
     }
     //==========================================================================    
 
-    public static String getStringObjValue(final Object object) {
+    public static String getStringObjValue(Object object) {
 
         return NullSafe.create(STRING_NULL, NullSafe.DONT_THROW_EXCEPTION)
                 .whenIsNull(() -> ((LocalDate) object).format(FORMAT_dd_MM_yyyy))
@@ -795,15 +791,15 @@ public class NullSafe { // implements NullSafe {
     }
 
     //==========================================================================
-    public static final Boolean isNull(final Object object) {
+    public static final Boolean isNull(Object object) {
         return !NullSafe.notNull(object);
     }
 
-    public static final Boolean notNull(final Object object) {
+    public static final Boolean notNull(Object object) {
         return (null != object);
     }
 
-    public static final <V> V nvl(final V value, final V defValue) {
+    public static final <V> V nvl(V value, V defValue) {
         return (V) ((NullSafe.notNull(value)) ? value : defValue);
     }
 

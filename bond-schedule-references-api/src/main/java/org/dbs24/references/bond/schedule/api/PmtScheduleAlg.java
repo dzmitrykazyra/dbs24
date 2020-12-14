@@ -13,10 +13,7 @@ import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Cache;
 
-/**
- *
- * @author kazyra_d
- */
+
 @Data
 @Entity
 @Cacheable
@@ -31,10 +28,4 @@ public class PmtScheduleAlg extends AbstractRefRecord implements ReferenceRec {
     private String scheduleAlgName;
     @Column(name = "is_actual")
     private Boolean isActual;
-
-    //==========================================================================
-    public static final PmtScheduleAlg findLoanSource(final Integer PmtScheduleAlgId) {
-        return AbstractRefRecord.<PmtScheduleAlg>getRefeenceRecord(PmtScheduleAlg.class,
-                record -> record.getScheduleAlgId().equals(PmtScheduleAlgId));
-    }
 }

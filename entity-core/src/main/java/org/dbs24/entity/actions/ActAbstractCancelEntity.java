@@ -7,7 +7,7 @@ package org.dbs24.entity.actions;
 
 import org.dbs24.entity.core.AbstractAction;
 import org.dbs24.application.core.exception.api.InternalAppException;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import java.time.LocalDateTime;
 import org.dbs24.entity.core.AbstractActionEntity;
 
@@ -17,9 +17,9 @@ import org.dbs24.entity.core.AbstractActionEntity;
  */
 public class ActAbstractCancelEntity<T extends AbstractActionEntity> extends ActAbstractChangeEntityStatus<T> {
 
-//    public static Boolean isAllowed(final AbstractActionEntity entity) {
+//    public static Boolean isAllowed( AbstractActionEntity entity) {
 //
-//        return AbstractAction.isAllowed(entity, ES_VALID);
+//        return AbstractAction.isAllowed(entity, ES_ACTUAL);
 //
 //    }
 //

@@ -5,10 +5,11 @@
  */
 package org.dbs24.config;
 
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import static org.dbs24.consts.WorldChessConst.*;
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +26,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.dbs24.rest.ChessRestApi;
 
 @Configuration
-@ComponentScan(basePackages = {SERVICE_PACKAGE, RESTFUL_PACKAGE})
+@ComponentScan(basePackages = {COMPONENT_PACKAGE, SERVICE_PACKAGE, RESTFUL_PACKAGE})
 @PropertySource(APP_PROPERTIES)
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
@@ -39,25 +40,25 @@ public class SandBoxWebSecurityConfig extends AbstractWebSecurityConfig {
         //.andRoute(GET("/findRetailLoanContract").and(accept(MediaType.APPLICATION_JSON)), retailLoanContractHandler::findRetailLoanContract);
     }
 
-    @Bean
-    @Profile("production")
-    public SecurityWebFilterChain springSecurityFilterChain(final ServerHttpSecurity http) {
-
-        return http
-                .csrf().disable()
-                .formLogin().disable()
-                .authorizeExchange()
-                .pathMatchers(AbstractWebSecurityConfig.WHITELISTED_AUTH_URLS)
-                .permitAll()
-                .and()
-                .addFilterAt(this.basicAuthenticationFilter(), SecurityWebFiltersOrder.HTTP_BASIC)
-                .authorizeExchange()
-                .pathMatchers("/api/**")//.hasRole(environment.getProperty("webflux.security.role"))
-                .authenticated()
-                .and()
-                .addFilterAt(this.bearerAuthenticationFilter(), SecurityWebFiltersOrder.AUTHENTICATION)
-                .authorizeExchange()
-                .anyExchange().authenticated()
-                .and().build();
-    }
+//    @Bean
+//    @Profile("production")
+//    public SecurityWebFilterChain springSecurityFilter1Chain( ServerHttpSecurity http) {
+//
+//        return http
+//                .csrf().disable()
+//                .formLogin().disable()
+//                .authorizeExchange()
+//                .pathMatchers(AbstractWebSecurityConfig.WHITELISTED_AUTH_URLS)
+//                .permitAll()
+//                .and()
+//                .addFilterAt(this.basicAuthenticationFilter(), SecurityWebFiltersOrder.HTTP_BASIC)
+//                .authorizeExchange()
+//                .pathMatchers("/api/**")//.hasRole(environment.getProperty("webflux.security.role"))
+//                .authenticated()
+//                .and()
+//                .addFilterAt(this.bearerAuthenticationFilter(), SecurityWebFiltersOrder.AUTHENTICATION)
+//                .authorizeExchange()
+//                .anyExchange().authenticated()
+//                .and().build();
+//    }
 }

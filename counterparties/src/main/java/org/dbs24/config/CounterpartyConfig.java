@@ -5,12 +5,12 @@
  */
 package org.dbs24.config;
 
-import org.dbs24.spring.config.AbstractApplicationConfiguration;
+import org.dbs24.config.AbstractApplicationConfiguration;
 import lombok.Data;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 
 /**
  *

@@ -5,10 +5,6 @@
  */
 package org.dbs24.entity.security.api;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 public interface ApplicationRole {
     
 }

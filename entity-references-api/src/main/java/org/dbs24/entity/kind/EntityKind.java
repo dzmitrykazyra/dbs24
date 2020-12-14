@@ -34,9 +34,4 @@ public class EntityKind extends AbstractRefRecord implements ReferenceRec {
     private Integer entityTypeId;
     @Column(name = "entity_kind_name")
     private String entityKindName;
-    //==========================================================================
-    public static final EntityKind findEntityKind(final Integer EntityKindId) {
-        return AbstractRefRecord.<EntityKind>getRefeenceRecord(EntityKind.class,
-                record -> record.getEntityKindId().equals(EntityKindId));
-    }
 }

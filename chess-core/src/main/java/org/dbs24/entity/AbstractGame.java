@@ -19,7 +19,7 @@ import org.dbs24.entity.core.AbstractActionEntity;
  * @author N76VB
  */
 @Entity
-@Table(name = "wc_Games")
+@Table(name = "chess_Games")
 @PrimaryKeyJoinColumn(name = "chess_game_id", referencedColumnName = "entity_id")
 @Data
 public abstract class AbstractGame extends AbstractActionEntity implements Game {

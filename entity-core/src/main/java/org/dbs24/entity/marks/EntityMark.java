@@ -14,10 +14,7 @@ import org.dbs24.persistence.api.PersistenceEntity;
 import org.dbs24.entity.core.AbstractPersistenceEntity;
 import org.dbs24.entity.core.AbstractPersistenceAction;
 
-/**
- *
- * @author Козыро Дмитрий
- */
+
 @Entity
 @Data
 @Table(name = "core_entityMarks")

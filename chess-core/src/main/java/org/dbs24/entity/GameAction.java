@@ -22,7 +22,7 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "wc_GameActions")
+@Table(name = "chess_GameActions")
 public class GameAction extends ObjectRoot implements PersistenceEntity {
 
     @Id

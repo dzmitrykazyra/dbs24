@@ -12,7 +12,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class AllowedActionException extends InternalAppException {
 
-    public AllowedActionException(final String message) {
+    public AllowedActionException( String message) {
         super(message);
     }
 

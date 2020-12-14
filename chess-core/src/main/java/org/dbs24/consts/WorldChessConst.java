@@ -8,6 +8,7 @@ package org.dbs24.consts;
 import org.dbs24.entity.classic.ClassicGame;
 import org.dbs24.entity.*;
 import org.dbs24.references.*;
+import static org.dbs24.consts.RestHttpConsts.*;
 
 public final class WorldChessConst {
 
@@ -27,8 +28,6 @@ public final class WorldChessConst {
     public static final int ACT_AUTHORIZE_PLAYER = 1000200003; // авторизация пользователя
     public static final int ACT_CREATE_OR_MODIFY_GAME = 1001000002; // регистрация шахматной партии
     public static final int ACT_AUTHORIZE_GAME = 1001000003; // авторизация шахматной партии
-    //==========================================================================
-    public static final String URI_API = "/api";
     //==========================================================================
     public static final String URI_CREATE_CHESS_PLAYER = URI_API.concat("/createPlayer");
     public static final String URI_FIND_CHESS_PLAYER = URI_API.concat("/findPlayer");

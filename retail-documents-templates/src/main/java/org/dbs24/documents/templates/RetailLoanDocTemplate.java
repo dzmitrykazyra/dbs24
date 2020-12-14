@@ -29,7 +29,7 @@ import org.dbs24.references.documents.doctemplate.DocTemplate;
 public final class RetailLoanDocTemplate extends DocTemplate {
 
 //    @Override
-//    public <T extends EntityContract> Collection<DocAttrValue> createDocAttrs(final T contract, final LiasOperInfo liasOperInfo) {
+//    public <T extends EntityContract> Collection<DocAttrValue> createDocAttrs( T contract, LiasOperInfo liasOperInfo) {
 //        final Collection<DocAttrValue> dac = super.<T>createDocAttrs(contract, liasOperInfo);
 //        return dac;
 //    }

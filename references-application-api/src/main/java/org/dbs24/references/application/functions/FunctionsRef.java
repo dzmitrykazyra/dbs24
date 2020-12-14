@@ -27,20 +27,20 @@ import java.util.ArrayList;
 public class FunctionsRef<T extends Function> extends AbstractReference<Function> {
 
     //==========================================================================
-    public String getFuncNameById(final Integer func_id) throws ReferenceNotFound {
+    public String getFuncNameById( Integer func_id) throws ReferenceNotFound {
 
         return this.getFunctionById(func_id).getFunction_name();
     }
 
     //==========================================================================
-    public T getFunctionById(final Integer func_id) throws ReferenceNotFound {
+    public T getFunctionById( Integer func_id) throws ReferenceNotFound {
 
         return (T) this.<T>findReference(() -> (this.findFunctionById(func_id)),
                 String.format("Неизвестный код функции (FunctionsRef.func_id=%d)", func_id));
     }
 
     //==========================================================================
-    private T findFunctionById(final Integer func_id) {
+    private T findFunctionById( Integer func_id) {
 
         return (T) this.findCachedRecords((object) -> ((T) object).getFunction_id().equals(func_id));
 

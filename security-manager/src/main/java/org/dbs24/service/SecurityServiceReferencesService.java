@@ -6,9 +6,9 @@
 package org.dbs24.service;
 
 import org.dbs24.entity.core.api.ReferencesClassesPackages;
-import org.dbs24.spring.core.service.AbstractReferencesService;
+import org.dbs24.spring.core.data.AbstractReferencesService;
 import org.springframework.stereotype.Service;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 
 @Service
 @ReferencesClassesPackages(pkgList = {SECURITY_PACKAGE})

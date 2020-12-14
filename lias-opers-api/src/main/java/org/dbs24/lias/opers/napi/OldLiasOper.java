@@ -15,11 +15,11 @@ import java.util.Map;
 @Deprecated
 public interface OldLiasOper {
 
-    //<T extends OperAttr, V> NewLiasOper addAttr(final V attrValue);
+    //<T extends OperAttr, V> NewLiasOper addAttr( V attrValue);
     //<LD extends LocalDateOperAttr> NewLiasOper addAttr(LD attrValue);
     <LD extends OperAttr> OldLiasOper addAttr(LD attrValue);
 
-    <V> V attrValue(final Class<? extends OperAttr> clazz);
+    <V> V attrValue( Class<? extends OperAttr> clazz);
 
 //    VO attrValue2(LD operAttr);
     <LD extends OperAttr> void updateAttr(LD attrValue);

@@ -4,79 +4,42 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>security-manager</artifactId>
     <packaging>jar</packaging>
-    <dependencies>
+    <dependencies>                
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>entity-core</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>entity-core</artifactId>           
         </dependency>   
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>${spring.security-version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>spring-boot-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>spring-boot-api</artifactId>        
         </dependency>         
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>${spring-boot.version}</version>            
+            <artifactId>spring-boot-starter-security</artifactId>       
         </dependency>
-
+        <dependency>
+            <groupId>org.dbs24</groupId>
+            <artifactId>security-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>security-manager-api</artifactId>
-            <version>${app.version}</version> 
         </dependency>  
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>application-core-api</artifactId>
-            <version>${app.version}</version> 
-        </dependency>               
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webflux</artifactId>
-            <version>${spring-webflux.version}</version>
-        </dependency> 
-        <dependency>
-            <groupId>org.projectreactor</groupId>
-            <artifactId>reactor-spring</artifactId>
-            <version>${spring-reactor.version}</version>
-        </dependency> 
-        <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-core</artifactId>
-            <version>${reactor-core.version}</version>
-        </dependency>        
-        <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-test</artifactId>
-            <version>${reactor-core.version}</version>
-            <scope>test</scope>
+            <artifactId>spring-core-data</artifactId>
         </dependency> 
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>spring-junit</artifactId>
-            <version>${app.version}</version>   
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring-core.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <artifactId>spring-rest-api</artifactId>
+        </dependency>              
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -88,25 +51,38 @@
         <dependency>
             <groupId>com.nimbusds</groupId>
             <artifactId>nimbus-jose-jwt</artifactId>
-            <version>6.4.2</version>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
+            <scope>runtime</scope>
+        </dependency>               
     </dependencies>
     <build>
-        <finalName>security-manager</finalName> 
+        <finalName>${project.name}</finalName>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <!--                <includes>
-                    <include>**/*.properties</include>
-                </includes>-->
+                <directory>${src.main.resources}</directory>
+                <filtering>${filtering.resources}</filtering>
             </resource>
         </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
         </plugins>
     </build>    

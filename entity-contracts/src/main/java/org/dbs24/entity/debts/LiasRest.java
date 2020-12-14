@@ -35,7 +35,7 @@ public class LiasRest extends ObjectRoot implements PersistenceEntity {
     private BigDecimal rest;
 
     //==========================================================================
-    public void incRest(final BigDecimal rest) {
+    public void incRest( BigDecimal rest) {
         this.rest = this.rest.add(rest);
     }
 }

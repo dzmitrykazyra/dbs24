@@ -4,90 +4,61 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>chess-core</artifactId>
     <packaging>jar</packaging>
     
     <build>
-        <finalName>chess-core</finalName> 
+        <finalName>${project.name}</finalName>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
+                <directory>${src.main.resources}</directory>
+                <filtering>${filtering.resources}</filtering>
                 <!--                <includes>
                     <include>**/*.properties</include>
                 </includes>-->
-            </resource>
-            <resource>
-                <directory>${main.basedir}/${source.directory.libs}/</directory>
-                <includes>
-                    <include>entity-core.jar</include>
-                    <include>entity-references-api.jar</include>                
-                </includes>
-                <targetPath>${project.build.outputDirectory}/${source.directory.libs}/</targetPath>
             </resource>
         </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <!--                <version>${spring-boot.version}</version>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>${source.directory.libs}/</classpathPrefix>
-                            <!--                            <mainClass>test.LeanFTest</mainClass>-->
-                        </manifest>
-                    </archive>
-                    <excludes>
-                        <exclude>**/*.properties</exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
     <dependencies>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>persistence-core</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>persistence-core</artifactId>       
         </dependency>   
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>security-manager</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>security-manager</artifactId>     
         </dependency>         
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>spring-core-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>spring-core-api</artifactId>     
         </dependency>   
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>entity-core</artifactId>
-            <version>${app.version}</version>  
         </dependency>   
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>spring-config</artifactId>
-            <version>${app.version}</version>            
         </dependency>
         <dependency>
             <groupId>${app.root.group}</groupId>
             <artifactId>entity-core-api</artifactId>
-            <version>${app.version}</version>
         </dependency> 
     </dependencies>
     <name>chess-core</name>

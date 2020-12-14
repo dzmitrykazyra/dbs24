@@ -11,13 +11,13 @@ package org.dbs24.entity.actions;
  */
 import org.dbs24.entity.core.AbstractAction;
 import org.dbs24.entity.core.AbstractActionEntity;
-import org.dbs24.entity.core.api.EntityConst;
+import org.dbs24.consts.EntityConst;
 import org.dbs24.application.core.nullsafe.NullSafe;
 
 public abstract class ActAbstractChangeEntityStatus<T extends AbstractActionEntity>
         extends AbstractAction<T> {
 
-    public static Boolean isAllowed(final AbstractActionEntity entity) {
+    public static Boolean isAllowed( AbstractActionEntity entity) {
 
         //return (!entity.getJustCreated());
         return (Boolean.TRUE);
@@ -47,7 +47,7 @@ public abstract class ActAbstractChangeEntityStatus<T extends AbstractActionEnti
 //                }).throwException();
 //    }
     //==========================================================================    
-//    protected final void setUnathorized(final Integer newStatus) {
+//    protected final void setUnathorized( Integer newStatus) {
 //        // сбросили отметку авторизации
 //        if (this.getEntity().getIsAuthorized()) {
 //            this.getEntity()

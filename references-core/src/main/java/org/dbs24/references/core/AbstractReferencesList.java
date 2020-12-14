@@ -14,7 +14,7 @@ import org.dbs24.application.core.service.funcs.AnnotationFuncs;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.application.core.service.funcs.ReflectionFuncs;
 import java.lang.reflect.Method;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.application.core.nullsafe.NullSafe;
 
 /**
@@ -39,7 +39,7 @@ public abstract class AbstractReferencesList<T extends AbstractReference> extend
 
     //==========================================================================
     // создание и добавление справочника в коллекцию
-    public <T extends AbstractReference> T findOrCreateReference(final Class<T> refClass) {
+    public <T extends AbstractReference> T findOrCreateReference( Class<T> refClass) {
 
         return (T) NullSafe.create(ServiceFuncs.<T>getCollectionElement_silent(getObjectList(),
                 p -> p.getClass().isAssignableFrom(refClass)))
@@ -63,7 +63,7 @@ public abstract class AbstractReferencesList<T extends AbstractReference> extend
     }
 
     //==========================================================================
-    private Method findRegisterMethod(final Class clazz, final String methodName) {
+    private Method findRegisterMethod( Class clazz, String methodName) {
         final String key = String.format("%s_%s.%s",
                 LogService.getCurrentObjProcName(this),
                 clazz.getCanonicalName(),
@@ -83,8 +83,9 @@ public abstract class AbstractReferencesList<T extends AbstractReference> extend
                 .<Method>getObject();
     }
 
-//==========================================================================
-    public void registerReference(final Class refClass) {
+    //==========================================================================
+    @Deprecated
+    public void registerReference( Class refClass) {
         final String key = String.format("%s_%s",
                 LogService.getCurrentObjProcName(this),
                 refClass.getCanonicalName());
@@ -110,8 +111,8 @@ public abstract class AbstractReferencesList<T extends AbstractReference> extend
                 }).throwException();
     }
     //==========================================================================
-
-    public void registerPackageReferences(final String modulePackage) {
+    @Deprecated
+    public void registerPackageReferences( String modulePackage) {
 
         NullSafe.runNewThread(() -> {
 

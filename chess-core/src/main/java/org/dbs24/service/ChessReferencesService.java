@@ -7,9 +7,7 @@ package org.dbs24.service;
 
 import java.util.Collection;
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
-import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.service.funcs.ServiceFuncs;
+import lombok.extern.log4j.Log4j2;
 import org.dbs24.references.CheckerBoard;
 import org.dbs24.references.ChessEngine;
 import org.dbs24.references.MoveNotice;
@@ -21,12 +19,12 @@ import static org.dbs24.consts.WorldChessConst.*;
 import org.springframework.stereotype.Service;
 
 @Data
-@Slf4j
+@Log4j2
 @Service
 @CachedReferencesClasses(classes = {Piece.class, MoveNotice.class, CheckerBoard.class, ChessEngine.class})
 public class ChessReferencesService extends AbstractReferencesService {
 
-    public static final Piece findPiece(final String pieceCode) {
+    public static final Piece findPiece(String pieceCode) {
         return AbstractRefRecord.<Piece>getRefeenceRecord(PIECE_CLASS,
                 record -> record.getPieceCode().equals(pieceCode));
     }
@@ -48,36 +46,31 @@ public class ChessReferencesService extends AbstractReferencesService {
     }
 
     //==========================================================================
-    public static final CheckerBoard findCheckerboard(final String checkerboard) {
+    public static final CheckerBoard findCheckerboard(String checkerboard) {
         return AbstractRefRecord.<CheckerBoard>getRefeenceRecord(CheckerBoard.class,
                 record -> record.getCheckerboardCode().equals(checkerboard));
     }
 
     //==========================================================================
-    public static <T extends CheckerBoard> Collection<T> getCheckerBoardCollection() {
+    public static Collection<CheckerBoard> getCheckerBoardCollection() {
 
-        final Collection<T> actualList = ServiceFuncs.<T>createCollection();
-        final Class<T> clazz = (Class<T>) (CheckerBoard.class);
-
-        final Integer n = 8;
-        Integer i, j;
-
-        for (i = 0; i < n; i++) {
-            for (j = 0; j < n; j++) {
-
-                final String checkerboardCode = String.format("%s%s", (char) (i + 65), j + 1);
-
-                actualList.add((T) NullSafe.<T>createObject(clazz, object -> {
-                    object.setCheckerboardCode(checkerboardCode);
-                    object.setCheckerboard_Name(checkerboardCode);
-                }));
-            }
-        }
-        return actualList;
+        return AbstractReferencesService.<CheckerBoard>getGenericCollection(CheckerBoard.class, new String[][]{
+            {"A1"}, {"A2"}, {"A3"}, {"A4"}, {"A5"}, {"A6"}, {"A7"}, {"A8"},
+            {"B1"}, {"B2"}, {"B3"}, {"B4"}, {"B5"}, {"B6"}, {"B7"}, {"B8"},
+            {"C1"}, {"C2"}, {"C3"}, {"C4"}, {"C5"}, {"C6"}, {"C7"}, {"C8"},
+            {"D1"}, {"D2"}, {"D3"}, {"D4"}, {"D5"}, {"D6"}, {"D7"}, {"D8"},
+            {"E1"}, {"E2"}, {"E3"}, {"E4"}, {"E5"}, {"E6"}, {"E7"}, {"E8"},
+            {"F1"}, {"F2"}, {"F3"}, {"F4"}, {"F5"}, {"F6"}, {"F7"}, {"F8"},
+            {"G1"}, {"G2"}, {"G3"}, {"G4"}, {"G5"}, {"G6"}, {"G7"}, {"G8"},
+            {"H1"}, {"H2"}, {"H3"}, {"H4"}, {"H5"}, {"H6"}, {"H7"}, {"H8"}},
+                (record, stringRow) -> {
+                    record.setCheckerboardCode(stringRow[0]);
+                    record.setCheckerboard_Name("Square ".concat(stringRow[0]));
+                });
     }
 
     //==========================================================================
-    public static final ChessEngine findEngine(final Integer engine) {
+    public static final ChessEngine findEngine(Integer engine) {
         return AbstractRefRecord.<ChessEngine>getRefeenceRecord(ChessEngine.class,
                 record -> record.getEngineId().equals(engine));
     }
@@ -96,8 +89,8 @@ public class ChessReferencesService extends AbstractReferencesService {
     }
 
     //==========================================================================
-    public static final MoveNotice findMoveNotice(final String moveResult) {
-        return AbstractRefRecord.<MoveNotice>getRefeenceRecord(MoveNotice.class,
+    public static final MoveNotice findMoveNotice(String moveResult) {
+        return AbstractRefRecord.<MoveNotice>getRefeenceRecord(MOVE_NOTICE_CLASS,
                 record -> record.getNoticeCode().equals(moveResult));
     }
 
@@ -111,10 +104,10 @@ public class ChessReferencesService extends AbstractReferencesService {
             {"!", "Good move", "Отл.ход"},
             {"?", "Bad move", "Плохой ход"},
             {"?", "Bad move", "Плохой ход"},
-            {"???", "Very Bad move", "Что за нах?"}
-        }, (record, stringRow) -> {
-            record.setNoticeCode(stringRow[0]);
-            record.setNoticeName(AbstractRefRecord.getTranslatedValue(new LangStrValue(stringRow[1], stringRow[2])));
-        });
+            {"???", "Very Bad move", "Что за нах?"}},
+                (record, stringRow) -> {
+                    record.setNoticeCode(stringRow[0]);
+                    record.setNoticeName(AbstractRefRecord.getTranslatedValue(new LangStrValue(stringRow[1], stringRow[2])));
+                });
     }
 }

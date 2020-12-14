@@ -12,17 +12,13 @@ import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 public abstract class PmtScheduleBuilder {
 
 //    private Entity entity;
     private PmtScheduleTerm pmtScheduleTerm;
     private PmtScheduleAlg pmtScheduleAlg;
-    private Integer entityKind;
+//    private Integer entityKind;
     private LocalDate from_date;
     private LocalDate last_date;
 

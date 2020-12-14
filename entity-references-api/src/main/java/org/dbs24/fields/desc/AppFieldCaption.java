@@ -30,7 +30,7 @@ public class AppFieldCaption  extends AbstractRefRecord implements ReferenceRec 
         return user_id;
     }
 
-    public void setUser_id(final Long user_id) {
+    public void setUser_id( Long user_id) {
         this.user_id = user_id;
     }
 
@@ -38,7 +38,7 @@ public class AppFieldCaption  extends AbstractRefRecord implements ReferenceRec 
         return app_id;
     }
 
-    public void setApp_id(final Integer app_id) {
+    public void setApp_id( Integer app_id) {
         this.app_id = app_id;
     }
 
@@ -46,7 +46,7 @@ public class AppFieldCaption  extends AbstractRefRecord implements ReferenceRec 
         return field_name;
     }
 
-    public void setField_name(final String field_name) {
+    public void setField_name( String field_name) {
         this.field_name = field_name;
     }
 
@@ -54,7 +54,7 @@ public class AppFieldCaption  extends AbstractRefRecord implements ReferenceRec 
         return field_caption;
     }
 
-    public void setField_caption(final String field_caption) {
+    public void setField_caption( String field_caption) {
         this.field_caption = field_caption;
     }
 
@@ -62,7 +62,7 @@ public class AppFieldCaption  extends AbstractRefRecord implements ReferenceRec 
         return field_tooltip;
     }
 
-    public void setField_tooltip(final String field_tooltip) {
+    public void setField_tooltip( String field_tooltip) {
         this.field_tooltip = field_tooltip;
     }
 }

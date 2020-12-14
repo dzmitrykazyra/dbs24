@@ -6,32 +6,34 @@
 package org.dbs24.entity.bondschedule;
 
 import org.dbs24.bond.schedule.api.PmtScheduleCalcAlgId;
-import org.dbs24.bond.schedule.api.BondScheduleConst;
+import static org.dbs24.consts.BondScheduleConst.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
-import org.dbs24.application.core.log.LogService;
+import lombok.extern.log4j.Log4j2;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import static org.dbs24.application.core.sysconst.SysConst.*;
-import org.dbs24.entity.kind.EntityKind;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import static org.dbs24.consts.SysConst.*;
+import org.dbs24.service.EntityReferencesService;
+import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- *
- * @author Козыро Дмитрий
- */
-@PmtScheduleCalcAlgId(calcAlgId = BondScheduleConst.BS_ALG_ANNUITET)
+@Log4j2
+@PmtScheduleCalcAlgId(calcAlgId = BS_ALG_ANNUITET)
 public class PmtScheduleBuilderByAnnuitet extends PmtScheduleBuilder {
+
+//    final EntityReferencesService entityReferencesService;
+//
+//    @Autowired
+//    public PmtScheduleBuilderByAnnuitet(EntityReferencesService entityReferencesService) {
+//        this.entityReferencesService = entityReferencesService;
+//    }
 
     @Override
     public PmtSchedule createSchedule() {
-        LogService.LogInfo(this.getClass(),
-                () -> LogService.getCurrentObjProcName(this));
+
         PmtSchedule pmtSchedule = NullSafe.createObject(PmtSchedule.class);
 
         //pmtSchedule.setContract_id(this.getEntity().getEntity_id());
-        pmtSchedule.setEntityKind(EntityKind.findEntityKind(this.getEntityKind()));
+        //pmtSchedule.setEntityKind(entityReferencesService.findEntityKind(this.getEntityKind()));
         pmtSchedule.setPmtScheduleAlg(this.getPmtScheduleAlg());
         pmtSchedule.setPmtScheduleTerm(this.getPmtScheduleTerm());
         pmtSchedule.setFromDate(this.getFrom_date());
@@ -60,6 +62,7 @@ public class PmtScheduleBuilderByAnnuitet extends PmtScheduleBuilder {
             pmtScheduleLine.setAppearDate(cntLd);
             pmtScheduleLine.setPaySum(BIGDECIMAL_ZERO);
             pmtScheduleLine.setCalcDate(LocalDate.now());
+            pmtScheduleLine.setPmtSchedule(pmtSchedule);
 
             // добавили строку графика
             lines.add(pmtScheduleLine);

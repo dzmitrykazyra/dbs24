@@ -20,24 +20,6 @@
         <jar-file>${source.directory.libs}/security-manager.jar</jar-file>          
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="none"/>
-<!--            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/fs24"/>
-            <property name="javax.persistence.jdbc.user" value="admin"/>
-            <property name="javax.persistence.jdbc.password" value="admin"/>-->
-<!--            <property name="javax.persistence.jdbc.url" value="jdbc_url"/>
-            <property name="javax.persistence.jdbc.user" value="jdbc_user"/>
-            <property name="javax.persistence.jdbc.password" value="jdbc_password"/>
-            <property name="show_sql" value="true"/>
-            <property name="format_sql" value="true"/>
-            <property name="hibernate.use_sql_comments" value="true"/>
-            <property name="hibernate.jdbc.batch_size" value="20"/>
-            <property name="hibernate.generate_statistics" value="true"/>
-            <property name="hibernate.order_inserts" value="true"/>
-            <property name="hibernate.order_updates" value="true"/>       
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-            <property name="hibernate.cache.use_second_level_cache" value="true"/>
-            <property name="hibernate.cache.region.factory_class"
-                      value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>-->
         </properties>
     </persistence-unit>
 </persistence>

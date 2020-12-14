@@ -18,7 +18,7 @@ public interface ContractDebts<T> {
 
     //private List<LiasDebt>  debtsList;
     //void update(List<NewLiasOper> opers);
-    void update(final Collection<OldLiasOper> opers);
+    void update( Collection<OldLiasOper> opers);
 
     void store();
 

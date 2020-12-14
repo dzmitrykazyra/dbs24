@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package org.dbs24.references.api;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 
 /**
  *

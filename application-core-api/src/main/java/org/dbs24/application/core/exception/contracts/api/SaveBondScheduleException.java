@@ -13,7 +13,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class SaveBondScheduleException extends InternalAppException {
 
-    public SaveBondScheduleException(final String message) {
+    public SaveBondScheduleException( String message) {
         super(message);
     }
 

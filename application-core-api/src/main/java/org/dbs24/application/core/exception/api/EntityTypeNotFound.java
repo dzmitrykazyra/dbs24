@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class EntityTypeNotFound extends EntityTypeNotDefined {
 
-    public EntityTypeNotFound(final String message) {
+    public EntityTypeNotFound( String message) {
         super(message);
     }
 

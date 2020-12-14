@@ -19,7 +19,7 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "wc_MoveEstimations")
+@Table(name = "chess_MoveEstimations")
 @IdClass(MoveEstimationPK.class)
 public class MoveEstimation extends ObjectRoot implements PersistenceEntity {
 

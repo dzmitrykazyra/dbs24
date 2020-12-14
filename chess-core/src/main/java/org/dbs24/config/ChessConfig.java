@@ -5,8 +5,8 @@
  */
 package org.dbs24.config;
 
-import static org.dbs24.application.core.sysconst.SysConst.*;
-import org.dbs24.spring.config.MainApplicationConfig;
+import static org.dbs24.consts.SysConst.*;
+import org.dbs24.config.MainApplicationConfig;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;

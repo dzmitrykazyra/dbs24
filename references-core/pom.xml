@@ -4,46 +4,24 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>references-core</artifactId>
     <packaging>jar</packaging>
     
     <build>
-        <finalName>references-core</finalName> 
+        <finalName>${project.name}</finalName>
     </build>    
             
     <dependencies>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>references-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>references-api</artifactId>          
         </dependency> 
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>persistence-core</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>persistence-core</artifactId>     
         </dependency> 
-        <!--        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>object-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>    -->
-<!--        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>annotation-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>              
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>common-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>    
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>reflection-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>             -->
     </dependencies>
         
 </project>

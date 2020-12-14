@@ -4,24 +4,21 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>securities-api</artifactId>
     <packaging>jar</packaging>
-    <version>1.0</version>
     <build>
-        <finalName>securities-api</finalName> 
+        <finalName>${project.name}</finalName>
     </build>
     <dependencies>    
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>entity-core-api</artifactId>
-            <version>1.0</version>            
+            <artifactId>entity-core-api</artifactId>       
         </dependency>     
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>entity-contract</artifactId>
-            <version>1.0</version>            
         </dependency>            
 
     </dependencies>

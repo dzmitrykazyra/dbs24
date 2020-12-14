@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>retail-documents-templates</artifactId>
     <packaging>jar</packaging>
@@ -12,13 +12,11 @@
     <dependencies>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>documents-api</artifactId>
-            <version>1.0</version>            
+            <artifactId>documents-api</artifactId>        
         </dependency>        
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>documents-references-api</artifactId>
-            <version>1.0</version>            
+            <artifactId>documents-references-api</artifactId> 
         </dependency>
     </dependencies>
     <name>retail-documents-templates</name>

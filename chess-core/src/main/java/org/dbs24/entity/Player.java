@@ -5,10 +5,6 @@
  */
 package org.dbs24.entity;
 
-/**
- *
- * @author N76VB
- */
 import org.dbs24.entity.core.api.ActionEntity;
 
 public interface Player extends ActionEntity {

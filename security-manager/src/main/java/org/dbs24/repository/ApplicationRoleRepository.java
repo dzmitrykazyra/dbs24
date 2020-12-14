@@ -5,15 +5,11 @@
  */
 package org.dbs24.repository;
 
-import org.dbs24.spring.core.api.ApplicationJpaRepository;
+import org.dbs24.spring.core.data.ApplicationJpaRepository;
 import org.dbs24.entity.security.ApplicationRole;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Repository
 @Transactional(readOnly = true)
 public interface ApplicationRoleRepository extends ApplicationJpaRepository<ApplicationRole, Long> {

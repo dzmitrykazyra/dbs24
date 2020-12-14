@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.math.BigDecimal;
 import org.dbs24.application.core.api.ObjectRoot;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.application.core.nullsafe.NullSafe;
 
 /**
@@ -28,7 +28,7 @@ public class TariffCalculations {
     private Integer tariff_calc_id;
 
     //==========================================================================
-    public TariffCalculations(final Long entity_id) {
+    public TariffCalculations( Long entity_id) {
         this.entity_id = entity_id;
     }
 
@@ -41,7 +41,7 @@ public class TariffCalculations {
                 }).<Map<TariffRate, Collection<TariffCalcSum>>>getObject();
     }
 
-    public void setTariffCalsSums(final Map<TariffRate, Collection<TariffCalcSum>> tariffCalsSums) {
+    public void setTariffCalsSums( Map<TariffRate, Collection<TariffCalcSum>> tariffCalsSums) {
         this.tariffCalsSums = tariffCalsSums;
     }
 
@@ -94,7 +94,7 @@ public class TariffCalculations {
     }
 
 //==========================================================================
-//    private void storeCalcRecord(final Integer rate_id) {
+//    private void storeCalcRecord( Integer rate_id) {
 //        final Integer newTariff_calc_id = ObjectRoot
 //                .getStaticDbService()
 //                .createCallQuery("{:RES = call tariff_insertorupdate_calc_record(:ID, :RATE, :ENT)} ")
@@ -109,7 +109,7 @@ public class TariffCalculations {
 //        //};
 //    }
     //==========================================================================
-//    public void store(final LocalDate D1, final LocalDate D2) {
+//    public void store( LocalDate D1, LocalDate D2) {
 //
 //        tariffCalsSums
 //                .entrySet()
@@ -136,7 +136,7 @@ public class TariffCalculations {
 //                });
 //    }
     //==========================================================================
-    public TariffCalculations merge(final TariffCalculations tc, final LocalDate D1, final LocalDate D2) {
+    public TariffCalculations merge( TariffCalculations tc, LocalDate D1, LocalDate D2) {
 
         tc.tariffCalsSums
                 .entrySet()
@@ -177,7 +177,7 @@ public class TariffCalculations {
     }
 
     //==========================================================================
-    public void add(final TariffRate tariffRate, final Collection<TariffCalcSum> cs) {
+    public void add( TariffRate tariffRate, Collection<TariffCalcSum> cs) {
         //this.getTariffCalsSums().putIfAbsent(tariffRate, cs);
         NullSafe.create(cs)
                 .safeExecute(() -> {
@@ -262,11 +262,11 @@ public class TariffCalculations {
         return tariff_calc_id;
     }
 
-    public void setTariff_calc_id(final Integer tariff_calc_id) {
+    public void setTariff_calc_id( Integer tariff_calc_id) {
         this.tariff_calc_id = tariff_calc_id;
     }
 
-    public void setEntity_id(final Long entity_id) {
+    public void setEntity_id( Long entity_id) {
         this.entity_id = entity_id;
     }
 

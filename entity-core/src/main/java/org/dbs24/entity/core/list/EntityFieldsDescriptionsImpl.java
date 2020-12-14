@@ -23,7 +23,7 @@ public class EntityFieldsDescriptionsImpl implements EntityFieldsDescriptions {
         return fieldsList;
     }
 
-    public void addFieldsDescription(final String fldName, final String fldCaption, final String fldToolTip) {
+    public void addFieldsDescription( String fldName, String fldCaption, String fldToolTip) {
 
         getFieldsList().add(new FieldDescription() {
 
@@ -46,7 +46,7 @@ public class EntityFieldsDescriptionsImpl implements EntityFieldsDescriptions {
     }
 
     //==========================================================================
-    private FieldDescription findFieldDescription(final String fldName) {
+    private FieldDescription findFieldDescription( String fldName) {
 
         return ServiceFuncs.<FieldDescription>getCollectionElement(this.getFieldsList(),
                 p -> p.getField_name().equals(fldName),
@@ -55,7 +55,7 @@ public class EntityFieldsDescriptionsImpl implements EntityFieldsDescriptions {
 
     //==========================================================================
     @Override
-    public String get_field_caption(final String fldName) {
+    public String get_field_caption( String fldName) {
 
         String field_caption = null;
         FieldDescription fieldDescription = null;
@@ -71,7 +71,7 @@ public class EntityFieldsDescriptionsImpl implements EntityFieldsDescriptions {
 
     //==========================================================================
     @Override
-    public String get_field_tool_tip(final String fldName) {
+    public String get_field_tool_tip( String fldName) {
 
         String field_tool_tip = null;
         FieldDescription fieldDescription = null;

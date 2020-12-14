@@ -19,7 +19,7 @@ import org.dbs24.references.CheckerBoard;
  */
 @Data
 @Entity
-@Table(name = "wc_CheckerboardActions")
+@Table(name = "chess_CheckerboardActions")
 public class CheckerBoardAction extends ObjectRoot implements PersistenceEntity {
 
     @Id

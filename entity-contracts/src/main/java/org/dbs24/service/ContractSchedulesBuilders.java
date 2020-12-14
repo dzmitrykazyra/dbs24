@@ -5,38 +5,35 @@
  */
 package org.dbs24.service;
 
-import org.dbs24.application.core.exception.api.InternalAppException;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.AnnotationFuncs;
 import org.dbs24.application.core.service.funcs.ReflectionFuncs;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import java.util.Collection;
-import org.dbs24.entity.bondschedule.PmtScheduleBuilder;
-//import org.dbs24.spring.core.api.ApplicationService;
-import org.dbs24.spring.core.bean.AbstractApplicationBean;
-import java.lang.reflect.Modifier;
+import org.dbs24.entity.bondschedule.*;
+import org.dbs24.exception.*;
+import org.dbs24.spring.core.api.AbstractApplicationBean;
 import java.time.LocalDate;
 import org.springframework.stereotype.Service;
 import org.dbs24.bond.schedule.api.PmtScheduleCalcAlgId;
 import org.dbs24.entity.bondschedule.PmtSchedule;
 import org.dbs24.references.bond.schedule.api.PmtScheduleAlg;
 import org.dbs24.references.bond.schedule.api.PmtScheduleTerm;
-import org.dbs24.references.tariffs.serv.TariffServ;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import static org.dbs24.consts.SysConst.*;
 
-/**
- *
- * @author Козыро Дмитрий
- *
- * коллекция классов построителей графиков
- *
- */
-//@Data
 @Service
 public class ContractSchedulesBuilders extends AbstractApplicationBean {
 
     // коллекция алгоритмов-построителей графиков
     private final Collection<Class<PmtScheduleBuilder>> scheduleBuilders = ServiceFuncs.createCollection();
+
+    final EntityReferencesService entityReferencesService;
+
+    @Autowired
+    public ContractSchedulesBuilders(EntityReferencesService entityReferencesService) {
+        this.entityReferencesService = entityReferencesService;
+    }
 
     @Override
     public void initialize() {
@@ -48,20 +45,16 @@ public class ContractSchedulesBuilders extends AbstractApplicationBean {
         ReflectionFuncs.processPkgClassesCollection(ENTITY_PACKAGE, clazz, annClazz,
                 entClazz -> scheduleBuilders.add(entClazz));
 
-        if (scheduleBuilders.isEmpty()) {
-            class NoPmtScheduleBuilderAvailAble extends InternalAppException {
-
-                public NoPmtScheduleBuilderAvailAble(final String message) {
-                    super(message);
-                }
-            }
-            throw new NoPmtScheduleBuilderAvailAble(String.format("No schedule builders defined for '%s' ",
-                    ContractSchedulesBuilders.class.getCanonicalName()));
-        }
+        scheduleBuilders
+                .stream()
+                .findFirst()
+                .orElseThrow(() -> new NoPmtScheduleBuilderAvailAble(
+                String.format("No schedule builders defined for '%s' ",
+                        clazz.getCanonicalName())));
     }
 
     //==========================================================================
-    public PmtSchedule buildSchedule(final Integer algId,
+    public PmtSchedule buildSchedule(Integer algId,
             final PmtScheduleAlg pmtScheduleAlg,
             final PmtScheduleTerm pmtScheduleTerm,
             final Integer scheduleKind,
@@ -69,27 +62,24 @@ public class ContractSchedulesBuilders extends AbstractApplicationBean {
             final LocalDate d2
     ) {
 
-        final Class<PmtScheduleBuilder> builder = ServiceFuncs.<Class<PmtScheduleBuilder>>findCollectionElement(
-                scheduleBuilders,
-                srv -> algId.equals(AnnotationFuncs.getAnnotation(srv, PmtScheduleCalcAlgId.class).calcAlgId()),
-                String.format("%s: Can't find schedule builder 'algId=%d' ",
+        final PmtSchedule pmtSchedule
+                = NullSafe.createObject(scheduleBuilders
+                        .stream()
+                        .filter(alg -> algId.equals(AnnotationFuncs.getAnnotation(alg, PmtScheduleCalcAlgId.class).calcAlgId()))
+                        .findFirst()
+                        .orElseThrow(() -> new AlgBuilderNotFound(String.format("%s: Can't find schedule builder 'algId=%d' ",
                         this.getClass().getSimpleName(),
-                        algId));
+                        algId))), builder -> {
 
-        final PmtScheduleBuilder pmtScheduleBuilder = NullSafe.createObject(builder);
+                    builder.setPmtScheduleAlg(pmtScheduleAlg);
+                    builder.setPmtScheduleTerm(pmtScheduleTerm);
+                    builder.setFrom_date(d1);
+                    builder.setLast_date(d2);
 
-        pmtScheduleBuilder.setPmtScheduleAlg(pmtScheduleAlg);
-        pmtScheduleBuilder.setPmtScheduleTerm(pmtScheduleTerm);
-        pmtScheduleBuilder.setEntityKind(scheduleKind);
-        pmtScheduleBuilder.setFrom_date(d1);
-        pmtScheduleBuilder.setLast_date(d2);
+                }).createSchedule();
 
-        final PmtSchedule pmtSchedule = pmtScheduleBuilder.createSchedule();
+        pmtSchedule.setEntityKind(entityReferencesService.findEntityKind(scheduleKind));
 
-        pmtSchedule
-                .getPmtScheduleLines()
-                .stream()
-                .forEach(line -> line.setPmtSchedule(pmtSchedule));
         return pmtSchedule;
     }
 }

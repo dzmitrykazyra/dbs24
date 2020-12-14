@@ -13,7 +13,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class AnnotationRequiredException extends InternalAppException {
 
-    public AnnotationRequiredException(final String message) {
+    public AnnotationRequiredException( String message) {
         super(message);
     }
 

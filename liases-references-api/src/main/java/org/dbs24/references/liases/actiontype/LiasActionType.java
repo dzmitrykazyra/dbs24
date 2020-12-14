@@ -31,7 +31,7 @@ public class LiasActionType extends AbstractRefRecord implements ReferenceRec {
     @Column(name = "action_type_name")
     private String actionTypeName;
 
-    public static final LiasActionType findLiasActionType(final Integer liasActionTypeId) {
+    public static final LiasActionType findLiasActionType( Integer liasActionTypeId) {
         return AbstractRefRecord.<LiasActionType>getRefeenceRecord(LiasActionType.class,
                 record -> record.getActionTypeId().equals(liasActionTypeId));
     }

@@ -5,10 +5,9 @@
  */
 package org.dbs24.entity;
 
-import org.dbs24.entity.contracts.AbstractEntityServiceContract;
 import lombok.Data;
 
 @Data
-public abstract class AbstractRetailLoanContract extends AbstractEntityServiceContract {
+public abstract class AbstractRetailLoanContract extends AbstractEntityContract {
 
 }

@@ -28,7 +28,7 @@ public class Application extends AbstractRefRecord implements ReferenceRec {
         return app_id;
     }
 
-    public Application setApp_id(final Integer app_id) {
+    public Application setApp_id( Integer app_id) {
         this.app_id = app_id;
         return this;
     }
@@ -37,7 +37,7 @@ public class Application extends AbstractRefRecord implements ReferenceRec {
         return app_code;
     }
 
-    public Application setApp_code(final String app_code) {
+    public Application setApp_code( String app_code) {
         this.app_code = app_code;
         return this;
     }
@@ -46,7 +46,7 @@ public class Application extends AbstractRefRecord implements ReferenceRec {
         return app_name;
     }
 
-    public Application setApp_name(final String app_name) {
+    public Application setApp_name( String app_name) {
         this.app_name = app_name;
         return this;
     }
@@ -55,7 +55,7 @@ public class Application extends AbstractRefRecord implements ReferenceRec {
         return app_url;
     }
 
-    public Application setApp_url(final String app_url) {
+    public Application setApp_url( String app_url) {
         this.app_url = app_url;
         return this;
     }

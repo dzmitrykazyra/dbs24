@@ -31,7 +31,7 @@ public class LiasType extends AbstractRefRecord implements ReferenceRec {
     @Column(name = "lias_type_name")
     private String liasTypeName;
 
-    public static final LiasType findLiasType(final Integer liasLiasTypeId) {
+    public static final LiasType findLiasType( Integer liasLiasTypeId) {
         return AbstractRefRecord.<LiasType>getRefeenceRecord(LiasType.class,
                 record -> record.getLiasTypeId().equals(liasLiasTypeId));
     }

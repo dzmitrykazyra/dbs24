@@ -6,56 +6,42 @@
 package org.dbs24.entity.classic;
 
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import static org.dbs24.application.core.sysconst.SysConst.*;
-import org.dbs24.entity.core.AbstractActionEntity;
+import static org.dbs24.consts.EntityConst.*;
+import static org.dbs24.consts.SysConst.*;
+import static org.dbs24.consts.WorldChessConst.*;
 import javax.persistence.*;
 import lombok.Data;
 import org.dbs24.entity.AbstractGame;
-import org.dbs24.consts.WorldChessConst;
 import org.dbs24.entity.core.api.ActionClassesPackages;
 import org.dbs24.entity.core.api.DefaultEntityStatus;
 import org.dbs24.entity.core.api.EntityKindId;
 import org.dbs24.entity.core.api.EntityStatusesRef;
 import org.dbs24.entity.core.api.EntityTypeId;
 import org.dbs24.entity.status.EntityStatusId;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import javax.validation.constraints.NotNull;
-import java.util.Collection;
-import org.dbs24.entity.AbstractPlayer;
-import org.dbs24.entity.Game;
-import org.dbs24.entity.GameAction;
-
-/**
- *
- * @author Козыро Дмитрий
- */
 
 @Entity
 @Data
-@EntityTypeId(entity_type_id = WorldChessConst.WCP_GAME,
+@EntityTypeId(entity_type_id = WCP_GAME,
         entity_type_name = "Шахматная партия")
-@EntityKindId(entity_kind_id = WorldChessConst.WCP_RAPID_GAME,
-        entity_type_id = WorldChessConst.WCP_GAME,
+@EntityKindId(entity_kind_id = WCP_RAPID_GAME,
+        entity_type_id = WCP_GAME,
         entity_kind_name = "Партия классических шахмат")
 @EntityStatusesRef(
         entiy_status = {
             @EntityStatusId(
-                    entity_type_id = WorldChessConst.WCP_GAME,
-                    entity_status_id = ES_VALID,
-                    entity_status_name = "Действующая партия")
-            ,
+                    entity_type_id = WCP_GAME,
+                    entity_status_id = ES_ACTUAL,
+                    entity_status_name = "Действующая партия"),
             @EntityStatusId(
-                    entity_type_id = WorldChessConst.WCP_GAME,
+                    entity_type_id = WCP_GAME,
                     entity_status_id = ES_CLOSED,
-                    entity_status_name = "Завершенная партия")
-            ,
+                    entity_status_name = "Завершенная партия"),
             @EntityStatusId(
-                    entity_type_id = WorldChessConst.WCP_GAME,
+                    entity_type_id = WCP_GAME,
                     entity_status_id = ES_CANCELLED,
                     entity_status_name = "Отложенная партия")
         })
-@DefaultEntityStatus(entity_status = ES_VALID)
+@DefaultEntityStatus(entity_status = ES_ACTUAL)
 @ActionClassesPackages(pkgList = {ACTIONS_PACKAGE})
 public class ClassicGame extends AbstractGame {
 
@@ -94,4 +80,3 @@ public class ClassicGame extends AbstractGame {
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "classicChessGame")
 //    private Collection<GameAction> gameMoves = ServiceFuncs.<GameAction>createCollection(); 
 }
-

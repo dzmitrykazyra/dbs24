@@ -7,8 +7,8 @@ package org.dbs24.application.core.log;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import static org.dbs24.application.core.sysconst.SysConst.*;
-import org.apache.logging.log4j.LogManager;
+import static org.dbs24.consts.SysConst.*;
+//import org.apache.logging.log4j.LogManager;
 
 import java.util.Map;
 
@@ -41,12 +41,12 @@ public abstract class LogService {
             .concat(" %s: %s");
 //            .concat("//=========================================================\n");
 
-    public static final void LogInfo(final Class clazz, final InfoMessage infoMessage) {
+    public static final void LogInfo( Class clazz, InfoMessage infoMessage) {
 //        if (TestConst.TEST_MODE_RUNNING) {
         new Thread(() -> {
             synchronized (LogService.class) {
 
-                LogManager.getLogger(clazz).info(infoMessage.getMessage());
+                //LogManager.getLogger(clazz).info(infoMessage.getMessage());
 
             }
         }).start();
@@ -54,75 +54,75 @@ public abstract class LogService {
     }
 
     //--------------------------------------------------------------------------
-    public static final void LogInfo(final Class clazz, final String procedureName, final InfoMessage infoMessage) {
+    public static final void LogInfo( Class clazz, String procedureName, InfoMessage infoMessage) {
 //        if (TestConst.TEST_MODE_RUNNING) {
         new Thread(() -> {
             synchronized (LogService.class) {
-                LogManager.getLogger(clazz).info(infoMessage.getMessage());
+                //LogManager.getLogger(clazz).info(infoMessage.getMessage());
             }
         }).start();
 //        }
     }
 
     //--------------------------------------------------------------------------
-    public static final void LogWarn(final Class clazz, final InfoMessage infoMessage) {
+    public static final void LogWarn( Class clazz, InfoMessage infoMessage) {
         new Thread(() -> {
             synchronized (LogService.class) {
-                LogManager.getLogger(clazz).warn(infoMessage.getMessage());
+                //LogManager.getLogger(clazz).warn(infoMessage.getMessage());
             }
         }).start();
     }
 
     //--------------------------------------------------------------------------
-    public static final void LogDebug(final Class clazz, final InfoMessage infoMessage) {
+    public static final void LogDebug( Class clazz, InfoMessage infoMessage) {
         new Thread(() -> {
             synchronized (LogService.class) {
-                LogManager.getLogger(clazz).debug(infoMessage.getMessage());
+                //LogManager.getLogger(clazz).debug(infoMessage.getMessage());
             }
         }).start();
     }
 
     //--------------------------------------------------------------------------
-    public static final void LogWarn(final Class clazz, final String procedureName, final InfoMessage infoMessage) {
+    public static final void LogWarn( Class clazz, String procedureName, InfoMessage infoMessage) {
         new Thread(() -> {
             synchronized (LogService.class) {
-                LogManager.getLogger(clazz).warn(infoMessage.getMessage());
+                //LogManager.getLogger(clazz).warn(infoMessage.getMessage());
             }
         }).start();
     }
     //--------------------------------------------------------------------------
 
-    public static final void LogErr(final Class clazz, final InfoMessage infoMessage) {
+    public static final void LogErr( Class clazz, InfoMessage infoMessage) {
         new Thread(() -> {
             synchronized (LogService.class) {
-                LogManager.getLogger(clazz).error(infoMessage.getMessage());
+                //LogManager.getLogger(clazz).error(infoMessage.getMessage());
             }
         }).start();
     }
 
     //--------------------------------------------------------------------------
-    public static final void LogErr(final Class clazz, final String procedureName, final InfoMessage infoMessage) {
+    public static final void LogErr( Class clazz, String procedureName, InfoMessage infoMessage) {
         new Thread(() -> {
             synchronized (LogService.class) {
-                LogManager.getLogger(clazz).error(infoMessage.getMessage());
+                //LogManager.getLogger(clazz).error(infoMessage.getMessage());
             }
         }).start();
     }
 
     //--------------------------------------------------------------------------
-    public static final void LogErr(final Class clazz, final String procedureName, Throwable th) {
+    public static final void LogErr( Class clazz, String procedureName, Throwable th) {
         new Thread(() -> {
             synchronized (LogService.class) {
-                LogManager.getLogger(clazz).error(procedureName, th);
+                //LogManager.getLogger(clazz).error(procedureName, th);
             }
         }).start();
     }
 
     //--------------------------------------------------------------------------
-    public static final void LogErr(final Class clazz, Throwable th) {
+    public static final void LogErr( Class clazz, Throwable th) {
         new Thread(() -> {
             synchronized (LogService.class) {
-                LogManager.getLogger(clazz).error("???", th);
+                //LogManager.getLogger(clazz).error("???", th);
             }
         }).start();
 
@@ -136,12 +136,12 @@ public abstract class LogService {
     }
 
     //--------------------------------------------------------------------------
-    public static final String getCurrentObjProcName(final Object o) {
+    public static final String getCurrentObjProcName( Object o) {
         return LogService.getCurrentObjProcName(o, -1);
     }
 
     //--------------------------------------------------------------------------
-    public static final String getCurrentObjProcName(final Object o, final int shift) {
+    public static final String getCurrentObjProcName( Object o, int shift) {
         return String.format("%s.%s",
                 o.getClass().getName(),
                 Thread.currentThread()
@@ -150,7 +150,7 @@ public abstract class LogService {
     }
     //--------------------------------------------------------------------------
 
-    public static final String getCurrentObjProcName(final Class clazz) {
+    public static final String getCurrentObjProcName( Class clazz) {
         return String.format("%s.%s", clazz.getName(), Thread.currentThread()
                 .getStackTrace()[2]
                 .getMethodName());
@@ -172,7 +172,7 @@ public abstract class LogService {
         return warPackageName;
     }
 
-    public static String getWarPackageName(final Class clazz) {
+    public static String getWarPackageName( Class clazz) {
 
         return LogService.getModuleName(clazz.
                 getProtectionDomain().
@@ -182,7 +182,7 @@ public abstract class LogService {
 
     }
 
-    private static String getModuleName(final String classUrl) {
+    private static String getModuleName( String classUrl) {
         String moduleName = EMPTY_STRING;
         int indexOff = classUrl.lastIndexOf("/WEB-INF");
         if (indexOff > 0) {

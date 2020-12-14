@@ -8,18 +8,15 @@ package org.dbs24.application.core.service.funcs;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.dbs24.application.core.exception.api.InternalAppException;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 
 import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
+import org.dbs24.stmt.StmtProcessor;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 public final class ServiceFuncs {
 
     public static final Collection COLLECTION_NULL = null;
@@ -27,7 +24,7 @@ public final class ServiceFuncs {
     public static final Boolean THROW_WHEN_NOT_FOUND = Boolean.TRUE;
     public static final Boolean SF_DONT_THROW_EXC = Boolean.FALSE;
 
-    public static <T> Collection<T> getOrCreateCollection(final Collection<T> existCollection) {
+    public static <T> Collection<T> getOrCreateCollection(Collection<T> existCollection) {
 
         final Collection<T> collection;
 
@@ -43,17 +40,23 @@ public final class ServiceFuncs {
     //==========================================================================
     public static <T> Collection<T> createCollection() {
 
-        return NullSafe.createObject(ArrayList.class);
+        return StmtProcessor.create(ArrayList.class);
     }
+
     //==========================================================================
     public static <T> Collection<T> createConcurencyCollection() {
 
-        return NullSafe.createObject(CopyOnWriteArrayList.class);
+        return StmtProcessor.create(CopyOnWriteArrayList.class);
     }
 
-    
     //==========================================================================
-    public static <T> Collection<T> getOrCreateCollection_Safe(final Collection<T> existCollection) {
+    public static <T, V> Map<T, V> createMap() {
+
+        return StmtProcessor.create(HashMap.class);
+    }
+
+    //==========================================================================
+    public static <T> Collection<T> getOrCreateCollection_Safe(Collection<T> existCollection) {
 
         final Collection<T> collection;
 
@@ -68,7 +71,7 @@ public final class ServiceFuncs {
 
     //==========================================================================   
     @Deprecated
-    public static <T> T getCollectionElement(final Collection<T> collection,
+    public static <T> T getCollectionElement(Collection<T> collection,
             final FilterComparator<T> filterComparator,
             final String exceptionMessage) {
 
@@ -96,7 +99,7 @@ public final class ServiceFuncs {
 
     @Deprecated
     //==========================================================================
-    public static <T> T getCollectionElement_silent(final Collection<T> collection,
+    public static <T> T getCollectionElement_silent(Collection<T> collection,
             final FilterComparator<T> filterComparator) {
 
         synchronized (collection) {
@@ -119,7 +122,7 @@ public final class ServiceFuncs {
     //==========================================================================
     //==========================================================================
     @Deprecated
-    public static <T> Collection<T> filterCollection_Silent(final Collection<T> collection,
+    public static <T> Collection<T> filterCollection_Silent(Collection<T> collection,
             final FilterComparator<T> filterComparator) {
 
         return NullSafe.create(OBJECT_NULL, !ServiceFuncs.THROW_WHEN_NOT_FOUND)
@@ -138,7 +141,7 @@ public final class ServiceFuncs {
     }
 
     //==========================================================================
-    public static <K, V> Map<K, V> getOrCreateMap(final Map<K, V> existMap) {
+    public static <K, V> Map<K, V> getOrCreateMap(Map<K, V> existMap) {
 
         final Map<K, V> map;
 
@@ -152,7 +155,7 @@ public final class ServiceFuncs {
     }
     //==========================================================================
 
-    public static <K, V> Map<K, V> getOrCreateMap_Safe(final Map<K, V> existMap) {
+    public static <K, V> Map<K, V> getOrCreateMap_Safe(Map<K, V> existMap) {
 
         final Map<K, V> map;
 
@@ -166,7 +169,7 @@ public final class ServiceFuncs {
     }
     //==========================================================================
 
-    public static <K, V> Map.Entry<K, V> getMapEntry(final Map<K, V> collection,
+    public static <K, V> Map.Entry<K, V> getMapEntry(Map<K, V> collection,
             final MapComparator<K, V> mapComparator,
             final String exceptionMessage,
             final Boolean raiseExceptionWhenNotFound) {
@@ -196,7 +199,7 @@ public final class ServiceFuncs {
 
     @Deprecated
     //==========================================================================
-    public static <K, V> V getMapValue(final Map<K, V> collection,
+    public static <K, V> V getMapValue(Map<K, V> collection,
             final MapComparator<K, V> mapComparator,
             final String exceptionMessage,
             final Boolean raiseExceptionWhenNotFound) {
@@ -229,7 +232,7 @@ public final class ServiceFuncs {
 
     //==========================================================================
     @Deprecated
-    public static <K, V> V getMapValue_silent(final Map<K, V> collection,
+    public static <K, V> V getMapValue_silent(Map<K, V> collection,
             final MapComparator<K, V> mapComparator) {
         synchronized (collection) {
             return NullSafe.create(OBJECT_NULL, !ServiceFuncs.SF_DONT_THROW_EXC)
@@ -251,27 +254,27 @@ public final class ServiceFuncs {
     }
 
     //==========================================================================
-    public static <K, V> Optional<V> getMapValue(final Map<K, V> collection,
+    public static <K, V> Optional<V> getMapValue(Map<K, V> collection,
             final MapComparator<K, V> mapComparator) {
         synchronized (collection) {
 
             return Optional.ofNullable(NullSafe.create(OBJECT_NULL, !ServiceFuncs.SF_DONT_THROW_EXC)
-                    .execute2result(() ->  collection
-                                .entrySet()
-                                .stream()
-                                .unordered()
-                                .filter((mapEntry) -> mapComparator.filterMap(mapEntry))
-                                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
-                                .entrySet()
-                                .iterator()
-                                .next()
-                                .getValue())
+                    .execute2result(() -> collection
+                    .entrySet()
+                    .stream()
+                    .unordered()
+                    .filter((mapEntry) -> mapComparator.filterMap(mapEntry))
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+                    .entrySet()
+                    .iterator()
+                    .next()
+                    .getValue())
                     .<V>getObject());
         }
     }
     //==========================================================================
 
-    public static <T> Optional<T> getCollectionElement(final Collection<T> collection,
+    public static <T> Optional<T> getCollectionElement(Collection<T> collection,
             final FilterComparator<T> filterComparator) {
 
         synchronized (collection) {
@@ -287,12 +290,12 @@ public final class ServiceFuncs {
     //==========================================================================
     static class ElementNotFound extends InternalAppException {
 
-        public ElementNotFound(final String message) {
+        public ElementNotFound(String message) {
             super(message);
         }
     }
 
-    public static <T> T findCollectionElement(final Collection<T> collection,
+    public static <T> T findCollectionElement(Collection<T> collection,
             final FilterComparator<T> filterComparator,
             final String excMsg) {
 
@@ -314,7 +317,7 @@ public final class ServiceFuncs {
     }
 
     //==========================================================================
-    public static <K, V> K getMapKeyElement(final Map<K, V> collection,
+    public static <K, V> K getMapKeyElement(Map<K, V> collection,
             final MapComparator<K, V> mapComparator,
             final String exceptionMessage,
             final Boolean raiseExceptionWhenNotFound) {
@@ -348,35 +351,35 @@ public final class ServiceFuncs {
     }
 
     //=========================================================================================
-//    public static <T extends Class> Collection<T> createPkgClassesCollection(final String packageName, final T rootClazz) {
+//    public static <T extends Class> Collection<T> createPkgClassesCollection( String packageName, T rootClazz) {
 //
 //        return new ArrayList<>((Collection<T>) (new Reflections(packageName)).getSubTypesOf(rootClazz));
 //    }
 //
 //    //==========================================================================
-//    public static <T> Collection<T> createPkgClassesCollectionExt(final String packageName, final Class<T> rootClazz) {
+//    public static <T> Collection<T> createPkgClassesCollectionExt( String packageName, Class<T> rootClazz) {
 //
 //        return new ArrayList<>((Collection<T>) (new Reflections(packageName)).getSubTypesOf(rootClazz));
 //    }
     //=========================================================================================
-//    public static <T> ArrayList<T> createCollection(final Set<Class<? extends T>> someSet) {
+//    public static <T> ArrayList<T> createCollection( Set<Class<? extends T>> someSet) {
 //
 //        return new ArrayList<T>(someSet);
 //    }
     //==========================================================================
-    public static <T> T getPropertySafe(final PropertyGetter propertyGetter, final T default_value) {
+    public static <T> T getPropertySafe(PropertyGetter propertyGetter, T default_value) {
         return (T) NullSafe.create((Object) default_value, NullSafe.DONT_THROW_EXCEPTION)
                 .execute2result(() -> propertyGetter.getProperty())
                 .<T>getObject();
     }
 
     //==========================================================================
-    public static <T> T getPropertySafe(final PropertyGetter propertyGetter) {
+    public static <T> T getPropertySafe(PropertyGetter propertyGetter) {
         return (T) ServiceFuncs.<T>getPropertySafe(propertyGetter, (T) OBJECT_NULL);
     }
 
     //==========================================================================    
-    public static String getStringObjValue(final Object object) {
+    public static String getStringObjValue(Object object) {
 
         return NullSafe.create(STRING_NULL, NullSafe.DONT_THROW_EXCEPTION)
                 .whenIsNull(() -> ((LocalDate) object).format(FORMAT_dd_MM_yyyy))
@@ -389,7 +392,7 @@ public final class ServiceFuncs {
     }
 
     //==========================================================================
-    public static String getJsonFromObject(final Object object) {
+    public static String getJsonFromObject(Object object) {
         return NullSafe.create()
                 .execute2result(() -> new ObjectMapper().writeValueAsString(object))
                 .<String>getObject();

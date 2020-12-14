@@ -8,7 +8,7 @@ package org.dbs24.entity.tariff;
 import java.io.Serializable;
 import lombok.Data;
 import java.time.LocalDate;
-import org.dbs24.references.application.currency.Currency;
+import org.dbs24.entity.Currency;
 
 /**
  *

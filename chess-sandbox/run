@@ -1,0 +1,8 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-16" 
+export MAVEN_OPTS="-Xms1024m"
+clear
+mvn -version
+mvn clean install -DskipTests=true
+mvn exec:java -Dexec.mainClass="org.dbs24.ChessSandBoxBoot" -Djava.awt.headless=true
+#mvn exec:java -Dexec.mainClass="org.dbs24.RetailLoanContractBoot" -Dexec.classpathScope=runtime

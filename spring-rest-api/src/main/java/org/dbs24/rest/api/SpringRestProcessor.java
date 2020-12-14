@@ -20,11 +20,11 @@ import org.dbs24.spring.core.api.ApplicationService;
 //@RestController
 //@CrossOrigin
 //@RequestMapping(LogService.PATH_REST)
-public abstract class SpringRestProcessor extends RestProcessor implements ApplicationService {
+public abstract class SpringRestProcessor implements ApplicationService {
 
 //    @GetMapping(LogService.PATH_4PING)
 //    @ResponseStatus(HttpStatus.OK)
-    public String receivePingMessage(final String pingMessage) {
+    public String receivePingMessage( String pingMessage) {
         return String.format("connection is successfull \n {'%s', %s, %s} ",
                 pingMessage,
                 this.getClass().getCanonicalName(),

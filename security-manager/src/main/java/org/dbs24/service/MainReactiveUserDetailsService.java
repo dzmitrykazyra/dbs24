@@ -5,7 +5,7 @@
  */
 package org.dbs24.service;
 
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.entity.security.ApplicationUser;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
@@ -23,20 +23,20 @@ public class MainReactiveUserDetailsService implements ReactiveUserDetailsServic
     @Value("${reactive.rest.debug:false}")
     private Boolean restDebug = BOOLEAN_FALSE;
 
-    @Autowired
-    ApplicationUserRepository applicationUserRepository;
-
     //==========================================================================
     final PasswordEncoder passwordEncoder;
+    final ApplicationUserRepository applicationUserRepository;
 
     @Autowired
-    public MainReactiveUserDetailsService(PasswordEncoder passwordEncoder) {
+    public MainReactiveUserDetailsService(PasswordEncoder passwordEncoder,
+            ApplicationUserRepository applicationUserRepository) {
         this.passwordEncoder = passwordEncoder;
+        this.applicationUserRepository = applicationUserRepository;
     }
 
     //==========================================================================
     @Override
-    public Mono<UserDetails> findByUsername(final String userName) {
+    public Mono<UserDetails> findByUsername( String userName) {
 
         if (restDebug) {
             LogService.LogInfo(this.getClass(), () -> String.format("Try 2 loggin '%s' [%s]",

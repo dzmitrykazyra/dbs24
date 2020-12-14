@@ -5,7 +5,9 @@
  */
 package org.dbs24.entity;
 
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
+import static org.dbs24.consts.EntityConst.*;
+import static org.dbs24.consts.WorldChessConst.*;
 import org.dbs24.entity.core.AbstractActionEntity;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -17,42 +19,36 @@ import org.dbs24.entity.core.api.EntityKindId;
 import org.dbs24.entity.core.api.EntityStatusesRef;
 import org.dbs24.entity.core.api.EntityTypeId;
 import org.dbs24.entity.status.EntityStatusId;
-import org.dbs24.consts.WorldChessConst;
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 @Entity
-@Table(name = "wc_Players")
+@Table(name = "chess_Players")
 @PrimaryKeyJoinColumn(name = "player_id", referencedColumnName = "entity_id")
-@EntityTypeId(entity_type_id = WorldChessConst.WCP_PLAYER,
+@EntityTypeId(entity_type_id = WCP_PLAYER,
         entity_type_name = "Игрок в шахматы")
-@EntityKindId(entity_kind_id = WorldChessConst.WCP_PLAYER_ODINARY,
-        entity_type_id = WorldChessConst.WCP_PLAYER,
+@EntityKindId(entity_kind_id = WCP_PLAYER_ODINARY,
+        entity_type_id = WCP_PLAYER,
         entity_kind_name = "Рядовой пользователь")
 @EntityStatusesRef(
         entiy_status = {
             @EntityStatusId(
-                    entity_type_id = WorldChessConst.WCP_PLAYER,
-                    entity_status_id = ES_VALID,
+                    entity_type_id = WCP_PLAYER,
+                    entity_status_id = ES_ACTUAL,
                     entity_status_name = "Действующая игрок")
             ,
             @EntityStatusId(
-                    entity_type_id = WorldChessConst.WCP_PLAYER,
+                    entity_type_id = WCP_PLAYER,
                     entity_status_id = ES_CLOSED,
                     entity_status_name = "Закрытый аккаунт")
             ,
             @EntityStatusId(
-                    entity_type_id = WorldChessConst.WCP_PLAYER,
+                    entity_type_id = WCP_PLAYER,
                     entity_status_id = ES_CANCELLED,
                     entity_status_name = "Заблокированный игрок")
         })
-@DefaultEntityStatus(entity_status = ES_VALID)
+@DefaultEntityStatus(entity_status = ES_ACTUAL)
 @ActionClassesPackages(pkgList = {ACTIONS_PACKAGE})
 public class AbstractPlayer extends AbstractActionEntity implements Player {
 

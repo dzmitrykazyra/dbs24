@@ -5,12 +5,14 @@
  */
 package org.dbs24.consts;
 
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.references.tariffs.accretionscheme.TariffAccretionScheme;
 import org.dbs24.references.tariffs.group.TariffGroup;
 import org.dbs24.references.tariffs.kind.TariffKindAbstract;
 import org.dbs24.references.tariffs.kind.TariffKindId;
 import org.dbs24.references.tariffs.serv.TariffServId;
+import org.dbs24.references.tariffs.kind.TariffKind;
+import org.dbs24.references.tariffs.serv.TariffServ;
 
 public final class TariffConst {
     
@@ -22,6 +24,8 @@ public final class TariffConst {
     public static final Class<TariffKindId> TARIFF_KINDID_CLASS = TariffKindId.class;
     public static final Class<TariffAccretionScheme> TARIFF_ACCRETION_SCHEME_CLASS = TariffAccretionScheme.class;
     public static final Class<TariffGroup> TARIFF_GROUP_CLASS = TariffGroup.class;
+    public static final Class<TariffKind> TARIFF_KIND_CLASS = TariffKind.class;
+    public static final Class<TariffServ> TARIFF_SERV_CLASS = TariffServ.class;
     
     public static final int TG_LOANS = 101;  // Предоставление средств в форме кредита
 

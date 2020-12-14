@@ -29,7 +29,7 @@ public class DocAttr extends AbstractRefRecord implements ReferenceRec {
     private String docAttrName;
 
     //==========================================================================
-    public static final DocAttr findDocAttr(final Integer attrId) {
+    public static final DocAttr findDocAttr( Integer attrId) {
         return AbstractRefRecord.<DocAttr>getRefeenceRecord(DocAttr.class,
                 record -> record.getDocAttrId().equals(attrId));
     }

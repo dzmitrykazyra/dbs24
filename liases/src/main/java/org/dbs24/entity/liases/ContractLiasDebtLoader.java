@@ -22,7 +22,7 @@ import lombok.Data;
 public class ContractLiasDebtLoader extends ObjectRoot {
 //
 //    //==========================================================================
-//    public Collection<T> loadLiasDebts(final Long entity_id) {
+//    public Collection<T> loadLiasDebts( Long entity_id) {
 //
 //        //List<T> liasDebts = new ArrayList<>();
 //        final Collection<T> liasDebts = ServiceFuncs.<T>createCollection();

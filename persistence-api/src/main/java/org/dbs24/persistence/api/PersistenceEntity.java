@@ -5,14 +5,9 @@
  */
 package org.dbs24.persistence.api;
 
-import org.dbs24.application.core.log.LogService;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import java.io.Serializable;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 public interface PersistenceEntity extends Serializable, Cloneable {
 
     public default Boolean justCreated() {

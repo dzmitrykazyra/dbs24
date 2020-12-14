@@ -9,7 +9,7 @@ package org.dbs24.application.core.locale;
 import org.dbs24.application.core.api.ObjectRoot;
 import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.time.*;
@@ -38,7 +38,7 @@ public final class NLS extends ObjectRoot {
 //    static {
 //        LogService.LogInfo(NLS.class, () -> String.format("NEW_DATE_FORMAT = %s", NLS.NEW_DATE_FORMAT));
 //    }
-    public static final String getNlsParam(final String prmName, final String defVal) {
+    public static final String getNlsParam( String prmName, String defVal) {
 
 //        return ServiceLocator
 //                .find(ApplicationSetup.class)
@@ -49,7 +49,7 @@ public final class NLS extends ObjectRoot {
     }
 
     //==========================================================================
-    public static final String getStringDate(final LocalDate ld) {
+    public static final String getStringDate( LocalDate ld) {
 
         return (NullSafe.isNull(ld)) ? EMPTY_STRING : ld.format(NLS.FORMAT_dd_MM_yyyy);
 
@@ -68,21 +68,21 @@ public final class NLS extends ObjectRoot {
     }
 
     //==========================================================================
-    public static final String getStringDateTime(final LocalDateTime ldt) {
+    public static final String getStringDateTime( LocalDateTime ldt) {
 
         return (NullSafe.isNull(ldt)) ? EMPTY_STRING : ldt.format(NLS.FORMAT_dd_MM_yyyy__HH_mm_ss);
 
     }
 
     //==========================================================================
-    public static final String getStringDateTimeMS(final LocalDateTime ldt) {
+    public static final String getStringDateTimeMS( LocalDateTime ldt) {
 
         return (NullSafe.isNull(ldt)) ? EMPTY_STRING : ldt.format(NLS.FORMAT_dd_MM_yyyy__HH_mm_ss_SSS);
 
     }
 
     //==========================================================================
-    public static final LocalDate long2LocalDate(final Long milliSeconds) {
+    public static final LocalDate long2LocalDate( Long milliSeconds) {
 
         LocalDate result = null;
 
@@ -97,7 +97,7 @@ public final class NLS extends ObjectRoot {
     }
 
     //==========================================================================
-    public static final String getObject2String(final Object value) {
+    public static final String getObject2String( Object value) {
 
         return NullSafe.create(value)
                 //                .setResult((Object) LONG_ZERO)
@@ -124,7 +124,7 @@ public final class NLS extends ObjectRoot {
     }
     //==========================================================================
 
-    public static final LocalDate string2LocalDate(final String stringDate) {
+    public static final LocalDate string2LocalDate( String stringDate) {
 
         return LocalDate.parse(stringDate, NLS.DEFAULT_DATE_FORMATTER);
 

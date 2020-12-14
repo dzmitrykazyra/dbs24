@@ -5,9 +5,9 @@
  */
 package org.dbs24.service;
 
-import org.dbs24.spring.core.bean.AbstractApplicationBean;
+import org.dbs24.spring.core.api.AbstractApplicationBean;
 //import org.springframework.beans.factory.annotation.Value;
-//import static org.dbs24.application.core.sysconst.SysConst.*;
+//import static org.dbs24.consts.SysConst.*;
 import lombok.Data;
 
 /**

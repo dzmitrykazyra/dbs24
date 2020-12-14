@@ -17,7 +17,7 @@ public final class StackTraceInfo {
     private final Throwable throwable;
     private final String shift = "############";
 
-    public StackTraceInfo(final Throwable th) {
+    public StackTraceInfo(Throwable th) {
         this.throwable = th;
 
         this.addTraceRecord(String.format("%s %s: '%s'\n",
@@ -27,11 +27,11 @@ public final class StackTraceInfo {
 
     }
 
-    public void addTraceRecord(final String recInfo) {
+    public void addTraceRecord(String recInfo) {
         restRecord = restRecord.concat(recInfo);
     }
 
-    private void addTraceElement(final StackTraceElement ste) {
+    private void addTraceElement(StackTraceElement ste) {
         restRecord = restRecord.concat(String.format("%s %s.%s() (%d)\n",
                 this.shift,
                 ste.getClassName(),
@@ -46,9 +46,9 @@ public final class StackTraceInfo {
     public String getStringStackTraceInfo() {
 
         Arrays.stream(throwable.getStackTrace())
-//                .sorted((st1, st2) -> {
-//                    return (Integer.valueOf(st1.getLineNumber()).compareTo(st2.getLineNumber()));
-//                })
+                //                .sorted((st1, st2) -> {
+                //                    return (Integer.valueOf(st1.getLineNumber()).compareTo(st2.getLineNumber()));
+                //                })
                 .limit(50)
                 .forEach((ste) -> {
                     this.addTraceElement(ste);

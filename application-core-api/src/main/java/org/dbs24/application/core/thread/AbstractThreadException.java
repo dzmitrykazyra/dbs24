@@ -13,7 +13,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class AbstractThreadException extends InternalAppException {
 
-    public AbstractThreadException(final String message) {
+    public AbstractThreadException( String message) {
         super(message);
     }
 }

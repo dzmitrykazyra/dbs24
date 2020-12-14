@@ -7,7 +7,7 @@ package org.dbs24.fields.desc;
 
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.application.core.log.LogService;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +24,7 @@ public class AppFieldsMap {
             = ServiceFuncs.<Integer, AppFieldsCaptions>getOrCreateMap(ServiceFuncs.MAP_NULL);
 
     //==========================================================================
-    private AppFieldsCaptions getAppFieldsCaptions(final Integer app_id, final Long user_id, final Collection<FieldDescription> lst) {
+    private AppFieldsCaptions getAppFieldsCaptions( Integer app_id, Long user_id, Collection<FieldDescription> lst) {
 
         return NullSafe.create(ServiceFuncs.
                 <Integer, AppFieldsCaptions>getMapValue_silent(this.fieldsList,
@@ -84,18 +84,18 @@ public class AppFieldsMap {
     }
 
     //==========================================================================
-    public String getFieldCaption(final Integer app_id, final Long user_id, final String attrName, final Collection<FieldDescription> lst) {
+    public String getFieldCaption( Integer app_id, Long user_id, String attrName, Collection<FieldDescription> lst) {
 
         return this.getAppFieldsCaptions(app_id, user_id, lst).getAttrCaption(user_id, attrName);
     }
 
     //==========================================================================
-    public String getFieldToolTip(final Integer app_id, final Long user_id, final String attrName, final Collection<FieldDescription> lst) {
+    public String getFieldToolTip( Integer app_id, Long user_id, String attrName, Collection<FieldDescription> lst) {
         return this.getAppFieldsCaptions(app_id, user_id, lst).getAttrToolTip(user_id, attrName);
     }
 
     //==========================================================================
-    public Collection<FieldDescription> getFieldDescription(final Integer app_id, final Long user_id) {
+    public Collection<FieldDescription> getFieldDescription( Integer app_id, Long user_id) {
 
         return NullSafe.create(OBJECT_NULL)
                 .execute2result(() -> {
@@ -206,7 +206,7 @@ public class AppFieldsMap {
 
     //==========================================================================
     // сбросить настройки из кэша
-    public void resetFieldsDescriptions(final Integer app_id) {
+    public void resetFieldsDescriptions( Integer app_id) {
 
         LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this),
                 () -> String.format("app_id=%d", app_id));

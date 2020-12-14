@@ -5,7 +5,7 @@
  */
 package org.dbs24.application.core.exception.api;
 
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 
 /**
  *
@@ -18,7 +18,7 @@ public class InternalAppException extends RuntimeException {
 
     }
 
-    public InternalAppException(final String aErrMsg) {
+    public InternalAppException( String aErrMsg) {
         super(aErrMsg);
     }
 
@@ -29,7 +29,7 @@ public class InternalAppException extends RuntimeException {
     }
 
     //==========================================================================
-    public static String getExtendedErrMessage(final Throwable th) {
+    public static String getExtendedErrMessage( Throwable th) {
         String errMsg = "no error details";
         String errCause = EMPTY_STRING;
 
@@ -48,7 +48,7 @@ public class InternalAppException extends RuntimeException {
     }
 
     //==========================================================================
-    public static String getExtendedErrMessage(final Throwable th, final String procedure) {
+    public static String getExtendedErrMessage( Throwable th, String procedure) {
 
         String errMsg = String.format("Exception in procedure '%s': ", procedure, getExtendedErrMessage(th));
 

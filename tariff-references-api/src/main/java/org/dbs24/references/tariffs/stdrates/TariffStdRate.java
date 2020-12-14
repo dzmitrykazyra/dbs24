@@ -24,7 +24,7 @@ public class TariffStdRate extends AbstractRefRecord implements ReferenceRec {
         return tariff_std_group_id;
     }
 
-    public TariffStdRate setTariff_std_group_id(final Integer tariff_std_group_id) {
+    public TariffStdRate setTariff_std_group_id( Integer tariff_std_group_id) {
         this.tariff_std_group_id = tariff_std_group_id;
         return this;
     }
@@ -33,7 +33,7 @@ public class TariffStdRate extends AbstractRefRecord implements ReferenceRec {
         return tariff_std_rate_id;
     }
 
-    public TariffStdRate setTariff_std_rate_id(final Integer tariff_std_rate_id) {
+    public TariffStdRate setTariff_std_rate_id( Integer tariff_std_rate_id) {
         this.tariff_std_rate_id = tariff_std_rate_id;
         return this;
     }
@@ -42,7 +42,7 @@ public class TariffStdRate extends AbstractRefRecord implements ReferenceRec {
         return tariff_std_rate_name;
     }
 
-    public TariffStdRate setTariff_std_rate_name(final String tariff_std_rate_name) {
+    public TariffStdRate setTariff_std_rate_name( String tariff_std_rate_name) {
         this.tariff_std_rate_name = tariff_std_rate_name;
         return this;
     }

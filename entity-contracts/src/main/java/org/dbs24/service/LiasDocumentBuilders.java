@@ -6,7 +6,7 @@
 package org.dbs24.service;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.spring.core.bean.AbstractApplicationBean;
+import org.dbs24.spring.core.api.AbstractApplicationBean;
 import org.springframework.stereotype.Service;
 import org.dbs24.references.api.DocTemplateId;
 import java.util.Collection;
@@ -20,7 +20,7 @@ import org.dbs24.entity.document.DocAttrValue;
 import org.dbs24.lias.opers.napi.LiasFinanceOper;
 import org.dbs24.lias.opers.attrs.DOC_TEMPLATE_ID;
 import org.dbs24.application.core.locale.NLS;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.lias.opers.api.LiasOpersConst;
 import org.dbs24.references.documents.docattr.DocAttr;
 import org.dbs24.references.documents.docstatus.DocStatus;
@@ -28,10 +28,6 @@ import org.dbs24.references.documents.doctemplate.DocTemplate;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Service
 public class LiasDocumentBuilders extends AbstractApplicationBean {
 
@@ -47,15 +43,13 @@ public class LiasDocumentBuilders extends AbstractApplicationBean {
                 .stream()
                 .unordered()
                 .filter(p -> AnnotationFuncs.isAnnotated(p, DocumentsConst.DOC_TEMPLATE_ID_ANN))
-                .forEach(c_clazz -> {
-
-                    templatesList.add(AnnotationFuncs.getAnnotation(c_clazz, DocumentsConst.DOC_TEMPLATE_ID_ANN));
-
-                });
+                .forEach(clazz -> templatesList
+                .add(AnnotationFuncs.getAnnotation(clazz, DocumentsConst.DOC_TEMPLATE_ID_ANN))
+                );
     }
 
     //==========================================================================
-    public DocTemplateId getDocTemplateById(final Integer template_id) {
+    public DocTemplateId getDocTemplateById(Integer template_id) {
 
         return ServiceFuncs.<DocTemplateId>findCollectionElement(this.templatesList,
                 p -> template_id.equals(p.doc_template_id()),
@@ -64,7 +58,7 @@ public class LiasDocumentBuilders extends AbstractApplicationBean {
     }
 
     //==========================================================================
-    public Document createDocument(final DocBuilder docBuilder, final LiasFinanceOper liasFinanceOper) {
+    public Document createDocument(DocBuilder docBuilder, LiasFinanceOper liasFinanceOper) {
 
         final Document document = NullSafe.createObject(Document.class);
 
@@ -84,7 +78,7 @@ public class LiasDocumentBuilders extends AbstractApplicationBean {
     }
 
     //==========================================================================
-    protected Collection<DocAttrValue> createNewDocAttrs(final LiasFinanceOper liasFinanceOper, final Document document) {
+    protected Collection<DocAttrValue> createNewDocAttrs(LiasFinanceOper liasFinanceOper, Document document) {
         final DocTemplateId dti = this.getDocTemplateById(liasFinanceOper.<Integer>attr(DOC_TEMPLATE_ID.class));
 
         return this.processDocAttrs(dti, liasFinanceOper, document);

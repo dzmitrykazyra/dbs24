@@ -7,12 +7,8 @@ package org.dbs24.entity.tariff.actions;
 
 import org.dbs24.entity.core.AbstractAction;
 import org.dbs24.entity.core.api.ActionCodeId;
-import org.dbs24.entity.core.api.AllowedMethod;
-import org.dbs24.entity.core.api.EntityWarningsList;
-//import org.dbs24.exception.api.EntityWarningsException;
-//import org.dbs24.application.core.exception.api.InternalAppException;
 import org.dbs24.consts.TariffConst;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.EntityConst.*;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import lombok.Data;
 
@@ -31,7 +27,7 @@ public class ActModifyTariffPlan extends AbstractAction<AbstractTariffPlan> {
     //==========================================================================
     public static Boolean isAllowed(AbstractTariffPlan entity) {
 
-        return (AbstractAction.isAllowed(entity, ES_VALID));
+        return (AbstractAction.isAllowed(entity, ES_ACTUAL));
     }
 
     //==========================================================================

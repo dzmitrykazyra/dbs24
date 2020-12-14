@@ -8,7 +8,7 @@ package org.dbs24.entity.service;
 import org.dbs24.entity.core.AbstractAction;
 import org.dbs24.entity.core.api.ActionCodeId;
 import org.dbs24.entity.core.api.AlwaysAllowedAction;
-import org.dbs24.entity.core.api.EntityContractConst;
+import static org.dbs24.consts.EntityConst.*;
 //import org.dbs24.services.api.ServiceLocator;
 //import org.dbs24.services.FS24JdbcService;
 import org.dbs24.application.core.nullsafe.NullSafe;
@@ -17,7 +17,7 @@ import org.dbs24.application.core.nullsafe.NullSafe;
  *
  * @author kazyra_d
  */
-@ActionCodeId(action_code = EntityContractConst.ACT_RESET_DEFAULT_ENTITY_FIELDS,
+@ActionCodeId(action_code = ACT_RESET_DEFAULT_ENTITY_FIELDS,
         action_name = "Сбросить значение поля по умолчанию")
 @AlwaysAllowedAction
 public class ActResetDefaultEntityFields extends AbstractAction {

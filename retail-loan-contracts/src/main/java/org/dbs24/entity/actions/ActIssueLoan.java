@@ -7,7 +7,6 @@ package org.dbs24.entity.actions;
 
 import org.dbs24.application.core.locale.NLS;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.entity.contracts.actions.AbstractLiasContractOper;
 import org.dbs24.entity.AbstractRetailLoanContract;
 import org.dbs24.consts.RetailLoanContractConst;
 import org.dbs24.entity.core.api.ActionCodeId;
@@ -16,7 +15,7 @@ import org.dbs24.lias.opers.napi.LiasFinanceOper;
 import java.math.BigDecimal;
 import lombok.Data;
 import org.dbs24.references.api.LiasesConst;
-import org.dbs24.bond.schedule.api.BondScheduleConst;
+import static org.dbs24.consts.BondScheduleConst.*;
 import org.dbs24.repository.LoanContractRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -64,7 +63,7 @@ public class ActIssueLoan extends AbstractLiasContractOper<AbstractRetailLoanCon
                 .<LIAS_BASE_ASSET_TYPE_ID>addAttr(() -> LiasesConst.LBAT_MONEYS)
                 .<LIAS_START_DATE>addAttr(() -> this.getContractEntity().getBeginDate())
                 .<LIAS_FINAL_DATE>addAttr(() -> this.getContractEntity().getEndDate())
-                .<PMT_SCHEDULE>addAttr(() -> BondScheduleConst.EK_BONDSCHEDULE_MAIN_DEBT)
+                .<PMT_SCHEDULE>addAttr(() -> EK_BONDSCHEDULE_MAIN_DEBT)
                 .<OPER_NOTES>addAttr(() -> "Issue loann")
         );
 

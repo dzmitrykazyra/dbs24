@@ -4,46 +4,24 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>references-api</artifactId>
     <packaging>jar</packaging>
 
     <build>
-        <finalName>references-api</finalName> 
+        <finalName>${project.name}</finalName>
     </build>    
             
     <dependencies>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>application-core-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>application-core-api</artifactId>         
         </dependency>   
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>persistence-api</artifactId>
-            <version>${app.version}</version>            
         </dependency>          
-        <!--        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>exception-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>     
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>tce-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>    
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>jdbc-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>                               
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-           <version>7.0</version>
-        </dependency> -->
     </dependencies>
         
 </project>

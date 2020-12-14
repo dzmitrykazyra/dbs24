@@ -13,7 +13,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class DuplicateServIdException extends InternalAppException {
 
-    public DuplicateServIdException(final String message) {
+    public DuplicateServIdException( String message) {
         super(message);
     }
 

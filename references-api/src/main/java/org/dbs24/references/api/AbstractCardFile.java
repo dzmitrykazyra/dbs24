@@ -23,7 +23,7 @@ public abstract class AbstractCardFile<T extends ReferenceRec> {
     }
 
     //==========================================================================
-    protected abstract void loadReference(final Boolean needReload, final Long id);
+    protected abstract void loadReference( Boolean needReload, Long id);
 
     //==========================================================================
     public Collection<T> getCardFiles() {
@@ -33,7 +33,7 @@ public abstract class AbstractCardFile<T extends ReferenceRec> {
         return cardFiles;
     }
 
-    public void setCardFiles(final Collection<T> cardFiles) {
+    public void setCardFiles( Collection<T> cardFiles) {
         this.cardFiles = cardFiles;
     }
 

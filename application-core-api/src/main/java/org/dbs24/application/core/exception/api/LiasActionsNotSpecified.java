@@ -12,7 +12,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class LiasActionsNotSpecified extends InternalAppException {
 
-    public LiasActionsNotSpecified(final String message) {
+    public LiasActionsNotSpecified( String message) {
         super(message);
     }
 }

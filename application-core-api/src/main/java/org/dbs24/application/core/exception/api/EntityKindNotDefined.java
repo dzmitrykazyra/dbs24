@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class EntityKindNotDefined extends InternalAppException {
 
-    public EntityKindNotDefined(final String message) {
+    public EntityKindNotDefined( String message) {
         super(message);
     }
 

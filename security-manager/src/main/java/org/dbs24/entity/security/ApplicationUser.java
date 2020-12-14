@@ -8,22 +8,15 @@ package org.dbs24.entity.security;
 import org.dbs24.consts.SecurityConst;
 import org.dbs24.entity.core.AbstractActionEntity;
 import org.dbs24.entity.core.api.EntityKindId;
-import org.springframework.security.core.userdetails.User;
 import org.dbs24.entity.core.api.EntityTypeId;
 import java.util.Collection;
 import javax.persistence.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.dbs24.entity.core.AbstractPersistenceEntity;
 import lombok.Data;
 import org.dbs24.entity.core.api.ActionClassesPackages;
-import org.dbs24.entity.core.api.EntityConst;
+import org.dbs24.consts.EntityConst;
 import org.dbs24.entity.core.api.EntityStatusesRef;
 import org.dbs24.entity.status.EntityStatusId;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 @Entity
 @Table(name = "core_Users")
@@ -72,22 +65,7 @@ public class ApplicationUser extends AbstractActionEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<ApplicationRole> userRoles;
 
-    public Long getUser_id() {
+    public Long getUserId() {
         return super.getEntity_id();
     }
-
-//    @PostLoad
-//    private void initData() {
-//        if (null == applicationUserDetails) {
-//            applicationUserDetails = new ApplicationUserDetails();
-//            applicationUserDetails.setUsername(login);
-//            applicationUserDetails.setPassword(password);
-//        }
-//    }
-
-//    public ApplicationUserDetails getApplicationUserDetails() {
-//        applicationUserDetails.setUsername(name);
-//        applicationUserDetails.setPassword(password);
-//        return applicationUserDetails;
-//    }
 }

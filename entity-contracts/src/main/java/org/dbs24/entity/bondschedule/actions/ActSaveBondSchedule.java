@@ -5,16 +5,12 @@
  */
 package org.dbs24.entity.bondschedule.actions;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 import org.dbs24.entity.core.AbstractAction;
 import org.dbs24.entity.core.api.ActionCodeId;
-import org.dbs24.bond.schedule.api.BondScheduleConst;
+import static org.dbs24.consts.BondScheduleConst.*;
 import org.dbs24.entity.core.api.RefreshEntity;
 
-@ActionCodeId(action_code = BondScheduleConst.ACT_SAVE_BONDSCHEDULE,
+@ActionCodeId(action_code = ACT_SAVE_BONDSCHEDULE,
         action_name = "Редактировать график")
 public class ActSaveBondSchedule extends AbstractAction {
 

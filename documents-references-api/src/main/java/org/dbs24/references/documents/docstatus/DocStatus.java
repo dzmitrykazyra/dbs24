@@ -38,7 +38,7 @@ public class DocStatus extends AbstractRefRecord implements ReferenceRec {
     private String docStatusName;
 
     //==========================================================================
-    public static final DocStatus findDocStatus(final Integer statusId) {
+    public static final DocStatus findDocStatus( Integer statusId) {
         return AbstractRefRecord.<DocStatus>getRefeenceRecord(DocStatus.class,
                 record -> record.getDocStatusId().equals(statusId));
     }

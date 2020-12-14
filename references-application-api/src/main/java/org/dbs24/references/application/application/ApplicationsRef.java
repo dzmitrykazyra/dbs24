@@ -20,7 +20,7 @@ import java.util.Collection;
 public class ApplicationsRef<T extends Application> extends AbstractReference<Application> {
 
     //==========================================================================
-    public T getApplicationById(final Integer app_id) throws ReferenceNotFound {
+    public T getApplicationById( Integer app_id) throws ReferenceNotFound {
 
         return (T) this.<T>findReference(() -> (this.findApplicationById(app_id)),
                 String.format("Неизвестный код приложения (ApplicationsRef.app_id=%d)", app_id));
@@ -28,40 +28,40 @@ public class ApplicationsRef<T extends Application> extends AbstractReference<Ap
     }
 
     //==========================================================================
-    public String getAppUrlById(final Integer app_id) throws ReferenceNotFound {
+    public String getAppUrlById( Integer app_id) throws ReferenceNotFound {
 
         return ((T) this.<T>findReference(() -> (this.findAppUrlById(app_id)),
                 String.format("Неизвестный код приложения (ApplicationsRef.app_id=%d)", app_id))).getApp_url();
     }
 
     //==========================================================================
-    public String getAppNameById(final Integer app_id) throws ReferenceNotFound {
+    public String getAppNameById( Integer app_id) throws ReferenceNotFound {
         return getApplicationById(app_id).getApp_name();
     }
 
     //==========================================================================
-    public String getAppNameByCode(final String app_code) throws ReferenceNotFound {
+    public String getAppNameByCode( String app_code) throws ReferenceNotFound {
 
         return ((T) this.<T>findReference(() -> (this.findAppNameByCode(app_code)),
                 String.format("Неизвестный код приложения (ApplicationsRef.app_code=%s)", app_code))).getApp_name();
     }
 
     //==========================================================================
-    public String getAppUrlByCode(final String app_code) throws ReferenceNotFound {
+    public String getAppUrlByCode( String app_code) throws ReferenceNotFound {
 
         return ((T) this.<T>findReference(() -> (this.findAppUrlByCode(app_code.toUpperCase())),
                 String.format("Неизвестный код приложения (ApplicationsRef.app_code=%s)", app_code))).getApp_url();
     }
 
     //==========================================================================
-    private T findApplicationById(final Integer app_id) {
+    private T findApplicationById( Integer app_id) {
 
         return (T) this.findCachedRecords((object) -> ((T) object).getApp_id().equals(app_id));
 
     }
 
     //==========================================================================
-    private String findAppNameByCode(final String app_code) {
+    private String findAppNameByCode( String app_code) {
 
         String appName = null;
         T application = (T) this.findCachedRecords((object) -> ((Application) object).getApp_code().equals(app_code));
@@ -75,7 +75,7 @@ public class ApplicationsRef<T extends Application> extends AbstractReference<Ap
     }
 
     //==========================================================================
-    private String findAppUrlByCode(final String app_code) {
+    private String findAppUrlByCode( String app_code) {
 
         String appName = null;
         Application application = (Application) this.findCachedRecords((object) -> ((Application) object).getApp_code().equals(app_code));
@@ -88,7 +88,7 @@ public class ApplicationsRef<T extends Application> extends AbstractReference<Ap
     }
 
     //==========================================================================
-    private String findAppUrlById(final Integer app_id) {
+    private String findAppUrlById( Integer app_id) {
 
         String appUrl = null;
         Application application = (Application) this.findCachedRecords((object) -> ((Application) object).getApp_id().equals(app_id));

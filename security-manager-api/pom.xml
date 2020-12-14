@@ -4,26 +4,22 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>security-manager-api</artifactId>
     <packaging>jar</packaging>
     <build>
-        <finalName>security-manager-api</finalName> 
+        <finalName>${project.name}</finalName>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <!--                <includes>
-                    <include>**/*.properties</include>
-                </includes>-->
+                <directory>${src.main.resources}</directory>
+                <filtering>${filtering.resources}</filtering>
             </resource>
         </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build>     

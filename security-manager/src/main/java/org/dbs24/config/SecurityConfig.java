@@ -9,8 +9,8 @@ import lombok.Data;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
-import org.dbs24.spring.config.AbstractApplicationConfiguration;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import org.dbs24.config.AbstractApplicationConfiguration;
+import static org.dbs24.consts.SysConst.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Configuration

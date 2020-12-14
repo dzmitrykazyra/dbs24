@@ -39,7 +39,7 @@ public abstract class TariffBoxAbstract implements TariffBox {
     private Flux<TariffCalcSumExtended> fluxTariffSums;
 
     @Override
-    public void printCalculations(final TariffKind tariffKind) {
+    public void printCalculations( TariffKind tariffKind) {
 
         LogService.LogInfo(this.getClass(), () -> this.tariffSums.stream()
                 //LogService.LogInfo(this.getClass(), () -> this.fluxTariffSums.toStream()

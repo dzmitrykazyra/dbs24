@@ -11,7 +11,7 @@ import org.dbs24.exception.references.ReferenceNotFound;
 import org.dbs24.references.api.LangStrValue;
 import org.dbs24.references.core.AbstractReference;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.entity.api.EntityReferenceConst;
+import org.dbs24.consts.EntityReferenceConst;
 import org.dbs24.references.api.ReferenceSyncOrder;
 import org.dbs24.application.core.service.funcs.ReflectionFuncs;
 import java.util.Collection;
@@ -25,14 +25,14 @@ import java.util.stream.Collectors;
 public class EntAttrsRef<T extends EntAttr> extends AbstractReference<EntAttr> {
 
     //==========================================================================
-    public T getEntityAttrById(final Integer attr_id) throws ReferenceNotFound {
+    public T getEntityAttrById( Integer attr_id) throws ReferenceNotFound {
 
         return (T) this.<T>findReference(() -> (this.findEntityAttrById(attr_id)),
                 String.format("Неизвестный атрибут энтити (EntAttrRef.attr_id=%d)", attr_id));
     }
 
     //==========================================================================
-    private T findEntityAttrById(final Integer attr_id) {
+    private T findEntityAttrById( Integer attr_id) {
 
         return (T) this.findCachedRecords((object) -> ((T) object).getAttr_id().equals(attr_id));
     }

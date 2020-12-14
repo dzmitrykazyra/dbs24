@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>documents-api</artifactId>
     <packaging>jar</packaging>
@@ -13,34 +13,17 @@
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>documents-references-api</artifactId>
-            <version>${app.version}</version>          
         </dependency>                         
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>entity-core</artifactId>
-            <version>${app.version}</version>          
+            <artifactId>entity-core</artifactId>   
         </dependency>        
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.1.Final</version>
         </dependency>
     </dependencies>
    <build>
-        <finalName>documents-api</finalName>
-<!--        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
-            </plugin>
-        </plugins>-->
+        <finalName>${project.name}</finalName>
     </build>
-    <repositories>
-        <repository>
-            <id>unknown-jars-temp-repo</id>
-            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
-            <url>file:${project.basedir}/lib</url>
-        </repository>
-    </repositories>
 </project>

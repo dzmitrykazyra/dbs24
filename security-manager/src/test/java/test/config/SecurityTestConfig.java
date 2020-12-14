@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.dbs24.config.*;
-import org.dbs24.spring.config.MainApplicationConfig;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import org.dbs24.config.MainApplicationConfig;
+import static org.dbs24.consts.SysConst.*;
 
 @Configuration
 //@ComponentScan(basePackages = SERVICE_PACKAGE)

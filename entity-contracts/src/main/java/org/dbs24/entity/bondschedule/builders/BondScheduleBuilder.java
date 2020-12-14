@@ -7,8 +7,8 @@ package org.dbs24.entity.bondschedule.builders;
 
 import java.util.Collection;
 import org.dbs24.entity.bondschedule.PmtSchedule;
-import org.dbs24.spring.core.bean.AbstractApplicationBean;
-import org.dbs24.entity.contracts.AbstractEntityContract;
+import org.dbs24.spring.core.api.AbstractApplicationBean;
+import org.dbs24.entity.AbstractEntityContract;
 
 /**
  *

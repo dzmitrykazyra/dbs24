@@ -6,7 +6,7 @@
 package org.dbs24.entity.calculations;
 
 import org.dbs24.entity.debts.LiasAction;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.entity.tariff.TariffRate;
 import org.dbs24.entity.tariff.TariffRecordAbstract;
 import org.dbs24.references.tariffs.kind.TariffRowCalculator;
@@ -63,7 +63,7 @@ public class TariffTurnOverBox extends TariffBoxAbstract {
         }
 
         //LogService.LogInfo(this.getClass(), String.format(" liasActions size = %d ", liasActions.size()));
-        for (final LiasAction liasAction : liasActions) {
+        for ( LiasAction liasAction : liasActions) {
 
             if (liasAction.getLiasDate().equals(v_tariffRateRecord.getRateDate())) {
                 percRate = v_tariffRateRecord.getRateValue();

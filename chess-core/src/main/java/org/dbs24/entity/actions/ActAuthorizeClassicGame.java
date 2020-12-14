@@ -12,16 +12,12 @@ import org.dbs24.entity.core.api.ViewAction;
 import org.dbs24.entity.classic.ClassicGame;
 import lombok.Data;
 import org.dbs24.entity.core.AbstractAction;
-import org.dbs24.entity.core.api.EntityConst;
+import static org.dbs24.consts.EntityReferenceConst.*;
 import org.dbs24.entity.marks.EntityMark;
 import org.dbs24.entity.marks.MarkValue;
 import org.dbs24.references.api.AbstractRefRecord;
 import org.dbs24.application.core.nullsafe.NullSafe;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 @ActionCodeId(action_code = WorldChessConst.ACT_AUTHORIZE_GAME,
         action_name = "Авторизация партии")
@@ -39,9 +35,9 @@ public class ActAuthorizeClassicGame extends AbstractAction<ClassicGame> {
         entityMark.setEntity(this.getEntity());
         entityMark.setMarkValue(AbstractRefRecord.<MarkValue>getRefeenceRecord(
                 MarkValue.class,
-                record -> record.getMarkId().equals(EntityConst.MR_AUTHORIZE_ENTITY)
-                && record.getMarkValueId().equals(EntityConst.MR_AUTHORIZE_ENTITY_AUTH)));
-        entityMark.setDirection(EntityConst.IS_AUTHORIZED);
+                record -> record.getMarkId().equals(MR_AUTHORIZE_ENTITY)
+                && record.getMarkValueId().equals(MR_AUTHORIZE_ENTITY_AUTH)));
+        entityMark.setDirection(IS_AUTHORIZED);
 
         this.addPersistenceEntity(entityMark);
         //this.getContractEntity().getEntityMarks().add(entityMark);

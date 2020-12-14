@@ -25,7 +25,7 @@ public class FieldDescriptionImpl implements FieldDescription {
         return field_name;
     }
 
-    public void setField_name(final String field_name) {
+    public void setField_name( String field_name) {
         this.field_name = field_name;
     }
 
@@ -34,7 +34,7 @@ public class FieldDescriptionImpl implements FieldDescription {
         return field_caption;
     }
 
-    public void setField_caption(final String field_caption) {
+    public void setField_caption( String field_caption) {
         this.field_caption = field_caption;
     }
 
@@ -43,7 +43,7 @@ public class FieldDescriptionImpl implements FieldDescription {
         return field_tooltip;
     }
 
-    public void setField_tooltip(final String field_tooltip) {
+    public void setField_tooltip( String field_tooltip) {
         this.field_tooltip = field_tooltip;
     }
 

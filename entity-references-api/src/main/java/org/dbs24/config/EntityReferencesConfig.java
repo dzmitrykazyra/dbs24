@@ -5,26 +5,16 @@
  */
 package org.dbs24.config;
 
-import org.dbs24.application.core.nullsafe.NullSafe;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
-import org.dbs24.repository.*;
-import org.springframework.context.annotation.Bean;
-import org.dbs24.spring.config.AbstractApplicationConfiguration;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import org.dbs24.config.AbstractApplicationConfiguration;
+import static org.dbs24.consts.SysConst.*;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Configuration
-@ComponentScan(basePackages = SERVICE_PACKAGE)
-//@EntityScan(basePackages = {SECURITY_PACKAGE, ENTITY_PACKAGE})
+@ComponentScan(basePackages = {COMPONENT_PACKAGE, SERVICE_PACKAGE})
 @PropertySource(APP_PROPERTIES)
-//@EnableJpaRepositories(basePackages = REPOSITORY_PACKAGE)
 @Data
 public class EntityReferencesConfig extends AbstractApplicationConfiguration {
 

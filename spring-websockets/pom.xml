@@ -4,21 +4,31 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>spring-websockets</artifactId>
     <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <finalName>${project.name}</finalName>
+    </build>
     <dependencies>
         <dependency>
-            <groupId>javax.websocket</groupId>
-            <artifactId>javax.websocket-api</artifactId>
-            <version>${javax-websocket.version}</version>
-            <scope>provided</scope>
-        </dependency>
-<!--        <dependency>
+            <groupId>org.dbs24</groupId>
+            <artifactId>spring-core-api</artifactId>    
+        </dependency> 
+        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
-            <version>${spring-boot.version}</version>
-        </dependency>    -->
+            <artifactId>spring-boot</artifactId>
+        </dependency>  
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>             
     </dependencies>
 </project>

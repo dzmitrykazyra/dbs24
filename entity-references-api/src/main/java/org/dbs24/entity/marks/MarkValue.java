@@ -11,10 +11,6 @@ import org.dbs24.references.api.ReferenceRec;
 import javax.persistence.*;
 import lombok.Data;
 
-/**
- *
- * @author kazyra_d
- */
 @Entity
 @Data
 @Table(name = "core_marksValuesRef")

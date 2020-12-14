@@ -5,7 +5,7 @@
  */
 package org.dbs24.service;
 
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import static org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_SINGLETON;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.ReflectionFuncs;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import org.dbs24.entity.tariff.AbstractTariffPlan;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.dbs24.consts.TariffConst;
 import org.dbs24.entity.status.EntityStatus;
 import org.dbs24.references.api.AbstractRefRecord;
@@ -26,16 +26,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 @Service
-@Slf4j
+@Log4j2
 @ComponentScan(basePackages = SERVICE_PACKAGE)
-//@EntityClassesPackages(pkgList = {"org.dbs24.entity.tariff"})
-@EntityClassesPackages(pkgList = {ENTITY_PACKAGE + ".tariff"})
+@EntityClassesPackages(pkgList = {ENTITY_PACKAGE, TARIFF_PACKAGE})
 public class TariffCoreService extends AbstractActionExecutionService {
 
     @Bean
@@ -55,7 +50,7 @@ public class TariffCoreService extends AbstractActionExecutionService {
         //    TariffConst.tariffDebug = this.tariffDebug;
         // делаем бинами объекты-тарифы по расчету тарифицируемых услуг
         ReflectionFuncs.processPkgClassesCollection(TARIFF_PACKAGE, TariffKind.class, null,
-                (tariffClazz) -> {
+                tariffClazz -> {
 
                     final String tariffClazzName = tariffClazz.getCanonicalName();
 
@@ -74,8 +69,9 @@ public class TariffCoreService extends AbstractActionExecutionService {
         // родительский метод
         super.postActionExecutionService();
     }
+
     //==========================================================================
-    public AbstractTariffPlan createTariffPlan(final String tariffPlanName,
+    public AbstractTariffPlan createTariffPlan(String tariffPlanName,
             final String tariffPlanCode,
             final EntityKind entityKind,
             final LocalDate actualDate,
@@ -83,13 +79,13 @@ public class TariffCoreService extends AbstractActionExecutionService {
             final TariffPlanProcessor tariffPlanProcessor) {
 
         final AbstractTariffPlan abstractTariffPlan = this.<AbstractTariffPlan>createActionEntity(AbstractTariffPlan.class,
-                (tariffPlan) -> {
+                tariffPlan -> {
                     tariffPlan.setPlanKind(entityKind);
                     tariffPlan.setTariffPlanCode(tariffPlanCode);
                     tariffPlan.setTariffPlanName(tariffPlanName);
                     tariffPlan.setActualDate(actualDate);
                     tariffPlan.setFinishDate(finishDate);
-                    tariffPlan.setCreation_date(LocalDateTime.now());
+                    tariffPlan.setCreationDate(LocalDateTime.now());
                     tariffPlan.setEntityStatus(AbstractRefRecord.<EntityStatus>getRefeenceRecord(
                             EntityStatus.class,
                             record -> record.getEntityStatusId().equals(0)

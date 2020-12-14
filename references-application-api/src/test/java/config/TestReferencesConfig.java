@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 
-import org.dbs24.spring.config.MainApplicationConfig;
+import org.dbs24.config.MainApplicationConfig;
 import org.dbs24.service.ApplicationReferencesService;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 
 /**
  *

@@ -12,7 +12,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class DuplicatedLiasOperException extends InternalAppException {
 
-    public DuplicatedLiasOperException(final String message) {
+    public DuplicatedLiasOperException( String message) {
         super(message);
     }
 

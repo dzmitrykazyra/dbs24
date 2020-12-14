@@ -4,50 +4,17 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>spring-core-api</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring-core.version}</version>
-        </dependency> 
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring-core.version}</version>
-        </dependency>   
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>${spring-data-jpa.version}</version>
-        </dependency>  
-        <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>application-core-api</artifactId>
-            <version>${app.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webflux</artifactId>
-            <!--            <optional>true</optional>-->
-            <version>${spring-webflux.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectreactor</groupId>
-            <artifactId>reactor-spring</artifactId>
-            <version>${spring-reactor.version}</version>
         </dependency>
     </dependencies>
     <build>
-        <finalName>spring-core-api</finalName> 
+        <finalName>${project.name}</finalName>
     </build>
 </project>

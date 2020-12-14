@@ -4,159 +4,146 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>chess-sandbox</artifactId>
     <packaging>jar</packaging>
-    <dependencies>
+    <dependencies>       
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+        </dependency>  
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>        
+        
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>persistence-core</artifactId>
-            <version>${app.version}</version>            
         </dependency> 
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>chess-core</artifactId>
-            <version>${app.version}</version>            
         </dependency>  
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>spring-core-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>spring-core-api</artifactId>       
         </dependency>   
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>entity-core</artifactId>
-            <version>${app.version}</version>  
         </dependency>   
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>spring-config</artifactId>
-            <version>${app.version}</version>            
         </dependency>
         <dependency>
             <groupId>${app.root.group}</groupId>
             <artifactId>entity-core-api</artifactId>
-            <version>${app.version}</version>
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>test-core</artifactId>
-            <version>${app.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>spring-boot-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>spring-boot-api</artifactId>       
         </dependency>     
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>${spring-data-jpa.version}</version>
-        </dependency>  
-        <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>spring-junit</artifactId>
-            <version>${app.version}</version> 
-            <scope>test</scope>            
+            <artifactId>spring-rest-api</artifactId>    
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>spring-rest-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>spring-websockets</artifactId>
-            <version>${app.version}</version>            
-        </dependency>        
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>security-manager</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>security-manager</artifactId>         
         </dependency>                       
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>            
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+        </dependency>                     
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+        </dependency>
+        <!--        <dependency>
+            <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency> 
+        </dependency> -->
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
-            <version>${jpa.version}</version>
         </dependency>  
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgres.version}</version>
-        </dependency> 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-            <version>${spring-core.version}</version>
-        </dependency>        
-        <dependency>
-            <groupId>org.projectreactor</groupId>
-            <artifactId>reactor-spring</artifactId>
-            <version>${spring-reactor.version}</version>
-        </dependency> 
-        <dependency>
+        </dependency>           
+<!--        <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>${reactor-core.version}</version>
         </dependency>        
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
-            <version>${reactor-core.version}</version>
             <scope>test</scope>
-        </dependency> 
-        <dependency>
+        </dependency> -->
+        <!--        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
-            <version>${spring-boot.version}</version>
-        </dependency>     
+        </dependency>     -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>          
+                <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
+                </exclusion>            
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>      
+        </dependency>           
+        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>                           
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <!--        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>  
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>  
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>       
     </dependencies>
     <build>
-        <finalName>chess-sandbox</finalName> 
+        <finalName>${project.name}</finalName>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
+                <directory>${src.main.resources}</directory>
+                <filtering>${filtering.resources}</filtering>
                 <!--                <includes>
                     <include>**/*.properties</include>
                 </includes>-->
@@ -167,6 +154,8 @@
                     <include>entity-core.jar</include>
                     <include>entity-references-api.jar</include>                   
                     <include>chess-core.jar</include>
+                    <include>references-application-api.jar</include> 
+                    <include>security-manager.jar</include>                                        
                 </includes>
                 <targetPath>${project.build.outputDirectory}/${source.directory.libs}/</targetPath>
             </resource>
@@ -175,7 +164,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -184,19 +172,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>${source.directory.libs}/</classpathPrefix>
-                        </manifest>
-                    </archive>
-                    <excludes>
-                        <exclude>**/*.properties</exclude>
-                    </excludes>
-                </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>                          
         </plugins>
     </build>   
 </project>

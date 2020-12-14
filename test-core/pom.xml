@@ -4,36 +4,53 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>test-core</artifactId>
     <packaging>jar</packaging>
-    <version>1.0</version>
+    <build>
+        <finalName>${project.name}</finalName>
+    </build>
     <dependencies>    
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>application-core-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>application-core-api</artifactId>        
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>test-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>test-api</artifactId>           
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>entity-core</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>test-junit-api</artifactId>      
+        </dependency>                 
+        <dependency>
+            <groupId>org.dbs24</groupId>
+            <artifactId>entity-core</artifactId>        
+        </dependency>              
+        <dependency>
+            <groupId>org.dbs24</groupId>
+            <artifactId>spring-rsockets</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dbs24</groupId>
+            <artifactId>spring-websockets</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-            <version>${spring-boot.version}</version>
-        </dependency>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>     
         <dependency>
-            <groupId>org.projectreactor</groupId>
-            <artifactId>reactor-spring</artifactId>
-            <version>${spring-reactor.version}</version>
-        </dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>                        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test-autoconfigure</artifactId>
+        </dependency>           
     </dependencies>
 </project>

@@ -14,7 +14,7 @@ import org.dbs24.application.core.exception.api.InternalAppException;
  */
 public class LiasDoesNotExists extends InternalAppException {
 
-    public LiasDoesNotExists(final String message) {
+    public LiasDoesNotExists( String message) {
         super(message);
     }
 }

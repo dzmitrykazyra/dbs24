@@ -12,10 +12,6 @@ import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-/**
- *
- * @author kazyra_d
- */
 @Entity
 @Table(name = "core_EntityStatusesRef")
 @Cacheable
@@ -32,11 +28,4 @@ public class EntityStatus extends AbstractRefRecord implements ReferenceRec {
     private Integer entityTypeId;
     @Column(name = "entity_status_name")
     private String entityStatusName;
-
-    //==========================================================================
-    public static final EntityStatus findEntityStatus(final Integer EntityTypeId, final Integer EntityStatusId) {
-        return AbstractRefRecord.<EntityStatus>getRefeenceRecord(EntityStatus.class,
-                record -> record.getEntityStatusId().equals(EntityStatusId)
-                && record.getEntityTypeId().equals(EntityTypeId));
-    }
 }

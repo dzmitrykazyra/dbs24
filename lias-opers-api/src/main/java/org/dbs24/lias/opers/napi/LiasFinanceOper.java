@@ -28,7 +28,7 @@ public class LiasFinanceOper {
             = ServiceFuncs.<Integer, Class<? extends OperAttr>>getOrCreateMap(ServiceFuncs.MAP_NULL);
 
     //==========================================================================
-    public <LD extends OperAttr> LiasFinanceOper addAttr(final LD attrValue) {
+    public <LD extends OperAttr> LiasFinanceOper addAttr( LD attrValue) {
 
 //        final Object value = attrValue.value();
 //        final String logRecord = String.format("attrValue: %s = (%s) %s",
@@ -51,7 +51,7 @@ public class LiasFinanceOper {
     }
 
     //==========================================================================
-    public <V> V attr(final Class<? extends OperAttr> clazz) {
+    public <V> V attr( Class<? extends OperAttr> clazz) {
 
         final Optional<OperAttr> operAttr = ServiceFuncs.<OperAttr>getCollectionElement(
                 this.getOperAttrsCollection(),
@@ -61,7 +61,7 @@ public class LiasFinanceOper {
     }
 
     //==========================================================================
-    public <V> V attrDef(final Class<? extends OperAttr> clazz, final V defaultValue) {
+    public <V> V attrDef( Class<? extends OperAttr> clazz, V defaultValue) {
 
         return (V) (NullSafe.nvl(attr(clazz), defaultValue));
     }

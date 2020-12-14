@@ -16,7 +16,7 @@ import org.dbs24.references.tariffs.kind.TariffKind;
 public interface TariffPlan extends ActionEntity {
 
 //    Collection<TariffKind> getTariffKinds();
-//    TariffKind getTariffKind(final Integer serv_id);
+//    TariffKind getTariffKind( Integer serv_id);
 //
 //    TariffPlan addTariffKind(TariffKind tariffKind);
 //

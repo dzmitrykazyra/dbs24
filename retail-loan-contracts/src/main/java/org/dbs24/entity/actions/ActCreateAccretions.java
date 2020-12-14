@@ -9,7 +9,6 @@ package org.dbs24.entity.actions;
  *
  * @author Козыро Дмитрий
  */
-import org.dbs24.entity.contracts.actions.ActCreateOrUpdateContract;
 import org.dbs24.entity.core.api.ActionCodeId;
 import org.dbs24.entity.AbstractRetailLoanContract;
 import org.dbs24.consts.RetailLoanContractConst;

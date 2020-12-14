@@ -12,10 +12,6 @@ import org.dbs24.entity.core.api.RefreshEntity;
 import org.dbs24.entity.core.AbstractAction;
 import lombok.Data;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 @ActionCodeId(action_code = WorldChessConst.ACT_CREATE_OR_MODIFY_PLAYER,
         action_name = "Создать\\изменить учетную запись игрока в шахматы")

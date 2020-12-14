@@ -29,7 +29,7 @@ public class TariffKindCashBack4BIB extends TariffKindService<TariffServCashBack
     public Collection<TariffCalcSum> calculateTariff(
             final AbstractRetailLoanContract entity,
             final TariffRate tariffRate,
-            final LocalDate D1, final LocalDate D2) {
+            final LocalDate D1, LocalDate D2) {
         return null;
     }
 }

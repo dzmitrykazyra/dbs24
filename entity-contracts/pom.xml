@@ -4,102 +4,74 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>entity-contracts</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>counterparties</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>counterparties</artifactId>       
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>security-manager</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>bond-schedule-references-api</artifactId>         
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>spring-boot-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>security-manager</artifactId>      
+        </dependency>
+        <dependency>
+            <groupId>org.dbs24</groupId>
+            <artifactId>spring-boot-api</artifactId>          
         </dependency>   
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>liases-api</artifactId>
-            <version>${app.version}</version>            
-        </dependency>             
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>${spring-data-jpa.version}</version>
-        </dependency>    
+            <artifactId>liases-api</artifactId>         
+        </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>spring-core-api</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>spring-core-api</artifactId>          
         </dependency>   
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>entity-core</artifactId>
-            <version>${app.version}</version>            
+            <artifactId>entity-core</artifactId>         
         </dependency>   
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>tariff-core</artifactId>
-            <version>${app.version}</version>            
         </dependency>         
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>entity-contract-references-api</artifactId>
-            <version>${app.version}</version>            
         </dependency>         
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>spring-config</artifactId>
-            <version>${app.version}</version>            
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>documents-api</artifactId>
-            <version>${app.version}</version> 
-        </dependency>
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>spring-junit</artifactId>
-            <version>${app.version}</version> 
-            <scope>test</scope>            
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>            
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
         </dependency> 
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
-            <version>${jpa.version}</version>
         </dependency>  
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgres.version}</version>
-        </dependency> 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring-core.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -110,11 +82,11 @@
         </dependency>                           
     </dependencies>  
     <build>
-        <finalName>entity-contracts</finalName> 
+        <finalName>${project.name}</finalName>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
+                <directory>${src.main.resources}</directory>
+                <filtering>${filtering.resources}</filtering>
                 <!--                <includes>
                     <include>**/*.properties</include>
                 </includes>-->
@@ -124,7 +96,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build> 

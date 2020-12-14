@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class EntityStatusNotDefined extends InternalAppException {
 
-    public EntityStatusNotDefined(final String message) {
+    public EntityStatusNotDefined( String message) {
         super(message);
     }
 

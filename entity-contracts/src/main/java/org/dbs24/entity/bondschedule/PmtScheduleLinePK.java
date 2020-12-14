@@ -9,10 +9,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import lombok.Data;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 public class PmtScheduleLinePK implements Serializable {
 

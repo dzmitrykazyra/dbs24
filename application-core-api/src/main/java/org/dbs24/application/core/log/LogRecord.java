@@ -13,7 +13,7 @@ package org.dbs24.application.core.log;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 
 import java.time.LocalDateTime;
 
@@ -29,10 +29,10 @@ public class LogRecord implements LogRec {
 
     public LogRecord() {
         super();
-        ip_address = APPLICATION_ADDRESS;
+        ip_address = UNKNOWN;
     }
 
-    public LogRecord(final LocalDateTime recDate, final String recDetails) {
+    public LogRecord( LocalDateTime recDate, String recDetails) {
         this();
         this.recDate = recDate;
         this.recDetails = recDetails;
@@ -45,7 +45,7 @@ public class LogRecord implements LogRec {
     }
 
     @Override
-    public LogRecord setRecDate(final LocalDateTime recDate) {
+    public LogRecord setRecDate( LocalDateTime recDate) {
         this.recDate = recDate;
         return this;
     }
@@ -55,7 +55,7 @@ public class LogRecord implements LogRec {
     }
 
     @Override
-    public LogRecord setRecDetails(final String recDetails) {
+    public LogRecord setRecDetails( String recDetails) {
         this.recDetails = recDetails;
         return this;
     }
@@ -65,7 +65,7 @@ public class LogRecord implements LogRec {
     }
 
     @Override
-    public LogRecord setWarPackage(final String warPackage) {
+    public LogRecord setWarPackage( String warPackage) {
         this.warPackage = warPackage;
         return this;
     }
@@ -75,7 +75,7 @@ public class LogRecord implements LogRec {
     }
 
     //@Override
-    public LogRecord setRecClass(final String recClass) {
+    public LogRecord setRecClass( String recClass) {
         this.recClass = recClass;
         return this;
     }
@@ -84,7 +84,7 @@ public class LogRecord implements LogRec {
         return ip_address;
     }
 
-    public void setIp_address(final String ip_address) {
+    public void setIp_address( String ip_address) {
         this.ip_address = ip_address;
     }
 

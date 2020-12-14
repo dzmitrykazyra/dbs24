@@ -30,7 +30,7 @@ public class LiasOperStatus extends AbstractRefRecord implements ReferenceRec {
     @Column(name = "fin_oper_status_name")
     private String finOperStatusName;
 
-    public static final LiasOperStatus findLiasOperStatus(final Integer liasOperStatusId) {
+    public static final LiasOperStatus findLiasOperStatus( Integer liasOperStatusId) {
         return AbstractRefRecord.<LiasOperStatus>getRefeenceRecord(LiasOperStatus.class,
                 record -> record.getFinOperStatusId().equals(liasOperStatusId));
     }

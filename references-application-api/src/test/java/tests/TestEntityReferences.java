@@ -6,8 +6,8 @@
 package tests;
 
 import org.dbs24.application.core.service.funcs.TestFuncs;
-import org.dbs24.persistence.core.PersistenceEntityManager;
-import org.dbs24.references.application.currency.Currency;
+import org.dbs24.component.PersistenceEntityManager;
+import org.dbs24.entity.Currency;
 import lombok.Data;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

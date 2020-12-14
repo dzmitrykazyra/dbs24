@@ -7,7 +7,7 @@ package org.dbs24.persistence.api;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import lombok.Data;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicBoolean;

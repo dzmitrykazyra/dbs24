@@ -4,11 +4,11 @@
     <parent>
         <groupId>org.dbs24</groupId>
         <artifactId>dbs24</artifactId>
-        <version>1.0</version>
+        <version>0.8</version>
     </parent>
     <artifactId>attribute-api</artifactId>
     <packaging>jar</packaging>
     <build>
-        <finalName>attribute-api</finalName> 
+        <finalName>${project.name}</finalName>
     </build>
 </project>

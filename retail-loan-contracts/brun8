@@ -4,6 +4,6 @@ export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 export MAVEN_OPTS="-Xms1024m"
 cd ..
 mvn -version
-mvn clean install -DskipTests=true
+mvn clean install validate -DskipTests=true
 cd retail-loan-contracts
 mvn exec:java -Dexec.mainClass="org.dbs24.RetailLoanContractBoot"

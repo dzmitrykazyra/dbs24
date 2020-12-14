@@ -9,7 +9,12 @@ package org.dbs24.entity.tariff;
  *
  * @author Козыро Дмитрий
  */
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.persistence.api.PersistenceEntity;
@@ -19,6 +24,7 @@ import java.time.LocalDate;
 import javax.persistence.*;
 import lombok.Data;
 import java.util.Collection;
+import static org.dbs24.consts.SysConst.DATE_FORMAT;
 import org.dbs24.references.tariffs.accretionscheme.TariffAccretionScheme;
 
 @Data
@@ -41,7 +47,10 @@ public class TariffPlan2Serv implements PersistenceEntity {
     @ManyToOne
     @JoinColumn(name = "tariff_kind_id")
     private TariffKind tariffKind;
-
+    //--------------------------------------------------------------------------
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_FORMAT)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     @Column(name = "actual_date")
     private LocalDate actualDate;
 
@@ -52,7 +61,7 @@ public class TariffPlan2Serv implements PersistenceEntity {
     private Collection<TariffRate> tariffRates = ServiceFuncs.<TariffRate>createCollection();
 
     //==========================================================================
-    public void addTariffRate(final TariffAccretionScheme tariffAccretionScheme,
+    public void addTariffRate(TariffAccretionScheme tariffAccretionScheme,
             final TariffKind tariffKind,
             final LocalDate actualDate,
             final LocalDate closeDate,

@@ -43,7 +43,7 @@ public abstract class ObjectList<T extends Object> implements Serializable {
     }
 
     //==========================================================================
-//    public static ObjectList getEJB(final String beanName) throws UnknownBeanException {
+//    public static ObjectList getEJB( String beanName) throws UnknownBeanException {
 //
 //        ObjectList bean = (NullSafe.create()
 //                .execute2result(() -> {
@@ -66,14 +66,14 @@ public abstract class ObjectList<T extends Object> implements Serializable {
 //    }
 //
 //    //==========================================================================
-//    public static ObjectList getEJB(final Class<?> clazz) throws UnknownBeanException {
+//    public static ObjectList getEJB( Class<?> clazz) throws UnknownBeanException {
 //
 //        return (ObjectList) ObjectList.getEJB(clazz, LogGate.getWarPackageName());
 //
 //    }
 //
 //    //==========================================================================
-//    public static ObjectList getEJB(final Class<?> clazz, final String packageName) throws UnknownBeanException {
+//    public static ObjectList getEJB( Class<?> clazz, String packageName) throws UnknownBeanException {
 //
 //        return (ObjectList) ObjectList.getEJB(String.format("java:global/%s/%s",
 //                packageName,

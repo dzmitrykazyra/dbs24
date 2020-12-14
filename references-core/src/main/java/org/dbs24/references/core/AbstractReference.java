@@ -18,7 +18,7 @@ import org.dbs24.references.api.RefClass;
 import org.dbs24.references.api.ReferenceRec;
 import java.util.Collection;
 import java.util.Map;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 import org.dbs24.application.core.api.ObjectRoot;
 import org.dbs24.application.core.service.funcs.AnnotationFuncs;
 import org.dbs24.application.core.log.LogService;
@@ -50,8 +50,8 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
         loadReference(FORCED_RELOAD);
     }
 
-    //protected abstract void loadReference(final Boolean needReload);
-    protected void loadReference(final Boolean needReload) {
+    //protected abstract void loadReference( Boolean needReload);
+    protected void loadReference( Boolean needReload) {
 
         // Р·Р°РіСЂСѓР·РёР»Рё РІ РєРµС€ СЃРїСЂР°РІРѕС‡РЅРёРє
         if (needReload) {
@@ -102,7 +102,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
     }
 
     //==========================================================================
-    protected <T> T findReference(final Reference reference, final String referenceNotFoundMsg) {
+    protected <T> T findReference( Reference reference, String referenceNotFoundMsg) {
         T result = null;
         Boolean needReload = FORCED_RELOAD;
 
@@ -125,7 +125,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
     }
 
     //==========================================================================
-    protected T findCachedRecords(final CachedReference cachedReference) {
+    protected T findCachedRecords( CachedReference cachedReference) {
 
         return ServiceFuncs.<T>getCollectionElement(this.getRefRecords(),
                 p -> cachedReference.compareCachedReference(p),
@@ -142,7 +142,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
     }
 
     //==========================================================================
-    public void setRefRecords(final Collection<T> refRecords) {
+    public void setRefRecords( Collection<T> refRecords) {
         this.refRecords = refRecords;
     }
 
@@ -199,7 +199,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
 //    }
 
     //==========================================================================
-    protected static Boolean needUpdate(final Class clazz, final Long refHashCode) {
+    protected static Boolean needUpdate( Class clazz, Long refHashCode) {
         return false;
 //        return !(NullSafe.create(ObjectRoot.getStaticDbService()
 //                .createCallQuery("{:RES = call ref_get_version(:REF)}")
@@ -280,7 +280,7 @@ public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRo
         return AbstractReference.russianRefLang;
     }
 
-    public static String getTranslatedValue(final LangStrValue langStrValue) {
+    public static String getTranslatedValue( LangStrValue langStrValue) {
 
         return (AbstractReference.useRussianRefLang()
                 ? langStrValue.getRu() : langStrValue.getEn()); // 

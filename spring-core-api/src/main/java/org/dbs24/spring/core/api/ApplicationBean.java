@@ -9,10 +9,6 @@ import org.dbs24.application.core.log.LogService;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 public interface ApplicationBean {
 
     public default void initialize() {

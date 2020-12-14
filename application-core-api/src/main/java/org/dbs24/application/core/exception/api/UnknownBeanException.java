@@ -11,7 +11,7 @@ package org.dbs24.application.core.exception.api;
  */
 public class UnknownBeanException extends InternalAppException {
 
-    public UnknownBeanException(final String message) {
+    public UnknownBeanException( String message) {
         super(message);
     }
 }

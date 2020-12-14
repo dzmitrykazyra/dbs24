@@ -6,7 +6,7 @@
 package org.dbs24.application.core.service.funcs;
 
 import org.dbs24.application.core.nullsafe.NullSafe;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -21,7 +21,7 @@ public final class MetaDataServ {
 
     final private static String skipMethods = ",getTypeInfo,notify,wait,equals,notifyAll,";
 
-    public static final <T extends Wrapper> String getAbstractMetaData(final T metaData, final String mdName) {
+    public static final <T extends Wrapper> String getAbstractMetaData( T metaData, String mdName) {
 
         final CustomCollectionImpl customCollection = NullSafe.createObject(CustomCollectionImpl.class, mdName, (entity)-> {});
 
@@ -74,7 +74,7 @@ public final class MetaDataServ {
     }
 
     //==========================================================================
-    public static final String getResultSetRecords(final String rsName, final ResultSet resultSet) {
+    public static final String getResultSetRecords( String rsName, ResultSet resultSet) {
 
         final CustomCollectionImpl customCollection = NullSafe.createObject(CustomCollectionImpl.class, String.format("%50s::%s = '%s' ",
                 rsName, ResultSet.class.getName(), " collection of records"));

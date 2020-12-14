@@ -23,20 +23,20 @@ import org.dbs24.application.core.nullsafe.NullSafe;
 public class FunctionsGroupsRef<T extends FunctionGroup> extends AbstractReference<FunctionGroup> {
 
     //==========================================================================
-    public String getFuncGroupNameById(final Integer func_group_id) throws ReferenceNotFound {
+    public String getFuncGroupNameById( Integer func_group_id) throws ReferenceNotFound {
 
         return this.getFuncGroupById(func_group_id).getFunction_group_name();
     }
 
     //==========================================================================
-    public T getFuncGroupById(final Integer func_group_id) throws ReferenceNotFound {
+    public T getFuncGroupById( Integer func_group_id) throws ReferenceNotFound {
 
         return (T) this.<T>findReference(() -> (this.findFunctionGroupById(func_group_id)),
                 String.format("Неизвестный код группы функций (FunctionsGroupsRef.function_group_id=%d)", func_group_id));
     }
 
     //==========================================================================
-    private T findFunctionGroupById(final Integer func_group_id) {
+    private T findFunctionGroupById( Integer func_group_id) {
 
         return (T) this.findCachedRecords((object) -> ((T) object).getFunction_group_id().equals(func_group_id));
 

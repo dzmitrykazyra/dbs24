@@ -16,9 +16,9 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.dbs24.config.*;
 import org.dbs24.repository.EntityTypesRepository;
-import org.dbs24.spring.config.MainApplicationConfig;
+import org.dbs24.config.MainApplicationConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.dbs24.application.core.sysconst.SysConst.*;
+import static org.dbs24.consts.SysConst.*;
 
 @Configuration
 //@ComponentScan(basePackages = SERVICE_PACKAGE)

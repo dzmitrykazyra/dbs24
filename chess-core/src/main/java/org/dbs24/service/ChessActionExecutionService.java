@@ -5,25 +5,17 @@
  */
 package org.dbs24.service;
 
-import static org.dbs24.application.core.sysconst.SysConst.*;
-import org.dbs24.references.core.CachedReferencesClasses;
+import static org.dbs24.consts.SysConst.*;
+import static org.dbs24.consts.EntityConst.*;
+import static org.dbs24.consts.WorldChessConst.*;
 import org.dbs24.entity.core.api.EntityClassesPackages;
 import lombok.Data;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Service;
-import org.dbs24.config.ChessConfig;
-import org.dbs24.references.*;
 import org.dbs24.entity.*;
 import org.dbs24.entity.classic.*;
-import org.dbs24.entity.status.EntityStatus;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import org.dbs24.consts.WorldChessConst;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 @Data
 @Service
 @EntityClassesPackages(pkgList = {ENTITY_PACKAGE})
@@ -42,8 +34,8 @@ public class ChessActionExecutionService<P extends Player, G extends Game> exten
         return (P) this.<AbstractPlayer>createActionEntity(AbstractPlayer.class,
                 (abstractChessPlayer) -> {
 
-                    //retailLoanContract.setCreation_date(LocalDateTime.now());
-                    abstractChessPlayer.setEntityStatus(EntityStatus.findEntityStatus(WorldChessConst.WCP_PLAYER, ES_VALID));
+                    //retailLoanContract.setCreationDate(LocalDateTime.now());
+                    abstractChessPlayer.setEntityStatus(this.getEntityReferencesService().findEntityStatus(WCP_PLAYER, ES_ACTUAL));
                     abstractChessPlayer.setFirstName(firstName);
                     abstractChessPlayer.setLastName(lastName);
                     abstractChessPlayer.setTotalGames(totalGames);
@@ -61,18 +53,18 @@ public class ChessActionExecutionService<P extends Player, G extends Game> exten
 //
 //    //==========================================================================
 
-    public G createGame(final P chessPlayer1,
+    public G createGame(P chessPlayer1,
             final P chessPlayer2,
             final BigDecimal whiteRating,
             final BigDecimal blackRating,
             final LocalDateTime gameStartDate,
             final LocalDateTime gameFinishDate,
-            final BigDecimal whitePlayerPoints, final BigDecimal blackPlayerPoints) {
+            final BigDecimal whitePlayerPoints, BigDecimal blackPlayerPoints) {
         return (G) this.<ClassicGame>createActionEntity(ClassicGame.class,
                 (abstractChessGame) -> {
 
-                    //retailLoanContract.setCreation_date(LocalDateTime.now());
-                    abstractChessGame.setEntityStatus(EntityStatus.findEntityStatus(WorldChessConst.WCP_GAME, ES_VALID));
+                    //retailLoanContract.setCreationDate(LocalDateTime.now());
+                    abstractChessGame.setEntityStatus(this.getEntityReferencesService().findEntityStatus(WCP_GAME, ES_ACTUAL));
                     abstractChessGame.setWhitePlayer((AbstractPlayer) chessPlayer1);
                     abstractChessGame.setBlackPlayer((AbstractPlayer) chessPlayer2);
                     abstractChessGame.setWhitePlayerPoints(whitePlayerPoints);
@@ -96,7 +88,7 @@ public class ChessActionExecutionService<P extends Player, G extends Game> exten
 //        return this.<GameAction>createPersistenceEntity(GameAction.class,
 //                (move) -> {
 //
-//                    //retailLoanContract.setCreation_date(LocalDateTime.now());
+//                    //retailLoanContract.setCreationDate(LocalDateTime.now());
 //                    move.setClassicGame((ClassicGame)chessGame);
 //                    move.setMoveNotice(moveNotice);
 //
