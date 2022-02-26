@@ -1,0 +1,12 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+#export MAVEN_OPTS="-Xms128m  -XX:MaxDirectMemorySize=256M -XX:+PrintCodeCache -XX:+UseParallelGC -Xlog:gc+heap -XX:+ExplicitGCInvokesConcurrent -XX:+UseLargePages"
+export MAVEN_OPTS="-Xms128m  -XX:MaxDirectMemorySize=256M -XX:+UseParallelGC -XX:+ExplicitGCInvokesConcurrent -XX:+UseLargePages"
+clear
+cd ..
+#mvn -version
+#mvn clean install -DskipTests=true
+mvn spring-boot:run -Dexec.mainClass="org.dbs24.insta.crw.InstaCrowler" -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.main.banner-mode=off --debug=false"
+#mvn spring-boot:run -Dexec.mainClass="org.dbs24.WaMonitoring" -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.main.banner-mode=off --server.port=7061 --debug=false"
+#mvn spring-boot:run -Dexec.mainClass="org.dbs24.ServiceMonitoringBoot" -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.main.banner-mode=off --server.port=8021 --spring.rsocket.server.port=7077"
+#mvn exec:java -Dexec.mainClass="org.dbs24.ServiceMonitoringBoot" -Dexec.classpathScope=runtime

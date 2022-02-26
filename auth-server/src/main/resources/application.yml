@@ -1,0 +1,116 @@
+---
+spring: 
+    profiles:
+        defult: production
+        active: dev
+---
+debug: false
+server:
+    port: 8030
+spring:
+    activate: 
+        on-profile: dev    
+    application: 
+        name: Auth server
+    main:
+        banner-mode: off
+    jackson: 
+        serialization:
+            fail-on-empty-beans: false
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://193.178.170.145:5432/tkn_cards_dev
+        username: tkn_admin
+        password: $auth$m2n7t1r59key$
+    #        hikari:
+#            minimumIdle: 5
+#            maximumPoolSize: 20
+#            idleTimeout: 30000
+#            maxLifetime: 2000000
+#            connectionTimeout: 30000
+#            poolName: HikariPoolBooks        
+    jpa:
+        show-sql: false
+        database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            cache:
+                use_second_level_cache: true
+        properties:
+            hibernate:
+                generate_statistics: false
+                format_sql: true
+                order_inserts: true
+                order_updates: true
+                jdbc:
+                    batch_size: 200
+    codec:
+        max-in-memory-size: 20MB
+    kafka:
+        listener:
+            type: batch
+        bootstrap-servers: 94.103.93.96:9092
+        producer:
+            group-id: multi-api
+            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+        consumer:
+            properties:
+                spring:
+                    json:
+                        trusted:
+                            packages: org.dbs24.*
+            value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+logging:
+    level:
+        org.springframework.security: DEBUG                            
+# deprecated custom  
+# new custom
+config:
+    application:
+        auto-reboot:
+            enable: false
+            cmd: systemctl restart auth-server
+            freeMemoryLimit: 5000000
+            daily: 3600
+    security:
+        profile:
+            name: advanced
+            webfilter:
+                chain: development
+    entity:
+        core:
+            enabled: false
+    persistence:
+        name: auth-server
+        service:
+            name: standard
+    restfull:
+        security:
+            wa-monitoring:
+                enabled: true
+                jwt:
+                    secret-key: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
+                    expiration-time: 28800
+                allowed-packages: com.onlinetracker.whatschat, com.flutter.watracker_stage_dm, com.noname.wastat_app, com.zetreex.waparenttool, com.flutter.watracker_stage, com.flutter.watracker_stage_new, com.noname.watracker, com.zetreex.wa3_stage
+            tik-assist:
+                enabled: true
+    oauth2:
+        google:
+            uri: https://oauth2.googleapis.com
+            api-verify-token: /tokeninfo
+        facebook:
+            uri: https://graph.facebook.com
+            api-verify-token: /me
+            api-check-validity: /debug_token
+#        security:
+#            profile:
+#                name: reactive
+
+# @ConfigurationProperties
+refs:
+    synchronize: true
+    applications:
+        10: WAM;WhatsApp monitoring
+        20: INSTA-REG;Insta account registry
+        30: RLC-CORE;Retail Loan Contracts        

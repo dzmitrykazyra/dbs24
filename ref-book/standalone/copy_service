@@ -1,0 +1,2 @@
+chmod u+x ref-book.service
+sudo cp -f ref-book.service /etc/systemd/system/ref-book.service

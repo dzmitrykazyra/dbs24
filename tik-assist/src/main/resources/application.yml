@@ -1,0 +1,178 @@
+---
+spring:
+    profiles:
+        defult: production
+        active: dev
+---
+debug: false
+server:
+    port: 8070
+    error:
+        include-message: always
+spring:
+#    thymeleaf:
+#        check-template: true
+#        check-template-location: true
+#        enabled: true
+#        prefix: classpath:/templates/
+#        suffix: .html
+    activate:
+        on-profile: dev
+    application:
+        name: TikTok assistant
+    main:
+        banner-mode: off
+    jackson:
+        serialization:
+            fail-on-empty-beans: false
+    datasource:
+        url: jdbc:postgresql://193.178.170.145:5432/tik_assist_dev
+        #url: jdbc:postgresql://127.0.0.1:5432/tik_assist_dev
+        username: tik_admin
+        password: $tik$d9v3l1pm0nt$
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        #show-sql: true
+        database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            cache:
+                use_second_level_cache: true
+        properties:
+            hibernate:
+                #                generate_statistics: true
+                format_sql: true
+                order_inserts: true
+                order_updates: true
+                jdbc:
+                    batch_size: 1000
+    codec:
+        max-in-memory-size: 20MB
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: brettcassin5@gmail.com
+        password: YivljWDZVaS5Io
+        protocol: smtp
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.gmail.com
+
+logging:
+    level:
+        org.springframework.security: DEBUG
+# deprecated custom
+# new custom
+network:
+    allowed-origins:
+        additional: http://localhost:4200, https://localhost:4200, http://localhost:3000, https://localhost:3000
+config:
+    auth:
+        auth-server-uri: http://localhost:8030
+        oauth2:
+            google-api: /api/tik/getTikUserJwtByGoogle
+            facebook-api: /api/tik/getTikUserJwtByFacebook
+    security:
+        profile:
+            name: advanced
+            webfilter:
+                chain: development
+        jwt:
+            token:
+                enabled: false
+            name: standard
+            secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
+            expiration: 28800
+        staff-secret:
+            ZetaSolPass
+        redirect:
+            url: https://tiktokfans-next-omega.vercel.app
+            activation:
+                api: /activate
+                key:
+                    length: 16
+            password-change:
+                api: /change_password
+                key:
+                    lifetime-hours: 24
+    entity:
+        core:
+            enabled: false
+    persistence:
+        name: tik-assist
+        service:
+            name: standard
+    restfull:
+        profile:
+            name: tik-assist
+    #        security:
+    #            profile:
+    #                name: reactive
+    tik-connector:
+        delay-min: 10000
+        delay-max: 30000
+        emu:
+            enabled: false
+        action:
+            update: 30000
+            uri: http://178.20.40.149:80
+            single:
+                create-action: /api/action/task
+                get-action-status: /api/action/task/
+            multiple:
+                create-actions: /api/action/multitask
+                get-actions-statuses: /api/action/multitask_status
+        agent:
+            update: 120000
+            uri: http://178.20.40.149:80
+            repairAgent: /api/auth/task
+            getAgentStatus: /api/auth/task
+    tik-search:
+        uri: http://195.2.80.143:5001
+        #https://linuxtech.io:5001
+        api-post: /api/post
+        api-search: /api/search
+        api-search-full: /api/search_full
+        api-search-by-sid: /api/search_by_sid
+    scheduled:
+        error-action:
+            remake:
+                refresh-delay: 3600000
+        subscription:
+            expiration:
+                refresh-delay: 3600000
+                initial-delay: 0
+        plan:
+            expiration:
+                refresh-delay: 3600000
+                initial-delay: 1200000
+        order:
+            expiration:
+                refresh-delay: 3600000
+                initial-delay: 2400000
+
+# @ConfigurationProperties
+refs:
+    synchronize: true
+    proxyStatuses:
+        1: Actual
+        2: Closed
+        3: Temporary
+        4: Banned
+
+constraint:
+    user:
+        statistics:
+            page-size: 9
+        promocode:
+            length: 15
+            discount: 10
+            validity-period-days: 365
+    plan:
+        duration-in-days: 30
+    subscription:
+        duration-in-days: 30
+        account:
+            target-posts-quantity: 3

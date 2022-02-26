@@ -1,2 +1,0 @@
-update-alternatives --config
-sudo update-alternatives --config java

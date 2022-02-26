@@ -1,0 +1,96 @@
+debug: false
+
+server:
+  port: 8100
+
+spring:
+  application:
+    name: tik-mobile
+  jpa:
+    properties:
+      hibernate:
+        proc:
+          param_null_passing: true
+    database: postgresql
+    show-sql: true
+    hibernate:
+      use-new-id-generator-mappings: true
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+  datasource:
+    url: jdbc:postgresql://193.178.170.145:5432/tkm_mobile_dev
+    username: tkm_admin
+    password: $tk20m0$pwd71$
+    driverClassName: org.postgresql.Driver
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: brettcassin5@gmail.com
+    password: YivljWDZVaS5Io
+    protocol: smtp
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
+
+#CONFIG
+config:
+  persistence:
+    name: tik-mobile
+  security:
+    jwt:
+      lifetime: 1800000
+    profile:
+      webfilter:
+        chain: development
+    user:
+      password:
+        keyset:
+          lifetime: 1800000
+  scheduling:
+    expired-order:
+      delay: PT11M
+    invalid-post:
+      delay: 1800000
+
+#REFERENCE
+reference:
+  synchronize: false
+
+#CONSTRAINT
+constraint:
+  orders:
+    action:
+      lead-time-minutes: 10
+    history:
+      page-size: 10
+    fetching:
+      rows: 7
+  downloads:
+    history:
+      page-size: 5
+
+# USER
+user:
+  tiktok:
+    account:
+      posts-to-return: 20
+
+# ACTION COSTS
+action:
+  cost:
+    watch: 3
+    like: 5
+    comment: 7
+    subscribe: 10
+
+# TIKTOK API
+api:
+  viewer:
+    url: http://195.2.80.143:5001
+    endpoint:
+      post: /api/post
+      search: /api/search
+      search-full: /api/search_full
+      search-by-sid: /api/search_by_sid

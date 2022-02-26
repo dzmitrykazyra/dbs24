@@ -1,0 +1,2 @@
+chmod u+x tik-dev-api-dev.service
+sudo cp -f tik-dev-api-dev.service /etc/systemd/system/tik-dev-api.service

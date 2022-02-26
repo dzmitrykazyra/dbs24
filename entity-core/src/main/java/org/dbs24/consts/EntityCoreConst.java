@@ -10,6 +10,5 @@ public class EntityCoreConst {
     public static final String R_ECHO_ROUTE = "echo";
 
     public static final String R_GENERIC_ENTITY = "entity.create";
-    public static final String R_GENERIC_ENTITY_MONO = "entity.mono";
-
+    public static final String R_GENERIC_ENTITY_MONO = "entity.mono";   
 }

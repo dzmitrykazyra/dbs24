@@ -1,0 +1,2 @@
+chmod u+x proxy-core.service
+sudo cp -f proxy-core.service /etc/systemd/system/proxy-core.service

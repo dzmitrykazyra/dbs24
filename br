@@ -1,0 +1,35 @@
+
+#!/bin/sh
+clear
+cd ~
+cd zeta24
+git checkout .
+git pull
+#build
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+export MAVEN_OPTS="-Xms1024m"
+rm -rf ../.m2/repository/org/dbs24
+mvn -version
+mvn clean
+mvn install validate
+# restart services
+echo "restarting auth-server ..."
+systemctl restart auth-server
+echo "restarting card-pmt ..."
+systemctl restart card-pmt
+#echo "restarting wa-monitoring ..."
+#systemctl restart wa-monitoring
+echo "restarting proxy-core ..."
+systemctl restart proxy-core
+echo "restarting ref-book ..."
+systemctl restart ref-book
+echo "restarting tik-assist ..."
+systemctl restart tik-assist
+echo "restarting app-promo ..."
+systemctl restart app-promo
+echo "restarting tik-mobile ..."
+systemctl restart tik-mobile
+echo "restarting g-connect ..."
+systemctl restart g-connect
+
+cowsay -f tux "services is ready!"

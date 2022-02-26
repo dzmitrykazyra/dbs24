@@ -1,0 +1,5 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+clear
+cd ..
+mvn spring-boot:run -Dexec.mainClass="org.dbs24.WaMonitoring" -Dreactor.netty.http.server.accessLogEnabled=true -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.main.banner-mode=off --debug=false --spring.datasource.url=jdbc:postgresql://127.0.0.1:5432/wa_monitoring_stage --config.wa.user.login.prefix=ST_ --config.wa-back-end.server=https://watracker.linuxtech.io:8040 --spring.datasource.username=wa_admin --spring.datasource.password=\$wa\$m4n0t1r9ng\$ --management.endpoints.web.exposure.include=* "

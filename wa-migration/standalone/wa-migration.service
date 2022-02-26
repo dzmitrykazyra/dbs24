@@ -1,0 +1,15 @@
+[Unit]
+Description=wa-migration
+[Service]
+#User=kdg
+User=root
+#WorkingDirectory=/home/kdg/zeta24/wa-migration/standalone
+WorkingDirectory=/root/zeta24/wa-migration/standalone
+#ExecStart=/home/kdg/zeta24/#/standalone/run
+ExecStart=/root/zeta24/wa-migration/standalone/run
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

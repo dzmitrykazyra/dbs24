@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+</head>
+<body
+        style="
+            margin: 0;
+            padding: 0;
+            line-height: 23px;
+            font-family: Arial;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            letter-spacing: 0.02em;
+            color: #151515;
+        "
+>
+<div
+        style="
+                margin: 0 auto;
+                padding: 40px 52px;
+                line-height: inherit;
+                max-width: 600px;
+                min-width: 270px;
+            "
+>
+    <img
+            src="https://img.us2-usndr.com/en/v5/user-files?userId=4593289&resource=himg&disposition=inline&name=6ys18zw55napb8geaefc8jsnpoxauqm63twt6imfzqzpcg7h7jbn8jeh64msrgd59hgzn4ksbpt8go"
+            alt="Hello! It's Tiki Top"
+            style="
+                    margin: 0;
+                    padding: 0;
+                    line-height: inherit;
+                    display: block;
+                    width: 270px;
+                    height: auto;
+                    margin-bottom: 32px;
+                "
+    />
+    <div style="margin: 0; padding: 0; line-height: inherit">
+        <div style="margin: 0; padding: 0; line-height: inherit">
+            <h2
+                    style="
+                            margin: 0;
+                            padding: 0;
+                            line-height: 28px;
+                            font-weight: bold;
+                            font-size: 24px;
+                        "
+            >
+                Hello! It's Tiki Top
+            </h2>
+        </div>
+        <div
+                style="
+                        margin: 0;
+                        padding: 0;
+                        line-height: inherit;
+                        margin-top: 24px;
+                        margin-bottom: 16px;
+                    "
+        >
+            <p
+                    style="
+                            margin: 0;
+                            padding: 0;
+                            line-height: 23px;
+                            opacity: 0.8;
+                            font-size: 20px;
+                            margin-top: 12px;
+                        "
+            >
+                Click the button below to recover your password:
+            </p>
+        </div>
+        <div
+                style="
+                        margin: 0;
+                        padding: 0;
+                        line-height: inherit;
+                        margin-bottom: 32px;
+                        width: 245px;
+                    "
+        >
+            <a
+                    th:href="@{'http://localhost:3000/bound_email/' + ${key}}"
+                    target="_blank"
+                    style="
+                            margin: 0;
+                            padding: 16px 36px;
+                            line-height: inherit;
+                            display: block;
+                            text-decoration: none;
+                            text-align: center;
+                            color: #fff;
+                            background-color: #69c9d0;
+                            border-radius: 15px;
+                        "
+            >Recover password
+            </a>
+        </div>
+        <div
+                style="
+                        margin: 0;
+                        padding: 0;
+                        margin-top: 20px;
+                        max-width: 368px;
+                    "
+        >
+            <p
+                    style="
+                            margin: 0;
+                            padding: 0;
+                            margin-top: 20px;
+                            font-size: 18px;
+                            line-height: 21px;
+                            color: #a6a6a6;
+                        "
+            >
+                To receive a second email, please request password
+                recovery again
+            </p>
+        </div>
+        <hr
+                style="
+                        margin-top: 32px;
+                        padding: 0;
+                        line-height: inherit;
+                        display: block;
+                        background-color: #e8e8e8;
+                        border: 0;
+                        height: 1px;
+                    "
+        />
+        <div
+                style="
+                        margin: 0;
+                        padding: 0;
+                        line-height: 21px;
+                        margin-top: 20px;
+                        font-size: 18px;
+                        color: #a6a6a6;
+                    "
+        >
+            <p
+                    style="
+                            margin: 0;
+                            padding: 0;
+                            line-height: 21px;
+                            opacity: 0.8;
+                            font-size: 18px;
+                        "
+            >
+                Just ignore this email if you received it by mistake
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

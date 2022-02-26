@@ -9,8 +9,6 @@ import static org.dbs24.consts.RestHttpConsts.URI_API;
 import org.dbs24.entity.marks.*;
 import org.dbs24.entity.attr.EntAttr;
 import org.dbs24.entity.attr.EntityAttrId;
-import org.dbs24.entity.attr.EntityAttribute;
-import org.dbs24.entity.attr.template.AbstractEntityAttrsTemplate;
 import org.dbs24.entity.attr.template.EntAttrTemplate;
 import org.dbs24.entity.attr.template.EntityAttrTemplateId;
 import org.dbs24.entity.attr.template.EntityAttrRow;
@@ -38,9 +36,6 @@ public final class EntityReferenceConst {
     
     public static final Class<EntAttr> ENT_ATTR_CLASS = EntAttr.class;
     public static final Class<EntityAttrId> ENT_ATTR_ID_ANN = EntityAttrId.class;
-    public static final Class<EntityAttribute> ENT_ATTRIBUTE_CLASS = EntityAttribute.class;
-
-    public static final Class<AbstractEntityAttrsTemplate> ENT_LIST_ATTR_TEMPLATE_CLASS = AbstractEntityAttrsTemplate.class;
     public static final Class<EntAttrTemplate> ENT_ATTR_TEMPLATE_CLASS = EntAttrTemplate.class;
     public static final Class<EntityAttrTemplateId> ENT_ATTR_TEMPLATE_ID_ANN = EntityAttrTemplateId.class;
     public static final Class<EntityAttrRow> ENT_ATTR_ROW_ANN = EntityAttrRow.class;

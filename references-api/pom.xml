@@ -8,11 +8,6 @@
     </parent>
     <artifactId>references-api</artifactId>
     <packaging>jar</packaging>
-
-    <build>
-        <finalName>${project.name}</finalName>
-    </build>    
-            
     <dependencies>
         <dependency>
             <groupId>org.dbs24</groupId>
@@ -21,7 +16,9 @@
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>persistence-api</artifactId>
-        </dependency>          
+        </dependency>
     </dependencies>
-        
+    <build>
+        <finalName>${project.name}</finalName>
+    </build>
 </project>

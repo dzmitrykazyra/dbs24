@@ -1,0 +1,5 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.1"
+export MAVEN_OPTS="-Xms128m  -XX:MaxDirectMemorySize=256M -XX:+PrintCodeCache -XX:+UseParallelGC -Xlog:gc+heap -XX:+ExplicitGCInvokesConcurrent -XX:+UseLargePages"
+clear
+mvn clean install -DskipTests=true

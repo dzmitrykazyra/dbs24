@@ -9,13 +9,14 @@ import java.util.Map;
 import org.dbs24.references.api.ReferenceRec;
 import org.dbs24.references.api.AbstractRefRecord;
 import javax.persistence.*;
+import javax.persistence.Entity;
 import lombok.Data;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "core_EntityStatusesRef")
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Data
 @IdClass(EntityStatusPK.class)
 public class EntityStatus extends AbstractRefRecord implements ReferenceRec {

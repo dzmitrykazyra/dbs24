@@ -1,0 +1,18 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.dbs24.rest.dto.serviceperiod;
+
+import lombok.Data;
+import org.dbs24.spring.core.api.EntityInfo;
+
+import java.time.LocalDateTime;
+
+@Data
+public class CreatedServicePeriod implements EntityInfo {
+
+    private Long serviceDateStart;
+    private Long serviceDateFinish;
+}

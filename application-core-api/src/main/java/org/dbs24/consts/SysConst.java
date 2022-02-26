@@ -6,9 +6,9 @@
 package org.dbs24.consts;
 
 /**
- *
  * @author Козыро Дмитрий
  */
+
 import org.dbs24.application.core.nullsafe.NullSafe;
 
 import java.math.BigDecimal;
@@ -16,10 +16,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Supplier;
 
 public final class SysConst {
 
-//    public static Boolean TEST_MODE_RUNNING = Boolean.FALSE;  
+    //    public static Boolean TEST_MODE_RUNNING = Boolean.FALSE;
 //    public static String TEST_MODE_LAST_ERR_MSG = STRING_NULL;
     public static final AtomicBoolean RUSSIAN_REF_LANG = NullSafe.createObject(AtomicBoolean.class);
     public static final String APPNAME = "dbs24";
@@ -40,6 +41,7 @@ public final class SysConst {
     public static final DateTimeFormatter FORMAT_dd_MM_yyyy = DateTimeFormatter.ofPattern(DATE_FORMAT);
     public static final DateTimeFormatter FORMAT_HH_mm_ss = DateTimeFormatter.ofPattern(TIME_FORMAT);
     public static final DateTimeFormatter FORMAT_HH_mm_ss_SSS = DateTimeFormatter.ofPattern(TIME_FORMAT_MS);
+    public static final Supplier CURRENT_LOCALDATETIME = () -> LocalDateTime.now();
 
     public static final DateTimeFormatter DEFAULT_DATE_FORMATTER = FORMAT_dd_MM_yyyy;
 
@@ -71,6 +73,8 @@ public final class SysConst {
 
     public static final String NO_CONNECT_STRING = "no connect string defined";
 
+    public static final Boolean NO_DEBUG_MODE = Boolean.FALSE;
+    public static final Boolean DEBUG_MODE = Boolean.TRUE;
     public static final Boolean IS_DEV_MODE = Boolean.TRUE;
     public static final Boolean IS_ALLOWED_ACTION = Boolean.TRUE;
     public static final Boolean IS_NOT_ALLOWED_ACTION = Boolean.TRUE;
@@ -90,7 +94,7 @@ public final class SysConst {
     //public static final Boolean GET_ALL_ACTIONS = Boolean.FALSE;
     //public static final Boolean VIEW_ACTIONS_ONLY = Boolean.FALSE;
 
-//    public static final int ES_ACTUAL = 0; // сделка создана
+    //    public static final int ES_ACTUAL = 0; // сделка создана
 //    public static final int ES_CLOSED = 1; // сделка закрыта
 //    public static final int ES_CANCELLED = -1; // сделка аннулирована
     public static final long MAX_SUMM_FOR_TEST = (long) (Long.MAX_VALUE / 1000000);
@@ -113,10 +117,12 @@ public final class SysConst {
     public static final Object OBJECT_NULL = null;
 
     public static final String STRING_NULL = null;
+    public static final String STRING_NULL_VALUE = "null";
     public static final String STRING_TRUE = "true";
     public static final String STRING_FALSE = "false";
     public static final String STRING_YES = "yes";
     public static final String STRING_NO = "no";
+    public static final String STRING_SPACE = " ";
     //==========================================================================
     public static final Class<Void> VOID_CLASS = Void.class;
     public static final Class<BigDecimal> BIGDECIMAL_CLASS = BigDecimal.class;
@@ -128,10 +134,11 @@ public final class SysConst {
     //==========================================================================
     public static final String ALL_PACKAGES = "org.dbs24";
     public static final String ENTITY_PACKAGE = ALL_PACKAGES + ".entity";
-    public static final String ACTIONS_PACKAGE = ALL_PACKAGES + ".entity.actions";
+    public static final String ACTIONS_PACKAGE = ALL_PACKAGES + ".entity.action";
     public static final String REACTOR_PACKAGE = ALL_PACKAGES + ".entity.reactor";
     public static final String TARIFF_PACKAGE = ALL_PACKAGES + ".tariff";
     public static final String REPOSITORY_PACKAGE = ALL_PACKAGES + ".repository";
+    public static final String REPOSITORY_PACKAGE_SHORT = ALL_PACKAGES + ".repo";
     public static final String COMPONENT_PACKAGE = ALL_PACKAGES + ".component";
     public static final String CONTROLLER_PACKAGE = ALL_PACKAGES + ".controller";
     public static final String RSOCKET_PACKAGE = ALL_PACKAGES + ".rsocket";
@@ -142,4 +149,5 @@ public final class SysConst {
     public static final String REFERENCE_PACKAGE = ALL_PACKAGES + ".references";
     public static final String EXCEPTION_PACKAGE = ALL_PACKAGES + ".exception";
     public static final String APP_PROPERTIES = "classpath:application.properties";
+    public static final String YML_PROPERTIES = "classpath:application.yml";
 }

@@ -1,0 +1,43 @@
+---
+spring: 
+    profiles:
+        defult: production
+        active: dev
+---
+debug: false
+server:
+    port: 8113
+spring:
+    activate: 
+        on-profile: dev    
+    application: 
+        name: Google Connection API
+    main:
+        banner-mode: off
+    jackson: 
+        serialization:
+            fail-on-empty-beans: false
+    codec:
+        max-in-memory-size: 20MB
+logging:
+    level:
+        org.springframework.security: DEBUG                            
+# deprecated custom  
+# new custom
+config:
+    application:
+        auto-reboot:
+            enable: true
+            cmd: systemctl restart app-readiness
+            frequency: 43200
+    entity:
+        core:
+            enabled: false
+    restfull:
+        profile:
+            name: app-readiness
+refs:
+    applications:
+        10: app-promo; http://127.0.0.1:7080;/api/readiness; 100; 5; systemctl restart app-promo
+        20: wa-monitoring; http://127.0.0.1:8040;/api/readiness; 100; 5; systemctl restart wa-monitoring
+        30: auth-server; http://127.0.0.1:8030;/api/readiness; 100; 5; systemctl restart auth-server

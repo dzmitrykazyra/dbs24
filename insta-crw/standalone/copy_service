@@ -1,0 +1,2 @@
+chmod u+x insta-crw.service
+sudo cp -f insta-crw.service /etc/systemd/system/insta-crw.service

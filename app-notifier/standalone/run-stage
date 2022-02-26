@@ -1,0 +1,5 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+clear
+cd ..
+mvn spring-boot:run -Dexec.mainClass="org.dbs24.app.notifier.NotifierServer" -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.main.banner-mode=off --debug=false --spring.datasource.url=jdbc:postgresql://127.0.0.1:5432/app_notifier_stage --spring.datasource.username=note_admin --spring.datasource.password=\$pr1m0\$Swd76 "

@@ -1,0 +1,2 @@
+chmod u+x wa-monitoring-random.service
+sudo cp -f wa-monitoring-random.service /etc/systemd/system/wa-monitoring-random.service

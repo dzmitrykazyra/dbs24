@@ -5,6 +5,7 @@
  */
 package org.dbs24.rsocket;
 
+import org.dbs24.spring.condition.DisabledCondition;
 import java.util.Map;
 import lombok.extern.log4j.Log4j2;
 import org.dbs24.controller.AbstractRSocketController;
@@ -18,25 +19,26 @@ import reactor.core.publisher.Mono;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.dbs24.service.MonitoringMessage;
+import org.dbs24.api.MonitoringMessage;
 import static org.dbs24.consts.ServicesMonitoringConst.R_SOCKET_URI_MONITORING;
-
+import org.springframework.context.annotation.Conditional;
 
 @Log4j2
 @Controller
 public class ServiceMonitoringRSocketConroller extends AbstractRSocketController {
 
+    final MonitoringReactor reactor;
+
     @Autowired
-    private MonitoringReactor reactor;
+    public ServiceMonitoringRSocketConroller(MonitoringReactor reactor) {
+        this.reactor = reactor;
+    }
 
     @PreAuthorize("hasRole('SMROLE')")
     @MessageMapping(R_SOCKET_URI_MONITORING)
     public void logInfoMsg(@Payload MonitoringMessage monitoringMessage,
             @Headers Map<String, Object> metadata,
             @AuthenticationPrincipal UserDetails user) {
-
-//        log.info("md = {}", metadata);
-//        log.info("user = {}", user);
 
         Mono.just(monitoringMessage).subscribe(reactor);
     }

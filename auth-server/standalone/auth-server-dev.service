@@ -1,0 +1,15 @@
+[Unit]
+Description=auth-server
+[Service]
+#User=kdg
+User=root
+#WorkingDirectory=/home/kdg/zeta24/auth-server/standalone
+WorkingDirectory=/root/zeta24/auth-server/standalone
+#ExecStart=/home/kdg/zeta24/auth-server/standalone/
+ExecStart=/root/zeta24/auth-server/standalone/run-dev
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

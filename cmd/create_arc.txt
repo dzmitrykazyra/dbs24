@@ -1,1 +1,0 @@
-rar a -r -x*.rar -x*.log -x*.log.* -x*.pdb -x*\target\ -x*\.git\ -x*\.idea\ -x*\rar\ dbs24_20200810

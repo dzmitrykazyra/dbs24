@@ -27,5 +27,4 @@ public enum MimeTypes {
     public byte getCode() {
         return code;
     }
-
 }

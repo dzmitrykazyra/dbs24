@@ -1,0 +1,2 @@
+chmod u+x card-pmt-stage.service
+sudo cp -f card-pmt-stage.service /etc/systemd/system/card-pmt.service

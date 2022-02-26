@@ -1,0 +1,2 @@
+chmod u+x services-monitoring.service
+sudo cp -f services-monitoring.service /etc/systemd/system/services-monitoring.service

@@ -1,0 +1,14 @@
+sudo su postgres
+-- createuser pmt_admin
+--psql -c "initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+psql -c "CREATE ROLE ads_admin  WITH LOGIN CREATEDB ENCRYPTED PASSWORD '$pr1am0d$Swsd76'"
+psql -c "CREATE DATABASE app_ads_dev OWNER ads_admin"
+psql -c "ALTER USER ads_admin WITH PASSWORD '$pr1am0d$Swsd76'"
+psql -c "grant all privileges on database app_ads_dev to ads_admin"
+psql -c "CREATE SCHEMA app_ads_schema_dev"
+psql -c "SET search_path TO app_ads_schema_dev"
+psql -c "GRANT USAGE ON SCHEMA app_ads_schema_dev TO ads_admin"
+psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA app_ads_schema_dev  TO ads_admin"
+psql -c "ALTER database app_ads_dev SET search_path TO app_ads_schema_dev"
+
+sudo ufw allow 5432/tcp

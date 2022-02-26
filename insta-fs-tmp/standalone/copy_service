@@ -1,0 +1,2 @@
+chmod u+x insta-fs-tmp.service
+sudo cp -f insta-fs-tmp.service /etc/systemd/system/insta-fs-tmp.service

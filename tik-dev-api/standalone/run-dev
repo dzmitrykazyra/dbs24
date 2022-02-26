@@ -1,0 +1,5 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+clear
+cd ..
+mvn spring-boot:run -Dexec.mainClass="org.dbs24.tik.dev.TikDevApi" -Dreactor.netty.http.server.accessLogEnabled=true -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.main.banner-mode=off --debug=false --spring.datasource.url=jdbc:postgresql://193.178.170.145:5432/tda_tik_dev --spring.datasource.username=tda_admin --spring.datasource.password=\$pr0m0\$pwd76 "

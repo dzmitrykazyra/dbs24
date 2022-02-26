@@ -1,0 +1,2 @@
+chmod u+x wa-service.service
+sudo cp -f wa-service.service /etc/systemd/system/wa-service.service

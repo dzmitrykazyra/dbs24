@@ -1,0 +1,6 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+#export MAVEN_OPTS="-Xms128m  -XX:MaxDirectMemorySize=256M -XX:+UseParallelGC -XX:+ExplicitGCInvokesConcurrent -XX:+UseLargePages"
+clear
+cd ..
+mvn spring-boot:run -Dexec.mainClass="org.dbs24.google.GoogleConnectionApplication" -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.main.banner-mode=off --debug=false"

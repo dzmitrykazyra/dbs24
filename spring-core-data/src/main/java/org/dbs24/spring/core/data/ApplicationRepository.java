@@ -9,11 +9,6 @@ package org.dbs24.spring.core.data;
 import org.dbs24.spring.core.api.ApplicationBean;
 import org.springframework.data.repository.CrudRepository;
 
-/**
- *
- * @author Козыро Дмитрий
- */
 public interface ApplicationRepository<T extends Object, ID extends Object> 
         extends CrudRepository<T, ID>, ApplicationBean {
-
 }

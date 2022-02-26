@@ -1,0 +1,75 @@
+---
+spring: 
+    profiles:
+        defult: production
+        active: dev
+---
+debug: false
+server:
+    port: 8050
+spring:
+    activate: 
+        on-profile: dev    
+    application: 
+        name: app-notifier
+    main:
+        banner-mode: off
+    jackson: 
+        serialization:
+            fail-on-empty-beans: false
+    datasource:
+        driver-class-name: org.postgresql.Driver
+#        url: jdbc:postgresql://193.178.170.145:5432/tkn_cards_dev
+#        username: tkn_admin
+#        password: $auth$m2n7t1r59key$
+    #        hikari:
+#            minimumIdle: 5
+#            maximumPoolSize: 20
+#            idleTimeout: 30000
+#            maxLifetime: 2000000
+#            connectionTimeout: 30000
+#            poolName: HikariPoolBooks        
+    jpa:
+        show-sql: false
+        database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            cache:
+                use_second_level_cache: true
+        properties:
+            hibernate:
+                generate_statistics: false
+                format_sql: true
+                order_inserts: true
+                order_updates: true
+                jdbc:
+                    batch_size: 200
+    codec:
+        max-in-memory-size: 20MB
+logging:
+    level:
+        org.springframework.security: DEBUG                            
+# deprecated custom  
+# new custom
+config:
+    application:
+        auto-reboot:
+            enable: false
+            cmd: systemctl restart app-notifier
+            freeMemoryLimit: 5000000
+            daily: 3600
+    security:
+        profile:
+            name: advanced
+            webfilter:
+                chain: development
+        security-routes:
+            enable: false
+    entity:
+        core:
+            enabled: false
+    persistence:
+        name: app-notifier
+        service:
+            name: standard

@@ -5,9 +5,10 @@
  */
 package org.dbs24.references.api;
 
-import java.util.Map;
+import java.io.Serializable;
 
-public interface ReferenceRec {
+@Deprecated
+public interface ReferenceRec extends Serializable, Cloneable {
     
     //void record2Map(Map<String, Integer> map);
 

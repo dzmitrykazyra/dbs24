@@ -1,0 +1,6 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+#export MAVEN_OPTS="-Xms1024m"
+#rm -rf ../.m2/repository/org/dbs24
+mvn enforcer:enforce
+#mvn enforcer:display-info

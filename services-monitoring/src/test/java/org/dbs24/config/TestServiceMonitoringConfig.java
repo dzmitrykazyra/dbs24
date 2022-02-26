@@ -8,6 +8,6 @@ package org.dbs24.config;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class TestServiceMonitoringConfig extends ServicesMonitoringRSocketConfig {
+public class TestServiceMonitoringConfig extends StandardMonitoringRSocketConfig {
 
 }

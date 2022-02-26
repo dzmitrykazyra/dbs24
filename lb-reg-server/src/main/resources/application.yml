@@ -1,0 +1,50 @@
+---
+spring: 
+    profiles:
+        defult: production
+        active: dev
+---
+debug: false
+server:
+    port: 8761
+eureka:
+    client:
+        register-with-eureka: false
+        fetch-registry: false
+        serviceUrl:
+            defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    instance:
+        hostname: lb-registry
+spring:
+    activate: 
+        on-profile: dev    
+    application: 
+        name: Load balance registry server
+    main:
+        banner-mode: off
+        #allow-circular-references: true
+    jackson: 
+        serialization:
+            fail-on-empty-beans: false
+    codec:
+        max-in-memory-size: 20MB
+logging:
+    level:
+        org.springframework.security: DEBUG                            
+# deprecated custom  
+# new custom
+config:
+    application:
+        auto-reboot:
+            enable: false
+            cmd: systemctl restart lb-reg-server
+            freeMemoryLimit: 5000000
+            daily: 3600
+    security:
+        profile:
+            name: advanced
+            webfilter:
+                chain: development
+    entity:
+        core:
+            enabled: false

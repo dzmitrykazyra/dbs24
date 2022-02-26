@@ -1,0 +1,284 @@
+---
+spring: 
+    profiles:
+        defult: production
+        active: dev
+---
+debug: false
+server:
+    port: 7090
+spring:
+    activate: 
+        on-profile: dev    
+    application: 
+        name: Proxy Provider
+    main:
+        banner-mode: off
+    jackson: 
+        serialization:
+            fail-on-empty-beans: false
+    datasource:
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        #show-sql: true
+        database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            cache:
+                use_second_level_cache: true
+        properties:
+            hibernate:
+#                generate_statistics: true
+                format_sql: true
+                order_inserts: true
+                order_updates: true
+                jdbc:
+                    batch_size: 20
+    codec:
+        max-in-memory-size: 20MB
+logging:
+    level:
+        org.springframework.security: DEBUG                            
+# deprecated custom  
+# new custom
+network:
+    allowed-origins:
+        additional: http://localhost:4200, https://localhost:4200
+springdoc:
+    version: '@springdoc.version@'
+    api-docs:
+        enabled: true
+    swagger-ui:
+        use-root-path: true
+        enabled: true
+        #path: /swagger-ui-custom.html
+        operationsSorter: method       
+    cache:
+        disabled: true             
+config:
+    security:
+        profile:
+            name: advanced
+            webfilter:
+                chain: development
+        jwt:
+            token:
+                enabled: false
+            name: standard
+            secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
+            expiration: 28800
+    entity:
+        core:
+            enabled: false
+    persistence:
+        name: card-pmt
+        service:
+            name: standard
+    restfull:
+        profile:
+            name: card-pmt
+    wa-back-end:
+        server:
+            uri: http://127.0.0.1:8040
+            createContract: /api/createContractFromPayment
+#        security:
+#            profile:
+#                name: reactive
+# @ConfigurationProperties
+refs:
+    synchronize: true
+    countries:
+        051: AM;Armenia
+        031: AZ;Azerbaijan
+        268: GE;Georgia
+        356: IN;India
+        360: ID;Indonesia
+        376: IL;Israel
+        398: KZ;Kazakhstan
+        417: KG;Kyrgyzstan
+        440: LT;Lithuania
+        498: MD;Moldova
+        616: PL;Poland        
+        643: RU;Russia
+        804: UA;Ukraine
+        826: GB;United Kingdom
+        840: US;United States
+        203: CZ;Czech Republic
+        528: NL;Netherlands The
+        276: DE;Germany
+        076: BR;Brazil
+        250: FR;France
+        380: IT;Italy
+        410: KR;Korea South
+        032: AR;Argentina
+        364: IR;Iran
+        484: MX;Mexico
+        428: LV;Latvia
+        112: BY;Belarus
+        124: CA;Canada
+        724: ES;Spain
+        233: EE;Estonia
+        792: TR;Turkey
+        012: DZ;Algeria
+    currencies:
+        8: ALL;Лек
+        12: DZD;Алжирский динар
+        32: ARS;Аргентинское песо
+        36: AUD;Австралийский доллар
+        44: BSD;Багамский доллар
+        48: BHD;Бахрейнский динар
+        50: BDT;Така
+        51: AMD;Армянский драм
+        52: BBD;Барбадосский доллар
+        60: BMD;Бермудский доллар
+        64: BTN;Нгултрум
+        68: BOB;Боливиано
+        72: BWP;Пула
+        84: BZD;Белизский доллар
+        90: SBD;Доллар Соломоновых островов
+        96: BND;Брунейский доллар
+        104: MMK;Кьят
+        108: BIF;Бурундийский франк
+        116: KHR;Риель
+        124: CAD;Канадский доллар
+        132: CVE;Эскудо Кабо-Верде
+        136: KYD;Доллар островов Кайман
+        144: LKR;Шри-Ланкийская рупия
+        152: CLP;Чилийское песо
+        156: CNY;Юань
+        170: COP;Колумбийское песо
+        174: KMF;Коморский франк
+        188: CRC;Костариканский колон
+        191: HRK;Куна
+        192: CUP;Кубинское песо
+        203: CZK;Чешская крона
+        208: DKK;Датская крона
+        214: DOP;Доминиканское песо
+        222: SVC;Сальвадорский колон
+        230: ETB;Эфиопский быр
+        232: ERN;Накфа
+        238: FKP;Фунт Фолклендских островов
+        242: FJD;Доллар Фиджи
+        262: DJF;Франк Джибути
+        270: GMD;Даласи
+        292: GIP;Гибралтарский фунт
+        320: GTQ;Кетсаль
+        324: GNF;Гвинейский франк
+        328: GYD;Гайанский доллар
+        332: HTG;Гурд
+        340: HNL;Лемпира
+        344: HKD;Гонконгский доллар
+        348: HUF;Форинт
+        352: ISK;Исландская крона
+        356: INR;Индийская рупия
+        360: IDR;Рупия
+        364: IRR;Иранский риал
+        368: IQD;Иракский динар
+        376: ILS;Новый израильский шекель
+        388: JMD;Ямайский доллар
+        392: JPY;Иена
+        398: KZT;Тенге
+        400: JOD;Иорданский динар
+        404: KES;Кенийский шиллинг
+        408: KPW;Северокорейская вона
+        410: KRW;Вона
+        414: KWD;Кувейтский динар
+        417: KGS;Сом
+        418: LAK;Лаосский кип
+        422: LBP;Ливанский фунт
+        426: LSL;Лоти
+        430: LRD;Либерийский доллар
+        434: LYD;Ливийский динар
+        446: MOP;Патака
+        454: MWK;Малавийская квача
+        458: MYR;Малайзийский ринггит
+        462: MVR;Руфия
+        480: MUR;Маврикийская рупия
+        484: MXN;Мексиканское песо
+        496: MNT;Тугрик
+        498: MDL;Молдавский лей
+        504: MAD;Марокканский дирхам
+        512: OMR;Оманский риал
+        516: NAD;Доллар Намибии
+        524: NPR;Непальская рупия
+        532: ANG;Нидерландский антильский гульден
+        533: AWG;Арубанский флорин
+        548: VUV;Вату
+        554: NZD;Новозеландский доллар
+        558: NIO;Золотая кордоба
+        566: NGN;Найра
+        578: NOK;Норвежская крона
+        586: PKR;Пакистанская рупия
+        590: PAB;Бальбоа
+        598: PGK;Кина
+        600: PYG;Гуарани
+        604: PEN;Соль
+        608: PHP;Филиппинское песо
+        634: QAR;Катарский риал
+        643: RUB;Российский рубль
+        646: RWF;Франк Руанды
+        654: SHP;Фунт Святой Елены
+        682: SAR;Саудовский риял
+        690: SCR;Сейшельская рупия
+        694: SLL;Леоне
+        702: SGD;Сингапурский доллар
+        704: VND;Донг
+        706: SOS;Сомалийский шиллинг
+        710: ZAR;Рэнд
+        728: SSP;Южносуданский фунт
+        748: SZL;Лилангени
+        752: SEK;Шведская крона
+        756: CHF;Швейцарский франк
+        760: SYP;Сирийский фунт
+        764: THB;Бат
+        776: TOP;Паанга
+        780: TTD;Доллар Тринидада и Тобаго
+        784: AED;Дирхам (ОАЭ)
+        788: TND;Тунисский динар
+        800: UGX;Угандийский шиллинг
+        807: MKD;Денар
+        818: EGP;Египетский фунт
+        826: GBP;Фунт стерлингов
+        834: TZS;Танзанийский шиллинг
+        840: USD;Доллар США
+        858: UYU;Уругвайское песо
+        860: UZS;Узбекский Сум
+        882: WST;Тала
+        886: YER;Йеменский риал
+        901: TWD;Новый Тайваньский доллар
+        928: VES;Боливар Соберано
+        929: MRU;Угия
+        930: STN;Добра
+        931: CUC;Конвертируемое песо
+        932: ZWL;Доллар Зимбабве
+        933: BYN;Белорусский рубль
+        934: TMT;Новый туркменский манат
+        936: GHS;Ганский седи
+        938: SDG;Суданский фунт
+        940: UYI;Уругвайское песо в индексированных единицах
+        941: RSD;Сербский динар
+        943: MZN;Мозамбикский метикал
+        944: AZN;Азербайджанский манат
+        946: RON;Румынский Лей
+        949: TRY;Турецкая лира
+        950: XAF;Франк КФА ВЕАС
+        951: XCD;Восточно-карибский доллар
+        952: XOF;Франк КФА BCEAO
+        953: XPF;Франк КФП
+        960: XDR;СДР (Специальные права заимствования)
+        967: ZMW;Замбийская квача
+        968: SRD;Суринамский доллар
+        969: MGA;Малагасийский ариари
+        970: COU;Единица реальной стоимости
+        971: AFN;Афгани
+        972: TJS;Сомони
+        973: AOA;Кванза
+        975: BGN;Болгарский лев
+        976: CDF;Конголезский франк
+        977: BAM;Конвертируемая марка
+        978: EUR;Евро
+        980: UAH;Гривна
+        981: GEL;Лари
+        985: PLN;Злотый
+        986: BRL;Бразильский реал

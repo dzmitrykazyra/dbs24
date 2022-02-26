@@ -1,0 +1,15 @@
+[Unit]
+Description=tik-mobile
+[Service]
+#User=kdg
+User=root
+#WorkingDirectory=/home/kdg/zeta24/tik-mobile/standalone
+WorkingDirectory=/root/zeta24/tik-mobile/standalone
+#ExecStart=/home/kdg/zeta24/tik-mobile/standalone/run
+ExecStart=/root/zeta24/tik-mobile/standalone/run
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

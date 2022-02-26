@@ -12,7 +12,8 @@
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>application-core-api</artifactId>          
-        </dependency>               
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>${project.name}</finalName>

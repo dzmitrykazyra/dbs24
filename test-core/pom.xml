@@ -22,28 +22,17 @@
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
+            <artifactId>spring-rest-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dbs24</groupId>
             <artifactId>test-junit-api</artifactId>      
         </dependency>                 
         <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>entity-core</artifactId>        
-        </dependency>              
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>spring-rsockets</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>spring-websockets</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>     
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
@@ -51,6 +40,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test-autoconfigure</artifactId>
-        </dependency>           
+        </dependency>
     </dependencies>
 </project>

@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.dbs24.config.*;
-import org.dbs24.service.*;
 import static org.dbs24.consts.SysConst.SERVICE_USER_ID;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,11 +40,18 @@ import static org.dbs24.rsocket.api.MessageType.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestServiceMonitoring extends AbstractRSocketTest {
 
-    @Autowired
-    MonitoringRSocketService monitoringRSocketService;
+    //@Autowired
+//    final MonitoringRSocketService monitoringRSocketService;
+//    
+//    public TestServiceMonitoring(MonitoringRSocketService monitoringRSocketService) {
+//      this.monitoringRSocketService = monitoringRSocketService;
+//    }
+    
+    
+    
 
     private Boolean isRemoteTest = Boolean.TRUE;
-    private String remoteAddrr = isRemoteTest ? "104.197.253.120" : "127.0.0.1";
+    private String remoteAddrr = isRemoteTest ? "130.211.198.183" : "127.0.0.1";
 
     @BeforeEach
     public void setUp() {
@@ -89,7 +95,7 @@ public class TestServiceMonitoring extends AbstractRSocketTest {
     //==========================================================================
     final TestRunner testRunner = () -> {
 
-        monitoringRSocketService.send(MONITORING_LIVENESS, "Hello from TestServiceMonitoring");
+//        monitoringRSocketService.send(MONITORING_LIVENESS, "Hello from TestServiceMonitoring");
         
     };
 

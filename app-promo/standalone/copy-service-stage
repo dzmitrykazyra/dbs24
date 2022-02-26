@@ -1,0 +1,2 @@
+chmod u+x app-promo-stage.service
+sudo cp -f app-promo-stage.service /etc/systemd/system/app-promo.service

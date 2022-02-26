@@ -5,7 +5,6 @@
  */
 package org.dbs24.application.core.thread;
 
-import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
 
 /**
@@ -80,8 +79,7 @@ public final class ParallelThreadFlow<T> extends AbstractThreadFlow {
                     if (!this.getIsValid()) {
 
                         String errMsg = String.format("%s: (%s) \n",
-                                ns_excThreadName,
-                                LogService.getCurrentProcName());
+                                ns_excThreadName,"LogService.getCurrentProcName()");
 
                         if (NullSafe.notNull(this.getExceptionMsg())) {
                             errMsg = errMsg.concat(this.getExceptionMsg() + "\n");

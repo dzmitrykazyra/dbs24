@@ -1,0 +1,15 @@
+[Unit]
+Description=monitoring-service
+[Service]
+User=kdg
+#User=root
+WorkingDirectory=/home/kdg/zeta24/services-monitoring/standalone
+#WorkingDirectory=/root/zeta24/services-monitoring/standalone
+ExecStart=/home/kdg/zeta24/services-monitoring/standalone/services-monitoring
+#ExecStart=/root/zeta24/services-monitoring/standalone/services-monitoring
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

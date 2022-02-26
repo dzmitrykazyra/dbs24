@@ -9,17 +9,18 @@ package org.dbs24.application.core.api;
  *
  * @author Козыро Дмитрий
  */
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.EqualsAndHashCode;
+
 import java.io.Serializable;
 //import org.dbs24.registry.api.RegistryCoreService;
 //import org.dbs24.jpa.entity.service.PersistenceEntityManagerService;
 
+@EqualsAndHashCode
 public abstract class ObjectRoot extends Object implements Serializable, Cloneable {
 
 //    private static RegistryCoreService rcs;
     //private volatile static PersistenceEntityManagerService PersistenceEntityManagerService;
-    @JsonIgnore
-    private final Object monitorLock = new Object();
+  //  private final Object monitorLock = new Object();
 
     public ObjectRoot() {
         super();
@@ -55,9 +56,9 @@ public abstract class ObjectRoot extends Object implements Serializable, Cloneab
     //==========================================================================
     public void initialize() {
 
-        synchronized (this.getMonitorLock()) {
+       /* synchronized (this.getMonitorLock()) {
             this.internalInitialize();
-        }
+        }*/
 
     }
 
@@ -74,7 +75,7 @@ public abstract class ObjectRoot extends Object implements Serializable, Cloneab
 
 //            NullSafe.create(ObjectRoot.PersistenceEntityManagerService)
 //                    .whenIsNull(() -> ObjectRoot.PersistenceEntityManagerService
-//                    = ServiceLocator.find(PersistenceEntityManagerService.class));
+//                    = ServiceLocator.find(PersistenceService Service.class));
         }
     }
 
@@ -93,7 +94,7 @@ public abstract class ObjectRoot extends Object implements Serializable, Cloneab
 //
 //    }
     //==========================================================================
-    public Object getMonitorLock() {
-        return monitorLock;
-    }
+  //  public Object getMonitorLock() {
+  /*      return monitorLock;
+    }*/
 }

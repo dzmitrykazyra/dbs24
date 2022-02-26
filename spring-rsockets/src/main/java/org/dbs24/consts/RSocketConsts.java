@@ -6,11 +6,12 @@
 package org.dbs24.consts;
 
 //import io.rsocket.metadata.TaggingMetadataFlyweight;
-
 public class RSocketConsts {
 
     public static final String MIME_FILE_EXTENSION = "message/x.upload.file.extension";
     public static final String MIME_FILE_NAME = "message/x.upload.file.name";
     public static final String FILE_NAME = "file-name";
     public static final String FILE_EXTN = "file-extn";
+
+    public static final String R_QUALIFIER_ABSTRACT_CLIENT = "abstract.rsocket.client";
 }

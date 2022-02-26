@@ -9,13 +9,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.dbs24.application.core.nullsafe.StopWatcher;
-import org.dbs24.component.PersistenceEntityManager;
+import org.dbs24.stmt.StmtProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.env.Environment;
-import static org.dbs24.consts.WebSocketConst.*;
-import org.dbs24.stmt.StmtProcessor;
+
+//import org.dbs24.component.PersistenceService;
 
 @Log4j2
 @Data
@@ -27,8 +27,8 @@ public abstract class AbstractTest {
     @Value("${reactive.rest.timeout:200000}")
     protected Integer timeoutDefault;
 
-    @Autowired
-    private PersistenceEntityManager persistenceEntityManager;
+//    @Autowired
+//    private PersistenceService persistenceEntityManager;
 
     @Autowired
     private Environment environment;

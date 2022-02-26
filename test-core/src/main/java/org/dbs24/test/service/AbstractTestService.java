@@ -5,9 +5,9 @@
  */
 package org.dbs24.test.service;
 
-import org.dbs24.entity.core.AbstractActionEntity;
+//import org.dbs24.entity.core.AbstractActionEntity;
 
 
-public abstract class AbstractTestService<T extends AbstractActionEntity> {
+public abstract class AbstractTestService<T> {
 
 }

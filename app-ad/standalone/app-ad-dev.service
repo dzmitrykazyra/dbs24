@@ -1,0 +1,15 @@
+[Unit]
+Description=app-ad
+[Service]
+#User=kdg
+User=root
+#WorkingDirectory=/home/kdg/zeta24/app-ad/standalone
+WorkingDirectory=/root/zeta24/app-ad/standalone
+#ExecStart=/home/kdg/zeta24/app-ad/standalone/
+ExecStart=/root/zeta24/app-ad/standalone/run-dev
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

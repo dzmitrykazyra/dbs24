@@ -1,0 +1,2 @@
+chmod u+x insta-serv.service
+sudo cp -f insta-serv.service /etc/systemd/system/insta-serv.service

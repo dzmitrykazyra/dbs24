@@ -1,0 +1,15 @@
+#!/bin/sh
+clear
+cd ~
+cd zeta24
+cd proxy-core
+git checkout J103
+git pull
+#build
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+export MAVEN_OPTS="-Xms1024m"
+rm -rf ../.m2/repository/org/dbs24
+mvn -version
+mvn clean
+mvn install validate
+systemctl restart proxy-core

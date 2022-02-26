@@ -8,10 +8,10 @@ package org.dbs24.spring.core.data;
 import org.dbs24.spring.core.data.ApplicationJpaRepository;
 import java.util.Collection;
 import lombok.Data;
-import org.dbs24.spring.core.api.ApplicationService;
+import org.dbs24.spring.core.api.AbstractApplicationService;
 
 @Data
-public abstract class AbstractReferencesService implements ApplicationService {
+public abstract class AbstractReferencesService extends AbstractApplicationService {
     
     private Collection<ApplicationJpaRepository> refRepositories;
 }

@@ -1,0 +1,5 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+clear
+cd ..
+mvn spring-boot:run -Dexec.mainClass="org.dbs24.health.ApplicationReadiness" -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.main.banner-mode=off --debug=false"

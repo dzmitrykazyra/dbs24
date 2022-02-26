@@ -1,0 +1,56 @@
+---
+spring: 
+    profiles:
+        defult: production
+        active: dev
+---
+debug: false
+server:
+    port: 8082
+spring:
+    activate: 
+        on-profile: dev    
+    application: 
+        name: Insta Faces Search
+    main:
+        banner-mode: off
+    jackson: 
+        serialization:
+            fail-on-empty-beans: false
+    codec:
+        max-in-memory-size: 20MB
+    kafka:
+        bootstrap-servers: 94.103.93.96:9092
+        listener:
+            type: batch          
+        producer:
+            group-id: instaGroup    
+            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+        consumer:
+            auto-offset-reset: earliest            
+            group-id: instaGroup         
+logging:
+    level:
+        org.springframework.security: DEBUG                            
+# deprecated custom  
+# new custom
+config:
+    security:
+        profile:
+            name: advanced
+            webfilter:
+                chain: development
+        jwt:
+            token:
+                enabled: false
+            name: standard
+            secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
+            expiration: 28800
+    entity:
+        core:
+            enabled: false
+    restfull:
+        profile:
+            name: insta-crw
+    proxy-provider:
+        address: http://193.178.170.145:8000            

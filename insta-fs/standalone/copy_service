@@ -1,0 +1,2 @@
+chmod u+x insta-fs.service
+sudo cp -f insta-fs.service /etc/systemd/system/insta-fs.service

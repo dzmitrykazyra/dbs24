@@ -31,11 +31,14 @@ import org.springframework.security.rsocket.metadata.BearerTokenAuthenticationEn
 import org.springframework.security.rsocket.core.PayloadSocketAcceptorInterceptor;
 import org.springframework.boot.rsocket.messaging.RSocketStrategiesCustomizer;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.messaging.handler.invocation.reactive.AuthenticationPrincipalArgumentResolver;
-import org.springframework.util.MimeTypeUtils;
+//import org.springframework.context.annotation.Conditional;
+//import org.springframework.context.annotation.Condition;
 
 @Log4j2
-public abstract class AbstractRSocketConfig extends AbstractApplicationBean {
+public abstract class AbstractRSocketConfig extends MainApplicationConfig {
 
     @Value("${spring.rsocket.server.port:6666}")
     protected Integer rsocketPort;
@@ -43,8 +46,20 @@ public abstract class AbstractRSocketConfig extends AbstractApplicationBean {
     @Value("${spring.rsocket.server.mapping-path:/rsocket}")
     protected String rsocketMappingPath;
 
+    @Value("${sm.uid:smuser}")
+    protected String uid = "smuser";
+
+    @Value("${sm.pwd:smpwd}")
+    protected String pwd = "smpwd";
+
+    @Value("${sm.role:SMROLE}")
+    protected String role = "SMROLE";
+
+    private RSocketSecurity rSocketSecurity;
+
     @Bean
-    RSocketMessageHandler messageHandler(RSocketStrategies rSocketStrategies) {
+//    @Conditional
+    public RSocketMessageHandler messageHandler(RSocketStrategies rSocketStrategies) {
         final RSocketMessageHandler mh = new RSocketMessageHandler();
         mh.getArgumentResolverConfigurer().addCustomResolver(new AuthenticationPrincipalArgumentResolver());
         mh.setRSocketStrategies(rSocketStrategies);
@@ -68,57 +83,75 @@ public abstract class AbstractRSocketConfig extends AbstractApplicationBean {
         final RSocketStrategies rSocketStrategies = RSocketStrategies.builder()
                 .encoders(encoders -> addEncoders().forEach(encoder -> encoders.add(encoder)))
                 .decoders(decoders -> addDecoders().forEach(decoder -> decoders.add(decoder)))
-                .metadataExtractorRegistry(metadataExtractorRegistry
-                        -> Stream.of(MimeTypes.values())
-                        .forEach(mimeType -> metadataExtractorRegistry.metadataToExtract(
-                        MimeType.valueOf(mimeType.getValue()),
-                        String.class,
-                        mimeType.toString())))
+                .metadataExtractorRegistry(metadataExtractorRegistry -> Stream.of(MimeTypes.values())
+                .forEach(mimeType -> metadataExtractorRegistry.metadataToExtract(MimeType.valueOf(mimeType.getValue()), String.class,
+                mimeType.toString())))
                 .build();
 
         Assert.notNull(rSocketStrategies,
                 "fucking RSocketStrategies is null!");
 
-        log.info(
-                "RSocketStrategies is created ({})", rSocketStrategies.toString());
+        log.info("RSocketStrategies is created ({})", rSocketStrategies.toString());
 
         return rSocketStrategies;
     }
 
-//    @Bean
-//    public Mono<RSocketRequester> rSocketRequester(RSocketRequester.Builder builder) {
-//
-//        Mono<RSocketRequester> mono = Mono.just(builder
-//                .rsocketConnector(rSocketConnector -> rSocketConnector.reconnect(Retry.fixedDelay(2, Duration.ofSeconds(2))))
-//                .dataMimeType(MediaType.APPLICATION_CBOR)
-//                //.dataMimeType(MimeTypeUtils.ALL)
-//                //.connect(TcpClientTransport.create(rsocketPort));
-//                .transport(TcpClientTransport.create(rsocketPort)));
-//
-//        Assert.notNull(mono, "fucking RSocketRequester is null!");
-//
-//        log.info("RSocketRequester is created ({}, {})", rsocketPort, mono);
-//
-//        return mono;
-//    }
     @Bean
     @Primary
-    public MapReactiveUserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-
+    public MapReactiveUserDetailsService rSocketUserDetailsService(
+            PasswordEncoder passwordEncoder) {
         return new MapReactiveUserDetailsService(initUserDetails(passwordEncoder));
     }
 
-    // to override in child classes
-    protected abstract Collection<UserDetails> initUserDetails(PasswordEncoder passwordEncoder);
+    protected Collection<UserDetails> initUserDetails(PasswordEncoder passwordEncoder) {
+
+        final Collection<UserDetails> collection = ServiceFuncs.createCollection();
+        collection.add(User.withUsername(uid)
+                .passwordEncoder(passwordEncoder::encode)
+                .password(pwd)
+                .roles(role)
+                .build());
+
+        return collection;
+    }
+
+    protected PayloadSocketAcceptorInterceptor buildSingleRoute(String socketRoute) {
+
+        return this.buildRoutes(socketRoute);
+    }
+
+    protected PayloadSocketAcceptorInterceptor buildRoutes(String... socketRoutes) {
+
+        return rSocketSecurity
+                .authorizePayload(spec
+                        -> this.buildRoute(spec
+                        .setup().hasRole(role), role, socketRoutes)
+                        .anyRequest().authenticated()
+                        .anyExchange().authenticated()
+                )
+                .simpleAuthentication(Customizer.withDefaults())
+                .build();
+    }
+
+    private RSocketSecurity.AuthorizePayloadsSpec buildRoute(RSocketSecurity.AuthorizePayloadsSpec pls, String role, String... socketRoutes) {
+
+        RSocketSecurity.AuthorizePayloadsSpec apls = pls;
+
+        for (String route : socketRoutes) {
+            apls = apls.route(route).hasRole(role);
+        }
+
+        return apls;
+    }
 
     @Bean
-    //@Primary
-    public PayloadSocketAcceptorInterceptor authorization(RSocketSecurity security) {
-        return this.initPayloadSocketAcceptorInterceptor(security);
+    public PayloadSocketAcceptorInterceptor authorization(RSocketSecurity rSocketSecurity) {
+        this.rSocketSecurity = rSocketSecurity;
+        return this.initPayloadSocketAcceptorInterceptor();
     }
 
     // to override in child classes
-    protected abstract PayloadSocketAcceptorInterceptor initPayloadSocketAcceptorInterceptor(RSocketSecurity security);
+    protected abstract PayloadSocketAcceptorInterceptor initPayloadSocketAcceptorInterceptor();
 
     //==========================================================================
     @Bean

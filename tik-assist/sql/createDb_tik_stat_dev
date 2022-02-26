@@ -1,0 +1,14 @@
+sudo su postgres
+--psql -c "initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+-- psql -c "CREATE ROLE tik_stat_admin  WITH LOGIN CREATEDB ENCRYPTED PASSWORD '$tk1am0d$Swsd76e'"
+psql -c "CREATE ROLE tik_stat_admin  WITH LOGIN CREATEDB ENCRYPTED PASSWORD '\$tk1am0d\$Swsd76e'"
+psql -c "CREATE DATABASE tik_stat_dev OWNER tik_stat_admin"
+--psql -c "ALTER USER tik_stat_admin WITH PASSWORD '\$tk1am0d\$Swsd76e'"
+psql -c "grant all privileges on database tik_stat_dev to tik_stat_admin"
+psql -c "CREATE SCHEMA tik_stat_schema_stage"
+psql -c "SET search_path TO tik_stat_schema_stage"
+psql -c "GRANT USAGE ON SCHEMA tik_stat_schema_stage TO tik_stat_admin"
+psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA tik_stat_schema_stage  TO tik_stat_admin"
+psql -c "ALTER database tik_stat_dev SET search_path TO tik_stat_schema_stage"
+
+sudo ufw allow 5432/tcp

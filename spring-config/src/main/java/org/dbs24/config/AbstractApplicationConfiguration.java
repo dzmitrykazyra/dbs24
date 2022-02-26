@@ -5,8 +5,11 @@
  */
 package org.dbs24.config;
 
+import lombok.EqualsAndHashCode;
+import org.dbs24.spring.core.api.AbstractApplicationBean;
 import org.dbs24.spring.core.api.ApplicationConfiguration;
 
-public abstract class AbstractApplicationConfiguration implements ApplicationConfiguration {
+@EqualsAndHashCode(callSuper = false)
+public abstract class AbstractApplicationConfiguration extends AbstractApplicationBean implements ApplicationConfiguration {
 
 }

@@ -1,0 +1,57 @@
+package org.dbs24.tik.assist.constant;
+
+public class CacheKey {
+
+    public static final String CACHE_BOT = "bot";
+    public static final String CACHE_VALID_BOTS = "validBots";
+    public static final String CACHE_PHONE = "phone";
+    public static final String CACHE_ACTUAL_PHONES = "actualPhones";
+    public static final String CACHE_ACTUAL_PHONES_USAGES = "actualPhonesUsages";
+    public static final String CACHE_PHONE_USAGE = "phoneUsage";
+    public static final String CACHE_AGENT_STATUS = "agentStatusesRef";
+    public static final String CACHE_BOT_REGISTRATION_TYPE = "botRegistrationTypeRef";
+    public static final String CACHE_COUNTRY = "countriesRef";
+    public static final String CACHE_USER_STATUS = "userStatusesRef";
+    public static final String CACHE_ORDER_STATUS = "contractStatusesRef";
+    public static final String CACHE_PAYMENT_STATUS = "paymentStatusesRef";
+    public static final String CACHE_ACTIVE_USS = "userSubscriptionStatusActive";
+    public static final String CACHE_WAITING_FOR_PAYMENT_USS = "userSubscriptionStatusWaitingForPayment";
+    public static final String NON_CACHE_ACTIVE_USS = "userSubscriptionStatusNonActive";
+    public static final String CACHE_DONE_PS = "planStatusDone";
+    public static final String CACHE_ACTIVE_PS = "planStatusActive";
+    public static final String CACHE_FINISHED_OS = "orderStatusFinished";
+    public static final String CACHE_HISTORY_CLEAR_OS = "orderStatusHistoryClear";
+    public static final String CACHE_ACTUAL_OS = "orderStatusActual";
+    public static final String CACHE_ACTIVE_OS = "orderStatusesActive";
+    public static final String CACHE_ACTIVE_BS = "botStatusActive";
+    public static final String CACHE_EXPIRED_BS = "botStatusExpired";
+    public static final String CACHE_BANNED_BS = "botStatusBanned";
+    public static final String CACHE_ACTIVE_PTS = "planTemplateStatusActive";
+    public static final String CACHE_NOT_ACTIVE_PTS = "planTemplateStatusNotActive";
+    public static final String CACHE_ACTIVE_US = "userStatusActive";
+    public static final String CACHE_ACTIVE_GOOGLE_US = "googleUserStatusActive";
+    public static final String CACHE_ACTIVE_FACEBOOK_US = "facebookUserStatusActive";
+    public static final String CACHE_NOT_ACTIVE_US = "userStatusNotActive";
+    public static final String CACHE_IN_PROGRESS_OAR = "orderActionResultInProgress";
+    public static final String CACHE_NOT_STARTED_OAR = "orderActionResultsNotStarted";
+    public static final String CACHE_FINISHED_OAR = "orderActionResultsFinished";
+    public static final String CACHE_CREATED_OAR = "orderActionResultsCreated";
+    public static final String CACHE_WAITING_FOR_BOT_OAR = "orderActionResultsWaitingForBot";
+    public static final String CACHE_BOT_IS_EXPIRED_OAR = "orderActionResultsBotIsExpired";
+    public static final String CACHE_AS_BY_NAME = "actionStatusByName";
+    public static final String CACHE_AT_BY_NAME = "actionTypeByName";
+    public static final String CACHE_AT_BY_ID = "actionTypeById";
+    public static final String CACHE_BS_BY_ID = "botStatusById";
+    public static final String CACHE_PHS_BY_ID = "phoneStatusById";
+    public static final String CACHE_PS_BY_ID = "paymentStatusById";
+    public static final String CACHE_AR_BY_ID = "actionResultById";
+    public static final String CACHE_C_BY_ISO = "currencyByIso";
+    public static final String CACHE_C_BY_ID = "currencyById";
+    public static final String CACHE_PT_BY_ID = "paymentTypeById";
+    public static final String CACHE_BRT_BY_ID = "botRegistrationTypeById";
+    public static final String CACHE_BOT_OPTIONAL = "botOptional";
+    public static final String CACHE_NEED_REMAKE_ACTION_RESULT = "needRemakeActionResults";
+    public static final String CACHE_EXECUTION_ERROR_ACTION_RESULTS = "executionErrorActionResults";
+    public static final String CACHE_VIDEO_ACTION_TYPES = "videoActionTypes";
+    public static final String CACHE_ACCOUNT_ACTION_TYPES = "accountActionTypes";
+}

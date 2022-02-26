@@ -1,0 +1,5 @@
+chmod u+x lb-reg-server-stage.service
+sudo cp -f lb-reg-server-stage.service /etc/systemd/system/lb-reg-server.service
+sudo systemctl daemon-reload
+sudo systemctl restart lb-reg-server
+sudo systemctl enable lb-reg-server

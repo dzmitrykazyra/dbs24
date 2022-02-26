@@ -1,0 +1,12 @@
+[Unit]
+Description=card-pmt
+[Service]
+User=root
+WorkingDirectory=/root/zeta24/app-promo/standalone
+ExecStart=/root/zeta24/app-promo/standalone/run-stage
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

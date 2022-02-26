@@ -1,0 +1,158 @@
+---
+spring: 
+    profiles:
+        defult: production
+        active: dev
+---
+debug: false
+server:
+    port: 8040
+    host-name: http://127.0.0.1
+    event-loop-groups: 25
+    servlet:
+        context-path: /
+grpc:
+    server:
+        port: 8041
+eureka:
+    client:
+        service-url:
+            default-zone: http://127.0.0.1:8761/eureka
+    service-name: wa-monitoring
+    balancer:
+        enabled: false
+spring:
+    activate: 
+        on-profile: dev    
+    application: 
+        name: wa-monitoring
+    main:
+        banner-mode: off
+        #allow-circular-references: true
+    jackson: 
+        serialization:
+            fail-on-empty-beans: false
+    datasource:
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        hikari:
+            minimumIdle: 3
+            maximumPoolSize: 100
+        show-sql: false
+        database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            cache:
+                use_second_level_cache: true          
+        properties:
+            hibernate:
+#                generate_statistics: true
+                format_sql: true
+                order_inserts: true
+                order_updates: true
+                jdbc:
+                    batch_size: 1500
+    codec:
+        max-in-memory-size: 20MB
+    kafka:
+        listener:
+            type: batch          
+        bootstrap-servers: 94.103.93.96:9092
+        producer:
+            group-id: myGroup
+            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    #netty:
+        #leak-detection: ADVANCED
+logging:
+    level:
+        org.springframework.security: INFO
+        reactor.netty.http.server.AccessLog: DEBUG
+management:
+    endpoints:
+        enabled-by-default: true
+        web:
+            exposure:
+                include: "metrics, health"
+                #include: "*"
+                #exclude: "beans"
+# deprecated custom
+# new custom
+config:
+    application:
+        auto-reboot:
+            enable: true
+            cmd: systemctl restart wa-monitoring
+            freeMemoryLimit: 10000000
+            #daily: 18000
+            frequency: 86400
+    testing:
+        enabled: true
+        subscription:
+            max: 10001
+    activities:
+        shelf-life:
+            term: 90
+            arc-term: 91
+            period: 3600000
+    wa:
+        user:
+            login:
+                length: 30
+                prefix: DEV_
+                login-token-priority: true
+            trial:
+                length: 72
+                future-offset: 120
+        contract:
+            deprecated:
+                update: 60000
+            futured:
+                update: 60000
+        subscription:
+            min-liveness-time: 600000
+        tariff:
+            max-duration: 2000
+            max-subs-amount: 200
+        ads:
+            url: http://127.0.0.1:8060
+            api:
+                settings: /api/wa/getAdsSettings
+    security:
+        profile:
+            name: advanced
+            webfilter:
+                chain: development
+        jwt:
+            name: standard
+            secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
+            expiration: 28800
+    entity:
+        core:
+            enabled: false
+    persistence:
+        name: wa-monitoring
+        service:
+            name: standard
+    migration:
+        enabled: true
+        url: http://127.0.0.1:8044
+        api:
+            agents: /api/getAgents
+            users: /api/getUsers
+            actualUsers: /api/getActualUsers
+        use-ora-id: false
+    restfull:
+        profile:
+            name: wa-monitoring
+springdoc:
+    version: '@springdoc.version@'
+    api-docs:
+        enabled: true
+    swagger-ui:
+        use-root-path: true
+        enabled: true
+        #path: /swagger-ui-custom.html
+        operationsSorter: method       
+    cache:
+        disabled: true        

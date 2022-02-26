@@ -6,52 +6,96 @@
 package org.dbs24.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.spring.core.mail.MailManager;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
+import org.dbs24.exception.MissingNecessaryBeansException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
-//import org.dbs24.service.WebClientMgmt;
-import lombok.Data;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.support.GenericApplicationContext;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static com.fasterxml.jackson.databind.DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT;
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;
-import static org.dbs24.consts.SysConst.*;
+import static org.dbs24.consts.SysConst.ALL_PACKAGES;
+import static org.dbs24.consts.SysConst.BOOLEAN_FALSE;
 
-@Data
+@Log4j2
+@Getter
+@ComponentScan(basePackages = {ALL_PACKAGES})
+@EntityScan(basePackages = {ALL_PACKAGES})
+@EqualsAndHashCode(callSuper = false)
 public abstract class MainApplicationConfig extends AbstractApplicationConfiguration {
 
-//    @Bean
-//    public ExceptionsCollectorBean exceptionManager() {
-//        return NullSafe.createObject(ExceptionsCollectorBean.class);
-//    }
+    public static GenericApplicationContext genericApplicationContext;
+    final String className = this.getClass().getSimpleName();
+
+    @Autowired
+    public void initializeContext(GenericApplicationContext genericApplicationContext) {
+        MainApplicationConfig.genericApplicationContext = genericApplicationContext;
+    }
+
     @Bean
+    @Primary
     public ObjectMapper objectMapper() {
+
+        log.info("Try 2 create ObjectMapper ...");
 
         final ObjectMapper objectMapper = new ObjectMapper();
 
         objectMapper.enable(ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
         // игнорируем ненужные поля
         objectMapper.configure(FAIL_ON_UNKNOWN_PROPERTIES, BOOLEAN_FALSE);
-        
-//        objectMapper.registerModule(new ParameterNamesModule());
-//        objectMapper.registerModule(new Jdk8Module());
-//        objectMapper.registerModule(new JavaTimeModule());
-//        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        
+
+        log.info("ObjectMapper was created");
 
         return objectMapper;
     }
 
-//    @Bean
-//    public WebClientMgmt webClientMgmt() {
-//        return NullSafe.<WebClientMgmt>createObject(WebClientMgmt.class);
-//    }
+    //==========================================================================
+    public void assertBeans(Class<?> clazz, String... beansList) {
 
-    @Bean
-    public MailManager mailManager() {
-        return NullSafe.<MailManager>createObject(MailManager.class);
+        final Collection<String> defs = Arrays.asList(genericApplicationContext.getBeanDefinitionNames());
+
+        final Collection<String> badBeansList = Stream.of(beansList)
+                .filter(el -> !defs.contains(el))
+                .collect(Collectors.toList());
+
+        if (!badBeansList.isEmpty()) {
+
+            throw new MissingNecessaryBeansException(String.format("%s: bad application configuration! (application require following bean(s): %s)",
+                    clazz.getCanonicalName(),
+                    badBeansList
+                            .stream()
+                            .reduce(String.format(" (%d): ",
+                                            badBeansList.size()),
+                                    (x, y) -> x.concat(", ").concat(y))));
+        } else {
+            log.info(Arrays.stream(beansList)
+                    .sorted()
+                    .reduce(String.format("Spring beans list (%d): \n",
+                                    beansList.length),
+                            (x, y) -> {
+                                final BeanDefinition bd = genericApplicationContext.getBeanDefinition(y);
+                                final String bcn = String.format("%s: %s [%s]",
+                                        y,
+                                        bd.getClass(),
+                                        bd.getScope());
+                                return x.concat("\n").concat(bcn);
+                            }));
+        }
     }
-
-//    @Bean
-//    public JpaRepositoriesCoolection repoManager() {
-//        return NullSafe.createObject(JpaRepositoriesCoolection.class);
-//    }
+    //==================================================================================================================
+    @Override
+    public void initialize() {
+        log.info("Configuration '{}' is activated", className.indexOf("$$") > 0 ? className.substring(0, className.indexOf("$$")) : className);
+    }
 }

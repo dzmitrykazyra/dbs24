@@ -1,0 +1,9 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-16"
+export MAVEN_OPTS="-Xms128m"
+clear
+mvn -version
+mvn clean install -DskipTests=true
+mvn spring-boot:run -Dexec.mainClass="org.dbs24.ServiceMonitoringBoot" -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.main.banner-mode=off --server.port=7654 --debug=true"
+#mvn spring-boot:run -Dexec.mainClass="org.dbs24.ServiceMonitoringBoot" -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.main.banner-mode=off --server.port=8021 --spring.rsocket.server.port=7077"
+#mvn exec:java -Dexec.mainClass="org.dbs24.ServiceMonitoringBoot" -Dexec.classpathScope=runtime

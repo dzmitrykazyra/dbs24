@@ -14,7 +14,7 @@ import static org.dbs24.consts.SysConst.*;
 
 @Configuration
 @ComponentScan(basePackages = {COMPONENT_PACKAGE, SERVICE_PACKAGE})
-@PropertySource(APP_PROPERTIES)
+//@PropertySource(APP_PROPERTIES)
 @Data
 public class EntityReferencesConfig extends AbstractApplicationConfiguration {
 

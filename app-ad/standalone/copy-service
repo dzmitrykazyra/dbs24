@@ -1,0 +1,2 @@
+chmod u+x app-ad.service
+sudo cp -f app-ad.service /etc/systemd/system/app-ad.service

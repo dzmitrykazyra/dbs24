@@ -5,25 +5,17 @@
  */
 package org.dbs24.rest.api;
 
-import org.dbs24.application.core.log.LogService;
+
 import java.time.LocalDateTime;
 //import org.springframework.web.bind.annotation.RestController;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.http.HttpStatus;
 //import org.springframework.web.bind.annotation.*;
-import org.dbs24.spring.core.api.ApplicationService;
+import org.dbs24.spring.core.api.AbstractApplicationService;
 
-/**
- *
- * @author Козыро Дмитрий
- */
-//@RestController
-//@CrossOrigin
-//@RequestMapping(LogService.PATH_REST)
-public abstract class SpringRestProcessor implements ApplicationService {
+@Deprecated
+public abstract class SpringRestProcessor extends AbstractApplicationService {
 
-//    @GetMapping(LogService.PATH_4PING)
-//    @ResponseStatus(HttpStatus.OK)
     public String receivePingMessage( String pingMessage) {
         return String.format("connection is successfull \n {'%s', %s, %s} ",
                 pingMessage,

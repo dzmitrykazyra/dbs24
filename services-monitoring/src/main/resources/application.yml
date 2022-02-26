@@ -1,0 +1,66 @@
+## YAML Template.
+---
+spring: 
+    profiles:
+        defult: production
+        active: dev
+---
+spring:
+    activate: 
+        on-profile: dev
+    application:
+        name: services monitoring
+    main:
+            banner-mode: off    
+    rsocket:
+        server:
+            port: 7007
+            transport: tcp
+            mapping-path: /rsocket
+    jackson:
+        serialization:
+            fail-on-empty-beans: false                
+server:
+    port: 8010
+#spring.main.lazy-initialization=true
+debug: false
+# monitoring
+monitoring:
+    port: 7007
+    address: 127.0.0.1
+    enabled: false
+    secret: "${random.value}"
+    number-in-range: "${random.int[1024,65536]}"
+    
+persistence:
+    debug: false
+    
+config:
+    rsocket:
+        name: standard
+    bank:
+        mfo: 288
+---
+#spring:
+#    activate: 
+#        on-profile: production
+#    application:
+#        name: services monitoring production
+#    main:
+#        banner-mode: off       
+#    rsocket:
+#        server:
+#            port: 7007
+#            transport: tcp
+#            mapping-path: /rsocket
+#        monitoring:
+#            port: 7007
+#    jackson:
+#        serialization:
+#            fail-on-empty-beans: false                
+#server:
+#    port: 8011
+##spring.main.lazy-initialization=true
+#debug: false
+#persistence:
+#    debug: false

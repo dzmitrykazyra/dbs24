@@ -24,11 +24,7 @@
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>test-api</artifactId>     
-        </dependency>                      
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>listeners-api</artifactId>
-        </dependency>                       
+        </dependency>
     </dependencies>    
             
 </project>

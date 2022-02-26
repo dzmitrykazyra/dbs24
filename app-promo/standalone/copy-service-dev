@@ -1,0 +1,3 @@
+chmod u+x app-promo-dev.service
+sudo cp -f app-promo-dev.service /etc/systemd/system/app-promo.service
+systemctl enable app-promo.service

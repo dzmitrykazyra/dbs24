@@ -1,0 +1,10 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+#export MAVEN_OPTS="-Xms128m  -XX:MaxDirectMemorySize=256M -XX:+PrintCodeCache -XX:+UseParallelGC -Xlog:gc+heap -XX:+ExplicitGCInvokesConcurrent -XX:+UseLargePages"
+#export MAVEN_OPTS="-Xms128m  -XX:MaxDirectMemorySize=256M -XX:+UseParallelGC -XX:+ExplicitGCInvokesConcurrent -XX:+UseLargePages"
+export MAVEN_OPTS="-Xmx1G -Xms1G -XX:MaxDirectMemorySize=256M -XX:+UseParallelGC -XX:+ExplicitGCInvokesConcurrent -XX:InitiatingHeapOccupancyPercent=35 -XX:+UseLargePages -XX:MaxInlineLevel=15"
+clear
+cd ..
+#mvn -version
+#mvn clean install -DskipTests=true
+mvn spring-boot:run -Dexec.mainClass="org.dbs24.WaMonitoring" -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.main.banner-mode=off --debug=false --spring.datasource.url=jdbc:postgresql://193.178.170.145:5432/wa_monitoring_dev --config.wa.user.login.prefix=DEV_ --config.wa.contract.futured.enabled=-"

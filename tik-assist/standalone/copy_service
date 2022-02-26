@@ -1,0 +1,2 @@
+chmod u+x tik-assist.service
+sudo cp -f tik-assist.service /etc/systemd/system/tik-assist.service

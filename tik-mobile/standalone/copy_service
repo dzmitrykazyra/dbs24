@@ -1,0 +1,2 @@
+chmod u+x tik-mobile.service
+sudo cp -f tik-mobile.service /etc/systemd/system/tik-mobile.service

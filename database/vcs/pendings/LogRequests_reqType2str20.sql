@@ -1,6 +1,0 @@
-ALTER TABLE log_requests
- ALTER COLUMN req_type SET DATA TYPE TStr20;
-
-ALTER TABLE log_requests
- ALTER COLUMN address SET DATA TYPE TStr100;
-

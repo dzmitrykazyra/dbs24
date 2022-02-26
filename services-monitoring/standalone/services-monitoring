@@ -1,0 +1,6 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.1"
+export MAVEN_OPTS="-Xms128m -XX:MaxDirectMemorySize=512m"
+clear
+/usr/lib/jvm/jdk-15.0.1/bin/java --version
+/usr/lib/jvm/jdk-15.0.1/bin/java -Dlog4j.debug=false -Dlog4j.configurationFile=config/log4j2.xml -jar services-monitoring.jar --server.port=7654 --debug=false

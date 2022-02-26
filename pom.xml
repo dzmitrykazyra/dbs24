@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.dbs24</groupId>
     <artifactId>dbs24</artifactId>
@@ -8,139 +9,201 @@
     <properties>
         <app.root.group>org.dbs24</app.root.group>
         <app.version>0.8</app.version>
-        <buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>        
-        <compiler-plugin.version>3.8.1</compiler-plugin.version>
-        <flyway-core.vesrion>7.1.0</flyway-core.vesrion>
-        <flyway-maven-plugin.version>4.0.3</flyway-maven-plugin.version>    
-        <hibernate.version>5.4.20.Final</hibernate.version>
-        <jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
-        <jackson.version>2.11.3</jackson.version>
+        <buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>
+        <com-auth0.version>3.18.2</com-auth0.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <flyway-core.vesrion>8.3.0</flyway-core.vesrion>
+        <flyway-maven-plugin.version>4.0.3</flyway-maven-plugin.version>
+        <grpc-server-spring-boot-starter.version>2.13.0.RELEASE</grpc-server-spring-boot-starter.version>
+        <grpc-spring-boot-starter.version>4.5.10</grpc-spring-boot-starter.version>
+        <google-guava.version>31.0.1-jre</google-guava.version>
+        <com-google-code-gson.version>2.8.9</com-google-code-gson.version>
+        <joda-time.verion>2.10.13</joda-time.verion>
+        <instagram4j.version>2.0.6</instagram4j.version>
+        <io.netty.version>5.0.0.Alpha2</io.netty.version>
+        <com.ibm.icu.version>70.1</com.ibm.icu.version>
+        <okhttp.version>5.0.0-alpha.3</okhttp.version>
         <java.version>1.8</java.version>
-        <java-maven-compiler.version>1.16</java-maven-compiler.version>
-        <javaee-api.version>8.0.1</javaee-api.version>
+        <com-fasterxml-jackson.version>2.13.1</com-fasterxml-jackson.version>
+        <java-maven-compiler.version>15</java-maven-compiler.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <javax-persistence-api.version>2.2</javax-persistence-api.version>
         <javax-mail.version>1.5.0</javax-mail.version>
-        <javax-ws-rs-api.version>2.1.1</javax-ws-rs-api.version>
-        <!--        <jpa.version>2.2</jpa.version>-->
-        <jsonwebtoken.version>0.11.2</jsonwebtoken.version>   
-        <junit-jupiter.version>5.5.1</junit-jupiter.version>
-        <jjwt.version>0.11.2</jjwt.version>        
-        <!--        <kafka.version>2.5.2.RELEASE</kafka.version>      -->
-        <lombok.version>1.18.12</lombok.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <javafaker.version>1.0.2</javafaker.version>
+        <jboss-logging.version>3.4.2.Final</jboss-logging.version>
+        <jsonwebtoken.version>0.11.2</jsonwebtoken.version>
+        <junit-platform-runner.version>1.8.2</junit-platform-runner.version>
+        <jjwt.version>0.11.2</jjwt.version>
+        <kr-motd-maven.version>1.7.0</kr-motd-maven.version>
+        <kotlin-stdlib.version>1.6.10</kotlin-stdlib.version>
+        <lombok.version>1.18.22</lombok.version>
         <main.basedir>${project.basedir}/../</main.basedir>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <springdoc-openapi-maven-plugin.version>1.3</springdoc-openapi-maven-plugin.version>
+        <mockito-all.version>1.10.19</mockito-all.version>
+        <mongo-jackson-mapper.version>1.4.2</mongo-jackson-mapper.version>
+        <mongo-java-driver.version>3.12.4</mongo-java-driver.version>
+        <oracle.version>12.2.1.0</oracle.version>
+        <oracle.jdbc.version>21.4.0.0.1</oracle.jdbc.version>
+        <opencsv.version>4.0</opencsv.version>
+        <org-modelmapper.version>2.4.5</org-modelmapper.version>
+        <org-reflections.version>0.10.2</org-reflections.version>
+        <postgres.version>42.3.1</postgres.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <querydsl.version>4.3.1</querydsl.version>
+        <reactor-test.version>3.4.12</reactor-test.version>
+        <reactor-tools.version>3.4.12</reactor-tools.version>
+        <reflections.version>0.9.12</reflections.version>
+        <rsocket-core.version>1.1.1</rsocket-core.version>
+        <rsocket-transport-netty.version>1.1.0</rsocket-transport-netty.version>
+        <source.directory.libs>libs</source.directory.libs>
+        <spring-cloud-dependencies.version>2021.0.0</spring-cloud-dependencies.version>
+        <spring-cloud.version>3.1.0</spring-cloud.version>
+        <spring-boot.version>2.6.3</spring-boot.version>
+        <spring-boot-admin-starter-client.version>2.5.5</spring-boot-admin-starter-client.version>
+        <spring-security-oauth2.version>2.5.1.RELEASE</spring-security-oauth2.version>
+        <spring-security-messaging.version>5.5.3</spring-security-messaging.version>
+        <spring-security-rsocket.version>${spring-security-messaging.version}</spring-security-rsocket.version>
+        <spring-security-jwt.version>1.1.1.RELEASE</spring-security-jwt.version>
+        <spring-kafka.version>2.8.0</spring-kafka.version>
+        <spring-integration-rsocket.version>5.6.1</spring-integration-rsocket.version>
+        <io-swagger-core-v3.version>2.1.11</io-swagger-core-v3.version>
+        <org-springdoc.version>1.6.2</org-springdoc.version>
+        <protobuf.version>3.17.3</protobuf.version>
+        <grpc.version>1.42.1</grpc.version>
+        <jakarta-annotation.version>1.3.5</jakarta-annotation.version>
+        <!--        <undertow.version>2.1.3.Final</undertow.version>      -->
+        <com-jayway-jsonpath.version>2.6.0</com-jayway-jsonpath.version>
+        <src.main.resources>src/main/resources</src.main.resources>
+        <dir.standalone>standalone</dir.standalone>
+        <dir.standalone.config>standalone/config</dir.standalone.config>
+        <dir.libs>libs</dir.libs>
+        <dir.logs>logs</dir.logs>
+        <filtering.resources>true</filtering.resources>
+        <!-- pluging -->
+        <maven-compiler-plugin.min-version>3.6.0</maven-compiler-plugin.min-version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target> 
-        <maven.resource.plugin>3.1.0</maven.resource.plugin>
-        <mockito-all.version>1.10.19</mockito-all.version>
-        <mongo-jackson-mapper.version>1.4.2</mongo-jackson-mapper.version>
-        <mongo-java-driver.version>3.12.4</mongo-java-driver.version>
-        <opencsv.version>4.0</opencsv.version>
-        <org-reflections.version>0.9.11</org-reflections.version>
-        <postgres.version>42.2.8</postgres.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <querydsl.version>4.3.1</querydsl.version>
-        <reactor-test.version>3.4.0</reactor-test.version>
-        <reactor-netty.version>1.0.1</reactor-netty.version>
-        <reflections.version>0.9.12</reflections.version>
-        <resteasy.version>3.6.2.Final</resteasy.version>
-        <rsocket-core.version>1.1.0</rsocket-core.version>
-        <rsocket-transport-netty.version>1.1.0</rsocket-transport-netty.version>
-        <source.directory.libs>libs</source.directory.libs>        
-        <spring-boot.version>2.4.0</spring-boot.version>
-        <spring-boot-admin-starter-client.version>2.3.0</spring-boot-admin-starter-client.version>
-        <spring-security-messaging.version>5.4.0</spring-security-messaging.version>
-        <spring-security-rsocket.version>${spring-security-messaging.version}</spring-security-rsocket.version>
-        <spring-context.version>5.3.1</spring-context.version>
-        <spring-test.version>5.3.1</spring-test.version>
-        <spring-integration-rsocket.version>5.4.0</spring-integration-rsocket.version>
-        <!--        <undertow.version>2.1.3.Final</undertow.version>      -->
-        <com-jayway-jsonpath.version>2.4.0</com-jayway-jsonpath.version>
+        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
+        <compiler-plugin.version>3.8.1</compiler-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
+        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+        <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
+        <os-maven-plugin.version>1.6.1</os-maven-plugin.version>
+        <com.maxmind.geoip2.version>2.15.0</com.maxmind.geoip2.version>
+        <javax.mail.version>1.4.7</javax.mail.version>
+        <mail.version>1.4.7</mail.version>
+        <vavr.version>0.9.0</vavr.version>
+        <thymeleaf-spring5.version>3.0.14.RELEASE</thymeleaf-spring5.version>
+        <protobuf-lite.version>3.0.1</protobuf-lite.version>
+        <native-lib-loader.version>2.4.0</native-lib-loader.version>
+        <com-nixcode-jvmbrotli.version>0.2.0</com-nixcode-jvmbrotli.version>
+        <fengyouchao-sockslib.version>1.0.6</fengyouchao-sockslib.version>
+        <versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-        <src.main.resources>src/main/resources</src.main.resources>
-        <filtering.resources>true</filtering.resources>
     </properties>
 
     <modules>
         <module>application-core-api</module>
-        <module>attribute-api</module>
-        <module>bond-schedule-api</module>
-        <module>bond-schedule-references-api</module>
-        <module>chess-core</module>
-        <module>chess-sandbox</module>
-        <module>counterparties</module>
-        <module>documents-api</module>
-        <module>documents-references-api</module>
-        <module>entity-contract-references-api</module>
-        <module>entity-contracts</module>
+        <module>auth-server-api</module>
+        <module>auth-server</module>
+        <module>app-ad-api</module>
+        <module>app-ad</module>
+        <module>app-multi-api</module>
+        <module>app-notifier</module>
+        <module>app-promo</module>
+        <module>app-readiness</module>
+        <module>cache-starter</module>
+        <module>card-pmt</module>
+        <module>email-spammer</module>
         <module>entity-core-api</module>
-        <module>entity-core</module>		
-        <module>entity-marks-api</module>
-        <module>entity-marks</module>
+        <module>entity-core</module>
         <module>entity-references-api</module>
-        <module>entity-references</module>
-        <module>lias-opers-api</module>
-        <module>liases-api</module>
-        <module>liases-references-api</module>
-        <module>liases</module>
-        <module>listeners-api</module>
-        <module>live-accretions</module>
-        <module>live-accretions-api</module>        
+        <module>g-connect-api</module>
+        <module>g-connect</module>
+        <!--        <module>insta-api-starter</module>-->
+        <!--        <module>insta-api</module>-->
+        <!--        <module>insta-fs</module>-->
+        <!--        <module>insta-fs-tmp</module>-->
+        <!--        <module>insta-reg</module>-->
+        <!--        <module>insta-reg-provider-starter</module>-->
+        <!--        <module>insta-crw</module>-->
+        <!--        <module>insta-img</module>-->
+        <!--        <module>insta-sale</module>-->
+        <!--        <module>insta-serv</module>-->
+        <module>java-faker-starter</module>
+        <module>lb-reg-server</module>
+        <module>out-of-service-starter</module>
         <module>persistence-api</module>
         <module>persistence-core</module>
+        <module>proxy-core</module>
+        <module>proxy-provider-starter</module>
         <module>references-api</module>
         <module>references-application-api</module>
         <module>references-core</module>
-        <module>retail-loan-contracts-references-api</module>
-        <module>retail-loan-contracts</module>
-        <module>security-core</module>
+        <module>security-config-starter</module>
         <module>security-manager-api</module>
-        <module>security-manager</module>
-        <module>service-monitoring-api</module>
-        <module>services-monitoring</module>
+        <module>security-manager-starter</module>
+        <!--        <module>services-monitoring-api</module>-->
+        <!--        <module>services-monitoring-client-starter</module>-->
         <module>spring-boot-api</module>
         <module>spring-config</module>
         <module>spring-core-api</module>
         <module>spring-core-data</module>
+        <module>spring-grpc-starter</module>
+        <module>spring-kafka-starter</module>
         <module>spring-rest-api</module>
-        <module>spring-rsockets</module>
+        <!--        <module>spring-rsockets</module>-->
         <module>spring-websockets</module>
-        <module>tariff-core-api</module>
-        <module>tariff-core</module>
-        <module>tariff-references-api</module>
         <module>test-api</module>
         <module>test-core</module>
         <module>test-junit-api</module>
+        <module>tik-assist</module>
+        <module>tik-dev-api</module>
+        <module>tik-mobile</module>
+        <module>wa-api</module>
+        <module>wa-migration</module>
+        <module>wa-monitoring</module>
+        <module>wa-service</module>
     </modules>
     <dependencyManagement>
         <dependencies>
             <!--Java Core-->
             <dependency>
-                <groupId>javax</groupId>
-                <artifactId>javaee-api</artifactId>
-                <version>${javaee-api.version}</version>
-            </dependency>            
-            <dependency>
-                <groupId>javax.ws.rs</groupId>
-                <artifactId>javax.ws.rs-api</artifactId>
-                <version>${javax-ws-rs-api.version}</version>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>${jaxb-api.version}</version>
             </dependency>
             <!--Java Persistence-->
             <dependency>
                 <groupId>javax.persistence</groupId>
                 <artifactId>javax.persistence-api</artifactId>
                 <version>${javax-persistence-api.version}</version>
-            </dependency>          
+            </dependency>
             <!--Spring Boot-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>  
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-cache</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-autoconfigure</artifactId>
@@ -150,7 +213,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-jdbc</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>                    
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-actuator</artifactId>
@@ -160,80 +229,201 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-validation</artifactId>
                 <version>${spring-boot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.jboss.logging</groupId>
+                        <artifactId>jboss-logging</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>
-                <version>${spring-boot.version}</version>            
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-undertow</artifactId>
+                <version>${spring-boot.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-integration</artifactId>
-                <version>${spring-boot.version}</version>            
-            </dependency>            
+                <version>${spring-boot.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-devtools</artifactId>
                 <version>${spring-boot.version}</version>
-                <scope>runtime</scope>
-                <optional>true</optional>
-            </dependency> 
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
-            </dependency>               
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.jayway.jsonpath</groupId>
+                        <artifactId>json-path</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>net.bytebuddy</groupId>
+                        <artifactId>byte-buddy</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.mockito</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-rest</artifactId>
+                <version>${spring-boot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-aop</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-mail</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>          
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-webflux</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>        
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-jpa</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>             
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jboss.logging</groupId>
+                        <artifactId>jboss-logging</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.maxmind.geoip2</groupId>
+                <artifactId>geoip2</artifactId>
+                <version>${com.maxmind.geoip2.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.httpcomponents</groupId>
+                        <artifactId>httpclient</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-annotations</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-databind</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.lettuce</groupId>
+                        <artifactId>lettuce-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jersey</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-configuration-processor</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency> 
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-loader-tools</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>   
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-security</artifactId>       
+                <artifactId>spring-boot-starter-security</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>   
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-rsocket</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>                                                                      
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>                        
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-log4j2</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>            
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-                <version>${spring-boot.version}</version>                
-            </dependency>           
+                <version>${spring-boot.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-test-autoconfigure</artifactId>
@@ -248,12 +438,91 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-reactor-netty</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>         
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>  
+            </dependency>
+            <!-- Spring cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${spring-cloud.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.dataformat</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-commons</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-loadbalancer</artifactId>
+                <version>${spring-cloud.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.security</groupId>
+                        <artifactId>spring-security-crypto</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-config</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>${spring-cloud.version}</version>
+                <!--                <exclusions>-->
+                <!--                    <exclusion>-->
+                <!--                        <groupId>com.fasterxml.jackson.dataformat</groupId>-->
+                <!--                        <artifactId>*</artifactId>-->
+                <!--                    </exclusion>-->
+                <!--                </exclusions>-->
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>${spring-cloud.version}</version>
+                <!--                <exclusions>-->
+                <!--                    <exclusion>-->
+                <!--                        <groupId>com.fasterxml.jackson.dataformat</groupId>-->
+                <!--                        <artifactId>*</artifactId>-->
+                <!--                    </exclusion>-->
+                <!--                </exclusions>-->
+            </dependency>
+            <!-- Project reactor -->
+            <dependency>
+                <groupId>io.projectreactor</groupId>
+                <artifactId>reactor-tools</artifactId>
+                <version>${reactor-tools.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.projectreactor</groupId>
+                        <artifactId>reactor-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-json</artifactId>
@@ -261,24 +530,135 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
+                <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
                 <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${spring-security-oauth2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-oauth2-client</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>${spring-security-jwt.version}</version>
+            </dependency>
+            <!-- Jackson -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-xml</artifactId>
+                <version>${com-fasterxml-jackson.version}</version>
+            </dependency>
+            <!-- Google -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${com-google-code-gson.version}</version>
+            </dependency>
+            <!--            Grpc -->
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-server-spring-boot-starter</artifactId>
+                <version>${grpc-server-spring-boot-starter.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.google.api.grpc</groupId>
+                        <artifactId>proto-google-common-protos</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.google.protobuf</groupId>
+                        <artifactId>error_prone_annotations</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.google.protobuf</groupId>
+                        <artifactId>protobuf-java-util</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>io.github.lognet</groupId>
+                <artifactId>grpc-spring-boot-starter</artifactId>
+                <version>${grpc-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-testing</artifactId>
+                <version>${grpc.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.opencensus</groupId>
+                        <artifactId>opencensus-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <!-- Java 9+ compatibility - Do NOT update to 2.0.0 -->
+                <groupId>jakarta.annotation</groupId>
+                <artifactId>jakarta.annotation-api</artifactId>
+                <version>${jakarta-annotation.version}</version>
+            </dependency>
+            <!-- Apache -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <!-- JBoss -->
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>${jboss-logging.version}</version>
             </dependency>
             <!--            Spring Core -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-messaging</artifactId>
-                <version>${spring-security-messaging.version}</version>                
+                <version>${spring-security-messaging.version}</version>
+            </dependency>
+            <!--Kafka -->
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${spring-kafka.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-beans</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-tx</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring-context.version}</version>
-            </dependency>            
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
-                <version>${spring-test.version}</version>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka-test</artifactId>
+                <version>${spring-kafka.version}</version>
             </dependency>
             <!--Reactor-->
             <dependency>
@@ -287,31 +667,41 @@
                 <version>${reactor-netty.version}</version>
             </dependency>
             <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${io.netty.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>io.projectreactor</groupId>
                 <artifactId>reactor-test</artifactId>
                 <version>${reactor-test.version}</version>
                 <scope>test</scope>
-            </dependency>                                        
+            </dependency>
             <!--RSocket-->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-rsocket</artifactId>
-                <version>${spring-security-rsocket.version}</version>                
-            </dependency>                       
+                <version>${spring-security-rsocket.version}</version>
+            </dependency>
             <dependency>
                 <groupId>io.rsocket</groupId>
                 <artifactId>rsocket-test</artifactId>
                 <version>${rsocket-core.version}</version>
                 <scope>test</scope>
-            </dependency>            
+            </dependency>
             <dependency>
                 <groupId>org.springframework.integration</groupId>
                 <artifactId>spring-integration-rsocket</artifactId>
                 <version>${spring-integration-rsocket.version}</version>
-            </dependency>           
+            </dependency>
+            <dependency>
+                <groupId>com.github.mike10004</groupId>
+                <artifactId>fengyouchao-sockslib</artifactId>
+                <version>${fengyouchao-sockslib.version}</version>
+            </dependency>
             <!--WebSocket-->
- 
-            <!--WebToken-->            
+
+            <!--WebToken-->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-api</artifactId>
@@ -328,157 +718,256 @@
                 <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
                 <version>${jsonwebtoken.version}</version>
                 <scope>runtime</scope>
-            </dependency>         
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${com-auth0.version}</version>
+            </dependency>
             <!--JSON-->
-            <dependency> 
-                <groupId>com.jayway.jsonpath</groupId>  
-                <artifactId>json-path-assert</artifactId>  
-                <version>${com-jayway-jsonpath.version}</version>  
-            </dependency>  
-            <dependency> 
-                <groupId>com.jayway.jsonpath</groupId>  
-                <artifactId>json-path</artifactId>  
-                <version>${com-jayway-jsonpath.version}</version>  
+            <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path-assert</artifactId>
+                <version>${com-jayway-jsonpath.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>  
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>${jackson.version}</version>
-            </dependency> 
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-annotations</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>   
-            <dependency>
-                <groupId>com.fasterxml.jackson.datatype</groupId>
-                <artifactId>jackson-datatype-jsr310</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>                 
-            <!--Hibernate-->
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>${hibernate.version}</version>
-            </dependency>  
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-entitymanager</artifactId>
-                <version>${hibernate.version}</version>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>${com-jayway-jsonpath.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-c3p0</artifactId>
-                <version>${hibernate.version}</version>
-            </dependency>    
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-ehcache</artifactId>
-                <version>${hibernate.version}</version>
-            </dependency>                      
-            <!--Postgres-->
+            <!--Databases-->
             <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${postgres.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.checkerframework</groupId>
+                        <artifactId>checker-qual</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
-                <groupId>io.r2dbc</groupId>
-                <artifactId>r2dbc-postgresql</artifactId>
-                <scope>runtime</scope>
-            </dependency>             
-            <!--RestEasy-->            
-            <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-jaxrs</artifactId>
-                <version>${resteasy.version}</version>
-                <scope>provided</scope>
-            </dependency>  
-            <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-jackson-provider</artifactId>
-                <version>${resteasy.version}</version>
-                <scope>provided</scope>            
+                <groupId>com.oracle.database.jdbc</groupId>
+                <artifactId>ojdbc8</artifactId>
+                <version>${oracle.jdbc.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-client</artifactId>
-                <version>${resteasy.version}</version>
-                <scope>provided</scope>
-            </dependency>                        
+                <groupId>com.oracle.database.ha</groupId>
+                <artifactId>ons</artifactId>
+                <version>${oracle.jdbc.version}</version>
+            </dependency>
             <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-servlet-initializer</artifactId>
-                <version>${resteasy.version}</version>
-                <scope>provided</scope>
-            </dependency>   
-            <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-jdk-http</artifactId>
-                <version>${resteasy.version}</version>
-                <scope>provided</scope>
-            </dependency>                    
-            <dependency>
-                <groupId>org.jboss.resteasy</groupId>
-                <artifactId>resteasy-multipart-provider</artifactId>
-                <version>${resteasy.version}</version>
-            </dependency>        
+                <groupId>com.oracle.database.jdbc</groupId>
+                <artifactId>ucp</artifactId>
+                <version>${oracle.jdbc.version}</version>
+            </dependency>
             <!--JUnit-->
             <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>${junit-jupiter.version}</version>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-runner</artifactId>
+                <version>${junit-platform-runner.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>${junit-jupiter.version}</version>
-            </dependency>         
-            <!--Flyway-->            
+            <!--Flyway-->
             <dependency>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-core</artifactId>
                 <version>${flyway-core.vesrion}</version>
-            </dependency> 
+            </dependency>
+            <!-- Swagger -->
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${io-swagger-core-v3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-webflux-ui</artifactId>
+                <version>${org-springdoc.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.commons</groupId>
+                        <artifactId>commons-lang3</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.datatype</groupId>
+                        <artifactId>jackson-datatype-jsr310</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.yaml</groupId>
+                        <artifactId>snakeyaml</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-autoconfigure</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-webflux</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-web</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-annotations</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-databind</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>jakarta.xml.bind</groupId>
+                        <artifactId>jakarta.xml.bind-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
             <!-- Monitoring -->
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-client</artifactId>
                 <version>${spring-boot-admin-starter-client.version}</version>
-            </dependency>                     
+            </dependency>
             <!--Misc-->
+            <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>${org-modelmapper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-stdlib-common</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib</artifactId>
+                <version>${kotlin-stdlib.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.reflections</groupId>
                 <artifactId>reflections</artifactId>
                 <version>${org-reflections.version}</version>
-            </dependency>  
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <!--<scope>provided</scope>-->
-            </dependency>       
+            </dependency>
             <dependency>
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>6.4.2</version>
-            </dependency>               
+            </dependency>
+            <!-- Generators -->
+            <dependency>
+                <groupId>com.github.javafaker</groupId>
+                <artifactId>javafaker</artifactId>
+                <version>${javafaker.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ibm.icu</groupId>
+                <artifactId>icu4j</artifactId>
+                <version>${com.ibm.icu.version}</version>
+            </dependency>
+            <!--Social-->
+            <dependency>
+                <groupId>com.github.instagram4j</groupId>
+                <artifactId>instagram4j</artifactId>
+                <version>${instagram4j.version}</version>
+            </dependency>
             <!--Custom-->
             <dependency>
                 <groupId>org.dbs24</groupId>
-                <artifactId>security-core</artifactId>
-                <version>${app.version}</version>                        
-            </dependency>            
+                <artifactId>app-multi-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>app-ad-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>wa-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>wa-service</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>app-readiness</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>app-promo</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>g-connect</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>g-connect-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>out-of-service-starter</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>insta-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>insta-reg-provider-starter</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>java-faker-starter</artifactId>
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>persistence-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>                           
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>application-core-api</artifactId>
@@ -493,217 +982,208 @@
                 <groupId>org.dbs24</groupId>
                 <artifactId>services-monitoring-api</artifactId>
                 <version>${app.version}</version>
-            </dependency>            
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
-                <artifactId>live-accretions-api</artifactId>
+                <artifactId>services-monitoring-client-starter</artifactId>
                 <version>${app.version}</version>
-            </dependency>             
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>cache-starter</artifactId>
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>spring-config</artifactId>
-                <version>${app.version}</version>            
+                <version>${app.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>spring-core-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency> 
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>references-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>  
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>references-core</artifactId>
-                <version>${app.version}</version>            
-            </dependency> 
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>bond-schedule-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>  
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>spring-boot-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>  
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>test-api</artifactId>
-                <version>${app.version}</version>            
+                <version>${app.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
-                <artifactId>tariff-core-api</artifactId>
-                <version>${app.version}</version>              
-            </dependency>                            
+                <artifactId>spring-kafka-starter</artifactId>
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
-                <artifactId>tariff-references</artifactId>
-                <version>${app.version}</version>             
-            </dependency>            
+                <artifactId>spring-grpc-starter</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>proxy-provider-starter</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>insta-api-starter</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>references-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>references-core</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>spring-boot-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>test-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>test-core</artifactId>
-                <version>${app.version}</version>            
-            </dependency>            
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>test-junit-api</artifactId>
-                <version>${app.version}</version>            
+                <version>${app.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>entity-core</artifactId>
-                <version>${app.version}</version>            
-            </dependency>       
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>persistence-core</artifactId>
-                <version>${app.version}</version>            
-            </dependency> 
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
-                <artifactId>security-manager</artifactId>
-                <version>${app.version}</version>            
-            </dependency>  
+                <artifactId>security-config-starter</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>security-manager-starter</artifactId>
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>${app.root.group}</groupId>
                 <artifactId>entity-core-api</artifactId>
                 <version>${app.version}</version>
-            </dependency>                                                                                                 
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>spring-rest-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>         
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>security-manager-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>                                                             
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>documents-references-api</artifactId>
-                <version>${app.version}</version>          
-            </dependency>   
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>liases-references-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>                 
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>counterparties</artifactId>
-                <version>${app.version}</version>            
             </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
-                <artifactId>bond-schedule-references-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>    
+                <artifactId>spring-rest-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
-                <artifactId>liases-api</artifactId>
-                <version>${app.version}</version>             
-            </dependency> 
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>tariff-core</artifactId>
-                <version>${app.version}</version>   
-            </dependency>         
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>entity-contract-references-api</artifactId>
-                <version>${app.version}</version>   
-            </dependency>         
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>documents-api</artifactId>
-                <version>${app.version}</version>   
-            </dependency>   
+                <artifactId>security-manager-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>entity-references-api</artifactId>
-                <version>${app.version}</version>            
+                <version>${app.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>references-application-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency> 
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>entity-references</artifactId>
-                <version>${app.version}</version>            
+                <version>${app.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>rest-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>  
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>entity-marks</artifactId>
-                <version>${app.version}</version>            
-            </dependency>  
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>listeners-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>  
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>entity-marks-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>                                                                                                                                                                                                                                                       
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>attribute-api</artifactId>
-                <version>${app.version}</version>         
-            </dependency>    
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>lias-opers-api</artifactId>
-                <version>${app.version}</version>          
-            </dependency>                    
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>retail-loan-contracts-references-api</artifactId>
-                <version>${app.version}</version>            
-            </dependency>         
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>entity-contracts</artifactId>
-                <version>${app.version}</version>            
-            </dependency>                         
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>securities-api</artifactId>
                 <version>${app.version}</version>
-            </dependency>               
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>tariff-references-api</artifactId>
-                <version>${app.version}</version>              
-            </dependency>         
-            <dependency>
-                <groupId>org.dbs24</groupId>
-                <artifactId>chess-core</artifactId>
-                <version>${app.version}</version>            
             </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>spring-rsockets</artifactId>
-                <version>${app.version}</version>                        
-            </dependency>                           
+                <version>${app.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.dbs24</groupId>
                 <artifactId>spring-websockets</artifactId>
-                <version>${app.version}</version>                        
-            </dependency> 
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>swift-alliance-server</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>swift-alliance-starter</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>app-ad</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>app-notifier</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>auth-server-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dbs24</groupId>
+                <artifactId>tik-dev-api</artifactId>
+                <version>${app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${mail.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.vavr</groupId>
+                <artifactId>vavr</artifactId>
+                <version>${vavr.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf-spring5</artifactId>
+                <version>${thymeleaf-spring5.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-lite</artifactId>
+                <version>${protobuf-lite.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.scijava</groupId>
+                <artifactId>native-lib-loader</artifactId>
+                <version>${native-lib-loader.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nixxcode.jvmbrotli</groupId>
+                <artifactId>jvmbrotli</artifactId>
+                <version>${com-nixcode-jvmbrotli.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${google-guava.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <profiles>
@@ -711,16 +1191,16 @@
             <id>profile_dev</id>
             <properties>
                 <maven.test.skip>true</maven.test.skip>
-                <java-maven-compiler.version>14</java-maven-compiler.version>
+                <java-maven-compiler.version>15</java-maven-compiler.version>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
-            </activation>            
+            </activation>
         </profile>
         <profile>
             <id>profile_test_dev</id>
             <properties>
-                <java-maven-compiler.version>14</java-maven-compiler.version>
+                <java-maven-compiler.version>15</java-maven-compiler.version>
                 <maven.test.skip>false</maven.test.skip>
             </properties>
         </profile>
@@ -740,7 +1220,7 @@
                 <java-maven-compiler.version>8</java-maven-compiler.version>
                 <maven.test.skip>true</maven.test.skip>
             </properties>
-        </profile>        
+        </profile>
         <profile>
             <id>java8_test_dev</id>
             <activation>
@@ -754,7 +1234,13 @@
     </profiles>
 
     <build>
-        
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>${kr-motd-maven.version}</version>
+            </extension>
+        </extensions>
         <resources>
             <resource>
                 <directory>${src.main.resources}</directory>
@@ -763,7 +1249,7 @@
         </resources>
         <testResources>
             <testResource>
-                <directory>src/test/resources</directory>
+                <directory>${src.main.resources}</directory>
             </testResource>
             <!--<testResource>
                 <directory>src/test/resources-glassfish-embedded</directory>
@@ -784,26 +1270,25 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
-            </plugin>          
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/*.properties</exclude>
+                        <exclude>**/application.yml</exclude>
                         <exclude>**/log4j2.xml</exclude>
                     </excludes>
-                    <outputDirectory>${main.basedir}/${source.directory.libs}</outputDirectory>  
+                    <outputDirectory>${main.basedir}/${source.directory.libs}</outputDirectory>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>${source.directory.libs}/</classpathPrefix>
-                            <!--                <mainClass>test.LeanFTest</mainClass>-->
                         </manifest>
                     </archive>
-                </configuration>                              
-            </plugin>            
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -824,11 +1309,25 @@
                 <version>${maven-surefire-plugin.version}</version>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-maven-plugin</artifactId>
+                <version>${springdoc-openapi-maven-plugin.version}</version>
+            </plugin>
+            <!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven-assembly-plugin.version}</version>
+            </plugin>-->
+            <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
-                <version>${flyway-maven-plugin.version}</version> 
-            </plugin>          
-               
+                <version>${flyway-maven-plugin.version}</version>
+            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
@@ -838,14 +1337,68 @@
                     <configuration>
                         <filesets>
                             <fileset>
-                                <directory>${basedir}/libs</directory>
+                                <directory>${basedir}/${dir.standalone}/${dir.logs}</directory>
+                            </fileset>
+                            <!--                            <fileset>-->
+                            <!--                                <directory>${basedir}/${dir.logs}</directory>-->
+                            <!--                            </fileset>-->
+                            <fileset>
+                                <directory>${basedir}/${dir.libs}</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${basedir}/${dir.standalone}</directory>
+                                <includes>
+                                    <include>${project.name}*.jar</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>${project.name}.service</exclude>
+                                    <exclude>${project.name}</exclude>
+                                </excludes>
                             </fileset>
                         </filesets>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>default-cli</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireMavenVersion>
+                                        <version>${maven-compiler-plugin.min-version}</version>
+                                    </requireMavenVersion>
+                                    <requireOS>
+                                        <family>unix</family>
+                                    </requireOS>
+                                    <requireUpperBoundDeps/>
+                                    <dependencyConvergence/>
+                                    <requireJavaVersion>
+                                        <version>1.15</version>
+                                    </requireJavaVersion>
+                                    <banDuplicatePomDependencyVersions/>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>${versions-maven-plugin.version}</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>org.apache.commons:commons-collections4</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
             </plugins>
-            
         </pluginManagement>
     </build>
-    <name>dbs24</name>
+    <name>zeta24</name>
 </project>

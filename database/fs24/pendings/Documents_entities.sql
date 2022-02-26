@@ -1,2 +1,0 @@
-ALTER TABLE Documents
-ALTER COLUMN entity_id SET NOT NULL;

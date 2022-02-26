@@ -14,7 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @ComponentScan(basePackages = {SERVICE_PACKAGE, RSOCKET_PACKAGE, COMPONENT_PACKAGE})
 @EntityScan(basePackages = {ENTITY_PACKAGE, REFERENCE_PACKAGE})
-@PropertySource(APP_PROPERTIES)
+//@PropertySource(APP_PROPERTIES)
 public class ServiceMonitoringConfig extends MainApplicationConfig {
 
 }

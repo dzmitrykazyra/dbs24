@@ -1,0 +1,12 @@
+[Unit]
+Description=wa_monitoring
+[Service]
+User=root
+WorkingDirectory=/root/zeta24/wa-monitoring/standalone/dev
+ExecStart=/root/zeta24/wa-monitoring/standalone/dev/run-dev-pod2
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

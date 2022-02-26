@@ -9,26 +9,19 @@ package org.dbs24.references.core;
  *
  * @author kazyra_d
  */
-import com.fasterxml.jackson.annotation.JsonIgnore;
-//import org.dbs24.jdbc.api.QueryRecordSet;
-//import org.dbs24.application.core.exception.api.InternalAppException;
-import org.dbs24.application.core.log.LogService;
+
+import org.dbs24.application.core.api.ObjectRoot;
+import org.dbs24.application.core.nullsafe.NullSafe;
+import org.dbs24.application.core.service.funcs.AnnotationFuncs;
+import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.references.api.LangStrValue;
 import org.dbs24.references.api.RefClass;
 import org.dbs24.references.api.ReferenceRec;
+
 import java.util.Collection;
 import java.util.Map;
+
 import static org.dbs24.consts.SysConst.*;
-import org.dbs24.application.core.api.ObjectRoot;
-import org.dbs24.application.core.service.funcs.AnnotationFuncs;
-import org.dbs24.application.core.log.LogService;
-import org.dbs24.references.api.ReferenceCollection;
-//import org.dbs24.references.api.AbstractBatch;
-import org.dbs24.references.api.AbstractRefRecord;
-import org.dbs24.application.core.service.funcs.ServiceFuncs;
-//import org.dbs24.registry.api.ApplicationSetup;
-//import org.dbs24.services.api.ServiceLocator;
-import org.dbs24.application.core.nullsafe.NullSafe;
 
 // Р°Р±СЃС‚СЂР°РєС‚РЅС‹Р№ СЃРїСЂР°РІРѕС‡РЅРёРє
 public abstract class AbstractReference<T extends ReferenceRec> extends ObjectRoot {

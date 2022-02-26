@@ -1,0 +1,2 @@
+chmod u+x insta-reg.service
+sudo cp -f insta-reg.service /etc/systemd/system/insta-reg.service

@@ -5,14 +5,13 @@
  */
 package org.dbs24.fields.desc;
 
-import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.application.core.log.LogService;
-import static org.dbs24.consts.SysConst.*;
 import org.dbs24.application.core.nullsafe.NullSafe;
-import java.util.List;
-import java.util.Map;
+import org.dbs24.application.core.service.funcs.ServiceFuncs;
+
 import java.util.Collection;
-import java.util.stream.Collectors;
+import java.util.Map;
+
+import static org.dbs24.consts.SysConst.*;
 
 /**
  *
@@ -202,16 +201,6 @@ public class AppFieldsMap {
 //        }
 //
 //        return answer;
-    }
-
-    //==========================================================================
-    // сбросить настройки из кэша
-    public void resetFieldsDescriptions( Integer app_id) {
-
-        LogService.LogInfo(this.getClass(), LogService.getCurrentObjProcName(this),
-                () -> String.format("app_id=%d", app_id));
-        getFieldsList().remove(app_id);
-
     }
 
     public Map<Integer, AppFieldsCaptions> getFieldsList() {

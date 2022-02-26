@@ -1,0 +1,14 @@
+sudo su postgres
+-- createuser pmt_admin
+--psql -c "initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+psql -c "CREATE DATABASE pmt_card_dev"
+psql -c "CREATE ROLE pmt_admin  WITH LOGIN CREATEDB ENCRYPTED PASSWORD '$pmt$m0n1t0ringpwd'"
+psql -c "ALTER USER pmt_admin WITH PASSWORD '$pmt$p2ym4nts$'"
+psql -c "grant all privileges on database pmt_card_dev to pmt_admin"
+psql -c "CREATE SCHEMA pmt_card_schema_dev"
+psql -c "SET search_path TO pmt_card_schema_dev"
+psql -c "GRANT USAGE ON SCHEMA pmt_card_schema_dev TO pmt_admin"
+psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA pmt_card_schema_dev  TO pmt_admin"
+psql -c "ALTER database pmt_card_dev SET search_path TO pmt_card_schema_dev"
+
+sudo ufw allow 5432/tcp

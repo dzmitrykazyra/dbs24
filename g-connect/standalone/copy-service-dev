@@ -1,0 +1,3 @@
+chmod u+x g-connect-dev.service
+sudo cp -f g-connect-dev.service /etc/systemd/system/g-connect.service
+systemctl enable g-connect

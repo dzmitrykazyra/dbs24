@@ -5,14 +5,18 @@
  */
 package org.dbs24.reactor;
 
+import org.dbs24.reactor.AbstractSubscriber;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
-import org.dbs24.service.MonitoringMessage;
+import org.dbs24.api.MonitoringMessage;
 import static org.dbs24.rsocket.api.MessageType.*;
+import org.dbs24.spring.condition.DisabledCondition;
+import org.springframework.context.annotation.Conditional;
 
 @Component
 @Log4j2
-public class MonitoringReactor extends SimpleSubscriber<MonitoringMessage> {
+//@Conditional(DisabledCondition.class)
+public class MonitoringReactor extends AbstractSubscriber<MonitoringMessage> {
 
     @Override
     public void onNext(MonitoringMessage s) {

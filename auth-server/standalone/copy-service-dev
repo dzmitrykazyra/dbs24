@@ -1,0 +1,2 @@
+chmod u+x auth-server-dev.service
+sudo cp -f auth-server-dev.service /etc/systemd/system/auth-server.service

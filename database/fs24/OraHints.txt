@@ -1,4 +1,0 @@
-  ак убрать двойные кавычки " со скрипта генерации PowerDesigner?
-ќтправлено 1 но€б. 2010 г., 14:41 пользователем Volodymyr Petrenko   [ обновлено 1 но€б. 2010 г., 15:27 ]
-ƒл€ этого нужно зайти в пункт меню
-Database -> Edit Current DBMS, по пути Script\Sql\Format\CaseSensitivityUsingQuote и изменить значение на No.

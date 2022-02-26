@@ -1,0 +1,5 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+clear
+cd ..
+mvn spring-boot:run -Dexec.mainClass="org.dbs24.WaMonitoring" -Dreactor.netty.http.server.accessLogEnabled=true -Djava.awt.headless=true -Dspring-boot.run.arguments="--spring.aplication.name=wa-monitoring-balancer --server.port=8040 --grpc.server.port=8041 --debug=false --spring.datasource.url=jdbc:postgresql://193.178.170.145:5432/wa_monitoring --config.wa.user.login.prefix=DEV_ --spring.datasource.username=wa_admin --spring.datasource.password=\$wa\$m4n0t1r9ng\$ "

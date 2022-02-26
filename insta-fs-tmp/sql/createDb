@@ -1,0 +1,15 @@
+sudo su postgres
+-- createuser ifs_crw_admin
+--psql -c "initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+psql -c "CREATE ROLE ifs_crw_admin WITH LOGIN CREATEDB ENCRYPTED PASSWORD '$cm$m0n1t0ringpwd'"
+psql -c "CREATE DATABASE ifs_crv_dev OWNER ifs_crw_admin"
+psql -c "ALTER USER ifs_crw_admin WITH PASSWORD '$cfscrv$admim'"
+psql -c "CREATE ROLE ifs_crw_admin  WITH LOGIN CREATEDB ENCRYPTED PASSWORD '$cm$m0n1t0ringpwd"
+psql -c "CREATE SCHEMA ifs_crw_admin"
+psql -c "SET search_path TO ifs_crw_admin"
+psql -c "GRANT USAGE ON SCHEMA ifs_crw_admin TO ifs_crw_admin"
+psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA ifs_crw_admin  TO ifs_crw_admin"
+psql -c "ALTER database ifs_crv_dev SET search_path TO ifs_crw_admin"
+psql -c "ALTER USER ifs_crw_admin SET search_path = ifs_crw_admin"
+
+sudo ufw allow 5432/tcp

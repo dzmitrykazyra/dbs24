@@ -1,0 +1,15 @@
+[Unit]
+Description=lb-reg-server
+[Service]
+#User=kdg
+User=root
+#WorkingDirectory=/home/kdg/zeta24/lb-reg-server/standalone
+WorkingDirectory=/root/zeta24/lb-reg-server/standalone
+#ExecStart=/home/kdg/zeta24/lb-reg-server/standalone/run
+ExecStart=/root/zeta24/lb-reg-server/standalone/run
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

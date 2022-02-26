@@ -7,18 +7,18 @@ package org.dbs24.application.core.locale;
 
 //import org.dbs24.registry.api.ApplicationSetup;
 import org.dbs24.application.core.api.ObjectRoot;
-import org.dbs24.application.core.log.LogService;
+import org.dbs24.stmt.StmtProcessor;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import static org.dbs24.consts.SysConst.*;
-import org.springframework.beans.factory.annotation.Value;
+import java.util.concurrent.TimeUnit;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public final class NLS extends ObjectRoot {
 
     //public static final String DATE_FORMAT = "dd.MM.yyyy";
-    
     public static final String DATE_FORMAT = NLS.getNlsParam("DATE_FORMAT", "dd.MM.yyyy");
     public static final String DATETIME_MS_FORMAT = NLS.getNlsParam("DATETIME_MS_FORMAT", "dd.MM.yyyy HH:mm:ss.SSS");
     public static final String DATETIME_FORMAT = NLS.getNlsParam("DATETIME_FORMAT", "dd.MM.yyyy HH:mm:ss");
@@ -38,7 +38,7 @@ public final class NLS extends ObjectRoot {
 //    static {
 //        LogService.LogInfo(NLS.class, () -> String.format("NEW_DATE_FORMAT = %s", NLS.NEW_DATE_FORMAT));
 //    }
-    public static final String getNlsParam( String prmName, String defVal) {
+    public static final String getNlsParam(String prmName, String defVal) {
 
 //        return ServiceLocator
 //                .find(ApplicationSetup.class)
@@ -49,7 +49,7 @@ public final class NLS extends ObjectRoot {
     }
 
     //==========================================================================
-    public static final String getStringDate( LocalDate ld) {
+    public static final String getStringDate(LocalDate ld) {
 
         return (NullSafe.isNull(ld)) ? EMPTY_STRING : ld.format(NLS.FORMAT_dd_MM_yyyy);
 
@@ -68,21 +68,21 @@ public final class NLS extends ObjectRoot {
     }
 
     //==========================================================================
-    public static final String getStringDateTime( LocalDateTime ldt) {
+    public static final String getStringDateTime(LocalDateTime ldt) {
 
         return (NullSafe.isNull(ldt)) ? EMPTY_STRING : ldt.format(NLS.FORMAT_dd_MM_yyyy__HH_mm_ss);
 
     }
 
     //==========================================================================
-    public static final String getStringDateTimeMS( LocalDateTime ldt) {
+    public static final String getStringDateTimeMS(LocalDateTime ldt) {
 
         return (NullSafe.isNull(ldt)) ? EMPTY_STRING : ldt.format(NLS.FORMAT_dd_MM_yyyy__HH_mm_ss_SSS);
 
     }
 
     //==========================================================================
-    public static final LocalDate long2LocalDate( Long milliSeconds) {
+    public static final LocalDate long2LocalDate(Long milliSeconds) {
 
         LocalDate result = null;
 
@@ -96,8 +96,42 @@ public final class NLS extends ObjectRoot {
         return (result);
     }
 
+    //==========================================================================    
+    public static final String localDateTime2String(LocalDateTime ldt) {
+        return ldt.format(NLS.FORMAT_dd_MM_yyyy__HH_mm_ss);
+    }
+
     //==========================================================================
-    public static final String getObject2String( Object value) {
+    public static final LocalDateTime long2LocalDateTime(Long milliSeconds) {
+
+        LocalDateTime result = null;
+
+        if (StmtProcessor.notNull(milliSeconds)) {
+
+            result = Instant.ofEpochMilli(milliSeconds)
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDateTime();
+        }
+
+        return (result);
+    }
+
+    //==========================================================================
+    public static final Long localDateTime2long(LocalDateTime ldt) {
+
+        Long result = null;
+
+        if (StmtProcessor.notNull(ldt)) {
+
+            ZonedDateTime zdt = ZonedDateTime.of(ldt, ZoneId.systemDefault());
+            result = zdt.toInstant().toEpochMilli();
+        }
+
+        return (result);
+    }
+
+    //==========================================================================
+    public static final String getObject2String(Object value) {
 
         return NullSafe.create(value)
                 //                .setResult((Object) LONG_ZERO)
@@ -124,9 +158,70 @@ public final class NLS extends ObjectRoot {
     }
     //==========================================================================
 
-    public static final LocalDate string2LocalDate( String stringDate) {
+    public static final LocalDate string2LocalDate(String stringDate) {
 
         return LocalDate.parse(stringDate, NLS.DEFAULT_DATE_FORMATTER);
+
+    }
+
+    //==========================================================================    
+    public static final LocalDateTime maxLdt(LocalDateTime d1, LocalDateTime d2) {
+        return d1.compareTo(d2) > 0 ? d1 : d2;
+    }
+
+    public static final LocalDateTime minLdt(LocalDateTime d1, LocalDateTime d2) {
+        return d1.compareTo(d2) < 0 ? d1 : d2;
+    }
+
+    //==========================================================================
+    public static final String d1d2Diff(Long millis) {
+
+        final long days = TimeUnit.MILLISECONDS.toDays(millis);
+        millis -= TimeUnit.DAYS.toMillis(days);
+        final long hours = TimeUnit.MILLISECONDS.toHours(millis);
+        millis -= TimeUnit.HOURS.toMillis(hours);
+        final long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
+        millis -= TimeUnit.MINUTES.toMillis(minutes);
+        final long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
+
+        final StringBuilder sb = new StringBuilder(64);
+
+        Boolean needAppend = (days > 0);
+
+        if (needAppend) {
+            sb.append(days);
+            sb.append(" day(s) ");
+        }
+
+        needAppend = needAppend || (hours > 0);
+
+        if (needAppend) {
+            sb.append(hours);
+            sb.append(" hour(s) ");
+        }
+
+        needAppend = needAppend || (minutes > 0);
+
+        if (needAppend) {
+            sb.append(minutes);
+            sb.append(" minute(s) ");
+        }
+
+        needAppend = needAppend || (seconds > 0);
+
+        if (needAppend) {
+            sb.append(seconds);
+            sb.append(" second(s) ");
+        }
+
+        return sb.toString();
+
+    }
+
+    //==========================================================================
+    public static final String d1d2Diff(LocalDateTime d1, LocalDateTime d2) {
+
+        return d1d2Diff(ChronoUnit.MILLIS.between(d1, d2));
 
     }
 }

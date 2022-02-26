@@ -12,7 +12,9 @@ public enum MessageType {
     MONITORING_SUCCESS_STARTING_APPLICATION("app.finish", 3),
     MONITORING_FINISH_APPLICATION("app.finish", 4),
     MONITORING_ABSTRACT_ERROR("app.abstract.error", 100),
-    MONITORING_LIVENESS("app.abstract.error", 200);
+    MONITORING_LIVENESS("app.abstract.error", 200),
+    MONITORING_TOKEN("app.token.exception", 1100),
+    MONITORING_TOKEN_EXCEPTION("app.token", 1110);
     
 
     //==========================================================================

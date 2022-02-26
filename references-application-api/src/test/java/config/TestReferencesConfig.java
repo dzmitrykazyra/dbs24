@@ -21,7 +21,7 @@ import static org.dbs24.consts.SysConst.*;
 @Configuration
 //@ComponentScan(basePackages = SERVICE_PACKAGE)
 //@EntityScan(basePackages = {SECURITY_PACKAGE, ENTITY_PACKAGE})
-@PropertySource(APP_PROPERTIES)
+//@PropertySource(APP_PROPERTIES)
 //@EnableJpaRepositories(basePackages = REPOSITORY_PACKAGE)
 @Data
 @Import({ApplicationReferencesService.class})

@@ -1,0 +1,16 @@
+sudo su postgres
+-- createuser tda_admin
+--psql -c "initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+psql -c "CREATE ROLE tda_admin WITH LOGIN CREATEDB ENCRYPTED PASSWORD '$pr0m0$pwd76'"
+psql -c "CREATE DATABASE tda_tik_dev OWNER tda_admin"
+psql -c "ALTER USER tda_admin WITH PASSWORD '$pr0m78$pwd76'"
+psql -c "grant all privileges on database tda_tik_dev to tda_admin"
+psql -c "CREATE SCHEMA tda_tik_schema_dev"
+psql -c "SET search_path TO tda_tik_schema_dev"
+psql -c "GRANT USAGE ON SCHEMA tda_tik_schema_dev TO tda_admin"
+psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA tda_tik_schema_dev  TO tda_admin"
+psql -c "ALTER database tda_tik_dev SET search_path TO tda_tik_schema_dev"
+
+sudo ufw allow 5432/tcp
+
+

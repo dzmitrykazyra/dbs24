@@ -5,12 +5,8 @@
  */
 package org.dbs24.persistence.api;
 
-import static org.dbs24.consts.SysConst.*;
 import java.io.Serializable;
 
 public interface PersistenceEntity extends Serializable, Cloneable {
 
-    public default Boolean justCreated() {
-        return BOOLEAN_FALSE;
-    }
 }

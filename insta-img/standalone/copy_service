@@ -1,0 +1,2 @@
+chmod u+x insta-img.service
+sudo cp -f insta-img.service /etc/systemd/system/insta-img.service

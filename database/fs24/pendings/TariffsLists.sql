@@ -1,8 +1,0 @@
-SELECT * FROM fs24_dev.tariffplans where tariff_plan_id in (select max(tariff_plan_id) from tariffplans)  LIMIT 200;
-SELECT * FROM fs24_dev.tariffrates where tariff_plan_id in (SELECT max(tariff_plan_id) from tariffplans) order by rate_id LIMIT 200;
-SELECT * FROM fs24_dev.tariffrates_1 where rate_id in (SELECT rate_id FROM fs24_dev.tariffrates where tariff_plan_id in (SELECT max(tariff_plan_id) from tariffplans)) order by rate_id, rate_date LIMIT 200;
-SELECT * FROM fs24_dev.tariffrates_2 where rate_id in (SELECT rate_id FROM fs24_dev.tariffrates where tariff_plan_id in (SELECT max(tariff_plan_id) from tariffplans)) order by rate_id, rate_date LIMIT 200;
-SELECT * FROM fs24_dev.tariffrates_3 where rate_id in (SELECT rate_id FROM fs24_dev.tariffrates where tariff_plan_id in (SELECT max(tariff_plan_id) from tariffplans)) order by rate_id, rate_date LIMIT 200;
-SELECT * FROM fs24_dev.tariffcalcrecords where rate_id in (SELECT rate_id FROM fs24_dev.tariffrates where tariff_plan_id in (SELECT max(tariff_plan_id) from tariffplans)) order by tariff_calc_id desc;
-SELECT * FROM fs24_dev.tariffcalcsum where tariff_calc_id in (SELECT tariff_calc_id FROM fs24_dev.tariffcalcrecords where rate_id in (SELECT rate_id FROM fs24_dev.tariffrates where tariff_plan_id in (SELECT max(tariff_plan_id) from tariffplans))) order by tariff_calc_id desc, tariff_calc_date desc;
-SELECT * FROM tariffaccretionshist where contract_id in (SELECT MAX(contract_id) FROM core_entitycontracts) order by contract_id desc LIMIT 200;

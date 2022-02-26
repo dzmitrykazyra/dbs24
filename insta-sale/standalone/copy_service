@@ -1,0 +1,2 @@
+chmod u+x insta-sale.service
+sudo cp -f insta-sale.service /etc/systemd/system/insta-sale.service

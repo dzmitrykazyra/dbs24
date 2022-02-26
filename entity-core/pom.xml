@@ -25,28 +25,12 @@
         </dependency>
         <dependency>
             <groupId>org.dbs24</groupId>
-            <artifactId>entity-references</artifactId>          
-        </dependency>      
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>entity-marks</artifactId>           
-        </dependency>     
-        <dependency>
-            <groupId>org.dbs24</groupId>
             <artifactId>test-api</artifactId>          
         </dependency>                 
         <dependency>
             <groupId>org.dbs24</groupId>
             <artifactId>persistence-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>services-monitoring-api</artifactId>           
-        </dependency>     
-        <dependency>
-            <groupId>org.dbs24</groupId>
-            <artifactId>spring-rsockets</artifactId>           
-        </dependency>                                                                   
     </dependencies>        
     
     <build>
@@ -56,7 +40,9 @@
                 <directory>${main.basedir}/${source.directory.libs}/</directory>
                 <includes>
                     <include>persistence-core.jar</include>
+                    <include>entity-references-api.jar</include>
                 </includes>
+                <targetPath>${project.build.outputDirectory}/${source.directory.libs}/</targetPath>
             </resource>
         </resources>
     </build>    

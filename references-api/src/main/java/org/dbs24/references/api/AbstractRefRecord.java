@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 import lombok.Data;
 
 @Data
+@Deprecated
 public abstract class AbstractRefRecord implements PersistenceEntity {
 
     public static final Map<Class<? extends AbstractRefRecord>, Collection<? extends AbstractRefRecord>> REF_CACHE

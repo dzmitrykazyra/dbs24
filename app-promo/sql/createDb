@@ -1,0 +1,14 @@
+sudo su postgres
+-- createuser pmt_admin
+--psql -c "initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+psql -c "CREATE ROLE promo_admin  WITH LOGIN CREATEDB ENCRYPTED PASSWORD '$pr0m0$pwd76'"
+psql -c "CREATE DATABASE app_promo_dev OWNER promo_admin"
+psql -c "ALTER USER promo_admin WITH PASSWORD '$pr0m78$pwd76'"
+psql -c "grant all privileges on database app_promo_dev to promo_admin"
+psql -c "CREATE SCHEMA app_promo_schema_dev"
+psql -c "SET search_path TO app_promo_schema_dev"
+psql -c "GRANT USAGE ON SCHEMA app_promo_schema_dev TO promo_admin"
+psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA app_promo_schema_dev  TO promo_admin"
+psql -c "ALTER database app_promo_dev SET search_path TO app_promo_schema_dev"
+
+sudo ufw allow 5432/tcp

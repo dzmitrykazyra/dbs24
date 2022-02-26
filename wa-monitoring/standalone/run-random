@@ -1,0 +1,9 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+randomPort=$(shuf -i 10000-39999 -n 1)
+
+clear
+cd ..
+mvn spring-boot:run \
+ -Djava.awt.headless=true \
+ -Dspring-boot.run.arguments="--server.port=$randomPort --spring.main.banner-mode=off --debug=false --spring.datasource.url=jdbc:postgresql://193.178.170.145:5432/wa_monitoring --config.wa.user.login.prefix=ST_ --spring.datasource.username=wa_admin --spring.datasource.password=\$wa\$m4n0t1r9ng\$"

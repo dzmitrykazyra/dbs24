@@ -1,0 +1,2 @@
+chmod u+x app-notifier.service
+sudo cp -f app-notifier.service /etc/systemd/system/app-notifier.service

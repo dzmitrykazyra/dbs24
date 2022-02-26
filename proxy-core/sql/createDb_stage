@@ -1,0 +1,14 @@
+sudo su postgres
+-- createuser pmt_admin
+--psql -c "initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
+psql -c "CREATE ROLE prx_admin  WITH LOGIN CREATEDB ENCRYPTED PASSWORD '$pr1am0d$Swsd76'"
+psql -c "CREATE DATABASE prx_assist_stage OWNER prx_admin"
+psql -c "ALTER USER prx_admin WITH PASSWORD '$pr1am0d$Swsd76'"
+psql -c "grant all privileges on database prx_assist_stage to prx_admin"
+psql -c "CREATE SCHEMA prx_schema_stage"
+psql -c "SET search_path TO prx_schema_stage"
+psql -c "GRANT USAGE ON SCHEMA prx_schema_stage TO prx_admin"
+psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA prx_schema_stage  TO prx_admin"
+psql -c "ALTER database prx_assist_stage SET search_path TO prx_schema_stage"
+
+sudo ufw allow 5432/tcp

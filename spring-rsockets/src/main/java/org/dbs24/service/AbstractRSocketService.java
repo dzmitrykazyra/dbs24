@@ -6,7 +6,6 @@
 package org.dbs24.service;
 
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.spring.core.api.AbstractApplicationBean;
 import org.dbs24.stmt.StmtProcessor;
 import org.dbs24.mime.MimeTypes;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,10 +27,11 @@ import org.springframework.security.rsocket.metadata.SimpleAuthenticationEncoder
 import org.springframework.messaging.rsocket.RSocketRequester.Builder;
 import java.time.Duration;
 import java.util.stream.Stream;
+import org.dbs24.reactor.AbstractHotSubscriber;
 
 @Data
 @Log4j2
-public abstract class AbstractRSocketService extends AbstractApplicationBean implements RSocketService {
+public abstract class AbstractRSocketService<T> extends AbstractHotSubscriber<T> implements RSocketService {
 
     final Map<ConnectionInfo, Mono<RSocketRequester>> clients = ServiceFuncs.createMap();
 

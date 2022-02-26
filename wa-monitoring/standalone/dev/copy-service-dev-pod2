@@ -1,0 +1,3 @@
+chmod u+x wa-monitoring-dev-pod2.service
+sudo cp -f wa-monitoring-dev-pod2.service /etc/systemd/system/wa-monitoring-pod2.service
+systemctl enable wa-monitoring-pod2

@@ -1,0 +1,15 @@
+[Unit]
+Description=insta-img
+[Service]
+#User=kdg
+User=root
+#WorkingDirectory=/home/kdg/zeta24/insta-img/standalone
+WorkingDirectory=/root/zeta24/insta-img/standalone
+#ExecStart=/home/kdg/zeta24/insta-img/standalone/run
+ExecStart=/root/zeta24/insta-img/standalone/run
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

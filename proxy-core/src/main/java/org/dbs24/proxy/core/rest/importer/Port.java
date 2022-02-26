@@ -1,0 +1,27 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.dbs24.proxy.core.rest.importer;
+
+import lombok.Getter;
+
+@Getter
+public class Port {
+
+    private Integer id;
+    private String name;
+    private String createdAt;
+    private Node node;
+    private Ports ports;
+    private String archivedAt;
+    private String city;
+    private String country;
+    private String group;
+    private String network;
+    private String operator;
+    private String vpn;
+    private Access access;
+    private Traffic traffic;
+}

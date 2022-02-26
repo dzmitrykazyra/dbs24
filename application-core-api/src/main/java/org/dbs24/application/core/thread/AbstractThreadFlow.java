@@ -5,7 +5,6 @@
  */
 package org.dbs24.application.core.thread;
 
-import org.dbs24.application.core.log.LogService;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
 
@@ -103,8 +102,7 @@ public abstract class AbstractThreadFlow {
                     if (!this.getIsValid()) {
 
                         String errMsg = String.format("%s: (%s) \n",
-                                ns_excThreadName,
-                                LogService.getCurrentProcName());
+                                ns_excThreadName, "thread");
 
                         if (NullSafe.notNull(this.getExceptionMsg())) {
                             errMsg = errMsg.concat(this.getExceptionMsg() + "\n");

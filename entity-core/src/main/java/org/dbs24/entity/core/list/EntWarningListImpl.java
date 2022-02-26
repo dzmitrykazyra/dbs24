@@ -5,12 +5,12 @@
  */
 package org.dbs24.entity.core.list;
 
+import org.dbs24.application.core.nullsafe.NullSafe;
 import org.dbs24.application.core.service.funcs.ServiceFuncs;
+import org.dbs24.entity.core.api.EntityWarningsList;
+
 import java.util.HashMap;
 import java.util.Map;
-import org.dbs24.entity.core.api.EntityWarningsList;
-import org.dbs24.application.core.log.LogService;
-import org.dbs24.application.core.nullsafe.NullSafe;
 import java.util.stream.Collectors;
 
 /**
@@ -22,10 +22,6 @@ public class EntWarningListImpl implements EntityWarningsList {
     Map<String, String> warningList = null;
 
     public void addWarning( String fldKey, String warningMsg) {
-
-        LogService.LogWarn(this.getClass(),
-                LogService.getCurrentObjProcName(this),
-                () -> String.format("%s: %s", fldKey, warningMsg));
 
         (NullSafe.create(this.warningList)
                 .whenIsNull(() -> {

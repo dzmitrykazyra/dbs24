@@ -5,6 +5,7 @@
  */
 package org.dbs24.application.core.thread;
 
+import lombok.Data;
 import org.dbs24.application.core.nullsafe.NullSafe;
 import static org.dbs24.consts.SysConst.*;
 
@@ -12,6 +13,7 @@ import static org.dbs24.consts.SysConst.*;
  *
  * @author kazyra_d
  */
+@Data
 public abstract class AbstractThread extends Thread {
 
     private Integer order;
@@ -107,43 +109,4 @@ public abstract class AbstractThread extends Thread {
     }
 
     //==========================================================================
-    public Integer getOrder() {
-        return order;
-    }
-
-    public void setOrder( Integer order) {
-        this.order = order;
-    }
-
-    public AbstractThread getDependencyThread() {
-        return dependencyThread;
-    }
-
-    public void setDependencyThread(AbstractThread dependencyThread) {
-        this.dependencyThread = dependencyThread;
-    }
-
-    public Boolean getIsValid() {
-        return isValid;
-    }
-
-    public void setIsValid( Boolean isValid) {
-        this.isValid = isValid;
-    }
-
-    public String getExceptionMsg() {
-        return exceptionMsg;
-    }
-
-    public void setExceptionMsg( String exceptionMsg) {
-        this.exceptionMsg = exceptionMsg;
-    }
-
-    public Throwable getThrowable() {
-        return throwable;
-    }
-
-    public void setThrowable( Throwable throwable) {
-        this.throwable = throwable;
-    }
 }

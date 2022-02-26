@@ -6,22 +6,25 @@
 package org.dbs24.references.core;
 
 
-import org.dbs24.application.core.log.LogService;
+import lombok.extern.log4j.Log4j2;
+import org.dbs24.application.core.nullsafe.NullSafe;
+import org.dbs24.application.core.service.funcs.AnnotationFuncs;
+import org.dbs24.application.core.service.funcs.ReflectionFuncs;
+import org.dbs24.application.core.service.funcs.ServiceFuncs;
 import org.dbs24.references.api.AppLanguage;
 import org.dbs24.references.api.ReferenceSyncOrder;
 import org.dbs24.references.list.ObjectList;
-import org.dbs24.application.core.service.funcs.AnnotationFuncs;
-import org.dbs24.application.core.service.funcs.ServiceFuncs;
-import org.dbs24.application.core.service.funcs.ReflectionFuncs;
+
 import java.lang.reflect.Method;
-import static org.dbs24.consts.SysConst.*;
-import org.dbs24.application.core.nullsafe.NullSafe;
+
+import static org.dbs24.consts.SysConst.OBJECT_NULL;
 
 /**
  *
  * @author kazyra_d
  */
 @Deprecated
+@Log4j2
 public abstract class AbstractReferencesList<T extends AbstractReference> extends ObjectList {
 
     // язык справочника
@@ -48,7 +51,7 @@ public abstract class AbstractReferencesList<T extends AbstractReference> extend
                     final T reference = (T) (NullSafe.create()
                             .execute2result(() -> {
 
-                                LogService.LogInfo(refClass, () -> String.format("Reference initialization [%s]", refClass.getCanonicalName()));
+                                //LogService.LogInfo(refClass, () -> String.format("Reference initialization [%s]", refClass.getCanonicalName()));
 
                                 // создание экземпляра справочника
                                 return NullSafe.createObject(refClass);
@@ -65,7 +68,6 @@ public abstract class AbstractReferencesList<T extends AbstractReference> extend
     //==========================================================================
     private Method findRegisterMethod( Class clazz, String methodName) {
         final String key = String.format("%s_%s.%s",
-                LogService.getCurrentObjProcName(this),
                 clazz.getCanonicalName(),
                 methodName);
 
@@ -74,11 +76,7 @@ public abstract class AbstractReferencesList<T extends AbstractReference> extend
                     return clazz.getMethod(methodName);
                 })
                 .catchMsgException((errMsg) -> {
-                    LogService.LogErr(clazz, key,
-                            () -> String.format("methodName not found ('%s', class='%s') (%s)",
-                                    methodName,
-                                    clazz.getCanonicalName(),
-                                    errMsg));
+                    log.error(errMsg);
                 }))
                 .<Method>getObject();
     }
@@ -86,9 +84,6 @@ public abstract class AbstractReferencesList<T extends AbstractReference> extend
     //==========================================================================
     @Deprecated
     public void registerReference( Class refClass) {
-        final String key = String.format("%s_%s",
-                LogService.getCurrentObjProcName(this),
-                refClass.getCanonicalName());
         // находим через reflection и выполняем статический метод registerReference
         //LogService.LogInfo(this.getClass(), key, refClass.getCanonicalName());
 
@@ -105,7 +100,6 @@ public abstract class AbstractReferencesList<T extends AbstractReference> extend
         NullSafe.create(this.findRegisterMethod(refClass, "registerReference"))
                 .safeExecute((ns_method) -> {
                     synchronized (AbstractReference.class) {
-                        LogService.LogInfo(this.getClass(), key, () -> refClass.getCanonicalName());
                         ((Method) ns_method).invoke(null);
                     }
                 }).throwException();

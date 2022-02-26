@@ -1,0 +1,16 @@
+#!/bin/sh
+export JAVA_HOME="/usr/lib/jvm/jdk-15.0.2"
+export MAVEN_OPTS="-Xms1024m"
+rm -rf ../.m2/repository/org/dbs24
+clear
+mvn -version
+mvn clean
+
+if [ $? -eq 0 ]
+then
+  mvn versions:display-dependency-updates
+  #mvn versions:use-latest-releases
+else
+  RED='\033[0;31m'
+  echo -e "${RED}######### Could not build project #####################################################################"
+fi

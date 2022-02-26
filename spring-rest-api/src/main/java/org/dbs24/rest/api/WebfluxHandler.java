@@ -29,6 +29,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
  *
  * @author zhurlik@gmail.com
  */
+@Deprecated
 public class WebfluxHandler { //implements HttpHandler {
 
 //    private final static Logger LOG = LoggerFactory.getLogger(WebfluxHandler.class);

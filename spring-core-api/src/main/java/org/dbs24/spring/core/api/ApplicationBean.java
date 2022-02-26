@@ -5,36 +5,24 @@
  */
 package org.dbs24.spring.core.api;
 
-import org.dbs24.application.core.log.LogService;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 
-public interface ApplicationBean {
+public interface ApplicationBean extends InitializingBean, DisposableBean {
 
-    public default void initialize() {
+    void initialize();
 
-    }
+    void shutdown();
 
-    public default void destroy() {
-
-    }
-
-    @PostConstruct
-    public default void afterConstruction() {
-        LogService.LogInfo(this.getClass(), () -> String.format("Created - %s ", this.getClass().getCanonicalName()));
-
+    @Override
+    default void afterPropertiesSet() throws Exception {
         ServiceLocator.registerService(this);
-
-        this.initialize();
-
+        initialize();
     }
 
-    @PreDestroy
-    public default void beforeDestroy() {
-        LogService.LogInfo(this.getClass(), () -> String.format("Destroyed  - %s ", this.getClass().getCanonicalName()));
-
+    @Override
+    default void destroy() throws Exception {
         ServiceLocator.releaseService(this);
-
-        this.destroy();
+        shutdown();
     }
 }

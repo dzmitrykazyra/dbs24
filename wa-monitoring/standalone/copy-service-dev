@@ -1,0 +1,2 @@
+chmod u+x wa-monitoring-dev.service
+sudo cp -f wa-monitoring-dev.service /etc/systemd/system/wa-monitoring.service

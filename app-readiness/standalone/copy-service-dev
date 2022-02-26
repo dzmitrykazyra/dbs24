@@ -1,0 +1,3 @@
+chmod u+x app-readiness-dev.service
+sudo cp -f app-readiness-dev.service /etc/systemd/system/app-readiness.service
+systemctl enable app-readiness

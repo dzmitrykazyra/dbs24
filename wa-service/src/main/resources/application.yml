@@ -1,0 +1,112 @@
+---
+spring: 
+    profiles:
+        defult: production
+        active: dev
+---
+debug: false
+server:
+    port: 8041
+    host-name: http://127.0.0.1
+    servlet:
+        context-path: /
+spring:
+    activate: 
+        on-profile: dev    
+    application: 
+        name: whats'app monitoring service
+    main:
+        banner-mode: off
+    jackson: 
+        serialization:
+            fail-on-empty-beans: false
+    datasource:
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        hikari:
+            minimumIdle: 3
+            maximumPoolSize: 100
+        show-sql: false
+        database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            cache:
+                use_second_level_cache: true          
+        properties:
+            hibernate:
+#                generate_statistics: true
+                format_sql: true
+                order_inserts: true
+                order_updates: true
+                jdbc:
+                    batch_size: 1500
+    codec:
+        max-in-memory-size: 20MB
+    kafka:
+        listener:
+            type: batch          
+        bootstrap-servers: 94.103.93.96:9092
+        producer:
+            group-id: myGroup
+            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    netty:
+        leak-detection: ADVANCED
+logging:
+    level:
+        org.springframework.security: INFO
+        reactor.netty.http.server.AccessLog: DEBUG
+# deprecated custom
+# new custom
+config:
+    application:
+        auto-reboot:
+            enable: true
+            cmd: systemctl restart wa-service
+            freeMemoryLimit: 10000000
+            #daily: 18000
+            frequency: 86400
+    activities:
+        shelf-life:
+            term: 30
+            arc-term: 61
+            period: 3600000
+    wa:
+        contract:
+            deprecated:
+                update: 60000
+            futured:
+                update: 60000
+        tariff:
+            max-duration: 2000
+            max-subs-amount: 200
+    security:
+        profile:
+            name: advanced
+            webfilter:
+                chain: development
+        jwt:
+            name: standard
+            secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
+            expiration: 28800
+    entity:
+        core:
+            enabled: false
+    persistence:
+        name: wa-service
+        service:
+            name: standard
+    restfull:
+        profile:
+            name: wa-service
+springdoc:
+    version: '@springdoc.version@'
+    api-docs:
+        enabled: true
+    swagger-ui:
+        use-root-path: true
+        enabled: true
+        #path: /swagger-ui-custom.html
+        operationsSorter: method       
+    cache:
+        disabled: true        

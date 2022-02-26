@@ -6,11 +6,11 @@
 package org.dbs24.application.core.nullsafe;
 
 import org.dbs24.application.core.exception.api.InternalAppException;
-import org.dbs24.application.core.log.LogService;
-import static org.dbs24.consts.SysConst.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import static org.dbs24.consts.SysConst.*;
 
 @Deprecated
 public class NullSafe { // implements NullSafe {
@@ -489,7 +489,7 @@ public class NullSafe { // implements NullSafe {
 
         final String callStack = NullSafe.getStackTraceRaw(th);
 
-        LogService.LogErr(th.getClass(), () -> callStack);
+//        LogService.LogErr(th.getClass(), () -> callStack);
 //
 //        NullSafe.EXCEPTION_EVENTS.add(new ExceptionEvent()
 //                .setThrowable(th)
@@ -622,10 +622,6 @@ public class NullSafe { // implements NullSafe {
 
         if ((null != this.getThrowable()) && this.getLogException()) {
 
-            LogService.LogErr(this.getThrowable().getClass(),
-                    () -> String.format("%s: %s",
-                            this.getThrowable().getClass().getSimpleName(),
-                            this.getThrowable().getMessage()));
             throw new RuntimeException(this.getThrowable());
         }
         return this;

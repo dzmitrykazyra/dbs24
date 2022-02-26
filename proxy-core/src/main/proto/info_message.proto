@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_package = "org.dbs24.proxy.core.imm.grpc";
+
+message ConnectedProxyInfo {
+    repeated ProxyInfo infos = 1;
+}
+  
+
+enum SocksAuthMethods {
+    NO_AUTH = 0x00;
+    USER_PASS = 0x02;
+    
+    MULTI_USER_PASS = 0x03;
+    IPv4_PASS = 0x04;
+    IPv6_PASS = 0x05;
+
+    NO_METHOD = 0xff;
+}
+
+
+message ProxyInfo {
+    int32 port = 1;
+    bytes ip = 2;
+    SocksAuthMethods method = 3;
+    string auth_data = 4;
+    bytes client_data = 5;
+}
+
+message EmReq {
+}
+
+service ImmProxiesService {
+  rpc getProxies (EmReq) returns (ConnectedProxyInfo);
+}

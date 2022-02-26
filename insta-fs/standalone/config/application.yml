@@ -1,0 +1,96 @@
+---
+spring: 
+    profiles:
+        defult: production
+        active: dev
+---
+debug: false
+server:
+    port: 8080
+spring:
+    activate: 
+        on-profile: dev    
+    application: 
+        name: Insta Faces Search
+    main:
+        banner-mode: off
+    jackson: 
+        serialization:
+            fail-on-empty-beans: false
+    datasource:
+        url: jdbc:postgresql://94.103.93.96:5432/ifs_dev
+        #url: jdbc:postgresql://127.0.0.1:5432/ifs_dev
+        username: ifs_admin
+        password: $ifs$m0n1t326ringpwd$
+        driver-class-name: org.postgresql.Driver     
+    jpa:
+        #show-sql: true
+        database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            cache:
+                use_second_level_cache: true
+        properties:
+            hibernate:
+#                generate_statistics: true
+                format_sql: true
+                order_inserts: true
+                order_updates: true
+                jdbc:
+                    batch_size: 20
+    codec:
+        max-in-memory-size: 20MB
+    kafka:
+        bootstrap-servers: 94.103.93.96:9092
+        listener:
+            type: batch          
+        producer:
+            group-id: instaGroup
+            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer            
+        consumer:
+            auto-offset-reset: earliest            
+            group-id: instaGroup 
+logging:
+    level:
+        org.springframework.security: DEBUG                            
+# deprecated custom  
+# new custom
+config:
+    security:
+        profile:
+            name: advanced
+            webfilter:
+                chain: development
+        jwt:
+            token:
+                enabled: false
+            name: standard
+            secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave64ByteLength
+            expiration: 28800
+    entity:
+        core:
+            enabled: false
+    persistence:
+        name: insta-fs
+        service:
+            name: standard
+    restfull:
+        profile:
+            name: insta-fs
+#        security:
+#            profile:
+#                name: reactive
+    monitoring:
+        enabled: false
+        port: 7007
+        #address: 130.211.198.183        
+        address: 127.0.0.1
+# @ConfigurationProperties
+refs:
+    synchronize: true
+    proxyStatuses:
+        1: Actual
+        2: Closed
+        3: Temporary
+        4: Banned        

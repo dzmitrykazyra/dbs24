@@ -5,27 +5,32 @@
  */
 package org.dbs24.stmt;
 
-import java.time.LocalDate;
-import lombok.extern.log4j.Log4j2;
 import org.dbs24.application.core.exception.api.InternalAppException;
-import org.dbs24.application.core.nullsafe.NullSafe;
-import org.dbs24.application.core.nullsafe.ObjectBuilder;
 import org.dbs24.application.core.nullsafe.StackTraceInfo;
+import org.dbs24.application.core.service.funcs.CollectionProcessor;
 import org.dbs24.consts.SysConst;
+
+import java.time.LocalDate;
+import java.util.Collection;
+
 import static org.dbs24.consts.SysConst.FORMAT_dd_MM_yyyy;
 import static org.dbs24.consts.SysConst.NOT_DEFINED;
-import reactor.core.publisher.Mono;
 
-@Log4j2
 public final class StmtProcessor<T> {
 
     private Boolean silent = SysConst.BOOLEAN_FALSE;
     private T artifact;
+    private Throwable throwable;
     private FinallyProcessor<T> finallyProcessor;
 
     //==========================================================================
     public StmtProcessor(VoidStmt<T> voidStmt) {
         processStmt(voidStmt);
+    }
+
+    //==========================================================================
+    public StmtProcessor(VoidStmtP1<T> voidStmtP1, T t) {
+        processStmt(voidStmtP1, t);
     }
 
     //==========================================================================
@@ -56,6 +61,11 @@ public final class StmtProcessor<T> {
     }
 
     //==========================================================================
+    public static <T> void execute(VoidStmtP1<T> voidStmtP1, T t) {
+        new StmtProcessor(voidStmtP1, t);
+    }
+
+    //==========================================================================
     public static <T> void executeSilent(Stmt<T> stmt) {
         new StmtProcessor(stmt, SysConst.BOOLEAN_TRUE);
     }
@@ -71,6 +81,11 @@ public final class StmtProcessor<T> {
     }
 
     //==========================================================================
+    public static <T> StmtProcessor createSilent(VoidStmt<T> stmt) {
+        return new StmtProcessor(stmt, SysConst.BOOLEAN_TRUE);
+    }
+
+    //==========================================================================
     public static <T> void create(VoidStmt<T> voidStmt) {
         final StmtProcessor stmtProcessor = new StmtProcessor(voidStmt);
         //stmtProcessor.silent = SysConst.BOOLEAN_TRUE;        
@@ -79,6 +94,35 @@ public final class StmtProcessor<T> {
     //==========================================================================
     public static <T> T create(Stmt<T> stmt) {
         return (T) (new StmtProcessor(stmt)).get();
+    }
+
+    //==========================================================================
+    public static <T> T createCatch(Stmt<T> stmt, ExceptionProcessor ep) {
+
+        final StmtProcessor<T> sp = StmtProcessor.createSilent(stmt);
+
+        final T t;
+        try {
+            t = (T) sp.get();
+        } finally {
+            sp.processException(ep);
+        }
+
+        return t;
+    }
+
+    //==========================================================================
+    public static <T> void createCatch(VoidStmt<T> stmt, ExceptionProcessor ep) {
+
+        StmtProcessor.createSilent(stmt).processException(ep);
+
+    }
+
+    //==========================================================================
+    public static <T> T create(Stmt<T> stmt, VoidStmtP1<T> stmt1) {
+        final T t = (T) (new StmtProcessor(stmt)).get();
+        StmtProcessor.execute(() -> stmt1.executeStmt(t));
+        return t;
     }
 
     //==========================================================================
@@ -108,6 +152,25 @@ public final class StmtProcessor<T> {
             final V1 constructorArg1,
             final V2 constructorArg2) {
         return StmtProcessor.<T, V1, V2>create(clazz, constructorArg1, constructorArg2, null);
+    }
+
+    //==========================================================================
+    public static <T, V1, V2, V3> T create(
+            final Class<T> clazz,
+            final V1 constructorArg1,
+            final V2 constructorArg2,
+            final V3 constructorArg3) {
+        return StmtProcessor.<T, V1, V2, V3>create(clazz, constructorArg1, constructorArg2, constructorArg3, null);
+    }
+
+    //==========================================================================
+    public static <T, V1, V2, V3, V4> T create(
+            final Class<T> clazz,
+            final V1 constructorArg1,
+            final V2 constructorArg2,
+            final V3 constructorArg3,
+            final V4 constructorArg4) {
+        return StmtProcessor.<T, V1, V2, V3, V4>create(clazz, constructorArg1, constructorArg2, constructorArg3, constructorArg4, null);
     }
 
     //==========================================================================
@@ -149,11 +212,66 @@ public final class StmtProcessor<T> {
     }
 
     //==========================================================================
+    public static <T, V1, V2, V3> T create(
+            final Class<T> clazz,
+            final V1 constructorArg1,
+            final V2 constructorArg2,
+            final V3 constructorArg3,
+            final NewObjectProcessor<T> newObjectProcessor) {
+
+        return StmtProcessor.create(() -> {
+
+            final Class[] cArgList = new Class[3];
+            cArgList[0] = constructorArg1.getClass();
+            cArgList[1] = constructorArg2.getClass();
+            cArgList[2] = constructorArg3.getClass();
+            final T newObject = clazz.getDeclaredConstructor(cArgList).newInstance(constructorArg1, constructorArg2, constructorArg3);
+            if (StmtProcessor.notNull(newObjectProcessor)) {
+                newObjectProcessor.initialize(newObject);
+            }
+            return newObject;
+        });
+    }
+
+    //==========================================================================
+    public static <T, V1, V2, V3, V4> T create(
+            final Class<T> clazz,
+            final V1 constructorArg1,
+            final V2 constructorArg2,
+            final V3 constructorArg3,
+            final V4 constructorArg4,
+            final NewObjectProcessor<T> newObjectProcessor) {
+
+        return StmtProcessor.create(() -> {
+
+            final Class[] cArgList = new Class[4];
+            cArgList[0] = constructorArg1.getClass();
+            cArgList[1] = constructorArg2.getClass();
+            cArgList[2] = constructorArg3.getClass();
+            cArgList[3] = constructorArg4.getClass();
+            final T newObject = clazz.getDeclaredConstructor(cArgList).newInstance(constructorArg1, constructorArg2, constructorArg3, constructorArg4);
+            if (StmtProcessor.notNull(newObjectProcessor)) {
+                newObjectProcessor.initialize(newObject);
+            }
+            return newObject;
+        });
+    }
+
+    //==========================================================================
     private void processStmt(VoidStmt<T> stmt) {
         try {
             stmt.executeStmt();
-        } catch (Throwable t) {
-            processException(t);
+        } catch (Throwable throwable) {
+            processException(throwable);
+        }
+    }
+
+    //==========================================================================
+    private void processStmt(VoidStmtP1<T> stmtP1, T t) {
+        try {
+            stmtP1.executeStmt(t);
+        } catch (Throwable throwable) {
+            processException(throwable);
         }
     }
 
@@ -161,8 +279,8 @@ public final class StmtProcessor<T> {
     private T processStmt(Stmt<T> stmt) {
         try {
             artifact = stmt.executeStmt();
-        } catch (Throwable t) {
-            processException(t);
+        } catch (Throwable throwable) {
+            processException(throwable);
         }
 
         return artifact;
@@ -171,12 +289,12 @@ public final class StmtProcessor<T> {
     //==========================================================================
     private T processStmtClass(Class<T> stmtClass, NewObjectProcessor<T> newObjectProcessor) {
         try {
-            artifact = stmtClass.newInstance();
+            artifact = stmtClass.getDeclaredConstructor().newInstance();
 
             newObjectProcessor.initialize(artifact);
 
-        } catch (Throwable t) {
-            processException(t);
+        } catch (Throwable throwable) {
+            processException(throwable);
         }
 
         return artifact;
@@ -193,33 +311,45 @@ public final class StmtProcessor<T> {
             if (null == artifact) {
                 artifact = stmt.executeStmt();
             }
-        } catch (Throwable t) {
-            this.processException(t);
+        } catch (Throwable throwable) {
+            this.processException(throwable);
         }
 
         return this;
     }
 
     //==========================================================================
-    private void processException(Throwable t) {
+    private void processException(Throwable throwable) {
+
+        this.throwable = throwable;
 
         if (!silent) {
-            t.printStackTrace();
-            final String errMsg = getErrorMessage(t);
-            log.error("### {}: {}", t.getClass().getSimpleName(), errMsg);
+            throwable.printStackTrace();
+            final String errMsg = getErrorMessage(throwable);
+            //log.error("### {}: {}", throwable.getClass().getSimpleName(), errMsg);
             throw new InternalAppException(errMsg);
         } else {
-            log.warn("silent exception {}: {}", t.getClass().getSimpleName(), t.getLocalizedMessage());
+            //log.warn("silent exception {}: {}", throwable.getClass().getSimpleName(), throwable.getLocalizedMessage());
         }
     }
 
     //==========================================================================
-    public static final String getErrorMessage(Throwable th) {
-        return InternalAppException.getExtendedErrMessage(th);
+    public StmtProcessor processException(ExceptionProcessor exceptionProcessor) {
+
+        if (StmtProcessor.notNull(this.throwable)) {
+            exceptionProcessor.perform(this.throwable);
+        }
+
+        return this;
     }
 
-    public static final String getStackTraceRaw(Throwable th) {
-        return new StackTraceInfo(th).getStringStackTraceInfo();
+    //==========================================================================
+    public static final String getErrorMessage(Throwable throwable) {
+        return InternalAppException.getExtendedErrMessage(throwable);
+    }
+
+    public static final String getStackTraceRaw(Throwable throwable) {
+        return new StackTraceInfo(throwable).getStringStackTraceInfo();
     }
     //==========================================================================
 
@@ -244,6 +374,11 @@ public final class StmtProcessor<T> {
     }
 
     //==========================================================================
+    public static void sleep(int ms) {
+        StmtProcessor.execute(() -> Thread.sleep(ms));
+    }
+
+    //=========================================================================
     public static final Boolean isNull(Object object) {
         return !StmtProcessor.notNull(object);
     }
@@ -252,7 +387,93 @@ public final class StmtProcessor<T> {
         return (null != object);
     }
 
-    public static final Object nvl(Object object, Object defObject) {
+    public static final <T> T nvl(T object, T defObject) {
         return (null != object ? object : defObject);
+    }    
+    
+    //==========================================================================
+    public static <T> T assertNotNull(Class<?> clazz, Object object, String errMsg) {
+//        Assert.notNull(object, String.format("%s: attribute|property|variable %s IS NULL! ", clazz.getSimpleName(), errMsg));
+//        Assert.isTrue(object.hashCode() != 0, String.format("%s: hashcode of  '%s' is illegal! (%d)", clazz.getSimpleName(), errMsg, object.hashCode()));
+        return (T) object;
     }
+
+    public static void ifTrue(Boolean boolExp, VoidStmt stmt) {
+        if (boolExp) {
+            StmtProcessor.execute(stmt);
+        }
+    }
+
+    public static void ifTrue(Boolean boolExp, VoidStmt stmtTrue, VoidStmt stmtFalse) {
+        if (boolExp) {
+            StmtProcessor.execute(stmtTrue);
+        } else {
+            StmtProcessor.execute(stmtFalse);
+        }
+    }
+
+    public static void ifNotNull(Object object, VoidStmt stmt) {
+        if (StmtProcessor.notNull(object)) {
+            StmtProcessor.execute(stmt);
+        }
+    }
+
+    public static <T> void ifNotNull(T t, VoidStmtP1<T> stmtP1) {
+        if (StmtProcessor.notNull(t)) {
+            StmtProcessor.execute(stmtP1, t);
+        }
+    }
+
+    public static <T> void ifNotNull(T t, VoidStmtP1<T> stmtP1, VoidStmt stmtNull) {
+        if (StmtProcessor.notNull(t)) {
+            StmtProcessor.execute(stmtP1, t);
+        } else {
+            StmtProcessor.execute(stmtNull);
+        }
+    }
+
+    public static void ifNotNull(Object object, VoidStmt stmtTrue, VoidStmt stmtFalse) {
+        if (StmtProcessor.notNull(object)) {
+            StmtProcessor.execute(stmtTrue);
+        } else {
+            StmtProcessor.execute(stmtFalse);
+        }
+    }
+
+    public static void ifNull(Object object, VoidStmt stmt) {
+        if (StmtProcessor.isNull(object)) {
+            StmtProcessor.execute(stmt);
+        }
+    }
+
+    public static void ifNull(Object object, VoidStmt stmtTrue, VoidStmt stmtFalse) {
+        if (StmtProcessor.isNull(object)) {
+            StmtProcessor.execute(stmtTrue);
+        } else {
+            StmtProcessor.execute(stmtFalse);
+        }
+    }
+
+    public static <T> Collection<T> processCollection(Collection<T> collection, CollectionProcessor<T> collectionProcessor) {
+        if (!collection.isEmpty()) {
+            collectionProcessor.processCollection(collection);
+        }
+
+        return collection;
+    }
+
+    public static <T> Collection<T> fillCollection(Collection<T> collection, CollectionProcessor<T> collectionProcessor) {
+        collectionProcessor.processCollection(collection);
+
+        return collection;
+    }
+
+    public static void assertTrue(Boolean predicate, String errMsg) {
+        //Assert.isTrue(predicate, String.format("Failed condition (%s)", errMsg));
+    }
+
+    public static void assertIsNull(Class<?> clazz, Object object, String errMsg) {
+        //StmtProcessor.ifNotNull(object, notNullObj -> Assert.isNull(notNullObj, String.format("%s: attribute|property|variable %s IS NOT NULL! :%s ", clazz.getSimpleName(), errMsg, notNullObj.toString())));
+    }
+
 }

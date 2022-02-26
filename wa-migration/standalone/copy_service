@@ -1,0 +1,2 @@
+chmod u+x wa-migration.service
+sudo cp -f wa-migration.service /etc/systemd/system/wa-migration.service
